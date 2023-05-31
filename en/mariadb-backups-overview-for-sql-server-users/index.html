@@ -251,12 +251,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2020-01-10 12:12">3 years, 2 months ago</span></dd>
+<span class="datetime" title="2020-01-10 12:12">3 years, 4 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2020-05-28 00:43">2 years, 9 months ago</span></dd>
+<span class="datetime" title="2023-05-22 15:38">1 week, 1 day ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -438,7 +438,7 @@
 
     <li class="mariadb_from_10_1_23"><a href="#logical-backups-dumps" title="Logical Backups (Dumps)">Logical Backups (Dumps)</a>    <ol class="toc">
 
-        <li class="mariadb_from_10_1_23"><a href="#mysqldump" title="mysqldump">mysqldump</a></li>
+        <li class="mariadb_from_10_1_23"><a href="#mariadb-dump" title="mariadb-dump">mariadb-dump</a></li>
 
         <li class="mariadb_from_10_1_23"><a href="#mydumper" title="mydumper">mydumper</a>    </ol>
 </li>
@@ -468,14 +468,14 @@
 <h2 class="anchored_heading" id="logical-backups-dumps">Logical Backups (Dumps)</h2>
 <p>A <em>dump</em>, also called a <em>logical backup</em>, consists of the SQL statements needed to recreate MariaDB databases and their data into another server. A dump is the slowest form of backup to restore, because it implies executing all the SQL statements needed to recreate data. However it is also the most flexible, because restoring will work on any MariaDB version, because the SQL syntax is usually compatible. It is even possible to restore a dump into an older version, though the incompatible syntax (new features) will be ignored. Under certain conditions, MariaDB dumps may also be restored on other DBMSs, including SQL Server.</p>
 <p>The compatibility between different versions and technologies is achieved by using <a href="/kb/en/comment-syntax/">executable comments</a>, but we should be aware of how they work. If we use a feature introduced in version 10.1, for example, it will be included in the dump inside an executable comment. If we restore that backup on a server with <a href="/kb/en/what-is-mariadb-100/">MariaDB 10.0</a>, the 10.1 feature will be ignored. This is the only way to restore backups in older MariaDB versions.</p>
-<h3 class="anchored_heading" id="mysqldump">mysqldump</h3>
-<p>Logical backups are usually taken with <a href="/kb/en/mysqldump/">mysqldump</a>.</p>
-<p>mysqldump allows to dump all databases, a single database, or a set of tables from a database. It is even possible to specify a <code>WHERE</code> clause, which under certain circumstances allows to obtain incremental dumps.</p>
+<h3 class="anchored_heading" id="mariadb-dump">mariadb-dump</h3>
+<p>Logical backups are usually taken with <a href="/kb/en/mariadb-dump/">mariadb-dump</a> (previously called mysqldump).</p>
+<p>mariadb-dump allows one to dump all databases, a single database, or a set of tables from a database. It is even possible to specify a <code>WHERE</code> clause, which under certain circumstances allows to obtain incremental dumps.</p>
 <p>For consistency reasons, when using the default storage engine <a href="/kb/en/understanding-mariadb-architecture/#innodb">InnoDB</a>, it is important to use the <code>--single-transaction</code> option. This will read all data in a single transaction. It's important however to understand that long transactions may have a big impact on performance.</p>
 <p>The <code>--master-data</code> option adds the statements to setup a slave to the dump.</p>
 <p>MariaDB also supports statements which make easy to write applications to obtain custom types of dumps. For most <code>CREATE &lt;object_type&gt;</code> statement, a corresponding <code>SHOW CREATE &lt;object_type&gt;</code> exists. For example, <a href="/kb/en/show-create-table/">SHOW CREATE TABLE</a> returns the <code>CREATE TABLE</code> statement that can be used to recreate a certain table, without data.</p>
 <h3 class="anchored_heading" id="mydumper">mydumper</h3>
-<p><a href="https://github.com/maxbube/mydumper">mydumper</a> is a 3rd party tools to take dumps from MariaDB and MySQL databases. It is much faster than mysqldump because it takes backups with several parallel threads, usually one thread for each available CPU core. It produces several files, that can be used to restore a database using the related tool myloader.</p>
+<p><a href="https://github.com/maxbube/mydumper">mydumper</a> is a 3rd party tools to take dumps from MariaDB and MySQL databases. It is much faster than mariadb-dump because it takes backups with several parallel threads, usually one thread for each available CPU core. It produces several files, that can be used to restore a database using the related tool myloader.</p>
 <p>Since is it a 3rd party tool, it could be incompatible with some present or future MariaDB features.</p>
 <h2 class="anchored_heading" id="hot-backups-mariabackup">Hot Backups (mariabackup)</h2>
 <div class="mariadb_from_10_1_23 mariadb from_10_1_23 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-10123-release-notes/">10.1.23</a></h5><p><a href="/kb/en/mariabackup-overview/">mariabackup</a> was first released in <a href="/kb/en/mariadb-10123-release-notes/">MariaDB 10.1.23</a> and <a href="/kb/en/mariadb-1027-release-notes/">MariaDB 10.2.7</a>. It was first released as GA in <a href="/kb/en/mariadb-10126-release-notes/">MariaDB 10.1.26</a> and <a href="/kb/en/mariadb-10210-release-notes/">MariaDB 10.2.10</a>.</p>

@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/relay-log/+r/124316/">124316</a></dd>
+            <dd><a href="/kb/en/relay-log/+r/126504/">126504</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-03-20 07:28">2023-03-20 07:28</span></dd>
+<span class="datetime" title="2023-05-29 20:35">2023-05-29 20:35</span></dd>
         </dl>
     </div>
     
@@ -317,7 +317,7 @@ Events are read from the primary&#39;s binary log and written to the replica&#39
 == Creating Relay Log Files
 New relay log files are created by the replica at the following times:
 *when the IO thread starts
-*when the logs are flushed, with [[flush|FLUSH LOGS]] or [[mysqladmin|mysqladmin flush-logs]].
+*when the logs are flushed, with [[flush|FLUSH LOGS]] or [[mariadb-admin|mariadb-admin flush-logs]].
 *when the maximum size, determined by the [[replication-and-binary-log-server-system-variables#max_relay_log_size|max_relay_log_size]] system variable, has been reached
 
 == Relay Log Names

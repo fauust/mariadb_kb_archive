@@ -1,206 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Tue, 14 Mar 2023 21:29:48 +0000</lastBuildDate><item><title>Re: Does MariaDb ColumnStore supports PIVOT</title><link>https://mariadb.com/kb/en/does-mariadb-columnstore-supports-pivot/+comments/6148</link><description>&lt;p&gt;Every analytics engine uses PIVOT. Such a shame that such an important feature does not exist as built-in the CS engine&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Antonis Panagi</dc:creator><guid>https://mariadb.com/kb/en/does-mariadb-columnstore-supports-pivot/+comments/6148</guid></item><item><title>Re: Does MariaDb ColumnStore supports PIVOT</title><link>https://mariadb.com/kb/en/does-mariadb-columnstore-supports-pivot/+comments/6147</link><description>&lt;p&gt;Hi,&lt;/p&gt;
-&lt;p&gt;Both MariaDB and MCS don't support  PIVOT clause as it is in SQL Server. However you can pivot the data using CASE as it is described by Markus Winand here [1]. &lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Tue, 30 May 2023 19:31:39 +0000</lastBuildDate><item><title>Re: Where is mariadb.cnf config file variables, and there meaning?</title><link>https://mariadb.com/kb/en/where-is-mariadb-cnf-config-file-variables-and-there-meaning/+comments/6247</link><description>&lt;p&gt;See &lt;a href="/kb/en/full-list-of-mariadb-options-system-and-status-variables/"&gt;Full List of MariaDB Options, System and Status Variables&lt;/a&gt; or &lt;a href="/kb/en/server-system-variables/"&gt;Server System Variables&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/where-is-mariadb-cnf-config-file-variables-and-there-meaning/+comments/6247</guid></item><item><title>Re: MariaDB 10.3.30 to 10.6</title><link>https://mariadb.com/kb/en/mariadb-10-3-30-to-10-6/+comments/6246</link><description>&lt;p&gt;Show the SQLs, the SHOW CREATE TABLE, and EXPLAIN query.&lt;/p&gt;
+&lt;p&gt;Enable your slow query log. Consider &lt;a href="/kb/en/explain-in-the-slow-query-log/"&gt;explain-in-the-slow-query-log&lt;/a&gt;. log_queries_not_using_indexes will be noisy if &lt;a href="/kb/en/server-system-variables/#min_examined_row_limit"&gt;min_examined_row_limit&lt;/a&gt; isn't set to 1000 or so to reduce noise.&lt;/p&gt;
+&lt;p&gt;Recommend stripping your config back to the items you've explicitly set because of outcomes particularly disabling query cache.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mariadb-10-3-30-to-10-6/+comments/6246</guid></item><item><title>Re: bug in JSON_TYPE ?</title><link>https://mariadb.com/kb/en/json_type/+comments/6245</link><description>&lt;p&gt;JSON_TYPE should not describe the parsed value 8BALL as an INT.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kevin O'Halloran</dc:creator><guid>https://mariadb.com/kb/en/json_type/+comments/6245</guid></item><item><title>bug in JSON_TYPE ?</title><link>https://mariadb.com/kb/en/json_type/+comments/6244</link><description>&lt;p&gt;this appears to me to be a bug:&lt;/p&gt;
+&lt;pre class="fixed"&gt;set @my_filters := 
+'{
+	&amp;#34;refresh_id&amp;#34;: &amp;#34;8BALL&amp;#34;,
+	&amp;#34;location_id&amp;#34;: &amp;#34;160&amp;#34;
+}';
+
+select  JSON_VALUE(@my_filters, '$.refresh_id') as parsed_value,
+		JSON_TYPE(JSON_UNQUOTE(JSON_VALUE(@my_filters, '$.refresh_id'))) as curr,
+		JSON_TYPE(JSON_VALUE(@my_filters, '$.refresh_id')) as no_unquote,
+		JSON_TYPE('8BALL') as just_type,
+		JSON_TYPE('&amp;#34;8BALL&amp;#34;') as quoted_just_type;
+
+parsed_value|curr   |no_unquote|just_type|quoted_just_type|
+------------+-------+----------+---------+----------------+
+8BALL       |INTEGER|INTEGER   |INTEGER  |STRING          |
+&lt;/pre&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kevin O'Halloran</dc:creator><guid>https://mariadb.com/kb/en/json_type/+comments/6244</guid></item><item><title>Re: JSON_TYPE</title><link>https://mariadb.com/kb/en/json_type/+comments/6243</link><description>&lt;p&gt;note difference:&lt;/p&gt;
+&lt;pre class="fixed"&gt;JSON_TYPE(&amp;#34;a sample string&amp;#34;)|
+----------------------------+
+                            |
+&lt;/pre&gt;&lt;p&gt;vs&lt;/p&gt;
+&lt;pre class="fixed"&gt;JSON_TYPE('&amp;#34;a sample string&amp;#34;')|
+------------------------------+
+STRING                        |
+&lt;/pre&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kevin O'Halloran</dc:creator><guid>https://mariadb.com/kb/en/json_type/+comments/6243</guid></item><item><title>Re: MariaDB Enterprise to do CONNECT</title><link>https://mariadb.com/kb/en/mariadb-enterprise-to-do-connect/+comments/6241</link><description>&lt;p&gt;I am thinking a stupid way but I am NOT sure whether it is just like a joke.&lt;/p&gt;
+&lt;p&gt;MariaDB Enterprise -&amp;gt; Spider -&amp;gt; MariaDB Community -&amp;gt; CONNECT -&amp;gt; csv file(s).&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Samuel Sum</dc:creator><guid>https://mariadb.com/kb/en/mariadb-enterprise-to-do-connect/+comments/6241</guid></item><item><title>Upgrading from MariaDB 10.6/10.8/10.9 =&gt; 10.11 dosn't work on Windows</title><link>https://mariadb.com/kb/en/upgrading-mariadb-on-windows/+comments/6240</link><description>&lt;p&gt;I have try the mariadb_upgrade_wizzard on 3 different Windows : Windows 10, Windows 11 and Windows Server 2019. It never works, freeze at step 5, and I have always this error in log : &lt;/p&gt;
+&lt;p&gt;Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqld.exe" "--defaults-file=C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-109/"&gt;MariaDB 10.9&lt;/a&gt;\data3\my.ini" "--skip-networking" "--skip-grant-tables" "--enable-named-pipe" "--socket=mysql_upgrade_service_16960" "--skip-slave-start"
+Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe" "--protocol=pipe" "--socket=mysql_upgrade_service_16960" "ping" "--no-beep"
+C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe: connect to server at 'localhost' failed
+error: 'Can't connect to server on 'localhost' (10061)'
+Check that mariadbd is running and that the socket: 'mysql_upgrade_service_16960' exists!
+Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe" "--protocol=pipe" "--socket=mysql_upgrade_service_16960" "ping" "--no-beep"
+C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe: connect to server at 'localhost' failed
+error: 'Can't connect to server on 'localhost' (10061)'
+Check that mariadbd is running and that the socket: 'mysql_upgrade_service_16960' exists!
+Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe" "--protocol=pipe" "--socket=mysql_upgrade_service_16960" "ping" "--no-beep"
+C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe: connect to server at 'localhost' failed
+error: 'Can't connect to server on 'localhost' (10061)'
+Check that mariadbd is running and that the socket: 'mysql_upgrade_service_16960' exists!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gauthier M.</dc:creator><guid>https://mariadb.com/kb/en/upgrading-mariadb-on-windows/+comments/6240</guid></item><item><title>Re: IP Address</title><link>https://mariadb.com/kb/en/ip-address/+comments/6239</link><description>&lt;p&gt;See &lt;a href="https://stackoverflow.com/questions/8283248/show-mysql-host-via-sql-command"&gt;Show MySQL host via SQL Command&lt;/a&gt; on StackOverflow.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/ip-address/+comments/6239</guid></item><item><title>Re: MySQL service</title><link>https://mariadb.com/kb/en/mysql-service/+comments/6238</link><description>&lt;p&gt;If this is MariaDB, can you create a bug report on &lt;a href="https://jira.mariadb.org"&gt;https://jira.mariadb.org&lt;/a&gt; with the version/package of MariaDB affected too. Are you able to obtain the Event Log and MariaDB log related to the startup? Please include that in the bug report.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mysql-service/+comments/6238</guid></item><item><title>Re: Seeking for tutorial of MariaDB version: 10.6.12</title><link>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6237</link><description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;Thanks for your advice and link. I have made heavy searching before posting. This is a mystery to me. Finally I found the solution as follow:-&lt;/p&gt;
+&lt;p&gt;This ia a LAMP server running on a VM of VirtualBox. Later I discovered there are 2 passwords to login MariaDB/MySQL;
+password-1
+password-2  (discovered later)&lt;/p&gt;
+&lt;p&gt;To login MariaDB with password-1
+Running some MariaDB commands popup warnings -&amp;gt; Syntax error, running the command corresponding to the right version of MariaDB&lt;/p&gt;
+&lt;p&gt;To login MariaDB with password-2
+All MariaDB commands work without problem.&lt;/p&gt;
+&lt;p&gt;This VM has been created and running for a long time. Previously I have problem on this PCIe3.0 NVMe SSD compelling me to reinstall it.
+Host - Ubuntu 22.04
+VM - Ubuntu 22.04&lt;/p&gt;
+&lt;p&gt;The VMs were re-created on their .vbox images. There are 6 VMs running. I still have problem unsolved. Some websites on VM unable to connect on browser with their internal IP addresses. I don't know WHY?&lt;/p&gt;
+&lt;p&gt;I'll leave the problem unsolved until I found time to build a new PC.&lt;/p&gt;
+&lt;p&gt;Regards&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stephen Liu</dc:creator><guid>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6237</guid></item><item><title>Re: maraiDBserver does not start with galera cluster</title><link>https://mariadb.com/kb/en/maraidbserver-does-not-start-with-galera-cluster/+comments/6236</link><description>&lt;p&gt;Appears to be network connectivity related. Check the required ports are listing.&lt;/p&gt;
+&lt;p&gt;If all nodes are shut down, I assume are bootstrapping a particular node?&lt;/p&gt;
+&lt;p&gt;ref: &lt;a href="https://galeracluster.com/library/documentation/crash-recovery.html"&gt;https://galeracluster.com/library/documentation/crash-recovery.html&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/maraidbserver-does-not-start-with-galera-cluster/+comments/6236</guid></item><item><title>Re: Individual Database Restores with MariaBackup from Full backup</title><link>https://mariadb.com/kb/en/individual-database-restores-with-mariabackup-from-full-backup/+comments/6235</link><description>&lt;p&gt;I have absorbed the information on this page into a makeover of the `run-mariabackup` script-package and am looking for feedback. Be careful, this is very new and barely tested. Only use this after thorough review:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/tvogel/run-mariabackup"&gt;https://github.com/tvogel/run-mariabackup&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Tilman Vogel</dc:creator><guid>https://mariadb.com/kb/en/individual-database-restores-with-mariabackup-from-full-backup/+comments/6235</guid></item><item><title>Re: Seeking for tutorial of MariaDB version: 10.6.12</title><link>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6234</link><description>&lt;p&gt;Statements from older version are almost always applicable to newer versions. You can find documentation here on the &lt;a href="https://mariadb.com/kb/en/"&gt;Knowledge Base&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6234</guid></item><item><title>Seeking for tutorial of MariaDB version: 10.6.12</title><link>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6233</link><description>&lt;p&gt;MariaDB Server version: 10.6.12
+(OS - Ubuntu 22.04)&lt;/p&gt;
+&lt;p&gt;Hi all,&lt;/p&gt;
+&lt;p&gt;Please advise where can I find its tutorial and commands. The syntax used looks different. The commands used by me in the past are not all applicable to this version.&lt;/p&gt;
+&lt;p&gt;Thanks in advance&lt;/p&gt;
+&lt;p&gt;Regards&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stephen Liu</dc:creator><guid>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6233</guid></item><item><title>Re: Windows Server Migration</title><link>https://mariadb.com/kb/ko/windows-server-migration/+comments/6232</link><description>&lt;p&gt;It is possible, but your customer is on his own with his migration. Since 10.2 is out of support&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Vladislav Vaintroub</dc:creator><guid>https://mariadb.com/kb/ko/windows-server-migration/+comments/6232</guid></item><item><title>Re: Questions about maxscale 2.21 version</title><link>https://mariadb.com/kb/en/questions-about-maxscale-2-21-version/+comments/6231</link><description>&lt;p&gt;1. There is no such feature for Amazon Aurora.
+2. Failover is unlikely to work as Amazon Aurora isn't a simple MySQL/MariaDB cluster and has its own rules.&lt;/p&gt;
+&lt;p&gt;MaxScale does not use JDBC so that is something you'll have to change in your application.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/questions-about-maxscale-2-21-version/+comments/6231</guid></item><item><title>Re: SQL SYNTAX</title><link>https://mariadb.com/kb/en/sql-syntax/+comments/6230</link><description>&lt;p&gt;A syntax error - it's impossible to tell more without any details of the query/table structure :)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/sql-syntax/+comments/6230</guid></item><item><title>Re: Replace multiple character</title><link>https://mariadb.com/kb/en/replace-multiple-character/+comments/6229</link><description>&lt;p&gt;You don't specify exactly what you mean, but nested REPLACE statements, for example &lt;/p&gt;
+&lt;pre class="fixed"&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="k"&gt;REPLACE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;REPLACE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;xxx.mcriadb.org&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="c1"&gt;-------------------------------------------------------+&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="k"&gt;REPLACE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;REPLACE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;xxx.mcriadb.org&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="c1"&gt;-------------------------------------------------------+&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mariadb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;                                       &lt;span class="o"&gt;|&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="c1"&gt;-------------------------------------------------------+&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;or &lt;a href="/kb/en/regular-expressions-overview/"&gt;regular expressions&lt;/a&gt;?&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/replace-multiple-character/+comments/6229</guid></item><item><title>How to find a system to handle easily rich text</title><link>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6228</link><description>&lt;p&gt;Hello.&lt;/p&gt;
+&lt;p&gt;Is there a way to easily use MariaDB (or another opensource database management system) for rich text? I'd like, for instance, to just click Ctrl + B to put a piece of text in bold. If yes, what to install for this?&lt;/p&gt;
+&lt;p&gt;Thank you in advance.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Henri de Solages</dc:creator><guid>https://mariadb.com/kb/en/getting-help-with-mariadb/+comments/6228</guid></item><item><title>Re: Maxscale not starting on Ubuntu 22.04</title><link>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6227</link><description>&lt;p&gt;I also tried enabling EVC in my ESX-based Ubuntu 22 LTS VM to no avail. Our data center has Woodmere silicon I guess AVX isn't supported. There isn't a new package from the repo, so I downloaded the source and built a pkg using the instructions. &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/mariadb-corporation/MaxScale/blob/22.08/Documentation/Getting-Started/Building-MaxScale-from-Source-Code.md"&gt;https://github.com/mariadb-corporation/MaxScale/blob/22.08/Documentation/Getting-Started/Building-MaxScale-from-Source-Code.md&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eric S. Tyrer II</dc:creator><guid>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6227</guid></item><item><title>Re: Maxscale not starting on Ubuntu 22.04</title><link>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6226</link><description>&lt;p&gt;I am not sure anymore if I got the same error with the code from git.&lt;/p&gt;
+&lt;p&gt;But the problem for me is solved by changing the EVC setting in VMware. Somebody forgot to update this setting :(
+Now the VM's have AVX CPU support and Maxscale works as a charme !&lt;/p&gt;
+&lt;p&gt;Tanks for pointing me in the right direction !&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rolf Benneker</dc:creator><guid>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6226</guid></item><item><title>Re: MariaDB 10.5.20 repo CENTOS7 only ， no centos stream repo</title><link>https://mariadb.com/kb/en/mariadb-10-5-20-repo-centos7-only-no-centos-stream-repo/+comments/6225</link><description>&lt;p&gt;Appoligies, our &lt;a href="https://mariadb.org/download/?t=repo-config&amp;amp;d=CentOS+Stream&amp;amp;v=10.6&amp;amp;r_m=realworldgroup"&gt;repo configuration tool&lt;/a&gt; appears to have only 10.6 enabled, however 10.5 is there on the mirrors for CentOS Stream. I'll get this corrected.&lt;/p&gt;
+&lt;pre&gt;
+$ podman run -ti quay.io/centos/centos:stream9 
+[root@169178c4e791 /]# cat &amp;gt; /etc/yum.repos.d/mariadb.repo
+# MariaDB 10.6 CentOS repository list - created 2023-05-12 02:58 UTC
+# https://mariadb.org/download/
+[mariadb]
+name = MariaDB
+# rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+# baseurl = https://rpm.mariadb.org/10.6/centos/$releasever/$basearch
+baseurl = https://mirror.realcompute.io/mariadb/yum/10.6/centos/$releasever/$basearch
+# gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgkey = https://mirror.realcompute.io/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck = 1
+[root@169178c4e791 /]# sed -i -e 's/10.6/10.5/' /etc/yum.repos.d/mariadb.repo 
+[root@169178c4e791 /]# dnf update
+..
+[root@169178c4e791 /]# dnf install mariadb-server
+Last metadata expiration check: 0:00:17 ago on Fri May 12 03:00:04 2023.
+Dependencies resolved.
+==========================================================================================================================================
+ Package                                 Architecture            Version                                 Repository                  Size
+==========================================================================================================================================
+Installing:
+ MariaDB-server                          x86_64                  10.5.20-1.el9                           mariadb                     18 M
+...
+Importing GPG key 0x1BB943DB:
+ Userid     : "MariaDB Package Signing Key &amp;lt;package-signing-key@mariadb.org&amp;gt;"
+ Fingerprint: 1993 69E5 404B D5FC 7D2F E43B CBCB 082A 1BB9 43DB
+ From       : https://mirror.realcompute.io/mariadb/yum/RPM-GPG-KEY-MariaDB
+Is this ok [y/N]: y
+Key imported successfully
+Importing GPG key 0xC74CD1D8:
+ Userid     : "MariaDB Signing Key &amp;lt;signing-key@mariadb.org&amp;gt;"
+ Fingerprint: 177F 4010 FE56 CA33 3630 0305 F165 6F24 C74C D1D8
+ From       : https://mirror.realcompute.io/mariadb/yum/RPM-GPG-KEY-MariaDB
+Is this ok [y/N]: y
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+...
+Complete!
+[root@169178c4e791 /]# 
+&lt;/pre&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mariadb-10-5-20-repo-centos7-only-no-centos-stream-repo/+comments/6225</guid></item><item><title>Re: Setup binlogs from Docker compose file ?</title><link>https://mariadb.com/kb/en/setup-binlogs-from-docker-compose-file/+comments/6224</link><description>&lt;p&gt;Thanks a lot Daniel Black,&lt;/p&gt;
+&lt;p&gt;I did an update of mariadb version, I'm using the 10.11.2.  
+To do it, I used 'latest' in place of the mariadb version like this:
+&lt;code class="fixed" style="white-space:pre-wrap"&gt; image: mariadb:latest &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And to fix my issue It did that:
+&lt;code class="fixed" style="white-space:pre-wrap"&gt; --log-bin --log-basename=log_mariadb &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Thanks for your help&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Serge Mathieu</dc:creator><guid>https://mariadb.com/kb/en/setup-binlogs-from-docker-compose-file/+comments/6224</guid></item><item><title>Re: Setup binlogs from Docker compose file ?</title><link>https://mariadb.com/kb/en/setup-binlogs-from-docker-compose-file/+comments/6221</link><description>&lt;p&gt;The log-basename cannot contain a path, it must just be the prefix. Check the logs it might be failing.&lt;/p&gt;
+&lt;p&gt;note 10.7 is end of life now.&lt;/p&gt;
+&lt;p&gt;Note if you are doing replication &lt;a href="https://github.com/MariaDB/mariadb-docker/pull/503"&gt;https://github.com/MariaDB/mariadb-docker/pull/503&lt;/a&gt; was added recently and will hopefully make it to the official images in the next 24 hrs - &lt;a href="https://github.com/docker-library/official-images/pull/14625"&gt;https://github.com/docker-library/official-images/pull/14625&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/setup-binlogs-from-docker-compose-file/+comments/6221</guid></item><item><title>Re: JSON_OBJECTAGG</title><link>https://mariadb.com/kb/en/json_objectagg/+comments/6220</link><description>&lt;p&gt;How is this resulting JSON in the example what we would want?
+--
+{"1":"Hello", "1":"World", "2":"This"}
+--&lt;/p&gt;
+&lt;ul start="1"&gt;&lt;li&gt;The attribute '1' is repeated. That's not valid.
+&lt;/li&gt;&lt;li&gt;In cases where parsers are a bit more lenient, they probably discard the 'Hello', and override it with 'World'.
+&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;A more useful JSON result would be:
+--
+{"1":["Hello","World"], "2":"This"}
+--&lt;/p&gt;
+&lt;p&gt;Or, if the function is expanded to take an additional third parameter JSON_OBJECTAGG(key, value,optional_keyfield_for_duplicate_values):&lt;/p&gt;
+&lt;p&gt;--
+select * from t1;
++------+-------+------+&lt;/p&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;a&lt;/td&gt;&lt;td&gt;b&lt;/td&gt;&lt;td&gt;c&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;+------+-------+------+&lt;/p&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Hello&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;World&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;This&lt;/td&gt;&lt;td&gt;null&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;+------+-------+------+&lt;/p&gt;
+&lt;p&gt;SELECT JSON_OBJECTAGG(a, b, c) FROM t1;
++---------------------------------------------+&lt;/p&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;JSON_OBJECTAGG(a, b, c)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;+---------------------------------------------+&lt;/p&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;{"1":["A":"Hello","B":"World"], "2":"This"}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;+---------------------------------------------+&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Norman Rice</dc:creator><guid>https://mariadb.com/kb/en/json_objectagg/+comments/6220</guid></item><item><title>Re: Maxscale not starting on Ubuntu 22.04</title><link>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6219</link><description>&lt;p&gt;If you're still seeing the problem even with the latest code base, could you report what you see on &lt;a href="https://jira.mariadb.org/browse/MXS-4599"&gt;MXS-4599&lt;/a&gt;? We'd expect the problem to be fixed by &lt;a href="https://github.com/mariadb-corporation/MaxScale/commit/d2ed883f26a5cac06b5c9a73f697efb2c461629e"&gt;commit d2ed883f26a5cac06b5c9a73f697efb2c461629e&lt;/a&gt; but if it's still causing AVX2 instructions to be executed, we'll need to continue investigating.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6219</guid></item><item><title>Re: Maxscale not starting on Ubuntu 22.04</title><link>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6218</link><description>&lt;p&gt;Hi Marcus,&lt;/p&gt;
+&lt;p&gt;Thanks for your quick reply. Indeed that looks like a similar or at least related issue. Strangely enough it did work on U22.04 with even older ESX (hardware).&lt;/p&gt;
+&lt;p&gt;I did compile from the source code from git but to no avail yet, same issue :(&lt;/p&gt;
+&lt;p&gt;Any insight in a timeline ?&lt;/p&gt;
 &lt;p&gt;Regards,
-Roman &lt;/p&gt;
-&lt;p&gt;1. &lt;a href="https://modern-sql.com/use-case/pivot"&gt;https://modern-sql.com/use-case/pivot&lt;/a&gt;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Roman Nozdrin</dc:creator><guid>https://mariadb.com/kb/en/does-mariadb-columnstore-supports-pivot/+comments/6147</guid></item><item><title>Re: Installing an authentication plugin in existing MariaDB container</title><link>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6145</link><description>&lt;p&gt;Just to clarify, I am not using the MariaDB connector but it's my own C++ implementation of the same. So I am not using the client libraries which we nornally get as part of the original MariaDB connector.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">abhishek singh</dc:creator><guid>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6145</guid></item><item><title>Re: Installing an authentication plugin in existing MariaDB container</title><link>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6144</link><description>&lt;p&gt;INSTALL SONAME 'auth_ed25519';&lt;/p&gt;
-&lt;p&gt;But I don't see the "auth_ed25519.so" under the path /usr/lib/mysql/plugin/ for this particular container. Can I get it from any of the packages? Or can I simply copy it from a source and place it under this path?&lt;/p&gt;
-&lt;p&gt;I intend replace the existing native authentication - I am actually looking to replace SHA1Hash by ed25519 as it is more secure compared to the latter it seems&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">abhishek singh</dc:creator><guid>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6144</guid></item><item><title>Re: Installing an authentication plugin in existing MariaDB container</title><link>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6143</link><description>&lt;p&gt;from: &lt;a href="/kb/en/authentication-plugin-ed25519/#installing-the-plugin"&gt;ed25519&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;INSTALL SONAME 'auth_ed25519';&lt;/p&gt;
-&lt;p&gt;This plugin was made before 10.1.&lt;/p&gt;
-&lt;p&gt;"I intend replace the existing native authentication" - not required, the server advertises to the client the authentication mechanism, the connector C++ loads the client plugin and continues.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/mariadb-corporation/mariadb-connector-c/blob/3.3/plugins/auth/ed25519.c"&gt;https://github.com/mariadb-corporation/mariadb-connector-c/blob/3.3/plugins/auth/ed25519.c&lt;/a&gt; implements the client side implementing the client side to the server authentication protocol.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6143</guid></item><item><title>Re: Installing an authentication plugin in existing MariaDB container</title><link>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6142</link><description>&lt;p&gt;Thanks Daniel&lt;/p&gt;
-&lt;p&gt;As per the blog, --plugin-load-add is being used with the "docker run" command. The container in my case is already up and running. Also, are there any limitations in terms of MariaDB version for plugin support? For example, I want to add "ed25519" auth plugin to the &lt;a href="/kb/en/what-is-mariadb-101/"&gt;MariaDB 10.1&lt;/a&gt; container Is that possible or there are any challenges with respect to it?&lt;/p&gt;
-&lt;p&gt;Also, could you please point me to any reference implementation for the "ed25519" authentication mechanism for MariaDB? I intend replace the existing native authentication based on SHA1Hash with the "ed25519" authentication mechanism&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">abhishek singh</dc:creator><guid>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6142</guid></item><item><title>Re: Installing an authentication plugin in existing MariaDB container</title><link>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6141</link><description>&lt;p&gt;See &lt;a href="https://mariadb.org/installing-plugins-in-the-mariadb-docker-library-container/"&gt;our previous blog&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Simplest is --plugin-load-add=ed25519 as a container command. Same applies with every other plugin listed there. Some like &lt;a href="/kb/en/authentication-plugin-pam/"&gt;pam&lt;/a&gt; will require a service file configured.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/installing-an-authentication-plugin-in-existing-mariadb-container/+comments/6141</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6140</link><description>&lt;p&gt;Unfortunately, it does not work with the Shut Down of old MariaDB.&lt;/p&gt;
-&lt;p&gt;Neither with „SHUTDOWN WAIT FOR ALL SLAVES;“ nor with „SHUTDOWN;“.
-I obtained in both cases the message: unrecognized statement type. (near Shutdown).
-After the shutdown the following messages:
-1 errors were found during analysis.
-    Unrecognized keyword. (near "ON" at position 25)
-SQL query: Edit Edit
-SET FOREIGN_KEY_CHECKS = ON;
-MySQL said: Documentation&lt;/p&gt;
-&lt;ol&gt;&lt;li&gt;2006 - MySQL server has gone away
-&lt;/li&gt;&lt;/ol&gt;
-&lt;p&gt;When I switched to the new Maria DB, I got again the message:
-Upgrade after a crash is not supported…
-What I did wrong?&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Klaus Normal</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6140</guid></item><item><title>Re: native authentication plugin replacement/substitute</title><link>https://mariadb.com/kb/en/native-authentication-plugin-replacementsubstitute/+comments/6139</link><description>&lt;p&gt;Thanks Daniel. The MariaDB connector I am using is a self developed implementation and I was using SHA1Hash so far. Could you please suggest if I can use how can I use any of the available options in this case? If you could share a sample code snippet, it would be great.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">abhishek singh</dc:creator><guid>https://mariadb.com/kb/en/native-authentication-plugin-replacementsubstitute/+comments/6139</guid></item><item><title>Re: native authentication plugin replacement/substitute</title><link>https://mariadb.com/kb/en/native-authentication-plugin-replacementsubstitute/+comments/6138</link><description>&lt;p&gt;&lt;a href="https://github.com/mariadb-corporation/mariadb-connector-c/blob/3.3/libmariadb/ma_sha1.c"&gt;MariaDB connector C++ has its own sha1&lt;/a&gt; implementation and isn't dependant on the openssl 3.0 version.&lt;/p&gt;
-&lt;p&gt;Alternately there is a range of alternate &lt;a href="/kb/en/authentication-plugins/"&gt;authentication plugins&lt;/a&gt; that both C++ connector and the server support.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/native-authentication-plugin-replacementsubstitute/+comments/6138</guid></item><item><title>Re: Help with syntax error</title><link>https://mariadb.com/kb/en/help-with-syntax-error/+comments/6137</link><description>&lt;p&gt;The "WHERE NOT EXISTS" corresponds to the first SELECT statement. However there is no FROM clause for that SELECT in your syntax.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/help-with-syntax-error/+comments/6137</guid></item><item><title>Re: PROCEDURE ANALYSE - deprecated in MySQL</title><link>https://mariadb.com/kb/en/procedure-analyse/+comments/6136</link><description>&lt;p&gt;I'm not aware of any plans to deprecate this.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/procedure-analyse/+comments/6136</guid></item><item><title>Re: Stored procedure returns Expected to read 4 header bytes but only received 0</title><link>https://mariadb.com/kb/en/stored-procedure-returns-expected-to-read-4-header-bytes-but-only-received-/+comments/6135</link><description>&lt;p&gt;Is DimDate a ColumnStore table? Which server version? With &lt;a href="/kb/en/net-connector/"&gt;.NET Connector&lt;/a&gt;?&lt;/p&gt;
-&lt;p&gt;If another connector returns the same error, write a &lt;a href="https://jira.mariadb.org"&gt;server bug report&lt;/a&gt;.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/stored-procedure-returns-expected-to-read-4-header-bytes-but-only-received-/+comments/6135</guid></item><item><title>Re: MariaDB Version Upgrade from 10.3.37 to 10.6.12</title><link>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6134</link><description>&lt;p&gt;monty says yes: &lt;a href="https://monty-says.blogspot.com/2020/04/upgrading-between-major-mariadb-versions.html"&gt;https://monty-says.blogspot.com/2020/04/upgrading-between-major-mariadb-versions.html&lt;/a&gt;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6134</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6133</link><description>&lt;p&gt;Sure, ensure XAMPP doesn't impose some very short timeout and kill it off, that would have the same effect as a crash.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6133</guid></item><item><title>Re: INSERT ERROR</title><link>https://mariadb.com/kb/en/insert-error/+comments/6132</link><description>&lt;p&gt;Can you give some specifics? Table structure, insert statement, how you "refresh", MariaDB version, environment.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/insert-error/+comments/6132</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6131</link><description>&lt;p&gt;Okay, how I am doing in the XAMPP Control Panel a sql "SHUTDOWN"?&lt;/p&gt;
-&lt;p&gt;MySQL-&amp;gt;Admin-&amp;gt;SQL&lt;/p&gt;
-&lt;p&gt;SHUTDOWN WAIT FOR ALL SLAVES;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Klaus Normal</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6131</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6130</link><description>&lt;p&gt;When you have 10.4.24 started up on your mysql datadir. Stop by issuing a sql "SHUTDOWN". Examine your logs to ensure that "Shutdown complete" is the last thing in the log.&lt;/p&gt;
-&lt;p&gt;Then swap back to running &lt;a href="/kb/en/mariadb-10-11-2-release-notes/"&gt;MariaDB 10.11.2&lt;/a&gt; on that directory contents.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6130</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6128</link><description>&lt;p&gt;How I can create a comment, without status 'needs_moderation'.
-This sounds like a dispute. There is no dispute.&lt;/p&gt;
-&lt;p&gt;"This comment has the status of 'needs_moderation' and can only be seen by you. "&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Klaus Normal</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6128</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6126</link><description>&lt;p&gt;Many thanks for your quick reply.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/kb/en/mariadb-10424-release-notes/"&gt;MariaDB 10.4.24&lt;/a&gt; is in directory oldmysql
-Maria DB 10.11.2 is in directory mysql.&lt;/p&gt;
-&lt;p&gt;When I change the names of both directories:
-mysql -&amp;gt; newmysql
-oldmysql –&amp;gt; mysql
-I can work with &lt;a href="/kb/en/mariadb-10424-release-notes/"&gt;MariaDB 10.4.24&lt;/a&gt;. No problems!&lt;/p&gt;
-&lt;p&gt;I am not shure that this your understanding of „start up 10.4.24.??
-Even this is your understanding – how I can then Shutdown (cleanly) 10.4.24.?&lt;/p&gt;
-&lt;p&gt;And after clean shutdown of 10.4.24 , I would again change the names of both directories.
-mysql -&amp;gt; oldmysql
-newmysql -&amp;gt; sql&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Klaus Normal</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6126</guid></item><item><title>Re: InnoDB: Upgrade after a crash is not supported…</title><link>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6125</link><description>&lt;p&gt;Follow the instructions of "You must start up and shut down &lt;a href="/kb/en/what-is-mariadb-104/"&gt;MariaDB 10.4&lt;/a&gt; or earlier".&lt;/p&gt;
-&lt;p&gt;So uninstall 10.11.2. Install any 10.4 version. Start up 10.4. Shutdown (cleanly).&lt;/p&gt;
-&lt;p&gt;And then upgrade to 10.11.2.&lt;/p&gt;
-&lt;p&gt;Stop playing with ib_logfile0. Leave it alone or you'll loose data.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/innodb-upgrade-after-a-crash-is-not-supported/+comments/6125</guid></item><item><title>Re: OPTIMIZE TABLE</title><link>https://mariadb.com/kb/en/optimize-table/+comments/6124</link><description>&lt;p&gt;MariaDB does not want to document it (&lt;a href="https://jira.mariadb.org/browse/MDEV-30635"&gt;MDEV-30635&lt;/a&gt;). So I make a note here:&lt;/p&gt;
-&lt;p&gt;OPTIMIZE TABLE does an implicit ANALYZE TABLE for Storage Engines that do not "support OPTIMIZE TABLE internally and the server emulates it with ALTER TABLE" (InnoDB).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Oli Sennhauser</dc:creator><guid>https://mariadb.com/kb/en/optimize-table/+comments/6124</guid></item><item><title>Re: MariaDB Error Codes</title><link>https://mariadb.com/kb/en/mariadb-error-codes/+comments/6123</link><description>&lt;p&gt;Where can we find more information on the cause of the error codes?&lt;/p&gt;
-&lt;p&gt;I am getting Error 1112 and cannot find any information except for some old bug reports, which are supposed to have been fixed.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Boddison</dc:creator><guid>https://mariadb.com/kb/en/mariadb-error-codes/+comments/6123</guid></item><item><title>Re: subquery in FROM clause not working</title><link>https://mariadb.com/kb/en/subquery-in-from-clause-not-working/+comments/6122</link><description>&lt;p&gt;its working fine now, just formatted and added alias to subquery as below:&lt;/p&gt;
-&lt;p&gt;SELECT applicant_id 
-FROM (SELECT applicant_id, COUNT(*) nn 
-	FROM memberships 
-	WHERE memberships.status = 'Active' 
-	GROUP BY applicant_id HAVING COUNT(*)&amp;gt;1) t&lt;/p&gt;
-&lt;p&gt;regards&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ahmed Haroon</dc:creator><guid>https://mariadb.com/kb/en/subquery-in-from-clause-not-working/+comments/6122</guid></item><item><title>Re: MariaDB Version Upgrade from 10.3.37 to 10.6.12</title><link>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6121</link><description>&lt;p&gt;Is there a detailed step on it? and is it safe to upgrade directly from 10.3 to 10.6?&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Ryan</dc:creator><guid>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6121</guid></item><item><title>Re: Delayed retrieve of updated field</title><link>https://mariadb.com/kb/en/delayed-retrieve-of-updated-field/+comments/6120</link><description>&lt;p&gt;Try retrieving with a &lt;a href="/kb/en/set-transaction/"&gt;READ COMMITED&lt;/a&gt; isolation level.&lt;/p&gt;
-&lt;p&gt;Because the default isolation level is REPEATABLE READ, repeat reads read the same result repeatedly. (that was far to repetitious :-) )&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/delayed-retrieve-of-updated-field/+comments/6120</guid></item><item><title>Re: MariaDB Version Upgrade from 10.3.37 to 10.6.12</title><link>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6119</link><description>&lt;p&gt;Hi, follow the &lt;a href="/kb/en/upgrading-between-major-mariadb-versions/"&gt;Upgrading Between Major MariaDB Versions&lt;/a&gt;  documentation.&lt;/p&gt;
-&lt;p&gt;After your clean shutdown, change to a RHEL7, 10.6 &lt;a href="https://mariadb.org/download/?t=repo-config&amp;amp;d=Red+Hat+Enterprise+Linux+7&amp;amp;v=10.6"&gt;repository&lt;/a&gt; and yum install mariadb-server-10.6&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mariadb-version-upgrade-from-10-3-37-to-10-6-12/+comments/6119</guid></item><item><title>Re: create database for perl</title><link>https://mariadb.com/kb/en/create-database-for-perl/+comments/6118</link><description>&lt;p&gt;phpMyAdmin doesn't facilitate a MariaDB connection for Perl. It does it own independent connection, just like perl would.&lt;/p&gt;
-&lt;p&gt;Please show the error generated by perl, and the Perl DB version that instigated the connection, and a basic perl connection code to reproduce this error.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/create-database-for-perl/+comments/6118</guid></item><item><title>Re: Is ColumnStore free</title><link>https://mariadb.com/kb/en/is-columnstore-free/+comments/6117</link><description>&lt;p&gt;By 'supported', I think you mean is it available? Yes, Columnstore is available in &lt;a href="/kb/en/mariadb-server-release-dates/"&gt;all versions of MariaDB Server&lt;/a&gt; since 10.5, including 10.10.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/is-columnstore-free/+comments/6117</guid></item><item><title>Re: Upgrading from MariaDB 10.11 to MariaDB 11.0</title><link>https://mariadb.com/kb/en/upgrading-from-mariadb-10-11-to-mariadb-11-0/+comments/6116</link><description>&lt;p&gt;How are we supposed to upgrade with critical packages depending on MariaDB-Server?
-Removing MariaDB-Server implies uninstalling those dependencies which is not an option. (CentOS7)&lt;/p&gt;
-&lt;p&gt;Thanks.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Laurent Dinclaux</dc:creator><guid>https://mariadb.com/kb/en/upgrading-from-mariadb-10-11-to-mariadb-11-0/+comments/6116</guid></item><item><title>Re: Installing MariaDB Binary Tarballs</title><link>https://mariadb.com/kb/en/installing-mariadb-binary-tarballs/+comments/6115</link><description>&lt;p&gt;Hi,&lt;/p&gt;
-&lt;p&gt;I am trying to install mariadb-10.11.2 and mariadb-10.10.3 on 3306 and 3307 port respectively&lt;/p&gt;
-&lt;p&gt;i followed this steps&lt;/p&gt;
-&lt;p&gt;``` shell&amp;gt; groupadd mysql shell&amp;gt; useradd -g mysql mysql shell&amp;gt; cd /usr/local shell&amp;gt; gunzip &amp;lt; /path/to/mariadb-VERSION-OS.tar.gz | tar xvf - shell&amp;gt; ln -s full-path-to-mariadb-VERSION-OS mysql shell&amp;gt; cd mysql shell&amp;gt; chown -R mysql . shell&amp;gt; chgrp -R mysql . shell&amp;gt; scripts/mysql_install_db --user=mysql shell&amp;gt; chown -R root . shell&amp;gt; chown -R mysql data shell&amp;gt; bin/mysqld_safe --user=mysql &amp;amp; ```&lt;/p&gt;
-&lt;p&gt;``` cd /usr/local/apps unpacked mariadb-10.10.3-linux-systemd-x86_64.tar.gz into the directory of my choice mv mariadb-10.10.3-linux-systemd-x86_64 mariadb1010 cd mariadb1010 groupadd mysql useradd -g mysql mysql chown -R mysql . chgrp -R mysql . scripts/mysql_install_db --user=mysql --port=3306 --datadir=/var/lib/mariadb1010 --socket=/var/lib/mariadb1010/mysql.sock --log-error=/var/lib/mariadb1010/error.log --pid-file=/var/lib/mariadb1010/mysqld.pid --basedir=/usr/local/apps/mariadb1010 --defaults-file=/etc/my1010.cnf chown -R root . bin/mysqld_safe --user=mysql --port=3306 --datadir=/var/lib/mariadb1010 --socket=/var/lib/mariadb1010/mysql.sock --log-error=/var/lib/mariadb1010/error.log --pid-file=/var/lib/mariadb1010/mysqld.pid --basedir=/usr/local/apps/mariadb1010 --defaults-file=/etc/my1010.cnf &amp;amp; cp /usr/local/apps/mariadb1010/support-files/mysql.server /etc/init.d/mysql1010.server cp /usr/local/apps/mariadb1010/support-files/systemd/mariadb.service /usr/lib/systemd/system/mariadb1010.service&lt;/p&gt;
-&lt;p&gt;cd /usr/local/apps unpacked mariadb-10.11.2-linux-systemd-x86_64.tar.gz into the directory of my choice mv mariadb-10.11.2-linux-systemd-x86_64 mariadb1011 cd mariadb1011 groupadd mysql useradd -g mysql mysql chown -R mysql . chgrp -R mysql . scripts/mysql_install_db --user=mysql --port=3307 --datadir=/var/lib/mariadb1011 --socket=/var/lib/mariadb1011/mysql.sock --log-error=/var/lib/mariadb1011/error.log --pid-file=/var/lib/mariadb1011/mysqld.pid --basedir=/usr/local/apps/mariadb1011 --defaults-file=/etc/my1011.cnf chown -R root . bin/mysqld_safe --user=mysql --port=3307 --datadir=/var/lib/mariadb1011 --socket=/var/lib/mariadb1011/mysql.sock --log-error=/var/lib/mariadb1011/error.log --pid-file=/var/lib/mariadb1011/mysqld.pid --basedir=/usr/local/apps/mariadb1011 --defaults-file=/etc/my1011.cnf &amp;amp; cp /usr/local/apps/mariadb1011/support-files/mysql.server /etc/init.d/mysql1011.server cp /usr/local/apps/mariadb1011/support-files/systemd/mariadb.service /usr/lib/systemd/system/mariadb1011.service ``` changes port in myxx.cnf&lt;/p&gt;
-&lt;p&gt;but both installs areloading /etc/my.cnf and running on 3306 and creating databse at /var/mysql&lt;/p&gt;
-&lt;p&gt;when service starts&lt;/p&gt;
-&lt;p&gt;for both of mysql on mariadb1011 and mariadb1010 directory&lt;/p&gt;
-&lt;p&gt;setting&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ganesh Kandu</dc:creator><guid>https://mariadb.com/kb/en/installing-mariadb-binary-tarballs/+comments/6115</guid></item><item><title>Re: Unable to install Installing MariaDB Binary Tarballs</title><link>https://mariadb.com/kb/en/installing-mariadb-binary-tarballs/+comments/6114</link><description>&lt;p&gt;Hi,&lt;/p&gt;
-&lt;p&gt;I am trying to install mariadb-10.11.2 and mariadb-10.10.3 on 3306 and 3307 port respectively&lt;/p&gt;
-&lt;p&gt;i followed this steps&lt;/p&gt;
-&lt;p&gt;```
-shell&amp;gt; groupadd mysql
-shell&amp;gt; useradd -g mysql mysql
-shell&amp;gt; cd /usr/local
-shell&amp;gt; gunzip &amp;lt; /path/to/mariadb-VERSION-OS.tar.gz | tar xvf -
-shell&amp;gt; ln -s full-path-to-mariadb-VERSION-OS mysql
-shell&amp;gt; cd mysql
-shell&amp;gt; chown -R mysql .
-shell&amp;gt; chgrp -R mysql .
-shell&amp;gt; scripts/mysql_install_db --user=mysql
-shell&amp;gt; chown -R root .
-shell&amp;gt; chown -R mysql data
-shell&amp;gt; bin/mysqld_safe --user=mysql &amp;amp;
-```&lt;/p&gt;
-&lt;p&gt;```
-cd /usr/local/apps
-unpacked mariadb-10.10.3-linux-systemd-x86_64.tar.gz into the directory of my choice
-mv mariadb-10.10.3-linux-systemd-x86_64 mariadb1010
-cd mariadb1010
-groupadd mysql
-useradd -g mysql mysql
-chown -R mysql .
-chgrp -R mysql .
-scripts/mysql_install_db --user=mysql --port=3306 --datadir=/var/lib/mariadb1010 --socket=/var/lib/mariadb1010/mysql.sock --log-error=/var/lib/mariadb1010/error.log --pid-file=/var/lib/mariadb1010/mysqld.pid --basedir=/usr/local/apps/mariadb1010 --defaults-file=/etc/my1010.cnf
-chown -R root .
-bin/mysqld_safe  --user=mysql --port=3306 --datadir=/var/lib/mariadb1010 --socket=/var/lib/mariadb1010/mysql.sock --log-error=/var/lib/mariadb1010/error.log --pid-file=/var/lib/mariadb1010/mysqld.pid --basedir=/usr/local/apps/mariadb1010 --defaults-file=/etc/my1010.cnf &amp;amp;
-cp /usr/local/apps/mariadb1010/support-files/mysql.server /etc/init.d/mysql1010.server
-cp /usr/local/apps/mariadb1010/support-files/systemd/mariadb.service /usr/lib/systemd/system/mariadb1010.service&lt;/p&gt;
-&lt;p&gt;cd /usr/local/apps
-unpacked mariadb-10.11.2-linux-systemd-x86_64.tar.gz into the directory of my choice
-mv mariadb-10.11.2-linux-systemd-x86_64 mariadb1011
-cd mariadb1011
-groupadd mysql
-useradd -g mysql mysql
-chown -R mysql .
-chgrp -R mysql .
-scripts/mysql_install_db --user=mysql --port=3307 --datadir=/var/lib/mariadb1011 --socket=/var/lib/mariadb1011/mysql.sock --log-error=/var/lib/mariadb1011/error.log --pid-file=/var/lib/mariadb1011/mysqld.pid --basedir=/usr/local/apps/mariadb1011 --defaults-file=/etc/my1011.cnf
-chown -R root .
-bin/mysqld_safe  --user=mysql --port=3307 --datadir=/var/lib/mariadb1011 --socket=/var/lib/mariadb1011/mysql.sock --log-error=/var/lib/mariadb1011/error.log --pid-file=/var/lib/mariadb1011/mysqld.pid --basedir=/usr/local/apps/mariadb1011 --defaults-file=/etc/my1011.cnf &amp;amp;
-cp /usr/local/apps/mariadb1011/support-files/mysql.server /etc/init.d/mysql1011.server
-cp /usr/local/apps/mariadb1011/support-files/systemd/mariadb.service /usr/lib/systemd/system/mariadb1011.service
-```
-changes port in myxx.cnf &lt;/p&gt;
-&lt;p&gt;but both installs areloading /etc/my.cnf and running on 3306 and creating databse at /var/mysql&lt;/p&gt;
-&lt;p&gt;when service starts&lt;/p&gt;
-&lt;p&gt;for both of mysql on mariadb1011 and mariadb1010 directory&lt;/p&gt;
-&lt;p&gt;setting&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ganesh Kandu</dc:creator><guid>https://mariadb.com/kb/en/installing-mariadb-binary-tarballs/+comments/6114</guid></item><item><title>Re: wsrep_provider_options</title><link>https://mariadb.com/kb/en/wsrep_provider_options/+comments/6111</link><description>&lt;p&gt;Tha't right.
-You can find it here : &lt;a href="https://galeracluster.com/library/documentation/galera-parameters.html"&gt;https://galeracluster.com/library/documentation/galera-parameters.html&lt;/a&gt;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gauthier D</dc:creator><guid>https://mariadb.com/kb/en/wsrep_provider_options/+comments/6111</guid></item><item><title>Re: Upgrading from 10.4 to 10.5 Galera changes</title><link>https://mariadb.com/kb/en/upgrading-from-104-to-105-galera-changes/+comments/6110</link><description>&lt;p&gt;It does not seem to be more complicated that doing a (rolling) minor upgrade.&lt;/p&gt;
-&lt;p&gt;Regarding the Galera provider, the latest 10.4 uses the same provider and protocol version as the latest 10.5; so no problem on that side.
-Ref: &lt;a href="https://mariadb.com/kb/en/what-is-mariadb-galera-cluster/"&gt;https://mariadb.com/kb/en/what-is-mariadb-galera-cluster/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;For the rest, we still have to watch for the usual for a major upgrade:
-&lt;a href="https://mariadb.com/kb/en/upgrading-from-mariadb-104-to-mariadb-105/"&gt;https://mariadb.com/kb/en/upgrading-from-mariadb-104-to-mariadb-105/&lt;/a&gt;
-and
-&lt;a href="https://mariadb.com/kb/en/upgrading-between-major-mariadb-versions/"&gt;https://mariadb.com/kb/en/upgrading-between-major-mariadb-versions/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Since there's still not a official document, I'll do some tests and report here.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Jacques-Yves Bleau</dc:creator><guid>https://mariadb.com/kb/en/upgrading-from-104-to-105-galera-changes/+comments/6110</guid></item><item><title>Re: C++ MariaDB Connector/C 3.3.4 (libmariadb.dll) FIPS compliance</title><link>https://mariadb.com/kb/en/c-mariadb-connectorc-3-3-4-libmariadb-dll-fips-compliance/+comments/6109</link><description>&lt;p&gt;The connector itself has not been tested for FIPS compliance. I recommend contacting wolfSSL who have a patched version of Connector/C to work against their library and they can provide a 140-3 FIPS compliant version of the SSL library to use with it.&lt;/p&gt;
-&lt;p&gt;You can find out what library it was compiled with using `mariadb_config -k`.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Andrew Hutchings</dc:creator><guid>https://mariadb.com/kb/en/c-mariadb-connectorc-3-3-4-libmariadb-dll-fips-compliance/+comments/6109</guid></item><item><title>Re: mysqldump restore with poor performance</title><link>https://mariadb.com/kb/en/mysqldump-restore-with-poor-performance/+comments/6107</link><description>&lt;p&gt;thanks for your help !&lt;/p&gt;
-&lt;p&gt;Azure version is &lt;a href="/kb/en/mariadb-10323-release-notes/"&gt;mariadb 10.3.23&lt;/a&gt;, it looks like innodb_log_file_size is not tunable in mariadb managed azure database parameters but is 256 MB.
-It looks like innodb_flush_log_at_trx_commit is not tunable too :(&lt;/p&gt;
-&lt;p&gt;See &lt;a href="https://learn.microsoft.com/en-us/azure/mariadb/concepts-server-parameters"&gt;https://learn.microsoft.com/en-us/azure/mariadb/concepts-server-parameters&lt;/a&gt; at "Non-configurable server parameters" section&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexandre Thaveau</dc:creator><guid>https://mariadb.com/kb/en/mysqldump-restore-with-poor-performance/+comments/6107</guid></item><item><title>Re: mysqldump restore with poor performance</title><link>https://mariadb.com/kb/en/mysqldump-restore-with-poor-performance/+comments/6106</link><description>&lt;p&gt;What is the Azure MariaDB version is running? &lt;a href="/kb/en/innodb-system-variables/#innodb_flush_log_at_trx_commit"&gt;innodb_flush_log_at_trx_commit=0&lt;/a&gt; temporary during import and increasing the innodb_log_fie_size to 8G or so.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mysqldump-restore-with-poor-performance/+comments/6106</guid></item><item><title>Re: Mariadb DB Replication 4 Nodes as Master to Master</title><link>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6105</link><description>&lt;p&gt;One thing to note is that Galera is not a true multi-master solution and the main benefit of it are the resilience and auto-recovery of the cluster. Writes should still only happen on one node at a time to prevent conflicts on commit. Using something like &lt;a href="https://mariadb.com/kb/en/maxscale/"&gt;MaxScale&lt;/a&gt; can make this easier as it automatically spreads the read workload to all nodes while still focusing writes to a single node.&lt;/p&gt;
-&lt;p&gt;A solution for write scaling would be something like &lt;a href="https://mariadb.com/products/enterprise/xpand/"&gt;MariaDB Xpand&lt;/a&gt; that is designed for parallel writes.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6105</guid></item><item><title>Re: Mariadb DB Replication 4 Nodes as Master to Master</title><link>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6104</link><description>&lt;p&gt;Thanks for you expert advise, Is there any platform dependencies using Galera cluster ?&lt;/p&gt;
-&lt;p&gt;Using Galera Cluster we need to configure all nodes on same Operating system. If the One node is on windows platform that can also be connect with Cluster environment.&lt;/p&gt;
-&lt;p&gt;Regards Sohail Ahmed&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sohail Jafferi</dc:creator><guid>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6104</guid></item><item><title>Re: Mariadb DB Replication 4 Nodes as Master to Master</title><link>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6102</link><description>&lt;p&gt;Yes, look at &lt;a href="/kb/en/galera-cluster/"&gt;Galera Cluster&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Don't consider doing classical replication between 4 nodes. If something goes wrong it will be complicated recovery process with some risks in getting the recovery steps incorrect.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/mariadb-db-replication-4-nodes-as-master-to-master/+comments/6102</guid></item><item><title>Re: Galera TOI Online schema upgrade method with Mariadb session setting.</title><link>https://mariadb.com/kb/en/galera-toi-online-schema-upgrade-method-with-mariadb-session-setting/+comments/6101</link><description>&lt;p&gt;In a galera cluster, always specify the algorithm in the alter statement itself!
-Setting the session variable is not replicated, and could cause the cluster to crash if the algorithm you specify is not accepted on the local node.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rick Pizzi</dc:creator><guid>https://mariadb.com/kb/en/galera-toi-online-schema-upgrade-method-with-mariadb-session-setting/+comments/6101</guid></item><item><title>Re: Get error "needs to be re-prepared" (#1615) when retrieving data from a view on windows via odbc</title><link>https://mariadb.com/kb/en/get-error-needs-to-be-re-prepared-1615-when-retrieving-data-from-a-view-on-/+comments/6100</link><description>&lt;p&gt;Hello Michael, i have the same problem as you, have you found a solution?&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">hicham faouzi</dc:creator><guid>https://mariadb.com/kb/en/get-error-needs-to-be-re-prepared-1615-when-retrieving-data-from-a-view-on-/+comments/6100</guid></item><item><title>Re: Is ColumnStore free</title><link>https://mariadb.com/kb/en/is-columnstore-free/+comments/6099</link><description>&lt;p&gt;What about latest version of Community Server 10.10.3? Is it supported for free?&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Antonis Panagi</dc:creator><guid>https://mariadb.com/kb/en/is-columnstore-free/+comments/6099</guid></item><item><title>Re: Is ColumnStore free</title><link>https://mariadb.com/kb/en/is-columnstore-free/+comments/6098</link><description>&lt;p&gt;Hi,&lt;/p&gt;
-&lt;p&gt;Sure thing. MCS is available for Community Server 10.5 but I strongly recommend server &amp;gt;= 10.6. JFYI MCS is a separate package.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Roman Nozdrin</dc:creator><guid>https://mariadb.com/kb/en/is-columnstore-free/+comments/6098</guid></item><item><title>Re: Maridb Replication  centos to Windows</title><link>https://mariadb.com/kb/en/maridb-replication-centos-to-windows/+comments/6097</link><description>&lt;p&gt;No different than between any other two servers (&lt;a href="/kb/en/setting-up-replication/"&gt;Setting up replication&lt;/a&gt;).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/maridb-replication-centos-to-windows/+comments/6097</guid></item><item><title>Re: BINARY</title><link>https://mariadb.com/kb/en/binary/+comments/6096</link><description>&lt;p&gt;To be more clear: it can store binary values, not only characters: &lt;/p&gt;
-&lt;p&gt;create table bintest (id binary(5)); &lt;/p&gt;
-&lt;p&gt;insert into bintest(id) values (x'0000000034'); &lt;/p&gt;
-&lt;p&gt;insert into bintest(id) values (x'0031000034'); &lt;/p&gt;
-&lt;p&gt;insert into bintest(id) values (x'0031003400'); &lt;/p&gt;
-&lt;p&gt;insert into bintest(id) values (x'34');&lt;/p&gt;
-&lt;p&gt;MariaDB [xxx]&amp;gt; select hex(id) from bintest; &lt;/p&gt;
-&lt;p&gt;+------------+&lt;/p&gt;
-&lt;p&gt;hex(id)   &lt;/p&gt;
-&lt;p&gt;+------------+&lt;/p&gt;
-&lt;p&gt;0000000034&lt;/p&gt;
-&lt;p&gt;0031000034&lt;/p&gt;
-&lt;p&gt;0031003400&lt;/p&gt;
-&lt;p&gt;3400000000&lt;/p&gt;
-&lt;p&gt;+------------+ &lt;/p&gt;
-&lt;p&gt;4 rows in set (0.001 sec)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alain Bourgeois</dc:creator><guid>https://mariadb.com/kb/en/binary/+comments/6096</guid></item><item><title>Re: MariaDB server version for the right syntax to use near 'WHERE id =1'</title><link>https://mariadb.com/kb/en/mariadb-server-version-for-the-right-syntax-to-use-near-where-id-1/+comments/6093</link><description>&lt;p&gt;You should probably use a prepared statement instead of combining values into a string. That's a classic case for SQL injection to occur. Here's a short example of how you could add this into the code:&lt;/p&gt;
-&lt;pre class="fixed"&gt;statement = con.prepareStatement(&amp;#34;SELECT * FROM clinic WHERE id = ?&amp;#34;);
-statement.setInt(1, id);
-resultSet = statement.executeQuery();
-&lt;/pre&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/mariadb-server-version-for-the-right-syntax-to-use-near-where-id-1/+comments/6093</guid></item><item><title>Re: NVL</title><link>https://mariadb.com/kb/en/nvl/+comments/6092</link><description>&lt;p&gt;I was confused with why this function/alias was created and why it was named the way it was. It turns out it was created to increase compatibility with Oracle, since Oracle's &lt;code class="fixed" style="white-space:pre-wrap"&gt;NVL()&lt;/code&gt; function is equivalent to MariaDB's &lt;code class="fixed" style="white-space:pre-wrap"&gt;IFNULL()&lt;/code&gt; function. See &lt;a href="https://jira.mariadb.org/browse/MDEV-10342"&gt;MDEV-10342&lt;/a&gt; and &lt;a href="https://github.com/mariadb/server/commit/30bec863cf710f9135439f410e1c31e4df873fd1"&gt;this commit&lt;/a&gt; for more information.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrian Wiik</dc:creator><guid>https://mariadb.com/kb/en/nvl/+comments/6092</guid></item><item><title>Re: mariaDB not releasing disk space after deleting data rows from table</title><link>https://mariadb.com/kb/en/mariadb-not-releasing-disk-space-after-deleting-data-rows-from-table/+comments/6090</link><description>&lt;p&gt;To claim free space make sure innodb_defragment=off before optimize&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stéphane Varoqui</dc:creator><guid>https://mariadb.com/kb/en/mariadb-not-releasing-disk-space-after-deleting-data-rows-from-table/+comments/6090</guid></item><item><title>Re: mariaDB not releasing disk space after deleting data rows from table</title><link>https://mariadb.com/kb/en/mariadb-not-releasing-disk-space-after-deleting-data-rows-from-table/+comments/6089</link><description>&lt;p&gt;When you say clean to you run an optimize table after your purge . Take care this is blocking writes on the table so if huge and not done for long time please plan under maintenance period . If you can not block the table , please use some other type of purge like range partitioning  and drop partition that contains data to be purge , or use rolling optimized via tools like replication-manager or cluster control or use toolkit that recreate the table like pt-online-schema-change&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stéphane Varoqui</dc:creator><guid>https://mariadb.com/kb/en/mariadb-not-releasing-disk-space-after-deleting-data-rows-from-table/+comments/6089</guid></item></channel></rss>
+Rolf.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Rolf Benneker</dc:creator><guid>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6218</guid></item><item><title>Re: Maxscale not starting on Ubuntu 22.04</title><link>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6217</link><description>&lt;p&gt;I think this might be a problem that's filed as &lt;a href="https://jira.mariadb.org/browse/MXS-4599"&gt;MXS-4599&lt;/a&gt;. MaxScale ends up using instructions that aren't allowed on older CPUs that don't support the AVX2 instruction set. This should be fixed in the upcoming MaxScale releases.&lt;/p&gt;
+&lt;p&gt;If you can enable AVX2 instructions on that virtual machine, it should allow MaxScale to start correctly even with an older version.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/maxscale-not-starting-on-ubuntu-22-04/+comments/6217</guid></item><item><title>Re: Authentication Plugin - GSSAPI</title><link>https://mariadb.com/kb/en/authentication-plugin-gssapi/+comments/6216</link><description>&lt;p&gt;We are following the instruction while connecting  facing below error
+ERROR 1105 (HY000): Client GSSAPI error (major 851968, minor 0) : gss_init_sec_context - Unspecified GSS failure.  Minor code may provide more information.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gati sahu</dc:creator><guid>https://mariadb.com/kb/en/authentication-plugin-gssapi/+comments/6216</guid></item><item><title>Re: Installing MariaDB MSI Packages on Windows</title><link>https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/+comments/6213</link><description>&lt;p&gt;I do not see the 32-bit installation for download in the latest version of the odbc mariadb connector.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Jaime Chavarria</dc:creator><guid>https://mariadb.com/kb/en/installing-mariadb-msi-packages-on-windows/+comments/6213</guid></item><item><title>Re: How to capture error line no. from mariadb procedure.</title><link>https://mariadb.com/kb/en/how-to-capture-error-line-no-from-mariadb-procedure-/+comments/6212</link><description>&lt;p&gt;Not that I know of. Please create a &lt;a href="https://jira.mariadb.org"&gt;feature request (task)&lt;/a&gt; if you cannot find an existing entry.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/how-to-capture-error-line-no-from-mariadb-procedure-/+comments/6212</guid></item><item><title>Re: Creating a Data Source with MariaDB Connector/ODBC</title><link>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6211</link><description>&lt;p&gt;Nevermind! Updating from 3.1.x to 3.1.18 fixed the issue!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gavin A</dc:creator><guid>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6211</guid></item><item><title>Re: ERROR</title><link>https://mariadb.com/kb/en/error/+comments/6208</link><description>&lt;p&gt;Please following the &lt;a href="/kb/en/mariadb-community-bug-reporting/#contents-of-a-good-bug-report"&gt;good bug reporting guide&lt;/a&gt; when you report a bug report on &lt;a href="/kb/en/jira/"&gt;jira&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enable &lt;a href="/kb/en/enabling-core-dumps/#minidump-files-on-windows"&gt;Minidump&lt;/a&gt; files and include these in your bug report, or on &lt;a href="/kb/en/ftp/"&gt;meta/mariadb-ftp-server/&lt;/a&gt; with a filename containing the MDEV of your bug repor.t&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/error/+comments/6208</guid></item><item><title>Re: Creating a Data Source with MariaDB Connector/ODBC</title><link>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6207</link><description>&lt;p&gt;I am trying to set up a local version of &lt;a href="/kb/en/what-is-mariadb-106/"&gt;MariaDB 10.6&lt;/a&gt; on my computer (Windows 10) for debugging. I am running the server from the binary, and want to use a named pipe for connection. The command line arguments I am using for mariadb.exe are "--console --socket="MySQL" --named-pipe=1 --skip-networking=1". I need to connect to the server through the Mariadb ODBC wizard, but every time I click the 'Test DSN' button, I am given this error: "Plugin pvio_npipe could not be loaded: The specified module could not be found. Library path is 'pvio_npipe.dll'". In the Mariadb/lib/plugin folder there is no pvio_npipe.dll. Any pointers on how to fix this would be very appreciated!&lt;/p&gt;
+&lt;p&gt;Things to note:
+My mariadb connection driver is version 3.1.
+I can connect to the named pipe "MySQL" through heidiSQL, and it is found in list of open pipes&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gavin A</dc:creator><guid>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6207</guid></item><item><title>Re: Broken foreign key constraint</title><link>https://mariadb.com/kb/en/broken-foreign-key-constraint/+comments/6205</link><description>&lt;p&gt;OK, I think I've fixed it with:&lt;/p&gt;
+&lt;p&gt;SET FOREIGN_KEY_CHECKS=0;&lt;/p&gt;
+&lt;p&gt;alter table cri_Sample drop foreign key cri_Sample_ibfk_1;&lt;/p&gt;
+&lt;p&gt;ALTER TABLE cri_Sample  ADD CONSTRAINT cri_Sample_ibfk_1 FOREIGN KEY (sampleType) REFERENCES  cri_sample_type(type);&lt;/p&gt;
+&lt;p&gt;SET FOREIGN_KEY_CHECKS=1;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mr C</dc:creator><guid>https://mariadb.com/kb/en/broken-foreign-key-constraint/+comments/6205</guid></item><item><title>Re: How to create an updater column</title><link>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6204</link><description>&lt;p&gt;Thank you for your comment. As you suggested, I set up a "trigger", but what is added to the updater column is not the username who made the update or insert, but the username who created the trigger.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Saki Aoto</dc:creator><guid>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6204</guid></item><item><title>Re: How to create an updater column</title><link>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6202</link><description>&lt;p&gt;Using triggers like:&lt;/p&gt;
+&lt;pre&gt;
+CREATE TABLE animal (name varchar(30), updater varchar(80));
+
+CREATE TRIGGER update_animal 
+BEFORE UPDATE ON animal
+FOR EACH ROW SET NEW.updater= current_user;
+
+CREATE TRIGGER add_animal 
+BEFORE INSERT ON animal
+FOR EACH ROW SET NEW.updater= current_user
+
+ insert into animal (name) values ('dog'),('cat');
+
+select * from animal;
++------+---------------+
+| name | updater       |
++------+---------------+
+| dog  | dan@localhost |
+| cat  | dan@localhost |
++------+---------------+
+&lt;/pre&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6202</guid></item><item><title>Re: i want to know maxscale license policy</title><link>https://mariadb.com/kb/en/i-want-to-know-maxscale-license-policy/+comments/6200</link><description>&lt;p&gt;MaxScale is shipped with a LICENSE.TXT file that provides "change date" information regarding the conversion from BSL to GPL.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Todd Stoffel</dc:creator><guid>https://mariadb.com/kb/en/i-want-to-know-maxscale-license-policy/+comments/6200</guid></item><item><title>Re: mariadb-install-db.exe - defaults-file - unknown variable</title><link>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6199</link><description>&lt;p&gt;There is no --config in the 10.5 . If you look into &lt;a href="https://mariadb.com/kb/en/mysql_install_dbexe/"&gt;https://mariadb.com/kb/en/mysql_install_dbexe/&lt;/a&gt; which I mentioned previously, you'll find --config was introduced in 10.6.1, also you won't any mentioning of --defaults-file there.&lt;/p&gt;
+&lt;p&gt;Now, if your version does not support --config, you'd need to do something else.
+Lilke  a tool which can be used to automate  ini editing on the command line.  Quick googling finds &lt;a href="https://github.com/dbohdan/initool"&gt;https://github.com/dbohdan/initool&lt;/a&gt; , which has prebuilt windows binaries. stackoverflow find something about powershell &lt;a href="https://stackoverflow.com/questions/55338755/function-get-inicontent-is-not-recognized-ini-file-support-inpowershell"&gt;https://stackoverflow.com/questions/55338755/function-get-inicontent-is-not-recognized-ini-file-support-inpowershell&lt;/a&gt; (this module needs to be installed).&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Vladislav Vaintroub</dc:creator><guid>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6199</guid></item><item><title>Re: mariadb-install-db.exe - defaults-file - unknown variable</title><link>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6198</link><description>&lt;p&gt;Thanks for your post.
+I tried to use this option --config, but this is also giving the same error of "unknown variable".
+When I run the --help option, neither --defaults-file or --config are listed.
+I am using &lt;a href="/kb/en/what-is-mariadb-105/"&gt;MariaDB 10.5&lt;/a&gt;.
+My aim is to install the MariaDB program files, and then initialize the database folder structure with a settings template from an INI file.
+If not able to use INI template, then just seeking to know how to initialize database so the settings/options are set as follows:&lt;/p&gt;
+&lt;p&gt;default-storage-engine=MyISAM
+max_allowed_packet=40M
+max_connections=3000
+port=3306
+sql_mode=''
+explicit_defaults_for_timestamp=1
+innodb_file_per_table=1
+myisam_recover_options=OFF
+optimizer_switch=split_materialized=OFF&lt;/p&gt;
+&lt;p&gt;I know have something silly missing in what I am doing.
+But I do not have the knowledge yet to know what.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Bob .</dc:creator><guid>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6198</guid></item><item><title>Re: Reiniciar campo auto_increment</title><link>https://mariadb.com/kb/en/reiniciar-campo-auto_increment/+comments/6197</link><description>&lt;p&gt;&lt;a href="/kb/en/auto_increment-faq/#how-do-i-change-what-number-auto_increment-starts-with"&gt;How do I change what number auto_increment starts with?&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/reiniciar-campo-auto_increment/+comments/6197</guid></item><item><title>Re: mariadb-install-db.exe - defaults-file - unknown variable</title><link>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6196</link><description>&lt;p&gt;The server ini file template can be specified with --config=C:\path\to\config.in parameter.  It is a template, i.e the config file will be copied into the datadir still, and some other values are added.&lt;/p&gt;
+&lt;p&gt;Web link &lt;a href="https://mariadb.com/kb/en/mysql_install_dbexe/"&gt;https://mariadb.com/kb/en/mysql_install_dbexe/&lt;/a&gt;. You are looking into  documentation for *nix shell script, which is not there on Windows.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Vladislav Vaintroub</dc:creator><guid>https://mariadb.com/kb/en/mariadb-install-db-exe-defaults-file-unknown-variable/+comments/6196</guid></item><item><title>Re: ibdata1 keeps growing in size and causing out of space on the disk</title><link>https://mariadb.com/kb/en/ibdata1-keeps-growing-in-size-and-causing-out-of-space-on-the-disk/+comments/6195</link><description>&lt;p&gt;Do the answers at &lt;a href="https://dba.stackexchange.com/questions/284699/mariadb-how-to-reduce-ibdata-file-size"&gt;https://dba.stackexchange.com/questions/284699/mariadb-how-to-reduce-ibdata-file-size&lt;/a&gt; help?&lt;/p&gt;
+&lt;p&gt;As an aside, are you aware that &lt;a href="/kb/en/mariadb-10-10-2-release-notes/"&gt;MariaDB 10.10.2&lt;/a&gt; is a short-term release, EOL in November? &lt;a href="https://mariadb.org/about/#maintenance-policy"&gt;https://mariadb.org/about/#maintenance-policy&lt;/a&gt;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/ibdata1-keeps-growing-in-size-and-causing-out-of-space-on-the-disk/+comments/6195</guid></item><item><title>Re: Spider Storage Engine Overview</title><link>https://mariadb.com/kb/en/spider-storage-engine-overview/+comments/6194</link><description>&lt;p&gt;No, the spider engine does not need to be installed on the backend servers.
+The behavior you observe must be caused by something else.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sergei Golubchik</dc:creator><guid>https://mariadb.com/kb/en/spider-storage-engine-overview/+comments/6194</guid></item><item><title>Re: EXPLAIN Analyzer</title><link>https://mariadb.com/kb/en/explain-analyzer/+comments/6193</link><description>&lt;p&gt;The page &lt;a href="https://mariadb.org/explain_analyzer/analyze/"&gt;https://mariadb.org/explain_analyzer/analyze/&lt;/a&gt; is returning 404 Not Found.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fernando Possebon Junior</dc:creator><guid>https://mariadb.com/kb/en/explain-analyzer/+comments/6193</guid></item><item><title>Re: MariaDB String Functions</title><link>https://mariadb.com/kb/en/mariadb-string-functions/+comments/6192</link><description>&lt;p&gt;It seems there is a mistake in the Manipulating chapter in example of the INSERT function. There is a LOCATE function used but the parameters seems to be in the wrong order.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marek Šimon</dc:creator><guid>https://mariadb.com/kb/en/mariadb-string-functions/+comments/6192</guid></item><item><title>Re: problem in sql</title><link>https://mariadb.com/kb/en/problem-in-sql/+comments/6191</link><description>&lt;p&gt;There isn't enough information here to say what the error is.&lt;/p&gt;
+&lt;p&gt;Also use prepared statements to avoid SQL injection.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/problem-in-sql/+comments/6191</guid></item><item><title>Re: Application unable to conect mariadb from Maxscale</title><link>https://mariadb.com/kb/en/application-unable-to-conect-mariadb-from-maxscale/+comments/6189</link><description>&lt;p&gt;The &lt;a href="/kb/en/maxscale-troubleshooting/"&gt;maxscale-troubleshooting&lt;/a&gt; page has some steps you could do to troubleshoot your problem. The most likely reason is that you haven't created the user with the correct IP address.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/application-unable-to-conect-mariadb-from-maxscale/+comments/6189</guid></item><item><title>Re: MariaDB Container Cheat Sheet</title><link>https://mariadb.com/kb/en/mariadb-container-cheat-sheet/+comments/6188</link><description>&lt;p&gt;Updated thanks.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Anel Husakovic</dc:creator><guid>https://mariadb.com/kb/en/mariadb-container-cheat-sheet/+comments/6188</guid></item><item><title>Re: Insert Statement</title><link>https://mariadb.com/kb/en/table-statements-insert-statement/+comments/6185</link><description>&lt;p&gt;The &lt;a href="/kb/en/insert/"&gt;INSERT&lt;/a&gt; wiki page has examples of &lt;code&gt;INSERT&lt;/code&gt; statements.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/table-statements-insert-statement/+comments/6185</guid></item></channel></rss>

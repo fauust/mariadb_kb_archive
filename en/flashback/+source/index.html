@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/flashback/+r/119478/">119478</a></dd>
+            <dd><a href="/kb/en/flashback/+r/126109/">126109</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2022-09-29 14:17">2022-09-29 14:17</span></dd>
+<span class="datetime" title="2023-05-23 21:08">2023-05-23 21:08</span></dd>
         </dl>
     </div>
     
@@ -351,7 +351,7 @@ A common use case for Flashback is the following scenario:
 * Something goes wrong on the primary (like a wrong update or delete) and you would like to revert to a state of the database (or just a table) at a certain point in time.
 * Remove the flashback-enabled replica from replication.
 * Invoke [[mysqlbinlog|mariadb-binlog / mysqlbinlog]] to find the exact log position of the first offending operation after the state you want to revert to.
-* Run ##mysqlbinlog --flashback --start-position=xyz | mysql## to pipe the output of ##mariadb-binlog / mysqlbinlog## directly to the ##mariadb / mysql## client, or save the output to a file and then direct the file to the command-line client.</textarea>
+* Run ##mysqlbinlog --flashback --start-position=xyz | mysql## to pipe the output of ##mariadb-binlog / mysqlbinlog## directly to the ##mariadb## client, or save the output to a file and then direct the file to the command-line client.</textarea>
     
 
 

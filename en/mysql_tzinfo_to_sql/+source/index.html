@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mysql_tzinfo_to_sql/+r/96682/">96682</a></dd>
+            <dd><a href="/kb/en/mysql_tzinfo_to_sql/+r/126094/">126094</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1001">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2020-06-10 23:01">2020-06-10 23:01</span></dd>
+<span class="datetime" title="2023-05-23 20:36">2023-05-23 20:36</span></dd>
         </dl>
     </div>
     
@@ -317,7 +317,7 @@ Most Linux, Mac OS X, FreeBSD and Solaris systems will have a zoneinfo database 
 
 == Usage
 
-##mysql_tzinfo_to_sql## can be called in several ways. The output is usually passed straight to the [[mysql-client|mysql client]] for direct loading in the mysql database.
+##mysql_tzinfo_to_sql## can be called in several ways. The output is usually passed straight to the [[mariadb-client|mariadb client]] for direct loading in the mysql database.
 
 &lt;&lt;code&gt;&gt;
 shell&gt; mysql_tzinfo_to_sql timezone_dir
@@ -329,19 +329,19 @@ shell&gt; mysql_tzinfo_to_sql --leap timezone_file
 
 Most commonly, the whole directory is passed:
 &lt;&lt;code&gt;&gt;
-shell&gt;mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+shell&gt;mysql_tzinfo_to_sql /usr/share/zoneinfo | mariadb -u root mysql
 &lt;&lt;/code&gt;&gt;
 
 Load a single time zone file, ##timezone_file##, corresponding to the time zone called ##timezone_name##.
 &lt;&lt;code&gt;&gt;
-shell&gt; mysql_tzinfo_to_sql timezone_file timezone_name | mysql -u root mysql
+shell&gt; mysql_tzinfo_to_sql timezone_file timezone_name | mariadb -u root mysql
 &lt;&lt;/code&gt;&gt;
 
 A separate command for each time zone and time zone file the server needs is required.
 
 To account for leap seconds, use:
 &lt;&lt;code&gt;&gt;
-shell&gt; mysql_tzinfo_to_sql --leap timezone_file | mysql -u root mysql
+shell&gt; mysql_tzinfo_to_sql --leap timezone_file | mariadb -u root mysql
 &lt;&lt;/code&gt;&gt;
 
 After populating the time zone tables, you should usually restart the server so that the new time zone data is correctly loaded.</textarea>

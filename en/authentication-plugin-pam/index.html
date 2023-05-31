@@ -251,12 +251,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2011-12-05 18:40">11 years, 3 months ago</span></dd>
+<span class="datetime" title="2011-12-05 18:40">11 years, 5 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2022-04-27 20:50">10 months, 3 weeks ago</span></dd>
+<span class="datetime" title="2023-05-23 21:19">6 days, 20 hours ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -662,7 +662,7 @@ sudo chmod g+r /etc/shadow
 </li><li><code>mysql_clear_password</code>
 </li></ul>
 <p>When connecting with a <a href="/kb/en/clients-utilities/">client or utility</a> to a server as a user account that authenticates with the <code>pam</code> authentication plugin, you may need to tell the client where to find the relevant client authentication plugin by specifying the <code>--plugin-dir</code> option. For example:</p>
-<pre class="fixed">mysql --plugin-dir=/usr/local/mysql/lib64/mysql/plugin --user=alice
+<pre class="fixed">mariadb --plugin-dir=/usr/local/mysql/lib64/mysql/plugin --user=alice
 </pre><div class="cstm-style redbox"><p>Both the <code>dialog</code> and the <code>mysql_clear_password</code> client authentication plugins transmit the password to the server in clear text. Therefore, when you use the <code>pam</code> authentication plugin, it is incredibly important to <a href="/kb/en/data-in-transit-encryption/">encrypt client connections  using TLS</a> to prevent the clear-text passwords from being seen by unauthorized users.</p>
 </div><h3 class="anchored_heading" id="dialog"><code>dialog</code></h3>
 <p>Usually the <code>pam</code> authentication plugin uses the <code>dialog</code> client authentication plugin to communicate with the user. This client authentication plugin allows MariaDB to support arbitrarily complex PAM configurations with regular or one-time passwords, challenge-response, multiple questions, or just about anything else. When using a MariaDB client library, there is no need to install or enable anything — the <code>dialog</code> client authentication plugin is loaded by the client library completely automatically and transparently for the application.</p>

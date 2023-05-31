@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/timestamp/+r/117414/">117414</a></dd>
+            <dd><a href="/kb/en/timestamp/+r/125311/">125311</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2022-06-21 14:57">2022-06-21 14:57</span></dd>
+<span class="datetime" title="2023-04-21 14:38">2023-04-21 14:38</span></dd>
         </dl>
     </div>
     
@@ -353,6 +353,8 @@ This automatic initialization for ##NULL## values can also be **explicitly disab
 == Time Zones
 
 If a column uses the ##TIMESTAMP## data type, then any inserted values are converted from the session&#39;s time zone to [[coordinated-universal-time|Coordinated Universal Time (UTC)]] when stored, and converted back to the session&#39;s time zone when retrieved.
+
+MariaDB validates ##TIMESTAMP## literals against the session&#39;s time zone. For example, if a specific time range never occurred in a specific time zone due to daylight savings time, then ##TIMESTAMP## values within that range would be invalid for that time zone.
 
 MariaDB does not currently store any time zone identifier with the value of the ##TIMESTAMP## data type. See MDEV-10018 for more information.
 

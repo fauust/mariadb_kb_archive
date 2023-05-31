@@ -280,7 +280,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/troubleshooting-connection-issues/+r/123171/">123171</a></dd>
+            <dd><a href="/kb/en/troubleshooting-connection-issues/+r/126048/">126048</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -289,7 +289,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-02-04 11:38">2023-02-04 11:38</span></dd>
+<span class="datetime" title="2023-05-23 09:44">2023-05-23 09:44</span></dd>
         </dl>
     </div>
     
@@ -367,11 +367,11 @@ It&#39;s possible that option files or environment variables may be providing in
 
 Option files can usually be suppressed with ##no-defaults## option, for example:
 &lt;&lt;code&gt;&gt;
-mysqlimport --no-defaults ...
+mariadb-import --no-defaults ...
 &lt;&lt;/code&gt;&gt;
 
 ==== Unable to Connect to a Running Server / Lost root Password
-If you are unable to connect to a server, for example because you have lost the root password, you can start the server without using the privilege tables by running the ##[[mysqld-options/#-skip-grant-tables|--skip-grant-tables]]## option, which gives users full access to all tables. You can then run [[flush|FLUSH PRIVILEGES]] to resume using the grant tables, followed by [[set-password|SET PASSWORD]] to change the password for an account.
+If you are unable to connect to a server, for example because you have lost the root password, you can start the server without using the privilege tables by running the [[mysqld-options/#-skip-grant-tables|--skip-grant-tables]] option, which gives users full access to all tables. You can then run [[flush|FLUSH PRIVILEGES]] to resume using the grant tables, followed by [[set-password|SET PASSWORD]] to change the password for an account.
 
 ==== localhost and %
 You may have created a user with something like:

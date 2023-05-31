@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/server-system-variables/+r/125239/">125239</a></dd>
+            <dd><a href="/kb/en/server-system-variables/+r/126502/">126502</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-04-12 10:04">2023-04-12 10:04</span></dd>
+<span class="datetime" title="2023-05-29 20:33">2023-05-29 20:33</span></dd>
         </dl>
     </div>
     
@@ -339,7 +339,7 @@ Variables that can be changed at runtime are described as &#34;Dynamic&#34; belo
 
 There are a few ways to see the full list of server system variables:
 
-* While in the mysql client, run:
+* While in the mariadb client, run:
 
 &lt;&lt;code indent=1 lang=mysql inline=true&gt;&gt;
 SHOW VARIABLES;
@@ -371,7 +371,7 @@ shell&gt; ./mysqld_safe --aria_group_commit=&#34;hard&#34;
 aria_group_commit = &#34;hard&#34;
 &lt;&lt;/code&gt;&gt;
 
-* Set them from the mysql client using the [[set|SET]] command. Only variables that are dynamic can be set at runtime in this way. Note that variables set in this way will not persist after a restart.
+* Set them from the mariadb client using the [[set|SET]] command. Only variables that are dynamic can be set at runtime in this way. Note that variables set in this way will not persist after a restart.
 
 &lt;&lt;code indent=1 lang=sql inline=true&gt;&gt;
 SET GLOBAL aria_group_commit=&#34;hard&#34;;
@@ -664,7 +664,6 @@ The suffix can be upper or lower-case.
 
 ==== ##check_constraint_checks##
 * **Description:** If set to ##0##, will disable [[constraint|constraint checks]], for example when loading a table that violates some constraints that you plan to fix later.
-* **Commandline:** &lt;&lt;code&gt;&gt;--check-constraint-checks=[0|1]&lt;&lt;/code&gt;&gt;
 * **Scope:** Global, Session
 * **Dynamic:** Yes
 * **Type:** boolean
@@ -2455,7 +2454,7 @@ This system variable&#39;s value cannot be changed after the datadir has been in
 &lt;&lt;toc-item slug=&#34;replication-and-binary-log-server-system-variables#max_binlog_stmt_cache_size&#34; level=3&gt;&gt;##max_binlog_stmt_cache_size##&lt;&lt;/toc-item&gt;&gt;
 
 ==== ##max_connect_errors##
-* **Description:** Limit to the number of successive failed connects from a host before the host is blocked from making further connections. The count for a host is reset to zero if they successfully connect. To unblock, flush the host cache with a [[flush|FLUSH HOSTS]] statement or [[mysqladmin|mysqladmin flush-hosts]]. The [[performance-schema-host_cache-table|performance_schema.host_cache]] table contains the status of the current hosts.
+* **Description:** Limit to the number of successive failed connects from a host before the host is blocked from making further connections. The count for a host is reset to zero if they successfully connect. To unblock, flush the host cache with a [[flush|FLUSH HOSTS]] statement or [[mariadb-admin|mariadb-admin flush-hosts]]. The [[performance-schema-host_cache-table|performance_schema.host_cache]] table contains the status of the current hosts.
 * **Commandline:** &lt;&lt;code&gt;&gt;--max-connect-errors=#&lt;&lt;/code&gt;&gt;
 * **Scope:** Global
 * **Dynamic:** Yes
@@ -4295,7 +4294,7 @@ the best query execution plan.
 ----
 
 ==== ##sql_notes##
-* **Description:** If set to 1, the default, [[#warning_count|warning_count]] is incremented each time a Note warning is encountered. If set to 0, Note warnings are not recorded. [[mysqldump]] has outputs to set this variable to 0 so that no unnecessary increments occur when data is reloaded.
+* **Description:** If set to 1, the default, [[#warning_count|warning_count]] is incremented each time a Note warning is encountered. If set to 0, Note warnings are not recorded. [[mariadb-dump]] has outputs to set this variable to 0 so that no unnecessary increments occur when data is reloaded.
 * **Commandline:** None
 * **Scope:** Global, Session
 * **Dynamic:** Yes
@@ -4405,7 +4404,7 @@ the best query execution plan.
 &lt;&lt;toc-item slug=&#34;replication-and-binary-log-server-system-variables#sync_relay_log_info&#34; level=3&gt;&gt;##sync_relay_log_info##&lt;&lt;/toc-item&gt;&gt;
 
 ==== ##system_time_zone##
-* **Description:** The system time zone is determined when the server starts. The system [[time-zones|time zone]] is usually read from the operating system&#39;s environment. See [[time-zones/#system-time-zone|Time Zones: System Time Zone]] for the various ways to change the system time zone. This variable is not the same as the ##[[#time_zone|time_zone]]## system variable, which is the variable that actually controls a session&#39;s active time zone. The system time zone is used for a session when ##time_zone## is set to the special value ##SYSTEM##.
+* **Description:** The system time zone is determined when the server starts. The system [[time-zones|time zone]] is usually read from the operating system&#39;s environment but can be overridden by setting the &#39;TZ&#39; environment variable before starting the server. See [[time-zones/#system-time-zone|Time Zones: System Time Zone]] for the various ways to change the system time zone. This variable is not the same as the [[#time_zone|time_zone]] system variable, which is the variable that actually controls a session&#39;s active time zone. The system time zone is used for a session when ##time_zone## is set to the special value ##SYSTEM##. 
 * **Scope:** Global
 * **Dynamic:** No
 * **Data Type:** ##string##

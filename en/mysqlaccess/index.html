@@ -243,12 +243,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2013-07-04 13:48">9 years, 8 months ago</span></dd>
+<span class="datetime" title="2013-07-04 13:48">9 years, 11 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2020-06-10 22:07">2 years, 9 months ago</span></dd>
+<span class="datetime" title="2023-05-23 20:30">6 days, 19 hours ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -445,11 +445,11 @@
 <p>It checks the access privileges for a host name, user name, and database combination. Note that mysqlaccess checks access using only the <a href="/kb/en/mysqluser-table/">user</a>, <a href="/kb/en/mysqldb-table/">db</a>, and host tables. It does not check table, column, or routine privileges specified in the <a href="/kb/en/mysqltables_priv-table/">tables_priv</a>, <a href="/kb/en/mysqlcolumns_priv-table/">columns_priv</a>, or <a href="/kb/en/mysqlprocs_priv-table/">procs_priv</a> tables.</p>
 <h2 class="anchored_heading" id="usage">Usage</h2>
 <pre class="fixed">mysqlaccess [host [user [db]]] OPTIONS
-</pre><p>If your MariaDB distribution is installed in some non-standard location, you must change the location where <em>mysqlaccess</em> expects to find the mysql client. Edit the <em>mysqlaccess</em> script at approximately line 18. Search for a line that looks like this:
+</pre><p>If your MariaDB distribution is installed in some non-standard location, you must change the location where <em>mysqlaccess</em> expects to find the mariadb client. Edit the <em>mysqlaccess</em> script at approximately line 18. Search for a line that looks like this:
 &lt;&lt;code&gt;
-$MYSQL     = ´/usr/local/bin/mysql´;    # path to mysql executable
+$MYSQL     = ´/usr/local/bin/mariadb;    # path to mariadb executable
 &lt;&lt;/code&gt;&gt;
-Change the path to reflect the location where <em>mysql</em> actually is stored on your system. If you do not do this, a <em>Broken pipe error</em> will occur when you run <em>mysqlaccess</em>.</p>
+Change the path to reflect the location where <em>mariadb</em> actually is stored on your system. If you do not do this, a <em>Broken pipe error</em> will occur when you run <em>mysqlaccess</em>.</p>
 <h2 class="anchored_heading" id="options">Options</h2>
 <div class="cstm-style darkheader-nospace-borders"><table><tr><th>Option</th><th>Description</th></tr>
 <tr><td><code>-?</code>, <code>--help</code></td><td>Displayhelp and exit.</td></tr>
@@ -552,9 +552,9 @@ Change the path to reflect the location where <em>mysql</em> actually is stored 
             
                 
                     <li>
-                        <a href="/kb/en/mysql-client/">
+                        <a href="/kb/en/mariadb-client/">
                             
-                            mysql Client
+                            mariadb Client
                         </a>
                     </li>
                 

@@ -247,12 +247,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2017-02-06 11:53">6 years, 1 month ago</span></dd>
+<span class="datetime" title="2017-02-06 11:53">6 years, 3 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2022-09-29 14:17">5 months, 2 weeks ago</span></dd>
+<span class="datetime" title="2023-05-23 21:08">6 days, 19 hours ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -419,7 +419,7 @@
 </li><li>Something goes wrong on the primary (like a wrong update or delete) and you would like to revert to a state of the database (or just a table) at a certain point in time.
 </li><li>Remove the flashback-enabled replica from replication.
 </li><li>Invoke <a href="/kb/en/mysqlbinlog/">mariadb-binlog / mysqlbinlog</a> to find the exact log position of the first offending operation after the state you want to revert to.
-</li><li>Run <code>mysqlbinlog --flashback --start-position=xyz | mysql</code> to pipe the output of <code>mariadb-binlog / mysqlbinlog</code> directly to the <code>mariadb / mysql</code> client, or save the output to a file and then direct the file to the command-line client.</li></ul>
+</li><li>Run <code>mysqlbinlog --flashback --start-position=xyz | mysql</code> to pipe the output of <code>mariadb-binlog / mysqlbinlog</code> directly to the <code>mariadb</code> client, or save the output to a file and then direct the file to the command-line client.</li></ul>
 
     </div>
 

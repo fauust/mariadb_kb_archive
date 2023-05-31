@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-backups-overview-for-sql-server-users/+r/96218/">96218</a></dd>
+            <dd><a href="/kb/en/mariadb-backups-overview-for-sql-server-users/+r/125971/">125971</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-125">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2020-05-28 00:43">2020-05-28 00:43</span></dd>
+<span class="datetime" title="2023-05-22 15:38">2023-05-22 15:38</span></dd>
         </dl>
     </div>
     
@@ -325,11 +325,11 @@ A //dump//, also called a //logical backup//, consists of the SQL statements nee
 
 The compatibility between different versions and technologies is achieved by using [[comment-syntax|executable comments]], but we should be aware of how they work. If we use a feature introduced in version 10.1, for example, it will be included in the dump inside an executable comment. If we restore that backup on a server with MariaDB 10.0, the 10.1 feature will be ignored. This is the only way to restore backups in older MariaDB versions.
 
-=== mysqldump
+=== mariadb-dump
 
-Logical backups are usually taken with [[mysqldump]].
+Logical backups are usually taken with [[mariadb-dump]] (previously called mysqldump).
 
-mysqldump allows to dump all databases, a single database, or a set of tables from a database. It is even possible to specify a ##WHERE## clause, which under certain circumstances allows to obtain incremental dumps.
+mariadb-dump allows one to dump all databases, a single database, or a set of tables from a database. It is even possible to specify a ##WHERE## clause, which under certain circumstances allows to obtain incremental dumps.
 
 For consistency reasons, when using the default storage engine [[understanding-mariadb-architecture#innodb|InnoDB]], it is important to use the ##--single-transaction## option. This will read all data in a single transaction. It&#39;s important however to understand that long transactions may have a big impact on performance.
 
@@ -339,7 +339,7 @@ MariaDB also supports statements which make easy to write applications to obtain
 
 === mydumper
 
-[[https://github.com/maxbube/mydumper|mydumper]] is a 3rd party tools to take dumps from MariaDB and MySQL databases. It is much faster than mysqldump because it takes backups with several parallel threads, usually one thread for each available CPU core. It produces several files, that can be used to restore a database using the related tool myloader.
+[[https://github.com/maxbube/mydumper|mydumper]] is a 3rd party tools to take dumps from MariaDB and MySQL databases. It is much faster than mariadb-dump because it takes backups with several parallel threads, usually one thread for each available CPU core. It produces several files, that can be used to restore a database using the related tool myloader.
 
 Since is it a 3rd party tool, it could be incompatible with some present or future MariaDB features.
 

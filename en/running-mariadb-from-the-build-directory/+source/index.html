@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/running-mariadb-from-the-build-directory/+r/97182/">97182</a></dd>
+            <dd><a href="/kb/en/running-mariadb-from-the-build-directory/+r/126528/">126528</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2020-06-28 17:00">2020-06-28 17:00</span></dd>
+<span class="datetime" title="2023-05-30 11:16">2023-05-30 11:16</span></dd>
         </dl>
     </div>
     
@@ -393,7 +393,7 @@ set-variable= key_buffer=128M
 With the above file in place, go to your MariaDB source directory and execute:
 
 &lt;&lt;code lang=sh&gt;&gt;
-./scripts/mysql_install_db --srcdir=$PWD --datadir=/path/to/data/dir --user=$LOGNAME
+./scripts/mariadb-install-db --srcdir=$PWD --datadir=/path/to/data/dir --user=$LOGNAME
 &lt;&lt;/code&gt;&gt;
 Above &#39;$PWD&#39; is the environment variable that points to your current directory.
 If you added &lt;&lt;fixed&gt;&gt;datadir&lt;&lt;/fixed&gt;&gt; to your &lt;&lt;fixed&gt;&gt;my.cnf&lt;&lt;/fixed&gt;&gt;, you don&#39;t have to give this option above.

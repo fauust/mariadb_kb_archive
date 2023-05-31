@@ -239,12 +239,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2017-08-22 20:45">5 years, 6 months ago</span></dd>
+<span class="datetime" title="2017-08-22 20:45">5 years, 9 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2019-04-01 21:11">3 years, 11 months ago</span></dd>
+<span class="datetime" title="2023-05-22 16:50">1 week ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -472,7 +472,7 @@ There are several ways to add and to change data in MariaDB. There are a few SQL
 <span class="k">UPDATE</span> <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;old&#39;</span><span class="p">;</span>
 </pre><p>Because of the <code>IGNORE</code> flag, errors will not be generated, duplicates won't be inserted or replaced, but the rest will be added. Because of the <a href="/kb/en/insert-on-duplicate-key-update/">ON DUPLICATE KEY</a>, the column status of the original row will be set to old when there are duplicate entry attempts. The rest will be inserted and their status set to new.</p>
 <h4 class="anchored_heading" id="conclusion">Conclusion</h4>
-<p>As you can see from some of these SQL statements, MariaDB offers you quite a few ways to add and to change data. In addition to these methods, there are also some bulk methods of adding and changing data in a table. You could use the <a href="/kb/en/load-data-infile/">LOAD DATA INFILE</a> statement and the <a href="/kb/en/mysqldump/">mysqldump</a> command-line utility. These methods are covered in another article on Importing Data into MariaDB.</p>
+<p>As you can see from some of these SQL statements, MariaDB offers you quite a few ways to add and to change data. In addition to these methods, there are also some bulk methods of adding and changing data in a table. You could use the <a href="/kb/en/load-data-infile/">LOAD DATA INFILE</a> statement and the <a href="/kb/en/mariadb-dump/">mariadb-dump</a> command-line utility. These methods are covered in another article on <a href="/kb/en/importing-data-into-mariadb/">Importing Data into MariaDB</a>.</p>
 
     </div>
 
@@ -620,9 +620,9 @@ There are several ways to add and to change data in MariaDB. There are a few SQL
             
                 
                     <li>
-                        <a href="/kb/en/making-backups-with-mysqldump/">
+                        <a href="/kb/en/making-backups-with-mariadb-dump/">
                             
-                            Making Backups with mysqldump
+                            Making Backups with mariadb-dump
                         </a>
                     </li>
                 

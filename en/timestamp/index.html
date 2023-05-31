@@ -247,12 +247,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2010-05-20 19:42">12 years, 9 months ago</span></dd>
+<span class="datetime" title="2010-05-20 19:42">13 years ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2022-06-21 14:57">8 months, 3 weeks ago</span></dd>
+<span class="datetime" title="2023-04-21 14:38">1 month, 1 week ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -446,6 +446,7 @@
 <p>This automatic initialization for <code>NULL</code> values can also be <strong>explicitly disabled</strong> for a column that uses the <code>TIMESTAMP</code> data type by specifying the <code>NULL</code> attribute for the column. In this case, if the column's value is set to <code>NULL</code>, then the column's value will actually be set to <code>NULL</code>.</p>
 <h2 class="anchored_heading" id="time-zones">Time Zones</h2>
 <p>If a column uses the <code>TIMESTAMP</code> data type, then any inserted values are converted from the session's time zone to <a href="/kb/en/coordinated-universal-time/">Coordinated Universal Time (UTC)</a> when stored, and converted back to the session's time zone when retrieved.</p>
+<p>MariaDB validates <code>TIMESTAMP</code> literals against the session's time zone. For example, if a specific time range never occurred in a specific time zone due to daylight savings time, then <code>TIMESTAMP</code> values within that range would be invalid for that time zone.</p>
 <p>MariaDB does not currently store any time zone identifier with the value of the <code>TIMESTAMP</code> data type. See <a href="https://jira.mariadb.org/browse/MDEV-10018">MDEV-10018</a> for more information.</p>
 <p>MariaDB does not currently support time zone literals that contain time zone identifiers. See <a href="https://jira.mariadb.org/browse/MDEV-11829">MDEV-11829</a> for more information.</p>
 <h2 class="anchored_heading" id="limitations">Limitations</h2>

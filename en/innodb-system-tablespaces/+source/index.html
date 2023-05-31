@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/innodb-system-tablespaces/+r/88909/">88909</a></dd>
+            <dd><a href="/kb/en/innodb-system-tablespaces/+r/125989/">125989</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-5454">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2019-09-03 18:30">2019-09-03 18:30</span></dd>
+<span class="datetime" title="2023-05-22 16:39">2023-05-22 16:39</span></dd>
         </dl>
     </div>
     
@@ -345,9 +345,9 @@ Under this configuration, when the last system tablespace grows beyond the size 
 
 In cases where the InnoDB system tablespace has grown too large, the process to reduce it in size is a little more complicated than increasing the size.  MariaDB does not allow you to remove data from the tablespace file itself.  Instead you need to delete the tablespace files themselves, then restore the database from backups.
 
-The backup utility mysqldump produces backup files containing the SQL statements needed to recreate the database.  As a result, it restores a database with the bare minimum data rather than any additional information that might have built up in the tablespace file.
+The backup utility [[mariadb-dump]] produces backup files containing the SQL statements needed to recreate the database.  As a result, it restores a database with the bare minimum data rather than any additional information that might have built up in the tablespace file.
 
-Use mysqldump to backup all of your InnoDB database tables, including the system tables in the ##mysql## database that use InnoDB.  You can find out what they are using the Information Schema.
+Use mariadb-dump to backup all of your InnoDB database tables, including the system tables in the ##mysql## database that use InnoDB.  You can find out what they are using the Information Schema.
 
 &lt;&lt;sql&gt;&gt;
 SELECT TABLE_NAME FROM information_schema.TABLES
@@ -357,7 +357,7 @@ WHERE TABLE_SCHEMA = &#39;mysql&#39; AND ENGINE = &#39;InnoDB&#39;;
 If you only use InnoDB, you may find it easier to back up all databases and tables.
 
 &lt;&lt;code&gt;&gt;
-$ mysqldump -u root -p --all-databases &gt; full-backup.sql
+$ mariadb-dump -u root -p --all-databases &gt; full-backup.sql
 &lt;&lt;/code&gt;&gt;
 
 Then stop the MariaDB Server and remove the InnoDB tablespace files.  In the data directory or the InnoDB data home directory, delete all the ##ibdata## and ##ib_log## files as well as any file with an ##.ibd## or ##.frm## extension.
@@ -415,7 +415,7 @@ InnoDB creates some system tables within the InnoDB System Tablespace:
 * ##SYS_ZIP_DICT##
 * ##SYS_ZIP_DICT_COLS##
 
-These tables cannot be queried. However, you might see references to them in some places, such as in the ##[[information-schema-innodb_sys_tables-table|INNODB_SYS_TABLES]]## table in the ##[[information-schema-tables|information_schema]]## database.</textarea>
+These tables cannot be queried. However, you might see references to them in some places, such as in the [[information-schema-innodb_sys_tables-table|INNODB_SYS_TABLES]] table in the [[information-schema-tables|information_schema]] database.</textarea>
     
 
 

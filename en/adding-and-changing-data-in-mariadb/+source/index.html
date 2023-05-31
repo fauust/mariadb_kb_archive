@@ -280,7 +280,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/adding-and-changing-data-in-mariadb/+r/82587/">82587</a></dd>
+            <dd><a href="/kb/en/adding-and-changing-data-in-mariadb/+r/125997/">125997</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-4254">
@@ -289,7 +289,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2019-04-01 21:11">2019-04-01 21:11</span></dd>
+<span class="datetime" title="2023-05-22 16:50">2023-05-22 16:50</span></dd>
         </dl>
     </div>
     
@@ -425,7 +425,7 @@ UPDATE status = &#39;old&#39;;
 Because of the ##IGNORE## flag, errors will not be generated, duplicates won&#39;t be inserted or replaced, but the rest will be added. Because of the [[insert-on-duplicate-key-update|ON DUPLICATE KEY]], the column status of the original row will be set to old when there are duplicate entry attempts. The rest will be inserted and their status set to new.
 
 ==== Conclusion
-As you can see from some of these SQL statements, MariaDB offers you quite a few ways to add and to change data. In addition to these methods, there are also some bulk methods of adding and changing data in a table. You could use the [[load-data-infile|LOAD DATA INFILE]] statement and the [[mysqldump|mysqldump]] command-line utility. These methods are covered in another article on Importing Data into MariaDB.</textarea>
+As you can see from some of these SQL statements, MariaDB offers you quite a few ways to add and to change data. In addition to these methods, there are also some bulk methods of adding and changing data in a table. You could use the [[load-data-infile|LOAD DATA INFILE]] statement and the [[mariadb-dump]] command-line utility. These methods are covered in another article on [[importing-data-into-mariadb|Importing Data into MariaDB]].</textarea>
     
 
 

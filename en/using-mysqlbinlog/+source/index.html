@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/using-mysqlbinlog/+r/96704/">96704</a></dd>
+            <dd><a href="/kb/en/using-mysqlbinlog/+r/126091/">126091</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2020-06-11 00:13">2020-06-11 00:13</span></dd>
+<span class="datetime" title="2023-05-23 20:31">2023-05-23 20:31</span></dd>
         </dl>
     </div>
     
@@ -338,7 +338,7 @@ and how much time the statement took to execute. If you are using row-based
 logging the output of an event will not include an SQL statement but will
 instead output how individual rows were changed.
 
-The output from mysqlbinlog can be used as input to the mysql client to redo
+The output from mysqlbinlog can be used as input to the mariadb client to redo
 the statements contained in a [[binary-log|binary log]]. This is useful for recovering after a server crash. Here is an example:
 
 &lt;&lt;code&gt;&gt;
@@ -357,12 +357,12 @@ executed (such as an accidental DROP DATABASE). Once you are satisfied with the
 contents you can execute it with:
 
 &lt;&lt;code&gt;&gt;
-shell&gt; mysql -u root -p &lt; filename
+shell&gt; mariadb -u root -p &lt; filename
 &lt;&lt;/code&gt;&gt;
 
 Be careful to process multiple log files in a single connection, especially if
 one or more of them have any &lt;&lt;code&gt;&gt;CREATE TEMPORARY TABLE ...&lt;&lt;/code&gt;&gt;
-statements. Temporary tables are dropped when the mysql client terminates, so
+statements. Temporary tables are dropped when the mariadb client terminates, so
 if you are processing multiple log files one at a time (i.e. multiple
 connections) and one log file creates a temporary table and then a subsequent
 log file refers to the table you will get an &#39;unknown table&#39; error.
@@ -371,7 +371,7 @@ To execute multiple logfiles using a single connection, list them all on the
 mysqlbinlog command line:
 
 &lt;&lt;code&gt;&gt;
-shell&gt; mysqlbinlog mariadb-bin.000001 mariadb-bin.000002 | mysql -u root -p
+shell&gt; mysqlbinlog mariadb-bin.000001 mariadb-bin.000002 | mariadb -u root -p
 &lt;&lt;/code&gt;&gt;
 
 If you need to manually edit the binlogs before executing them, combine them

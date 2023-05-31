@@ -239,12 +239,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2015-09-24 13:30">7 years, 5 months ago</span></dd>
+<span class="datetime" title="2015-09-24 13:30">7 years, 8 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-02-04 11:38">1 month, 1 week ago</span></dd>
+<span class="datetime" title="2023-05-23 09:44">1 week ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -463,9 +463,9 @@ ERROR 1044 (42000): Access denied for user 'ian'@'localhost' to database 'test'
 <h4 class="anchored_heading" id="option-files-and-environment-variables">Option Files and Environment Variables</h4>
 <p>It's possible that option files or environment variables may be providing incorrect connection parameters. Check the values provided in any option files read by the client you are using (see <a href="/kb/en/mysqld-configuration-files-and-groups/">mysqld Configuration Files and Groups</a> and the documentation for the particular client you're using - see <a href="/kb/en/clients-and-utilities/">Clients and Utilities</a>).</p>
 <p>Option files can usually be suppressed with <code>no-defaults</code> option, for example:</p>
-<pre class="fixed">mysqlimport --no-defaults ...
+<pre class="fixed">mariadb-import --no-defaults ...
 </pre><h4 class="anchored_heading" id="unable-to-connect-to-a-running-server-lost-root-password">Unable to Connect to a Running Server / Lost root Password</h4>
-<p>If you are unable to connect to a server, for example because you have lost the root password, you can start the server without using the privilege tables by running the <code><a href="/kb/en/mysqld-options/#-skip-grant-tables">--skip-grant-tables</a></code> option, which gives users full access to all tables. You can then run <a href="/kb/en/flush/">FLUSH PRIVILEGES</a> to resume using the grant tables, followed by <a href="/kb/en/set-password/">SET PASSWORD</a> to change the password for an account.</p>
+<p>If you are unable to connect to a server, for example because you have lost the root password, you can start the server without using the privilege tables by running the <a href="/kb/en/mysqld-options/#-skip-grant-tables">--skip-grant-tables</a> option, which gives users full access to all tables. You can then run <a href="/kb/en/flush/">FLUSH PRIVILEGES</a> to resume using the grant tables, followed by <a href="/kb/en/set-password/">SET PASSWORD</a> to change the password for an account.</p>
 <h4 class="anchored_heading" id="localhost-and">localhost and %</h4>
 <p>You may have created a user with something like:</p>
 <pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">melisa</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>

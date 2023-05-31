@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/overview-of-mariadb-logs/+r/110628/">110628</a></dd>
+            <dd><a href="/kb/en/overview-of-mariadb-logs/+r/125982/">125982</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-7">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2018-02-28 16:29">2018-02-28 16:29</span></dd>
+<span class="datetime" title="2023-05-22 16:00">2023-05-22 16:00</span></dd>
         </dl>
     </div>
     
@@ -350,15 +350,15 @@ If you know that your next query will be slow and you don&#39;t want to log it i
 SET LOCAL SLOW_QUERY_LOG=0;
 &lt;&lt;/code&gt;&gt;
 
-If you are a super user running a log batch job that you don&#39;t want to have logged (for example mysqldump), do:
+If you are a super user running a log batch job that you don&#39;t want to have logged (for example mariadb-dump), do:
 
 &lt;&lt;code&gt;&gt;
 SET LOCAL SQL_LOG_OFF=1, LOCAL SLOW_QUERY_LOG=0;
 &lt;&lt;/code&gt;&gt;
 
-[[mysqldump]] since MariaDB 10.1 will add this automatically to your dump file if you run it with the &lt;&lt;code&gt;&gt;--skip-log-queries&lt;&lt;/code&gt;&gt; option.
+[[mariadb-dump]] (previously mysqldump) since MariaDB 10.1 will add this automatically to your dump file if you run it with the &lt;&lt;code&gt;&gt;--skip-log-queries&lt;&lt;/code&gt;&gt; option.
 
-== See also
+== See Also
 * [[server_audit-mariadb-audit-plugin|MariaDB audit plugin]]</textarea>
     
 

@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/selectively-skipping-replication-of-binlog-events/+r/97336/">97336</a></dd>
+            <dd><a href="/kb/en/selectively-skipping-replication-of-binlog-events/+r/126110/">126110</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2020-07-02 12:00">2020-07-02 12:00</span></dd>
+<span class="datetime" title="2023-05-23 21:09">2023-05-23 21:09</span></dd>
         </dl>
     </div>
     
@@ -407,10 +407,10 @@ and so are not replicated by any slave.
 == skip_replication and the Binlog
 
 When events in the binlog are marked with the ##@@skip_replication## flag, the
-flag will be preserved if the events are dumped by the ##[[mysqlbinlog]]##
+flag will be preserved if the events are dumped by the [[mysqlbinlog]]
 program and re-applied against a server with the
-##[[mysql-command-line-client|mysql client]]## program. Similarly, the
-##[[binlog|BINLOG]]## statement will preserve the flag from the
+[[mariadb-command-line-client|mariadb client]] program. Similarly, the
+[[binlog|BINLOG]] statement will preserve the flag from the
 event being replayed. And a slave which runs with
 &lt;&lt;code&gt;&gt;--log-slave-updates&lt;&lt;/code&gt;&gt; and does not filter events
 (&lt;&lt;code&gt;&gt;--replicate-events-marked-for-skip=REPLICATE&lt;&lt;/code&gt;&gt;) will also

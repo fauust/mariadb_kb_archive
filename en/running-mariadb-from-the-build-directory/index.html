@@ -247,12 +247,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2010-08-03 20:33">12 years, 7 months ago</span></dd>
+<span class="datetime" title="2010-08-03 20:33">12 years, 9 months ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2020-06-28 17:00">2 years, 8 months ago</span></dd>
+<span class="datetime" title="2023-05-30 11:16">6 hours, 35 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -479,7 +479,7 @@ no-auto-rehash
 <span class="o">[</span>myisamchk<span class="o">]</span>
 set-variable<span class="o">=</span> <span class="nv">key_buffer</span><span class="o">=</span>128M
 </pre><p>With the above file in place, go to your MariaDB source directory and execute:</p>
-<pre class="fixed">./scripts/mysql_install_db --srcdir<span class="o">=</span><span class="nv">$PWD</span> --datadir<span class="o">=</span>/path/to/data/dir --user<span class="o">=</span><span class="nv">$LOGNAME</span>
+<pre class="fixed">./scripts/mariadb-install-db --srcdir<span class="o">=</span><span class="nv">$PWD</span> --datadir<span class="o">=</span>/path/to/data/dir --user<span class="o">=</span><span class="nv">$LOGNAME</span>
 </pre><p>Above '$PWD' is the environment variable that points to your current directory.
 If you added <code class="highlight fixed" style="white-space:pre-wrap">datadir</code> to your <code class="highlight fixed" style="white-space:pre-wrap">my.cnf</code>, you don't have to give this option above.
 Also above, --user=$LOGNAME is necessary when using msqyld 10.0.1-MariaDB (and possibly other versions)</p>

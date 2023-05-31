@@ -247,12 +247,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2010-04-08 22:03">13 years ago</span></dd>
+<span class="datetime" title="2010-04-08 22:03">13 years, 1 month ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-04-12 10:04">5 days, 2 hours ago</span></dd>
+<span class="datetime" title="2023-05-29 20:33">23 hours, 21 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -2930,7 +2930,7 @@
 <p>Most of these can be set with <a href="/kb/en/mysqld-options-full-list/">command line options</a> and many of them can be changed at runtime.
 Variables that can be changed at runtime are described as "Dynamic" below, and elsewhere in the documentation.</p>
 <p>There are a few ways to see the full list of server system variables:</p>
-<ul start="1"><li>While in the mysql client, run:
+<ul start="1"><li>While in the mariadb client, run:
 </li></ul>
 <pre class="fixed indent1"><span class="k">SHOW</span> <span class="n">VARIABLES</span><span class="p">;</span>
 </pre><ul start="1" style="list-style: none"><li>See <a href="/kb/en/show-variables/">SHOW VARIABLES</a> for instructions on using this command.
@@ -2948,7 +2948,7 @@ Variables that can be changed at runtime are described as "Dynamic" below, and e
 </pre><ul start="1"><li>Specify them in your my.cnf file (see <a href="/kb/en/configuring-mariadb-with-mycnf/">Configuring MariaDB with my.cnf</a> for more information):
 </li></ul>
 <pre class="fixed indent1"><span class="nv">aria_group_commit</span> <span class="o">=</span> <span class="s2">&quot;hard&quot;</span>
-</pre><ul start="1"><li>Set them from the mysql client using the <a href="/kb/en/set/">SET</a> command. Only variables that are dynamic can be set at runtime in this way. Note that variables set in this way will not persist after a restart.
+</pre><ul start="1"><li>Set them from the mariadb client using the <a href="/kb/en/set/">SET</a> command. Only variables that are dynamic can be set at runtime in this way. Note that variables set in this way will not persist after a restart.
 </li></ul>
 <pre class="fixed indent1"><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">aria_group_commit</span><span class="o">=</span><span class="ss">&quot;hard&quot;</span><span class="p">;</span>
 </pre><p>By convention, server variables have usually been specified with an underscore in the configuration files, and a dash on the command line.  You can however specify underscores as dashes - they are interchangeable.</p>
@@ -3183,7 +3183,6 @@ Variables that can be changed at runtime are described as "Dynamic" below, and e
 <hr>
 <h4 class="anchored_heading" id="check_constraint_checks"><code>check_constraint_checks</code></h4>
 <ul start="1"><li><strong>Description:</strong> If set to <code>0</code>, will disable <a href="/kb/en/constraint/">constraint checks</a>, for example when loading a table that violates some constraints that you plan to fix later.
-</li><li><strong>Commandline:</strong> <code class="fixed" style="white-space:pre-wrap">--check-constraint-checks=[0|1]</code>
 </li><li><strong>Scope:</strong> Global, Session
 </li><li><strong>Dynamic:</strong> Yes
 </li><li><strong>Type:</strong> boolean
@@ -4667,7 +4666,7 @@ This system variable's value cannot be changed after the datadir has been initia
 
 
 <h4 class="anchored_heading" id="max_connect_errors"><code>max_connect_errors</code></h4>
-<ul start="1"><li><strong>Description:</strong> Limit to the number of successive failed connects from a host before the host is blocked from making further connections. The count for a host is reset to zero if they successfully connect. To unblock, flush the host cache with a <a href="/kb/en/flush/">FLUSH HOSTS</a> statement or <a href="/kb/en/mysqladmin/">mysqladmin flush-hosts</a>. The <a href="/kb/en/performance-schema-host_cache-table/">performance_schema.host_cache</a> table contains the status of the current hosts.
+<ul start="1"><li><strong>Description:</strong> Limit to the number of successive failed connects from a host before the host is blocked from making further connections. The count for a host is reset to zero if they successfully connect. To unblock, flush the host cache with a <a href="/kb/en/flush/">FLUSH HOSTS</a> statement or <a href="/kb/en/mariadb-admin/">mariadb-admin flush-hosts</a>. The <a href="/kb/en/performance-schema-host_cache-table/">performance_schema.host_cache</a> table contains the status of the current hosts.
 </li><li><strong>Commandline:</strong> <code class="fixed" style="white-space:pre-wrap">--max-connect-errors=#</code>
 </li><li><strong>Scope:</strong> Global
 </li><li><strong>Dynamic:</strong> Yes
@@ -6193,7 +6192,7 @@ the best query execution plan.
 </li></ul>
 <hr>
 <h4 class="anchored_heading" id="sql_notes"><code>sql_notes</code></h4>
-<ul start="1"><li><strong>Description:</strong> If set to 1, the default, <a href="#warning_count">warning_count</a> is incremented each time a Note warning is encountered. If set to 0, Note warnings are not recorded. <a href="/kb/en/mysqldump/">mysqldump</a> has outputs to set this variable to 0 so that no unnecessary increments occur when data is reloaded.
+<ul start="1"><li><strong>Description:</strong> If set to 1, the default, <a href="#warning_count">warning_count</a> is incremented each time a Note warning is encountered. If set to 0, Note warnings are not recorded. <a href="/kb/en/mariadb-dump/">mariadb-dump</a> has outputs to set this variable to 0 so that no unnecessary increments occur when data is reloaded.
 </li><li><strong>Commandline:</strong> None
 </li><li><strong>Scope:</strong> Global, Session
 </li><li><strong>Dynamic:</strong> Yes
@@ -6291,7 +6290,7 @@ the best query execution plan.
 
 
 <h4 class="anchored_heading" id="system_time_zone"><code>system_time_zone</code></h4>
-<ul start="1"><li><strong>Description:</strong> The system time zone is determined when the server starts. The system <a href="/kb/en/time-zones/">time zone</a> is usually read from the operating system's environment. See <a href="/kb/en/time-zones/#system-time-zone">Time Zones: System Time Zone</a> for the various ways to change the system time zone. This variable is not the same as the <code><a href="#time_zone">time_zone</a></code> system variable, which is the variable that actually controls a session's active time zone. The system time zone is used for a session when <code>time_zone</code> is set to the special value <code>SYSTEM</code>.
+<ul start="1"><li><strong>Description:</strong> The system time zone is determined when the server starts. The system <a href="/kb/en/time-zones/">time zone</a> is usually read from the operating system's environment but can be overridden by setting the 'TZ' environment variable before starting the server. See <a href="/kb/en/time-zones/#system-time-zone">Time Zones: System Time Zone</a> for the various ways to change the system time zone. This variable is not the same as the <a href="#time_zone">time_zone</a> system variable, which is the variable that actually controls a session's active time zone. The system time zone is used for a session when <code>time_zone</code> is set to the special value <code>SYSTEM</code>. 
 </li><li><strong>Scope:</strong> Global
 </li><li><strong>Dynamic:</strong> No
 </li><li><strong>Data Type:</strong> <code>string</code>
