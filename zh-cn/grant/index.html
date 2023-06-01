@@ -255,12 +255,12 @@ user_specificati..." />
         <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2023-05-29 14:22">1 day, 2 hours ago</span></dd>
+<span class="datetime" title="2023-05-29 14:22">2 days, 2 hours ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-30 13:26">3 hours, 19 minutes ago</span></dd>
+<span class="datetime" title="2023-05-31 13:55">2 hours, 48 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -333,6 +333,50 @@ user_specificati..." />
 </div>
 
     
+
+
+
+    
+    
+
+<div class="well well-small box"><div><h5>Product Versions</h5></div><div>
+
+        <ul id="product_chooser">
+            
+                <li class="mariadb_from_10_4_0">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_4_0"
+                            >MariaDB starting with 10.4.0</label>
+                </li>
+            
+                <li class="mariadb_from_10_4_3">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_4_3"
+                            >MariaDB starting with 10.4.3</label>
+                </li>
+            
+                <li class="mariadb_from_10_11">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_11"
+                            >MariaDB starting with 10.11</label>
+                </li>
+            
+                <li class="mariadb_from_10_4_0">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_4_0"
+                            >MariaDB starting with 10.4.0</label>
+                </li>
+            
+                <li class="mariadb_from_10_4_3">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_4_3"
+                            >MariaDB starting with 10.4.3</label>
+                </li>
+            
+                <li class="mariadb_from_10_11">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_11"
+                            >MariaDB starting with 10.11</label>
+                </li>
+            
+        </ul>
+    
+</div>
+</div>
 
 
 
@@ -490,9 +534,34 @@ user_specificati..." />
 
         <li class=""><a href="#认证选项" title="认证选项">认证选项</a>        <ol class="toc">
 
-            <li class=""><a href="#identified-by-password" title="IDENTIFIED BY &#39;password&#39;">IDENTIFIED BY &#39;password&#39;</a>        </ol>
+            <li class=""><a href="#identified-by-password" title="IDENTIFIED BY &#39;password&#39;">IDENTIFIED BY &#39;password&#39;</a></li>
+
+            <li class=""><a href="#identified-by-password-password_hash" title="IDENTIFIED BY PASSWORD &#39;password_hash&#39;">IDENTIFIED BY PASSWORD &#39;password_hash&#39;</a></li>
+
+            <li class=""><a href="#identified-viawith-authentication_plugin" title="IDENTIFIED {VIA|WITH} authentication_plugin">IDENTIFIED {VIA|WITH} authentication_plugin</a>        </ol>
+</li>
+
+        <li class=""><a href="#资源限制选项" title="资源限制选项">资源限制选项</a></li>
+
+        <li class=""><a href="#tls-选项" title="TLS 选项">TLS 选项</a></li>
+
+        <li class=""><a href="#角色" title="角色">角色</a>        <ol class="toc">
+
+            <li class=""><a href="#语法" title="语法">语法</a>        </ol>
+</li>
+
+        <li class=""><a href="#to-public" title="TO PUBLIC">TO PUBLIC</a>        <ol class="toc">
+
+            <li class=""><a href="#语法" title="语法">语法</a>        </ol>
     </ol>
- </ol>
+</li>
+
+    <li class=""><a href="#授权示例" title="授权示例">授权示例</a>    <ol class="toc">
+
+        <li class=""><a href="#授予类似于-root-的权限" title="授予类似于 root 的权限">授予类似于 root 的权限</a>    </ol>
+</li>
+
+    <li class=""><a href="#另请参阅" title="另请参阅">另请参阅</a> </ol>
 </li>
 </div>
 <h2 class="anchored_heading" id="语法">语法</h2>
@@ -905,6 +974,114 @@ select host, user from mysql.user where user='user123' ;
 </pre><p>如果您没有在<code>IDENTIFIED BY</code>子句中指定密码，那么用户可以在没有密码的情况下连接。空密码不是匹配任何密码的通配符。如果没有设置密码，则用户必须在不提供密码的情况下连接。</p>
 <p>如果用户帐户已经存在并且您提供了<code>IDENTIFIED BY</code>子句，则用户的密码将被更改。您必须具有<a href="/kb/en/set-password/">SET PASSWORD</a>语句所需的权限才能使用<code>GRANT</code>更改用户的密码。</p>
 <p>此子句支持的唯一<a href="/kb/en/authentication-plugins/">authentication plugins</a>是<a href="/kb/en/authentication-plugin-mysql_native_password/">mysql_native_password</a>和<a href="/kb/en/authentication-plugin-mysql_old_password/">mysql_old_password</a>。</p>
+<h4 class="anchored_heading" id="identified-by-password-password_hash">IDENTIFIED BY PASSWORD 'password_hash'</h4>
+<p>可选的<code>IDENTIFIED BY PASSWORD</code>子句可用于为已经散列的密码提供帐户。密码应指定为由 <a href="/kb/en/password/">PASSWORD</a> 函数提供的哈希值。它将按原样存储。</p>
+<p>例如，如果我们的密码是<code>mariadb</code>，则可以使用以下命令找到哈希值：</p>
+<pre class="fixed"><span class="k">SELECT</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;mariadb&#39;</span><span class="p">);</span>
+<span class="o">+</span><span class="c1">-------------------------------------------+</span>
+<span class="o">|</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;mariadb&#39;</span><span class="p">)</span>                       <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------------------------------------+</span>
+<span class="o">|</span> <span class="o">*</span><span class="mi">54958</span><span class="n">E764CE10E50764C2EECBB71D01F08549980</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------------------------------------+</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</pre><p>然后，我们可以使用该哈希值创建用户：</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="n">foo2</span><span class="o">@</span><span class="n">test</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> 
+  <span class="n">PASSWORD</span> <span class="s1">&#39;*54958E764CE10E50764C2EECBB71D01F08549980&#39;</span><span class="p">;</span>
+</pre><p>如果您在<code>IDENTIFIED BY</code>子句中未指定密码，则用户将能够无密码连接。空白密码不是匹配任何密码的通配符。如果未设置密码，则用户必须在不提供密码的情况下连接。</p>
+<p>如果用户帐户已经存在并且您提供了<code>IDENTIFIED BY</code>子句，则用户的密码将被更改。您必须拥有执行 <a href="/kb/en/set-password/">SET PASSWORD</a>语句所需的特权来使用<code>GRANT</code>更改用户的密码。</p>
+<p>此子句支持的唯一<a href="/kb/en/authentication-plugins/">身份验证插件</a>是<a href="/kb/en/authentication-plugin-mysql_native_password/">mysql_native_password</a>和<a href="/kb/en/authentication-plugin-mysql_old_password/">mysql_old_password</a>。</p>
+<h4 class="anchored_heading" id="identified-viawith-authentication_plugin">IDENTIFIED {VIA|WITH} authentication_plugin</h4>
+<p>可选的<code>IDENTIFIED VIA authentication_plugin</code>允许您指定帐户应由特定的<a href="/kb/en/authentication-plugins/">身份验证插件</a>进行身份验证。插件名称必须是 <a href="/kb/en/show-plugins/">SHOW PLUGINS</a> 中的活动身份验证插件。如果它未显示在该输出中，则需要使用 <a href="/kb/en/install-plugin/">INSTALL PLUGIN</a> 或 <a href="/kb/en/install-soname/">INSTALL SONAME</a> 进行安装。</p>
+<p>例如，可以与 <a href="/kb/en/authentication-plugin-pam/">PAM 身份验证插件</a> 一起使用：</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="n">foo2</span><span class="o">@</span><span class="n">test</span> <span class="n">IDENTIFIED</span> <span class="n">VIA</span> <span class="n">pam</span><span class="p">;</span>
+</pre><p>某些身份验证插件允许在<code>USING</code>或<code>AS</code>关键字之后指定其他参数。例如，<a href="/kb/en/authentication-plugin-pam/">PAM 身份验证插件</a> 接受 <a href="/kb/en/authentication-plugin-pam/#configuring-the-pam-service">服务名称</a>：</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="n">foo2</span><span class="o">@</span><span class="n">test</span> <span class="n">IDENTIFIED</span> <span class="n">VIA</span> <span class="n">pam</span> <span class="k">USING</span> <span class="s1">&#39;mariadb&#39;</span><span class="p">;</span>
+</pre><p>附加参数的确切含义取决于特定的身份验证插件。</p>
+<div class="mariadb_from_10_4_0 mariadb from_10_4_0 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1040-release-notes/">10.4.0</a></h5><p>如果作为 <a href="/kb/en/password/">PASSWORD()</a> 函数的参数提供明文密码，则可以使用<code>USING</code>或<code>AS</code>关键字向插件提供明文密码。这仅适用于已实现 <a href="/kb/en/password/">PASSWORD()</a> 函数钩子的 <a href="/kb/en/authentication-plugins/">authentication plugins</a>。例如，<a href="/kb/en/authentication-plugin-ed25519/">ed25519</a>身份验证插件支持此功能：</p>
+<pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">safe</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">VIA</span> <span class="n">ed25519</span> 
+  <span class="k">USING</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;secret&#39;</span><span class="p">);</span>
+</pre></div><div class="mariadb_from_10_4_3 mariadb from_10_4_3 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1043-release-notes/">10.4.3</a></h5><p>可以指定多个身份验证插件，它们都可以作为验证用户的替代方式：</p>
+<pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">safe</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">VIA</span> <span class="n">ed25519</span> 
+  <span class="k">USING</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;secret&#39;</span><span class="p">)</span> <span class="k">OR</span> <span class="n">unix_socket</span><span class="p">;</span>
+</pre></div><p>默认情况下，当您创建一个未指定身份验证插件的用户时，MariaDB 使用 <a href="/kb/en/authentication-plugin-mysql_native_password/">mysql_native_password</a> 插件。</p>
+<h3 class="anchored_heading" id="资源限制选项">资源限制选项</h3>
+<p>可以为某些服务器资源设置每个帐户的限制。以下表格显示可以为每个帐户设置的值：</p>
+<div class="cstm-style darkheader-nospace-borders"><table><tr><th>限制类型</th><th>描述</th></tr>
+<tr><td><code>MAX_QUERIES_PER_HOUR</code></td><td>帐户每小时可以发出的语句数（包括更新）</td></tr>
+<tr><td><code>MAX_UPDATES_PER_HOUR</code></td><td>帐户每小时可以发出的更新数（不是查询）</td></tr>
+<tr><td><code>MAX_CONNECTIONS_PER_HOUR`</code></td><td>帐户每小时可以启动的连接数</td></tr>
+<tr><td><code>MAX_USER_CONNECTIONS</code></td><td>可以从同一帐户接受的同时连接数；如果为 0，则将使用<code>max_connections</code>；如果<code>max_connections</code>为 0，则此帐户的同时连接没有限制。</td></tr>
+<tr><td><code>MAX_STATEMENT_TIME</code></td><td>用户执行的语句的超时时间（以秒为单位）。另请参见 <a href="/kb/en/aborting-statements/">终止执行时间超过一定时间的语句</a>。</td></tr>
+</table>
+</div><p>如果这些限制中有任何一个设置为<code>0</code>，则该用户的该资源没有限制。</p>
+<p>要为帐户设置资源限制，如果您不想更改该帐户的权限，则可以使用没有意义的<code>USAGE</code>权限发出 <code>GRANT</code>语句。该语句可以按任何顺序命名某些或所有限制类型。</p>
+<p>以下是一个设置资源限制的示例：</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;someone&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="k">WITH</span>
+    <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">0</span>
+    <span class="n">MAX_QUERIES_PER_HOUR</span> <span class="mi">200</span><span class="p">;</span>
+</pre><p>资源是按帐户跟踪的，这意味着按 <code>'user'@'server'</code> 跟踪，而不是按用户名或连接跟踪。</p>
+<p>可以使用 <a href="/kb/en/flush/">FLUSH USER_RESOURCES</a>、<a href="/kb/en/flush/">FLUSH PRIVILEGES</a> 或 <a href="/kb/en/mysqladmin/">mysqladmin reload</a> 重置所有用户的计数。</p>
+<p>拥有 <code>CONNECTION ADMIN</code> 特权（在 <a href="/kb/en/mariadb-1052-release-notes/">MariaDB 10.5.2</a> 及更高版本中）或 <code>SUPER</code> 特权的用户不受 <code>max_user_connections</code>、<code>max_connections</code> 或 <code>max_password_errors</code> 的限制。</p>
+<p>按帐户的资源限制存储在 <a href="/kb/en/mysqluser-table/">user</a> 表中，位于 <a href="/kb/en/the-mysql-database-tables/">mysql</a> 数据库中。用于资源限制的列名为 <code>max_questions</code>、<code>max_updates</code>、<code>max_connections</code>（对应于 <code>MAX_CONNECTIONS_PER_HOUR</code>）和 <code>max_user_connections</code>（对应于 <code>MAX_USER_CONNECTIONS</code>）。</p>
+<h3 class="anchored_heading" id="tls-选项">TLS 选项</h3>
+<p>默认情况下，MariaDB 在服务器和客户端之间传输数据时不加密。当服务器和客户端在同一主机上运行或在通过其他手段保证安全性的网络中运行时，这通常是可以接受的。但是，在服务器和客户端存在于不同网络或它们在高风险网络中的情况下，缺乏加密确实会引入安全问题，因为恶意行为者可能会窃听它们之间在网络上传输的流量。</p>
+<p>为了缓解这种担忧，MariaDB 允许您使用传输层安全性（TLS）协议在服务器和客户端之间加密传输数据。TLS 以前称为安全套接字层（SSL），但严格来说 SSL 协议是 TLS 的前身，该协议的版本现在被认为是不安全的。文档仍然经常使用 SSL 术语，并且出于兼容性原因，与 TLS 相关的服务器系统和状态变量仍然使用 ssl_ 前缀，但在内部，MariaDB 仅支持其安全后继者。</p>
+<p>有关如何确定您的 MariaDB 服务器是否支持 TLS，请参见 <a href="/kb/en/secure-connections-overview/">安全连接概述</a>，以获取更多信息。</p>
+<p>有些 TLS 相关的限制可以针对特定的用户帐户进行设置。例如，您可能会将其用于需要访问敏感数据并将其发送到您无法控制的网络上的用户帐户。可以使用 <a href="/kb/en/create-user/">CREATE USER</a>、<a href="/kb/en/alter-user/">ALTER USER</a> 或 <a href="/kb/en/grant/">GRANT</a> 语句为用户帐户启用这些限制。以下选项可用：</p>
+<div class="cstm-style darkheader-nospace-borders"><table><tr><th>选项</th><th>描述</th></tr>
+<tr><td><code>REQUIRE NONE</code></td><td>此帐户不需要 TLS，但仍可以使用。</td></tr>
+<tr><td><code>REQUIRE SSL</code></td><td>必须使用 TLS，但不需要有效的 X509 证书。此选项不能与其他 TLS 选项组合使用。</td></tr>
+<tr><td><code>REQUIRE X509</code></td><td>必须使用 TLS 并且必须具有有效的 X509 证书。此选项意味着 <code>REQUIRE SSL</code>。此选项不能与其他 TLS 选项组合使用。</td></tr>
+<tr><td><code>REQUIRE ISSUER 'issuer'</code></td><td>必须使用 TLS 并且必须具有有效的 X509 证书。此外，证书颁发机构必须是通过字符串 <code>issuer</code> 指定的机构。此选项意味着 <code>REQUIRE X509</code>。此选项可以与任意顺序的 <code>SUBJECT</code> 和 <code>CIPHER</code> 选项组合。</td></tr>
+<tr><td><code>REQUIRE SUBJECT 'subject'</code></td><td>必须使用 TLS 并且必须具有有效的 X509 证书。此外，证书的主题必须是通过字符串 <code>subject</code> 指定的主题。此选项意味着 <code>REQUIRE X509</code>。此选项可以与任意顺序的 <code>ISSUER</code> 和 <code>CIPHER</code> 选项组合。</td></tr>
+<tr><td><code>REQUIRE CIPHER 'cipher'</code></td><td>必须使用 TLS，但不需要有效的 X509 证书。此外，用于连接的加密必须使用在字符串 <code>cipher</code> 中指定的特定加密方法。此选项意味着 <code>REQUIRE SSL</code>。此选项可以与任意顺序的 <code>ISSUER</code> 和 <code>SUBJECT</code> 选项组合。</td></tr>
+</table>
+</div><p><code>REQUIRE</code> 关键字只能用于指定的所有选项中一次，并且可以使用 <code>AND</code> 关键字将单个选项分隔开，但不是必需的。</p>
+<p>例如，您可以创建一个需要以下 TLS 选项的用户帐户：</p>
+<pre class="fixed wrap"><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;alice&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span>
+  <span class="n">REQUIRE</span> <span class="n">SUBJECT</span> <span class="s1">&#39;/CN=alice/O=My Dom, Inc./C=US/ST=Oregon/L=Portland&#39;</span>
+  <span class="k">AND</span> <span class="n">ISSUER</span> <span class="s1">&#39;/C=FI/ST=Somewhere/L=City/ O=Some Company/CN=Peter Parker/emailAddress=p.parker@marvel.com&#39;</span>
+  <span class="k">AND</span> <span class="n">CIPHER</span> <span class="s1">&#39;SHA-DES-CBC3-EDH-RSA&#39;</span><span class="p">;</span>
+</pre><p>如果为特定用户帐户设置了这些选项中的任何一个，则尝试使用该用户帐户连接的任何客户端都必须配置为使用 TLS 连接。</p>
+<p>有关如何在客户端和服务器上启用 TLS 的信息，请参见 <a href="/kb/en/securing-connections-for-client-and-server/">为客户端和服务器保护连接</a>。</p>
+<h3 class="anchored_heading" id="角色">角色</h3>
+<h4 class="anchored_heading" id="语法">语法</h4>
+<pre class="fixed">GRANT role TO grantee [, grantee ... ]
+[ WITH ADMIN OPTION ]
+
+<em>grantee</em>:
+    rolename
+    username [<em>authentication_option</em>]
+</pre><p>GRANT 语句还用于将 <a href="/kb/en/roles/">角色</a> 的使用授予一个或多个用户或其他角色。为了能够授予角色，执行此操作的授权者必须有权限这样做（请参见 <a href="/kb/en/create-role/">CREATE ROLE</a> 文章中的 WITH ADMIN）。</p>
+<p>指定 <code>WITH ADMIN OPTION</code> 允许授权方将该角色授予其他用户。</p>
+<p>例如，以下命令显示如何将相同的角色授予几个不同的用户。</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="n">journalist</span> <span class="k">TO</span> <span class="n">hulda</span><span class="p">;</span>
+
+<span class="k">GRANT</span> <span class="n">journalist</span> <span class="k">TO</span> <span class="n">berengar</span> <span class="k">WITH</span> <span class="k">ADMIN</span> <span class="k">OPTION</span><span class="p">;</span>
+</pre><p>如果用户被授予了角色，则他们不会自动获得与该角色相关联的所有权限。只有当用户使用 <a href="/kb/en/set-role/">SET ROLE</a> 语句激活角色时，才会使用这些权限。</p>
+<h3 class="anchored_heading" id="to-public">TO PUBLIC</h3>
+<div class="mariadb_from_10_11 mariadb from_10_11 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/what-is-mariadb-1011/">10.11</a></h5><h4 class="anchored_heading" id="语法">语法</h4>
+<pre class="fixed">GRANT &lt;privilege&gt; ON &lt;database&gt;.&lt;object&gt; TO PUBLIC;
+REVOKE &lt;privilege&gt; ON &lt;database&gt;.&lt;object&gt; FROM PUBLIC;
+</pre><p>GRANT ... TO PUBLIC 授予具有访问服务器权限的所有用户权限。这些权限也适用于在授予权限后创建的用户。当只想一次性声明所有用户需要具有某个特定权限集时，这可能很有用。</p>
+<p>在运行 <a href="/kb/en/show-grants/">SHOW GRANTS</a> 时，用户还将看到从 PUBLIC 继承的所有权限。<a href="/kb/en/show-grants/#for-public">SHOW GRANTS FOR PUBLIC</a> 仅显示 TO PUBLIC 授权。 </p>
+</div><h2 class="anchored_heading" id="授权示例">授权示例</h2>
+<h3 class="anchored_heading" id="授予类似于-root-的权限">授予类似于 root 的权限</h3>
+<p>您可以通过执行以下操作创建具有类似于默认 <code>root</code> 帐户的权限的用户：</p>
+<pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;alexander&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span>  <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;alexander&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+</pre><h2 class="anchored_heading" id="另请参阅">另请参阅</h2>
+<ul start="1"><li><a href="/kb/en/troubleshooting-connection-issues/">故障排除连接问题</a>
+</li><li><a href="/kb/en/mysqld-options/#-skip-grant-tables">--skip-grant-tables</a> 允许您在不使用 <code>GRANT</code> 的情况下启动 MariaDB。如果您忘记了 root 密码，这很有用。
+</li><li><a href="/kb/en/create-user/">CREATE USER</a>
+</li><li><a href="/kb/en/alter-user/">ALTER USER</a>
+</li><li><a href="/kb/en/drop-user/">DROP USER</a>
+</li><li><a href="/kb/en/set-password/">SET PASSWORD</a>
+</li><li><a href="/kb/en/show-create-user/">SHOW CREATE USER</a>
+</li><li><a href="/kb/en/mysqlglobal_priv-table/">mysql.global_priv 表</a>
+</li><li><a href="/kb/en/mysqluser-table/">mysql.user 表</a>
+</li><li><a href="/kb/en/password-validation-plugins/">密码验证插件</a> - 允许设置密码的基本标准
+</li><li><a href="/kb/en/authentication-plugins/">认证插件</a> - 允许使用各种认证方法，并开发新的方法。</li></ul>
 
     </div>
 

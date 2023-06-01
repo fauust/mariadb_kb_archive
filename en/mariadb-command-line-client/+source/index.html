@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-command-line-client/+r/126101/">126101</a></dd>
+            <dd><a href="/kb/en/mariadb-command-line-client/+r/126562/">126562</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-23 20:55">2023-05-23 20:55</span></dd>
+<span class="datetime" title="2023-05-30 20:42">2023-05-30 20:42</span></dd>
         </dl>
     </div>
     
@@ -378,7 +378,7 @@ mariadb &lt;options&gt;
 | ##-A##, ##--no-auto-rehash## | No automatic rehashing. One has to use &#39;rehash&#39; to get table and field completion. This gives a quicker start of mariadb and disables rehashing on reconnect.
 | ##--auto-vertical-output## | Automatically switch to vertical output mode if the result is wider than the terminal width.
 | ##-B##, ##--batch## | Print results using tab as the column separator, with each row on a new line. With this option, mariadb does not use the history file. Batch mode results in nontabular output format and escaping of special characters. Escaping may be disabled by using raw mode; see the description for the ##--raw## option. (Enables ##--silent##.)
-| ##--binary-mode## | By default, ASCII &#39;\0&#39; is disallowed and &#39;\r\n&#39; is translated to &#39;\n&#39;. This switch turns off both features, and also turns off parsing of all client commands except \C and DELIMITER, in non-interactive mode (for input piped to mariadb or loaded using the &#39;source&#39; command). This is necessary when processing output from [[mysqlbinlog]] that may contain blobs.
+| ##--binary-mode## | By default, ASCII &#39;\0&#39; is disallowed and &#39;\r\n&#39; is translated to &#39;\n&#39;. This switch turns off both features, and also turns off parsing of all client commands except \C and DELIMITER, in non-interactive mode (for input piped to mariadb or loaded using the &#39;source&#39; command). This is necessary when processing output from [[mariadb-binlog]] that may contain blobs.
 | ##--character-sets-dir=name## | Directory for [[data-types-character-sets-and-collations|character set]] files.
 | ##--column-names## | Write column names in results. (Defaults to on; use ##--skip-column-names## to disable.)
 | ##--column-type-info## | Display column type information.

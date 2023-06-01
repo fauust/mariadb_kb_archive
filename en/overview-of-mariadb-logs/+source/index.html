@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/overview-of-mariadb-logs/+r/125982/">125982</a></dd>
+            <dd><a href="/kb/en/overview-of-mariadb-logs/+r/126577/">126577</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-7">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-22 16:00">2023-05-22 16:00</span></dd>
+<span class="datetime" title="2023-05-30 21:33">2023-05-30 21:33</span></dd>
         </dl>
     </div>
     
@@ -309,20 +309,20 @@ This article will give you an overview of the different logs and how to enable/d
 
 Note that storage engines can have their logs too: for example, InnoDB keeps an [[undo-log|Undo Log]] and a Redo Log which are used for rollback and crash recovery. However, this page only lists MariaDB server logs.
 
-=== [[error-log|The error log]]
+=== [[error-log|Error Log]]
 * Always enabled
 * Usually a file in the data directory, but some distributions may move this to other locations.
 * All critical errors are logged here.
 * One can get warnings to be logged by setting [[server-system-variables#log_warnings|log_warnings]].
 * With the [[mysqld_safe|mysqld_safe]] &lt;&lt;code&gt;&gt;--syslog&lt;&lt;/code&gt;&gt; option one can duplicate the messages to the system&#39;s syslog.
 
-=== [[general-query-log|General query log]]
+=== [[general-query-log|General Query Log]]
 * Enabled with [[server-system-variables#general_log|--general-log]]
 * Logs all queries to a [[server-system-variables#log_output|file or table]].
 * Useful for debugging or auditing queries.
 * The super user can disable logging to it for a connection by setting [[server-system-variables#sql_log_off|SQL_LOG_OFF]] to 1.
 
-=== [[slow-query-log|Slow Query log]]
+=== [[slow-query-log|Slow Query Log]]
 
 * Enabled by starting mysqld with [[server-system-variables#slow_query_log|--slow-query-log]]
 * Logs all queries to a [[server-system-variables#log_output|file or table]].
@@ -333,11 +333,11 @@ Note that storage engines can have their logs too: for example, InnoDB keeps an 
 * One can disable it globally by setting [[server-system-variables#slow_query_log|global.slow_query_log]] to 0
 * In 10.1 one can disable it for a connection by setting [[server-system-variables#slow_query_log|local.slow_query_log]] to 0.
 
-=== [[overview-of-the-binary-log|The binary log]]
+=== [[overview-of-the-binary-log|Binary Log]]
 * Enabled by starting mysqld with [[replication-and-binary-log-server-system-variables#log_bin|--log-bin]]
 * Used on machines that are, or may become, replication masters.
 * Required for point-in-time recovery.
-* Binary log files are mainly used by replication and can also be used with [[mysqlbinlog]] to apply on a backup to get the database up to date.
+* Binary log files are mainly used by replication and can also be used with [[mariadb-binlog]] to apply on a backup to get the database up to date.
 * One can decide what to log with [[mysqld-options#-binlog-ignore-db|--binlog-ignore-db=database_name]] or [[mysqld-options#-binlog-do-db|--binlog-do-db=database_name]].
 * The super user can disable logging for a connection by [[set-sql_log_bin|setting SQL_LOG_BIN]] to 0. However while this is 0, no changes done in this connection will be replicated to the slaves!
 * For examples, see [[using-and-maintaining-the-binary-log|Using and Maintaining the Binary Log]].

@@ -280,7 +280,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/zh-cn/grant/+r/126550/">126550</a></dd>
+            <dd><a href="/kb/zh-cn/grant/+r/126692/">126692</a></dd>
             <dt>用户</dt>
             <dd>
 <span class="user" id="user-13772">
@@ -289,7 +289,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-30 13:26">2023-05-30 13:26</span></dd>
+<span class="datetime" title="2023-05-31 13:55">2023-05-31 13:55</span></dd>
         </dl>
     </div>
     
@@ -842,7 +842,207 @@ GRANT USAGE ON *.* TO foo2@test IDENTIFIED BY &#39;mariadb&#39;;
 
 如果用户帐户已经存在并且您提供了##IDENTIFIED BY##子句，则用户的密码将被更改。您必须具有[[set-password|SET PASSWORD]]语句所需的权限才能使用##GRANT##更改用户的密码。
 
-此子句支持的唯一[[authentication-plugins|authentication plugins]]是[[authentication-plugin-mysql_native_password|mysql_native_password]]和[[authentication-plugin-mysql_old_password|mysql_old_password]]。</textarea>
+此子句支持的唯一[[authentication-plugins|authentication plugins]]是[[authentication-plugin-mysql_native_password|mysql_native_password]]和[[authentication-plugin-mysql_old_password|mysql_old_password]]。
+
+==== IDENTIFIED BY PASSWORD &#39;password_hash&#39;
+
+可选的##IDENTIFIED BY PASSWORD##子句可用于为已经散列的密码提供帐户。密码应指定为由 [[password|PASSWORD]] 函数提供的哈希值。它将按原样存储。
+
+例如，如果我们的密码是##mariadb##，则可以使用以下命令找到哈希值：
+
+&lt;&lt;sql&gt;&gt;
+SELECT PASSWORD(&#39;mariadb&#39;);
++-------------------------------------------+
+| PASSWORD(&#39;mariadb&#39;)                       |
++-------------------------------------------+
+| *54958E764CE10E50764C2EECBB71D01F08549980 |
++-------------------------------------------+
+1 row in set (0.00 sec)
+&lt;&lt;/sql&gt;&gt;
+
+然后，我们可以使用该哈希值创建用户：
+
+&lt;&lt;sql&gt;&gt;
+GRANT USAGE ON *.* TO foo2@test IDENTIFIED BY 
+  PASSWORD &#39;*54958E764CE10E50764C2EECBB71D01F08549980&#39;;
+&lt;&lt;/sql&gt;&gt;
+
+
+如果您在##IDENTIFIED BY##子句中未指定密码，则用户将能够无密码连接。空白密码不是匹配任何密码的通配符。如果未设置密码，则用户必须在不提供密码的情况下连接。
+
+如果用户帐户已经存在并且您提供了##IDENTIFIED BY##子句，则用户的密码将被更改。您必须拥有执行 [[set-password|SET PASSWORD]]语句所需的特权来使用##GRANT##更改用户的密码。
+
+此子句支持的唯一[[authentication-plugins|身份验证插件]]是[[authentication-plugin-mysql_native_password|mysql_native_password]]和[[authentication-plugin-mysql_old_password|mysql_old_password]]。
+
+==== IDENTIFIED {VIA|WITH} authentication_plugin
+
+可选的##IDENTIFIED VIA authentication_plugin##允许您指定帐户应由特定的[[authentication-plugins|身份验证插件]]进行身份验证。插件名称必须是 [[show-plugins|SHOW PLUGINS]] 中的活动身份验证插件。如果它未显示在该输出中，则需要使用 [[install-plugin|INSTALL PLUGIN]] 或 [[install-soname|INSTALL SONAME]] 进行安装。
+
+例如，可以与 [[authentication-plugin-pam|PAM 身份验证插件]] 一起使用：
+
+&lt;&lt;sql&gt;&gt;
+GRANT USAGE ON *.* TO foo2@test IDENTIFIED VIA pam;
+&lt;&lt;/sql&gt;&gt;
+
+某些身份验证插件允许在##USING##或##AS##关键字之后指定其他参数。例如，[[authentication-plugin-pam|PAM 身份验证插件]] 接受 [[authentication-plugin-pam/#configuring-the-pam-service|服务名称]]：
+
+&lt;&lt;sql&gt;&gt;
+GRANT USAGE ON *.* TO foo2@test IDENTIFIED VIA pam USING &#39;mariadb&#39;;
+&lt;&lt;/sql&gt;&gt;
+
+附加参数的确切含义取决于特定的身份验证插件。
+
+&lt;&lt;product mariadb from=&#34;10.4.0&#34;&gt;&gt;
+如果作为 [[password|PASSWORD()]] 函数的参数提供明文密码，则可以使用##USING##或##AS##关键字向插件提供明文密码。这仅适用于已实现 [[password|PASSWORD()]] 函数钩子的 [[authentication-plugins|authentication plugins]]。例如，[[authentication-plugin-ed25519|ed25519]]身份验证插件支持此功能：
+
+&lt;&lt;sql&gt;&gt;
+CREATE USER safe@&#39;%&#39; IDENTIFIED VIA ed25519 
+  USING PASSWORD(&#39;secret&#39;);
+&lt;&lt;/sql&gt;&gt;
+&lt;&lt;/product&gt;&gt;
+
+&lt;&lt;product mariadb from=&#34;10.4.3&#34;&gt;&gt;
+可以指定多个身份验证插件，它们都可以作为验证用户的替代方式：
+
+&lt;&lt;sql&gt;&gt;
+CREATE USER safe@&#39;%&#39; IDENTIFIED VIA ed25519 
+  USING PASSWORD(&#39;secret&#39;) OR unix_socket;
+&lt;&lt;/sql&gt;&gt;
+&lt;&lt;/product&gt;&gt;
+
+默认情况下，当您创建一个未指定身份验证插件的用户时，MariaDB 使用 [[authentication-plugin-mysql_native_password|mysql_native_password]] 插件。
+
+=== 资源限制选项
+
+可以为某些服务器资源设置每个帐户的限制。以下表格显示可以为每个帐户设置的值：
+
+&lt;&lt;style class=&#34;darkheader-nospace-borders&#34;&gt;&gt;
+|= 限制类型 |= 描述
+| ##MAX_QUERIES_PER_HOUR## | 帐户每小时可以发出的语句数（包括更新）
+| ##MAX_UPDATES_PER_HOUR## | 帐户每小时可以发出的更新数（不是查询）
+| ##MAX_CONNECTIONS_PER_HOUR` | 帐户每小时可以启动的连接数
+| ##MAX_USER_CONNECTIONS## | 可以从同一帐户接受的同时连接数；如果为 0，则将使用##max_connections##；如果##max_connections##为 0，则此帐户的同时连接没有限制。
+| ##MAX_STATEMENT_TIME## | 用户执行的语句的超时时间（以秒为单位）。另请参见 [[aborting-statements|终止执行时间超过一定时间的语句]]。
+&lt;&lt;/style&gt;&gt;
+
+如果这些限制中有任何一个设置为##0##，则该用户的该资源没有限制。
+
+要为帐户设置资源限制，如果您不想更改该帐户的权限，则可以使用没有意义的##USAGE##权限发出 ##GRANT##语句。该语句可以按任何顺序命名某些或所有限制类型。
+
+以下是一个设置资源限制的示例：
+
+&lt;&lt;sql&gt;&gt;
+GRANT USAGE ON *.* TO &#39;someone&#39;@&#39;localhost&#39; WITH
+    MAX_USER_CONNECTIONS 0
+    MAX_QUERIES_PER_HOUR 200;
+&lt;&lt;/sql&gt;&gt;
+
+资源是按帐户跟踪的，这意味着按 ##&#39;user&#39;@&#39;server&#39;## 跟踪，而不是按用户名或连接跟踪。
+
+可以使用 [[flush|FLUSH USER_RESOURCES]]、[[flush|FLUSH PRIVILEGES]] 或 [[mysqladmin|mysqladmin reload]] 重置所有用户的计数。
+
+拥有 ##CONNECTION ADMIN## 特权（在 MariaDB 10.5.2 及更高版本中）或 ##SUPER## 特权的用户不受 ##max_user_connections##、##max_connections## 或 ##max_password_errors## 的限制。
+
+按帐户的资源限制存储在 [[mysqluser-table|user]] 表中，位于 [[the-mysql-database-tables|mysql]] 数据库中。用于资源限制的列名为 ##max_questions##、##max_updates##、##max_connections##（对应于 ##MAX_CONNECTIONS_PER_HOUR##）和 ##max_user_connections##（对应于 ##MAX_USER_CONNECTIONS##）。
+
+=== TLS 选项
+
+默认情况下，MariaDB 在服务器和客户端之间传输数据时不加密。当服务器和客户端在同一主机上运行或在通过其他手段保证安全性的网络中运行时，这通常是可以接受的。但是，在服务器和客户端存在于不同网络或它们在高风险网络中的情况下，缺乏加密确实会引入安全问题，因为恶意行为者可能会窃听它们之间在网络上传输的流量。
+
+为了缓解这种担忧，MariaDB 允许您使用传输层安全性（TLS）协议在服务器和客户端之间加密传输数据。TLS 以前称为安全套接字层（SSL），但严格来说 SSL 协议是 TLS 的前身，该协议的版本现在被认为是不安全的。文档仍然经常使用 SSL 术语，并且出于兼容性原因，与 TLS 相关的服务器系统和状态变量仍然使用 ssl_ 前缀，但在内部，MariaDB 仅支持其安全后继者。
+
+有关如何确定您的 MariaDB 服务器是否支持 TLS，请参见 [[secure-connections-overview|安全连接概述]]，以获取更多信息。
+
+有些 TLS 相关的限制可以针对特定的用户帐户进行设置。例如，您可能会将其用于需要访问敏感数据并将其发送到您无法控制的网络上的用户帐户。可以使用 [[create-user|CREATE USER]]、[[alter-user|ALTER USER]] 或 [[grant|GRANT]] 语句为用户帐户启用这些限制。以下选项可用：
+
+&lt;&lt;style class=&#34;darkheader-nospace-borders&#34;&gt;&gt;
+|= 选项 |= 描述
+| ##REQUIRE NONE## | 此帐户不需要 TLS，但仍可以使用。
+| ##REQUIRE SSL## | 必须使用 TLS，但不需要有效的 X509 证书。此选项不能与其他 TLS 选项组合使用。
+| ##REQUIRE X509## | 必须使用 TLS 并且必须具有有效的 X509 证书。此选项意味着 ##REQUIRE SSL##。此选项不能与其他 TLS 选项组合使用。
+| ##REQUIRE ISSUER &#39;issuer&#39; | 必须使用 TLS 并且必须具有有效的 X509 证书。此外，证书颁发机构必须是通过字符串 ##issuer## 指定的机构。此选项意味着 ##REQUIRE X509##。此选项可以与任意顺序的 ##SUBJECT## 和 ##CIPHER## 选项组合。
+| ##REQUIRE SUBJECT &#39;subject&#39; | 必须使用 TLS 并且必须具有有效的 X509 证书。此外，证书的主题必须是通过字符串 ##subject## 指定的主题。此选项意味着 ##REQUIRE X509##。此选项可以与任意顺序的 ##ISSUER## 和 ##CIPHER## 选项组合。
+| ##REQUIRE CIPHER &#39;cipher&#39; | 必须使用 TLS，但不需要有效的 X509 证书。此外，用于连接的加密必须使用在字符串 ##cipher## 中指定的特定加密方法。此选项意味着 ##REQUIRE SSL##。此选项可以与任意顺序的 ##ISSUER## 和 ##SUBJECT## 选项组合。
+&lt;&lt;/style&gt;&gt;
+
+##REQUIRE## 关键字只能用于指定的所有选项中一次，并且可以使用 ##AND## 关键字将单个选项分隔开，但不是必需的。
+
+例如，您可以创建一个需要以下 TLS 选项的用户帐户：
+
+&lt;&lt;code lang=sql wrap=true&gt;&gt;
+GRANT USAGE ON *.* TO &#39;alice&#39;@&#39;%&#39;
+  REQUIRE SUBJECT &#39;/CN=alice/O=My Dom, Inc./C=US/ST=Oregon/L=Portland&#39;
+  AND ISSUER &#39;/C=FI/ST=Somewhere/L=City/ O=Some Company/CN=Peter Parker/emailAddress=p.parker@marvel.com&#39;
+  AND CIPHER &#39;SHA-DES-CBC3-EDH-RSA&#39;;
+&lt;&lt;/code&gt;&gt;
+
+如果为特定用户帐户设置了这些选项中的任何一个，则尝试使用该用户帐户连接的任何客户端都必须配置为使用 TLS 连接。
+
+有关如何在客户端和服务器上启用 TLS 的信息，请参见 [[securing-connections-for-client-and-server|为客户端和服务器保护连接]]。
+
+=== 角色
+
+==== 语法
+&lt;&lt;code&gt;&gt;
+GRANT role TO grantee [, grantee ... ]
+[ WITH ADMIN OPTION ]
+
+&lt;&lt;creole&gt;&gt;//grantee//:&lt;&lt;/creole&gt;&gt;
+    &lt;&lt;creole&gt;&gt;rolename&lt;&lt;/creole&gt;&gt;
+    &lt;&lt;creole&gt;&gt;username [//authentication_option//]&lt;&lt;/creole&gt;&gt;
+&lt;&lt;/code&gt;&gt;
+
+GRANT 语句还用于将 [[roles|角色]] 的使用授予一个或多个用户或其他角色。为了能够授予角色，执行此操作的授权者必须有权限这样做（请参见 [[create-role|CREATE ROLE]] 文章中的 WITH ADMIN）。
+
+指定 ##WITH ADMIN OPTION## 允许授权方将该角色授予其他用户。
+
+例如，以下命令显示如何将相同的角色授予几个不同的用户。
+
+&lt;&lt;sql&gt;&gt;
+GRANT journalist TO hulda;
+
+GRANT journalist TO berengar WITH ADMIN OPTION;
+&lt;&lt;/sql&gt;&gt;
+
+如果用户被授予了角色，则他们不会自动获得与该角色相关联的所有权限。只有当用户使用 [[set-role|SET ROLE]] 语句激活角色时，才会使用这些权限。
+
+=== TO PUBLIC
+
+&lt;&lt;product mariadb from=&#34;10.11&#34;&gt;&gt;
+==== 语法
+&lt;&lt;code&gt;&gt;
+GRANT &lt;privilege&gt; ON &lt;database&gt;.&lt;object&gt; TO PUBLIC;
+REVOKE &lt;privilege&gt; ON &lt;database&gt;.&lt;object&gt; FROM PUBLIC;
+&lt;&lt;/code&gt;&gt;
+
+GRANT ... TO PUBLIC 授予具有访问服务器权限的所有用户权限。这些权限也适用于在授予权限后创建的用户。当只想一次性声明所有用户需要具有某个特定权限集时，这可能很有用。
+
+在运行 [[show-grants|SHOW GRANTS]] 时，用户还将看到从 PUBLIC 继承的所有权限。[[show-grants/#for-public|SHOW GRANTS FOR PUBLIC]] 仅显示 TO PUBLIC 授权。 
+&lt;&lt;/product&gt;&gt;
+
+== 授权示例
+
+=== 授予类似于 root 的权限
+
+您可以通过执行以下操作创建具有类似于默认 ##root## 帐户的权限的用户：
+
+&lt;&lt;sql&gt;&gt;
+CREATE USER &#39;alexander&#39;@&#39;localhost&#39;;
+GRANT ALL PRIVILEGES ON  *.* to &#39;alexander&#39;@&#39;localhost&#39; WITH GRANT OPTION;
+&lt;&lt;/sql&gt;&gt;
+
+== 另请参阅
+* [[troubleshooting-connection-issues|故障排除连接问题]]
+* [[mysqld-options#-skip-grant-tables|--skip-grant-tables]] 允许您在不使用 ##GRANT## 的情况下启动 MariaDB。如果您忘记了 root 密码，这很有用。
+* [[create-user|CREATE USER]]
+* [[alter-user|ALTER USER]]
+* [[drop-user|DROP USER]]
+* [[set-password|SET PASSWORD]]
+* [[show-create-user|SHOW CREATE USER]]
+* [[mysqlglobal_priv-table|mysql.global_priv 表]]
+* [[mysqluser-table|mysql.user 表]]
+* [[password-validation-plugins|密码验证插件]] - 允许设置密码的基本标准
+* [[authentication-plugins|认证插件]] - 允许使用各种认证方法，并开发新的方法。</textarea>
     
 
 
