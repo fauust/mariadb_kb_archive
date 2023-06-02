@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/authentication-plugin-pam/+r/126118/">126118</a></dd>
+            <dd><a href="/kb/en/authentication-plugin-pam/+r/126705/">126705</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-27">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-23 21:19">2023-05-23 21:19</span></dd>
+<span class="datetime" title="2023-06-01 09:47">2023-06-01 09:47</span></dd>
         </dl>
     </div>
     
@@ -791,6 +791,25 @@ allow this access for now by executing:
 Sometimes issues like this can be fixed by updating the system&#39;s SELinux policies. You may be able to update the policies using [[https://linux.die.net/man/1/audit2allow|audit2allow]]. See [[selinux/#generating-selinux-policies-with-audit2allow|SELinux: Generating SELinux Policies with audit2allow]] for more information.
 
 If you can&#39;t get the ##pam## authentication plugin to work with SELinux at all, then it can help to disable SELinux entirely. See [[selinux/#changing-selinuxs-mode|SELinux: Changing SELinux&#39;s Mode]] for information on how to do this.
+
+=== Memory over commit 
+
+On MariaDB 10.4 and later you may run into authentication failures with the following log message in the MariaDB error log:
+
+&lt;&lt;code&gt;&gt;
+pam: cannot exec /usr/lib64/mysql/plugin/auth_pam_tool_dir/auth_pam_tool (errno: 12 &#34;Cannot allocate memory&#34;) 
+&lt;&lt;/code&gt;&gt;
+
+This can happen on operating system setups that are configured to prevent memory over-commit. When the MariaDB server process spawns the ##auth_pam_tool## helper process there&#39;s a brief period where the new process inherits the memory of the MariaDB process before releasing that memory and executing the new command. When having a MariaDB server configured to use more than 50% of the server machnines RAM -- which is common for dedicated database servers -- this duplication would lead to an over-commit situation.
+
+Starting with MariaDB 10.4.25, 10.5.16, 10.6.8, and 10.7.4, we changed to use the ##posix_spawn()## instead of classic ##fork();exec()## to prevent this, but systems with older Glibc versions prior to 2.26 still use ##fork();exec()## to implement ##posix_spawn()## internally and so are still affected; this is for example still the case on RedHat Enterprise Linux 7.
+
+To solve this you can either of:
+
+* change the ##vm.overcommit_memory## kernel setting to allow memory overcommit
+* install the older ##auth_pam_v1## plugin version that does not spawn a helper process (but may run into problems with file permissions or multi threading with some PAM modules)
+
+See also MDEV-26212 and MDEV-30734
 
 == Tutorials
 

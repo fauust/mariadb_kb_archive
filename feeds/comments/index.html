@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Wed, 31 May 2023 19:25:41 +0000</lastBuildDate><item><title>Re: Where is mariadb.cnf config file variables, and there meaning?</title><link>https://mariadb.com/kb/en/where-is-mariadb-cnf-config-file-variables-and-there-meaning/+comments/6247</link><description>&lt;p&gt;See &lt;a href="/kb/en/full-list-of-mariadb-options-system-and-status-variables/"&gt;Full List of MariaDB Options, System and Status Variables&lt;/a&gt; or &lt;a href="/kb/en/server-system-variables/"&gt;Server System Variables&lt;/a&gt;.&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Thu, 01 Jun 2023 19:32:14 +0000</lastBuildDate><item><title>Re: You have an error in your SQL syntax; check the manual that corresponds</title><link>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6255</link><description>&lt;p&gt;-- Create the sample database
+CREATE DATABASE testdb;&lt;/p&gt;
+&lt;p&gt;-- Switch to the test database
+USE testdb;&lt;/p&gt;
+&lt;p&gt;-- Create the sample table
+CREATE TABLE SampleTable (
+    DateValue DATE,
+    CopperHeadGrade DOUBLE,
+    LeadHG_Pb DOUBLE,
+    ZincHG DOUBLE,
+    SilverHG DOUBLE,
+    DeliveredToPlant DOUBLE,
+    Milled DOUBLE,
+    CopperCuPercentage DOUBLE,
+    CopperCuRecovery DOUBLE,
+    LeadPbPercentage DOUBLE,
+    LeadPbRecovery DOUBLE,
+    ZincZnPercentage DOUBLE,
+    ZincZnRecovery DOUBLE,
+    TonsSilverAg DOUBLE,
+    SilverAgRecovery DOUBLE,
+    Source NVARCHAR(255),
+    CopperInCopper DOUBLE,
+    LeadInCopper DOUBLE,
+    ZincInCopper DOUBLE,
+    SilverInCopper DOUBLE,
+    pH DOUBLE,
+    OilInFeed DOUBLE,
+    Measure_150microns DOUBLE,
+    RedoxPotential_eH DOUBLE
+);&lt;/p&gt;
+&lt;p&gt;-- Insert sample data into the table
+INSERT INTO SampleTable VALUES
+    ('2023-05-31', 1.5, 2.3, 3.1, 4.2, 100, 200, 60, 80, 20, 70, 30, 90, 500, 85, 'Sample Source', 0.8, 1.2, 2.5, 3.8, 7.2, 0.5, 5.5, 600);&lt;/p&gt;
+&lt;p&gt;-- Query the sample data
+SELECT * FROM SampleTable;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Anthony Apollis</dc:creator><guid>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6255</guid></item><item><title>Re: You have an error in your SQL syntax; check the manual that corresponds</title><link>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6254</link><description>&lt;p&gt;-- Create the sample database
+CREATE DATABASE testdb;&lt;/p&gt;
+&lt;p&gt;-- Switch to the test database
+USE testdb;&lt;/p&gt;
+&lt;p&gt;-- Create the sample table
+CREATE TABLE SampleTable (
+    DateValue DATE,
+    CopperHeadGrade DOUBLE,
+    LeadHG_Pb DOUBLE,
+    ZincHG DOUBLE,
+    SilverHG DOUBLE,
+    DeliveredToPlant DOUBLE,
+    Milled DOUBLE,
+    CopperCuPercentage DOUBLE,
+    CopperCuRecovery DOUBLE,
+    LeadPbPercentage DOUBLE,
+    LeadPbRecovery DOUBLE,
+    ZincZnPercentage DOUBLE,
+    ZincZnRecovery DOUBLE,
+    TonsSilverAg DOUBLE,
+    SilverAgRecovery DOUBLE,
+    Source NVARCHAR(255),
+    CopperInCopper DOUBLE,
+    LeadInCopper DOUBLE,
+    ZincInCopper DOUBLE,
+    SilverInCopper DOUBLE,
+    pH DOUBLE,
+    OilInFeed DOUBLE,
+    Measure_150microns DOUBLE,
+    RedoxPotential_eH DOUBLE
+);&lt;/p&gt;
+&lt;p&gt;-- Insert sample data into the table
+INSERT INTO SampleTable VALUES
+    ('2023-05-31', 1.5, 2.3, 3.1, 4.2, 100, 200, 60, 80, 20, 70, 30, 90, 500, 85, 'Sample Source', 0.8, 1.2, 2.5, 3.8, 7.2, 0.5, 5.5, 600);&lt;/p&gt;
+&lt;p&gt;-- Query the sample data
+SELECT * FROM SampleTable;&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Anthony Apollis</dc:creator><guid>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6254</guid></item><item><title>Re: You have an error in your SQL syntax; check the manual that corresponds</title><link>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6253</link><description>&lt;p&gt;What is the query? :)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6253</guid></item><item><title>Re: You have an error in your SQL syntax; check the manual that corresponds</title><link>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6252</link><description>&lt;p&gt;Its the same error, even when i create the table manually in MariaDB&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Anthony Apollis</dc:creator><guid>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6252</guid></item><item><title>Re: You have an error in your SQL syntax; check the manual that corresponds</title><link>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6251</link><description>&lt;p&gt;Take a look at the quoting around the table name - see &lt;a href="/kb/en/identifier-names/"&gt;Identifier Names&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/you-have-an-error-in-your-sql-syntax-check-the-manual-that-corresponds/+comments/6251</guid></item><item><title>Re: Where is mariadb.cnf config file variables, and there meaning?</title><link>https://mariadb.com/kb/en/where-is-mariadb-cnf-config-file-variables-and-there-meaning/+comments/6247</link><description>&lt;p&gt;See &lt;a href="/kb/en/full-list-of-mariadb-options-system-and-status-variables/"&gt;Full List of MariaDB Options, System and Status Variables&lt;/a&gt; or &lt;a href="/kb/en/server-system-variables/"&gt;Server System Variables&lt;/a&gt;.&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ian Gilfillan</dc:creator><guid>https://mariadb.com/kb/en/where-is-mariadb-cnf-config-file-variables-and-there-meaning/+comments/6247</guid></item><item><title>Re: MariaDB 10.3.30 to 10.6</title><link>https://mariadb.com/kb/en/mariadb-10-3-30-to-10-6/+comments/6246</link><description>&lt;p&gt;Show the SQLs, the SHOW CREATE TABLE, and EXPLAIN query.&lt;/p&gt;
 &lt;p&gt;Enable your slow query log. Consider &lt;a href="/kb/en/explain-in-the-slow-query-log/"&gt;explain-in-the-slow-query-log&lt;/a&gt;. log_queries_not_using_indexes will be noisy if &lt;a href="/kb/en/server-system-variables/#min_examined_row_limit"&gt;min_examined_row_limit&lt;/a&gt; isn't set to 1000 or so to reduce noise.&lt;/p&gt;
 &lt;p&gt;Recommend stripping your config back to the items you've explicitly set because of outcomes particularly disabling query cache.&lt;/p&gt;
@@ -28,9 +103,7 @@ parsed_value|curr   |no_unquote|just_type|quoted_just_type|
 &lt;pre class="fixed"&gt;JSON_TYPE('&amp;#34;a sample string&amp;#34;')|
 ------------------------------+
 STRING                        |
-&lt;/pre&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kevin O'Halloran</dc:creator><guid>https://mariadb.com/kb/en/json_type/+comments/6243</guid></item><item><title>Re: MariaDB Enterprise to do CONNECT</title><link>https://mariadb.com/kb/en/mariadb-enterprise-to-do-connect/+comments/6241</link><description>&lt;p&gt;I am thinking a stupid way but I am NOT sure whether it is just like a joke.&lt;/p&gt;
-&lt;p&gt;MariaDB Enterprise -&amp;gt; Spider -&amp;gt; MariaDB Community -&amp;gt; CONNECT -&amp;gt; csv file(s).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Samuel Sum</dc:creator><guid>https://mariadb.com/kb/en/mariadb-enterprise-to-do-connect/+comments/6241</guid></item><item><title>Upgrading from MariaDB 10.6/10.8/10.9 =&gt; 10.11 dosn't work on Windows</title><link>https://mariadb.com/kb/en/upgrading-mariadb-on-windows/+comments/6240</link><description>&lt;p&gt;I have try the mariadb_upgrade_wizzard on 3 different Windows : Windows 10, Windows 11 and Windows Server 2019. It never works, freeze at step 5, and I have always this error in log : &lt;/p&gt;
+&lt;/pre&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kevin O'Halloran</dc:creator><guid>https://mariadb.com/kb/en/json_type/+comments/6243</guid></item><item><title>Upgrading from MariaDB 10.6/10.8/10.9 =&gt; 10.11 dosn't work on Windows</title><link>https://mariadb.com/kb/en/upgrading-mariadb-on-windows/+comments/6240</link><description>&lt;p&gt;I have try the mariadb_upgrade_wizzard on 3 different Windows : Windows 10, Windows 11 and Windows Server 2019. It never works, freeze at step 5, and I have always this error in log : &lt;/p&gt;
 &lt;p&gt;Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqld.exe" "--defaults-file=C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-109/"&gt;MariaDB 10.9&lt;/a&gt;\data3\my.ini" "--skip-networking" "--skip-grant-tables" "--enable-named-pipe" "--socket=mysql_upgrade_service_16960" "--skip-slave-start"
 Executing "C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe" "--protocol=pipe" "--socket=mysql_upgrade_service_16960" "ping" "--no-beep"
 C:\Program Files\&lt;a href="/kb/en/what-is-mariadb-1011/"&gt;MariaDB 10.11&lt;/a&gt;\bin\mysqladmin.exe: connect to server at 'localhost' failed
@@ -261,9 +334,4 @@ But I do not have the knowledge yet to know what.&lt;/p&gt;
 The behavior you observe must be caused by something else.&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sergei Golubchik</dc:creator><guid>https://mariadb.com/kb/en/spider-storage-engine-overview/+comments/6194</guid></item><item><title>Re: EXPLAIN Analyzer</title><link>https://mariadb.com/kb/en/explain-analyzer/+comments/6193</link><description>&lt;p&gt;The page &lt;a href="https://mariadb.org/explain_analyzer/analyze/"&gt;https://mariadb.org/explain_analyzer/analyze/&lt;/a&gt; is returning 404 Not Found.&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fernando Possebon Junior</dc:creator><guid>https://mariadb.com/kb/en/explain-analyzer/+comments/6193</guid></item><item><title>Re: MariaDB String Functions</title><link>https://mariadb.com/kb/en/mariadb-string-functions/+comments/6192</link><description>&lt;p&gt;It seems there is a mistake in the Manipulating chapter in example of the INSERT function. There is a LOCATE function used but the parameters seems to be in the wrong order.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marek Šimon</dc:creator><guid>https://mariadb.com/kb/en/mariadb-string-functions/+comments/6192</guid></item><item><title>Re: problem in sql</title><link>https://mariadb.com/kb/en/problem-in-sql/+comments/6191</link><description>&lt;p&gt;There isn't enough information here to say what the error is.&lt;/p&gt;
-&lt;p&gt;Also use prepared statements to avoid SQL injection.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/problem-in-sql/+comments/6191</guid></item><item><title>Re: Application unable to conect mariadb from Maxscale</title><link>https://mariadb.com/kb/en/application-unable-to-conect-mariadb-from-maxscale/+comments/6189</link><description>&lt;p&gt;The &lt;a href="/kb/en/maxscale-troubleshooting/"&gt;maxscale-troubleshooting&lt;/a&gt; page has some steps you could do to troubleshoot your problem. The most likely reason is that you haven't created the user with the correct IP address.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/application-unable-to-conect-mariadb-from-maxscale/+comments/6189</guid></item><item><title>Re: MariaDB Container Cheat Sheet</title><link>https://mariadb.com/kb/en/mariadb-container-cheat-sheet/+comments/6188</link><description>&lt;p&gt;Updated thanks.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Anel Husakovic</dc:creator><guid>https://mariadb.com/kb/en/mariadb-container-cheat-sheet/+comments/6188</guid></item><item><title>Re: Insert Statement</title><link>https://mariadb.com/kb/en/table-statements-insert-statement/+comments/6185</link><description>&lt;p&gt;The &lt;a href="/kb/en/insert/"&gt;INSERT&lt;/a&gt; wiki page has examples of &lt;code&gt;INSERT&lt;/code&gt; statements.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/table-statements-insert-statement/+comments/6185</guid></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marek Šimon</dc:creator><guid>https://mariadb.com/kb/en/mariadb-string-functions/+comments/6192</guid></item></channel></rss>
