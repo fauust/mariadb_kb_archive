@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/upgrading-between-minor-versions-on-linux/+r/125969/">125969</a></dd>
+            <dd><a href="/kb/en/upgrading-between-minor-versions-on-linux/+r/126739/">126739</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-22 15:33">2023-05-22 15:33</span></dd>
+<span class="datetime" title="2023-06-02 12:53">2023-06-02 12:53</span></dd>
         </dl>
     </div>
     
@@ -327,9 +327,9 @@ To upgrade between minor versions of MariaDB on Linux/Unix (for example from Mar
 ** On SLES, OpenSUSE, and other similar Linux distributions, see [[installing-mariadb-with-zypper/#installing-mariadb-packages-with-zypp|Installing MariaDB Packages with ZYpp]] for more information.
 # Make any desired changes to configuration options in [[configuring-mariadb-with-option-files|option files]], such as ##my.cnf##.
 # [[starting-and-stopping-mariadb-starting-and-stopping-mariadb|Start MariaDB]].
-# Run ##[[mysql_upgrade]]##.
-** ##mysql_upgrade## does two things:
-### Ensures that the system tables in the ##[[the-mysql-database-tables|mysq]]l## database are fully compatible with the new version.
+# Run [[mariadb-upgrade]].
+** ##mariadb-upgrade## does two things:
+### Ensures that the system tables in the [[the-mysql-database-tables|mysq]]l database are fully compatible with the new version.
 ### Does a very quick check of all tables and marks them as compatible with the new version of MariaDB .
 ** In most cases this should be a fast operation (depending of course on the number of tables).
 

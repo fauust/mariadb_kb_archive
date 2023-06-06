@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/grant/+r/126515/">126515</a></dd>
+            <dd><a href="/kb/en/grant/+r/126729/">126729</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-30 10:40">2023-05-30 10:40</span></dd>
+<span class="datetime" title="2023-06-02 12:42">2023-06-02 12:42</span></dd>
         </dl>
     </div>
     
@@ -694,7 +694,7 @@ to specify the default database.
 | ##CREATE##  | Create a table using the [[create-table|CREATE TABLE]] statement.  You can grant the ##CREATE## privilege on tables that do not yet exist. |
 | ##CREATE VIEW##  | Create a view using the [[create-view|CREATE_VIEW]] statement. |
 | ##DELETE## | Remove rows from a table using the [[delete|DELETE]] statement. |
-| ##DELETE HISTORY## | Remove [[system-versioned-tables|historical rows]] from a table using the [[delete|DELETE HISTORY]] statement. Displays as ##DELETE VERSIONING ROWS## when running [[show-grants|SHOW GRANTS]] until MariaDB 10.3.15 and until MariaDB 10.4.5 (MDEV-17655), or when running SHOW PRIVILEGES until MariaDB 10.5.2, MariaDB 10.4.13 and MariaDB 10.3.23 (MDEV-20382). From MariaDB 10.3.4. From MariaDB 10.3.5, if a user has the ##SUPER## privilege but not this privilege, running [[mysql_upgrade]] will grant this privilege as well. |
+| ##DELETE HISTORY## | Remove [[system-versioned-tables|historical rows]] from a table using the [[delete|DELETE HISTORY]] statement. Displays as ##DELETE VERSIONING ROWS## when running [[show-grants|SHOW GRANTS]] until MariaDB 10.3.15 and until MariaDB 10.4.5 (MDEV-17655), or when running SHOW PRIVILEGES until MariaDB 10.5.2, MariaDB 10.4.13 and MariaDB 10.3.23 (MDEV-20382). From MariaDB 10.3.4. From MariaDB 10.3.5, if a user has the ##SUPER## privilege but not this privilege, running [[mariadb-upgrade]] will grant this privilege as well. |
 | ##DROP##   | Drop a table using the [[drop-table|DROP TABLE]] statement or a view using the [[drop-view|DROP VIEW]] statement. Also required to execute the [[truncate-table|TRUNCATE TABLE]] statement. |
 | ##GRANT OPTION##  | Grant table privileges. You can only grant privileges that you have. |
 | ##INDEX##  | Create an index on a table using the [[create-index|CREATE INDEX]] statement. Without the ##INDEX## privilege, you can still create indexes when creating a table using the [[create-table|CREATE TABLE]] statement if the you have the ##CREATE## privilege, and you can create indexes using the [[alter-table|ALTER TABLE]] statement if you have the ##ALTER## privilege. |

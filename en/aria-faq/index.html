@@ -252,7 +252,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-29 20:40">2 days, 19 hours ago</span></dd>
+<span class="datetime" title="2023-06-05 20:24">12 hours, 21 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -576,13 +576,13 @@
 </li></ul>
 <p>If Aria doesn't start or you have an unrecoverable table (shouldn't happen):</p>
 <ul start="1"><li>Remove the <code>aria_log.%</code> files from the data directory.
-</li><li>Restart <code>mysqld</code> and run <code><a href="/kb/en/check-table/">CHECK TABLE</a></code>, <code><a href="/kb/en/repair-table/">REPAIR TABLE</a></code> or <code><a href="/kb/en/mysqlcheck/">mysqlcheck</a></code> on your Aria tables.
+</li><li>Restart <code>mysqld</code> and run <a href="/kb/en/check-table/">CHECK TABLE</a>, <a href="/kb/en/repair-table/">REPAIR TABLE</a> or <a href="/kb/en/mariadb-check/">mariadb-check</a> on your Aria tables.
 </li></ul>
 <p>Alternatively,</p>
-<ul start="1"><li>Remove logs and run <code><a href="/kb/en/aria_chk/">aria_chk</a></code> on your <code>*.MAI</code> files.
+<ul start="1"><li>Remove logs and run <a href="/kb/en/aria_chk/">aria_chk</a> on your <code>*.MAI</code> files.
 </li></ul>
 <h2 class="anchored_heading" id="what-is-going-to-change-in-later-aria-main-releases">What is going to change in later Aria main releases?</h2>
-<p>The <code>LOCK TABLES</code> statement will not start a crash-safe segment. You should use <code><a href="begin">BEGIN</a></code> and <code><a href="/kb/en/commit/">COMMIT</a></code> instead. </p>
+<p>The <code>LOCK TABLES</code> statement will not start a crash-safe segment. You should use <a href="begin">BEGIN</a> and <a href="/kb/en/commit/">COMMIT</a> instead. </p>
 <p>To make things future safe, you could do this:</p>
 <pre class="fixed"><span class="k">BEGIN</span><span class="p">;</span>
 <span class="k">LOCK</span> <span class="n">TABLES</span> <span class="p">....</span>

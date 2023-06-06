@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/aria-faq/+r/126508/">126508</a></dd>
+            <dd><a href="/kb/en/aria-faq/+r/126757/">126757</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-29 20:40">2023-05-29 20:40</span></dd>
+<span class="datetime" title="2023-06-05 20:24">2023-06-05 20:24</span></dd>
         </dl>
     </div>
     
@@ -480,15 +480,15 @@ In the current development phase Aria tables created with ##TRANSACTIONAL=1## ar
 
 If Aria doesn&#39;t start or you have an unrecoverable table (shouldn&#39;t happen):
 * Remove the ##aria_log.%## files from the data directory.
-* Restart ##mysqld## and run ##[[check-table|CHECK TABLE]]##, ##[[repair-table|REPAIR TABLE]]## or ##[[mysqlcheck]]## on your Aria tables.
+* Restart ##mysqld## and run [[check-table|CHECK TABLE]], [[repair-table|REPAIR TABLE]] or [[mariadb-check]] on your Aria tables.
 
 Alternatively,
 
-* Remove logs and run ##[[aria_chk]]## on your ##*.MAI## files.
+* Remove logs and run [[aria_chk]] on your ##*.MAI## files.
 
 == What is going to change in later Aria main releases?
 
-The ##LOCK TABLES## statement will not start a crash-safe segment. You should use ##[[begin|BEGIN]]## and ##[[commit|COMMIT]]## instead. 
+The ##LOCK TABLES## statement will not start a crash-safe segment. You should use [[begin|BEGIN]] and [[commit|COMMIT]] instead. 
 
 To make things future safe, you could do this:
 

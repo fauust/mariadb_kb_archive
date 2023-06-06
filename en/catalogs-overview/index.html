@@ -251,12 +251,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2023-05-21 21:54">1 week, 3 days ago</span></dd>
+<span class="datetime" title="2023-05-21 21:54">2 weeks, 1 day ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-23 08:54">1 week, 2 days ago</span></dd>
+<span class="datetime" title="2023-06-06 08:34">3 hours, 48 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -419,7 +419,7 @@
     <li class=""><a href="#other-things" title="Other Things">Other Things</a> </ol>
 </li>
 </div>
-<div class="cstm-style greenbox"><p>Catalogs are an upcoming feature that will be included in a future release of MariaDB.</p>
+<div class="cstm-style greenbox"><p>Catalogs are an upcoming feature that will be included in a future release of MariaDB. The MariaDB catalogs will be a multi-tenancy feature where a single instance MariaDB server handles multiple independent tenants (customers), who have their own users, schemas etc.</p>
 </div><h2 class="anchored_heading" id="background">Background</h2>
 <p>For hosting providers, a common solution, to drive down cost, is to have one MariaDB server support several different customers by creating one named schema for each of them.</p>
 <p>This has however a lot of limitations:</p>
@@ -434,8 +434,8 @@
 <h2 class="anchored_heading" id="user-experience-with-catalogs">User Experience With Catalogs</h2>
 <ul start="1"><li>Each user is assigned one catalog. The user can specify their catalog in their my.cnf file or as an argument to clients or when connecting to MariaDB server.
 </li><li>Users can <a href="/kb/en/mariadb-dump/">mariadb-dump</a> of all their tables (including the ‘mysql’ database) and apply it on their own on premise MariaDB or to another ‘MariaDB catalog’ to duplicate their setup.
-</li><li>Each catalog has its own privilege system. This allows a MariaDB admin to create users independently in their catalog to users in any other catalog.
-</li><li>If the user is using applications that don’t yet support catalogs, they can specify the catalog as part of the database when connecting to the server ('catalog.database').
+</li><li>Each catalog has its own privilege system. This allows a MariaDB admin to create users independently in their catalog to users in any other catalog. This also implies that the catalog has to be part of the connect information as otherwise the server does not know which user table to use.
+</li><li>If the user is using applications that don’t yet support catalogs, they can specify the catalog as part of the database when connecting to the server ('catalog.database') or by connecting to a specific port that is associated with a catalog.
 </li><li>After logging in, a normal user can only see the objects (databases, tables, users etc) from their database. They cannot access other catalogs or change catalogs.
 </li><li>A normal user cannot change the active catalog with a command. They need to logout from the current catalog and login to another.
 </li></ul>
@@ -467,7 +467,7 @@ catalogs, managing primaries and replicas etc.
 </li></ul>
 <h2 class="anchored_heading" id="new-storage-layout">New Storage Layout</h2>
 <p>MariaDB server will be able to run either on 'original mode', where the data layout is exactly as it was before, or on 'catalog' mode, with a new data layout:</p>
-<p>When running mariadb_install_db' with --use-catalogs, it will create
+<p>When running <a href="/kb/en/mariadb-install-db/">mariadb-install-db</a> with --use-catalogs, it will create
 the following new data structure:</p>
 <ul start="1"><li>data_directory/
 <ul start="1"><li>engine system data files
@@ -635,7 +635,7 @@ con.connect(function(err) {
 <p>As shared hosting services have a naming scheme from user/schema to database name in MariaDB, to provide a migration to the new catalog layout, the following steps will be required:</p>
 <ul start="1"><li>Use <a href="/kb/en/mariadb-dump/">mariadb-dump</a> to dump the original data
 </li><li>On the new server execute:
-</li><li><a href="/kb/en/mysql_install_db/">mysql_install_db –catalogs=’catalog_name’</a>
+</li><li><a href="/kb/en/mariadb-install-db/">mariadb-install-db –catalogs=’catalog_name’</a>
 </li><li>mariadb –catalog catalog_name &lt; dump_file
 </li></ul>
 <p>This is needed as InnoDB needs to know where the new files are located.</p>

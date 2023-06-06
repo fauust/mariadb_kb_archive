@@ -252,7 +252,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-30 10:58">2 days, 5 hours ago</span></dd>
+<span class="datetime" title="2023-06-05 20:20">12 hours, 15 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -395,7 +395,7 @@
         <li class=""><a href="#step-by-step-instructions-for-upgrades" title="Step by Step Instructions for Upgrades">Step by Step Instructions for Upgrades</a>    </ol>
 </li>
 
-    <li class=""><a href="#work-done-by-mysql_upgrade" title="Work Done by mysql_upgrade">Work Done by mysql_upgrade</a></li>
+    <li class=""><a href="#work-done-by-mariadb-upgrade" title="Work Done by mariadb-upgrade">Work Done by mariadb-upgrade</a></li>
 
     <li class=""><a href="#post-upgrade-work" title="Post Upgrade Work">Post Upgrade Work</a></li>
 
@@ -427,7 +427,7 @@ MariaDB version to the latest one (for example <a href="/kb/en/what-is-mariadb-1
 </li><li><a href="/kb/en/innodb-system-variables/#innodb_force_recovery">innodb_force_recovery</a> must be less than <code>3</code>.
 </li></ul>
 </li></ul>
-<p>Note that rpms don't support upgrading between major versions, only minor like 10.4.1 to 10.4.2. If you are using rpms, you should de-install the old MariaDB rpms and install the new MariaDB rpms before running <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a>. Note that when installing the new rpms, <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a> may be run automatically. There is no problem with running <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a> many times.</p>
+<p>Note that rpms don't support upgrading between major versions, only minor like 10.4.1 to 10.4.2. If you are using rpms, you should de-install the old MariaDB rpms and install the new MariaDB rpms before running <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a>. Note that when installing the new rpms, <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> may be run automatically. There is no problem with running <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> many times.</p>
 <h2 class="anchored_heading" id="recommended-steps">Recommended Steps</h2>
 <ul start="1"><li>If you have a <a href="/kb/en/standard-replication/">primary-replica setup</a>, first upgrade one replica and when you have verified that the replica works well, upgrade the rest of the replicas (if any). Then <a href="/kb/en/changing-a-replica-to-become-the-primary/">upgrade one replica to primary</a>, upgrade the primary, and change the replica to a primary.
 </li></ul>
@@ -435,14 +435,14 @@ MariaDB version to the latest one (for example <a href="/kb/en/what-is-mariadb-1
 </li></ul>
 <h3 class="anchored_heading" id="step-by-step-instructions-for-upgrades">Step by Step Instructions for Upgrades</h3>
 <ul start="1"><li>Upgrade MariaDB binaries and libraries, preferably without starting MariaDB.
-</li><li>If the MariaDB server process, <a href="/mysqld-options">mysqld or mariadbd</a> was not started as part of the upgrade, start it by executing <code class="fixed" style="white-space:pre-wrap">mysqld --skip-grant-tables</code>. This may produce some warnings about some system tables not being up to date, but you can ignore these for now as <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a> will fix that.
-</li><li>Run <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a>
+</li><li>If the MariaDB server process, <a href="/mysqld-options">mysqld or mariadbd</a> was not started as part of the upgrade, start it by executing <code class="fixed" style="white-space:pre-wrap">mysqld --skip-grant-tables</code>. This may produce some warnings about some system tables not being up to date, but you can ignore these for now as <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> will fix that.
+</li><li>Run <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a>
 </li><li>Restart MariaDB server.
 </li></ul>
-<h2 class="anchored_heading" id="work-done-by-mysql_upgrade">Work Done by <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a></h2>
-<p>The main work done when upgrading is done by running <a href="/kb/en/mysql_upgrade/">mysql_upgrade</a>. The main things it does are:</p>
+<h2 class="anchored_heading" id="work-done-by-mariadb-upgrade">Work Done by mariadb-upgrade</h2>
+<p>The main work done when upgrading is done by running <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a>. The main things it does are:</p>
 <ul start="1"><li>Updating the system tables in the <code class="fixed" style="white-space:pre-wrap">mysql</code> database to the newest version. This is very quick.
-</li><li><a href="/kb/en/mysql_upgrade/">mysql_upgrade</a> also runs <a href="mysql_check">mysqlcheck --check-upgrade</a> to check if there have been any collation changes between the major versions. This recreates indexes in old tables that are using any of the changed collations. This can take a bit of time if there are a lot of tables or there are many tables which used the changed collation. The last time a collation changed was in MariaDB/MySQL 5.1.23.
+</li><li><a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> also runs <a href="/kb/en/mariadb-check/">mariadb-check --check-upgrade</a> to check if there have been any collation changes between the major versions. This recreates indexes in old tables that are using any of the changed collations. This can take a bit of time if there are a lot of tables or there are many tables which used the changed collation. The last time a collation changed was in MariaDB/MySQL 5.1.23.
 </li></ul>
 <h2 class="anchored_heading" id="post-upgrade-work">Post Upgrade Work</h2>
 <p>Check the <a href="/kb/en/error-log/">MariaDB error log</a> for any problems during upgrade. If there are any warnings in the log files, do your best to get rid of them!</p>

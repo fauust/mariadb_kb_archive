@@ -260,7 +260,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-12 05:28">2 weeks, 6 days ago</span></dd>
+<span class="datetime" title="2023-06-02 12:49">3 days, 21 hours ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -440,7 +440,7 @@ When you start the %%IMAGE%% image, you can adjust the initialization of the Mar
 <h3 class="anchored_heading" id="mariadb_initdb_skip_tzinfo-mysql_initdb_skip_tzinfo">MARIADB_INITDB_SKIP_TZINFO / MYSQL_INITDB_SKIP_TZINFO</h3>
 <p>By default, the entrypoint script automatically loads the timezone data needed for the CONVERT_TZ() function. If it is not needed, any non-empty value disables timezone loading.
 MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</p>
-<p>Set MARIADB_AUTO_UPGRADE to a non-empty value to have the entrypoint check whether mysql_upgrade/mariadb-upgrade needs to run, and if so, run the upgrade before starting the MariaDB server.</p>
+<p>Set MARIADB_AUTO_UPGRADE to a non-empty value to have the entrypoint check whether <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> needs to run, and if so, run the upgrade before starting the MariaDB server.</p>
 <p>Before the upgrade, a backup of the system database is created in the top of the datadir with the name system_mysql_backup_*.sql.zst. This backup process can be disabled with by setting MARIADB_DISABLE_UPGRADE_BACKUP to a non-empty value.</p>
 <h3 class="anchored_heading" id="mariadb_master_host">MARIADB_MASTER_HOST</h3>
 <p>When specified, the container will connect to this host and replicate from it.</p>

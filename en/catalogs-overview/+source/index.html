@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/catalogs-overview/+r/126037/">126037</a></dd>
+            <dd><a href="/kb/en/catalogs-overview/+r/126808/">126808</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-23 08:54">2023-05-23 08:54</span></dd>
+<span class="datetime" title="2023-06-06 08:34">2023-06-06 08:34</span></dd>
         </dl>
     </div>
     
@@ -314,7 +314,7 @@
         <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;toc&gt;&gt;
 
 &lt;&lt;style class=&#34;greenbox&#34;&gt;&gt;
-Catalogs are an upcoming feature that will be included in a future release of MariaDB.
+Catalogs are an upcoming feature that will be included in a future release of MariaDB. The MariaDB catalogs will be a multi-tenancy feature where a single instance MariaDB server handles multiple independent tenants (customers), who have their own users, schemas etc.
 &lt;&lt;/style&gt;&gt;
 
 ==Background
@@ -336,8 +336,8 @@ Catalogs make it possible for hosting providers to have 10-100x more &#39;not th
 
 * Each user is assigned one catalog. The user can specify their catalog in their my.cnf file or as an argument to clients or when connecting to MariaDB server.
 * Users can [[mariadb-dump]] of all their tables (including the ‘mysql’ database) and apply it on their own on premise MariaDB or to another ‘MariaDB catalog’ to duplicate their setup.
-* Each catalog has its own privilege system. This allows a MariaDB admin to create users independently in their catalog to users in any other catalog.
-* If the user is using applications that don’t yet support catalogs, they can specify the catalog as part of the database when connecting to the server (&#39;catalog.database&#39;).
+* Each catalog has its own privilege system. This allows a MariaDB admin to create users independently in their catalog to users in any other catalog. This also implies that the catalog has to be part of the connect information as otherwise the server does not know which user table to use.
+* If the user is using applications that don’t yet support catalogs, they can specify the catalog as part of the database when connecting to the server (&#39;catalog.database&#39;) or by connecting to a specific port that is associated with a catalog.
 * After logging in, a normal user can only see the objects (databases, tables, users etc) from their database. They cannot access other catalogs or change catalogs.
 * A normal user cannot change the active catalog with a command. They need to logout from the current catalog and login to another.
 
@@ -372,7 +372,7 @@ catalogs, managing primaries and replicas etc.
 
 MariaDB server will be able to run either on &#39;original mode&#39;, where the data layout is exactly as it was before, or on &#39;catalog&#39; mode, with a new data layout:
 
-When running mariadb_install_db&#39; with --use-catalogs, it will create
+When running [[mariadb-install-db]] with --use-catalogs, it will create
 the following new data structure:
 * data_directory/
 ** engine system data files
@@ -559,7 +559,7 @@ Ref: https://mariadb.com/kb/en/connection/#handshake-response-packet
 As shared hosting services have a naming scheme from user/schema to database name in MariaDB, to provide a migration to the new catalog layout, the following steps will be required:
 * Use [[mariadb-dump]] to dump the original data
 * On the new server execute:
-*[[mysql_install_db|mysql_install_db –catalogs=’catalog_name’]]
+*[[mariadb-install-db|mariadb-install-db –catalogs=’catalog_name’]]
 *mariadb –catalog catalog_name &lt; dump_file
 
 This is needed as InnoDB needs to know where the new files are located.
