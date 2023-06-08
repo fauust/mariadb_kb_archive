@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-10-9-6-release-notes/+r/125862/">125862</a></dd>
+            <dd><a href="/kb/en/mariadb-10-9-6-release-notes/+r/126948/">126948</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-16 12:10">2023-05-16 12:10</span></dd>
+<span class="datetime" title="2023-06-07 14:50">2023-06-07 14:50</span></dd>
         </dl>
     </div>
     
@@ -303,7 +303,8 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;button target=&#34;https://mariadb.com/downloads&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;include slug=&#34;latest-109&#34;&gt;&gt;
+&lt;&lt;button target=&#34;https://downloads.mariadb.org/mariadb/10.9.6/&#34; class=&#34;btn-primary&#34;&gt;&gt;Download 10.9.6&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-9-6-release-notes&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Release Notes&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-9-6-changelog&#34; class=&#34;btn-info&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;what-is-mariadb-109&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 10.9&lt;&lt;/button&gt;&gt;
@@ -356,6 +357,11 @@ Thanks, and enjoy MariaDB!
 * Ensured SHOW-SLAVE-STATUS is processed on the parallel slave having a necessary mutex always intialized (MDEV-30620)
 * Fixed the slave applier to report a correct error when gtid_slave_pos insert fails for some (engine) reasons (MDEV-31038)
 * Made parallel slave reports in performance schema consistent with that of show-slave-status (MDEV-26071)
+
+=== Optimizer
+* [[lateral-derived-optimization|Split Materialized]] optimization is improved to re-fill the materialized table only if necessary. The fewer number of table refills is taken into account when choosing query plan, too (MDEV-26301).
+* New optimizer_switch option, [[hash_join_cardinality-optimizer_switch-flag|hash_join_cardinality]], is added. It is off by default. When set to ON, the optimizer will produce tighter bounds for hash join output cardinality. (MDEV-30812)
+* Queries using ##SELECT DISTINCT some_expression(aggregate_function())## could produce wrong query result. (MDEV-20057)
 
 === Docker Official Image
 * Add replication setup to containers contributed by Md Sahil (MDEV-29762)

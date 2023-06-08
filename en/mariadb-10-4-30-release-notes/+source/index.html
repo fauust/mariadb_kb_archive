@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-10-4-30-release-notes/+r/126787/">126787</a></dd>
+            <dd><a href="/kb/en/mariadb-10-4-30-release-notes/+r/126905/">126905</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-06 08:05">2023-06-06 08:05</span></dd>
+<span class="datetime" title="2023-06-07 14:36">2023-06-07 14:36</span></dd>
         </dl>
     </div>
     
@@ -303,17 +303,14 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;include slug=&#34;unreleased-104&#34;&gt;&gt;
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
-&lt;&lt;button target=&#34;https://mariadb.com/downloads/&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;button target=&#34;https://mariadb.com/downloads/&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-4-30-release-notes&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Release Notes&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-4-30-changelog&#34; class=&#34;btn-info&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;what-is-mariadb-104&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 10.4&lt;&lt;/button&gt;&gt;
 
 ^^//[[https://downloads.mariadb.org/mariadb/10.4.30/|Alternate download from mariadb.org]]//^^
 
-**Release date:** ?
-&lt;&lt;/style&gt;&gt;
+**Release date:** 7 Jun 2023
 
 MariaDB 10.4 is a previous //stable// series of MariaDB, [[https://mariadb.org/about/#maintenance-policy|maintained until]] June 2024. It is an evolution of MariaDB 10.3 with several entirely new features not found anywhere else and with backported and reimplemented features from MySQL.
 
@@ -327,7 +324,15 @@ MariaDB 10.4.30 is a **//[[release-criteria|Stable (GA)]]//** release.
 Thanks, and enjoy MariaDB!
 
 == Notable Items
-* 
+
+=== InnoDB
+* Server crashes in st_join_table::choose_best_splitting (MDEV-31403)
+* Crash with condition pushable into derived and containing outer reference (MDEV-31240)
+* Revert &#34;MDEV-30473 : Do not allow GET_LOCK() / RELEASE_LOCK() in cluster&#34;
+
+=== Optimizer 
+* Crash with condition pushable into derived and containing outer reference (MDEV-31403 MDEV-31240)
+* Crash with [[explain|EXPLAIN EXTENDED]] for multi-table update of system table (MDEV-31224)
 
 &lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 === Security

@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-16 12:11">2 weeks, 6 days ago</span></dd>
+<span class="datetime" title="2023-06-07 14:49">3 hours, 23 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -380,11 +380,14 @@
 
     
     <div class="answer formatted">
-        <p><a class="btn btn-primary" href="https://mariadb.com/downloads/">Download</a>
+        <div class="cstm-style bluebox text-center centered"><p>The most recent release of <a href="/kb/en/what-is-mariadb-105/">MariaDB 10.5</a> is:<br>
+<span class="cstm-style lead"><strong><a href="/kb/en/mariadb-10521-release-notes/">MariaDB 10.5.21</a></strong>  Stable (GA) <a class="btn btn-success btn-mini" href="https://mariadb.com/downloads/">Download<span>&nbsp;</span>Now</a></span><br>
+<sub><em><a href="https://mariadb.org/download/?tab=mariadb&amp;release=10.5.21&amp;product=mariadb">Alternate download from mariadb.org</a></em></sub></p>
+</div><p>
+<a class="btn btn-primary" href="https://downloads.mariadb.org/mariadb/10.5.20/">Download 10.5.20</a>
 <a class="btn btn-info disabled" href="/kb/en/mariadb-10-5-20-release-notes/">Release Notes</a>
 <a class="btn btn-info" href="/kb/en/mariadb-10-5-20-changelog/">Changelog</a>
 <a class="btn btn-info" href="/kb/en/what-is-mariadb-105/">Overview of 10.5</a></p>
-<p><sup><em><a href="https://downloads.mariadb.org/mariadb/10.5.20/">Alternate download from mariadb.org</a></em></sup></p>
 <p><strong>Release date:</strong> 10 May 2023</p>
 <p><a href="/kb/en/what-is-mariadb-105/">MariaDB 10.5</a> is a previous <em>stable</em> series of MariaDB, <a href="https://mariadb.org/about/#maintenance-policy">maintained until</a> June 2025. It is an evolution of <a href="/kb/en/what-is-mariadb-104/">MariaDB 10.4</a> with several entirely new features not found anywhere else and with backported and reimplemented features from MySQL.</p>
 <p><a href="/kb/en/mariadb-10520-release-notes/">MariaDB 10.5.20</a> is a <strong><em><a href="/kb/en/release-criteria/">Stable (GA)</a></em></strong> release.</p>
@@ -415,6 +418,10 @@
 </li><li>Refined optimistic parallel slave to error-exit without any hang (<a href="https://jira.mariadb.org/browse/MDEV-30780">MDEV-30780</a>)
 </li><li>Ensured SHOW-SLAVE-STATUS is processed on the parallel slave having a necessary mutex always intialized (<a href="https://jira.mariadb.org/browse/MDEV-30620">MDEV-30620</a>)
 </li><li>Fixed the slave applier to report a correct error when gtid_slave_pos insert fails for some (engine) reasons (<a href="https://jira.mariadb.org/browse/MDEV-31038">MDEV-31038</a>)
+</li></ul>
+<h3 class="anchored_heading" id="optimizer">Optimizer</h3>
+<ul start="1"><li><a href="/kb/en/lateral-derived-optimization/">Split Materialized</a> optimization is improved to re-fill the materialized table only if necessary. The fewer number of table refills is taken into account when choosing query plan, too (<a href="https://jira.mariadb.org/browse/MDEV-26301">MDEV-26301</a>).
+</li><li>Queries using <code>SELECT DISTINCT some_expression(aggregate_function())</code> could produce wrong query result. (<a href="https://jira.mariadb.org/browse/MDEV-20057">MDEV-20057</a>)
 </li></ul>
 <h3 class="anchored_heading" id="docker-official-images">Docker Official Images</h3>
 <ul start="1"><li>Add replication setup to containers contributed by Md Sahil (<a href="https://jira.mariadb.org/browse/MDEV-29762">MDEV-29762</a>)

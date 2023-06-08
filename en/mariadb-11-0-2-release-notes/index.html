@@ -23,9 +23,9 @@
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="Status: Stable (GA) | Release Date: ?" />
+    <meta property="og:description" content="Status: Stable (GA) | Release Date: 6 Jun 2023" />
 
-    <meta name="description" content="Status: Stable (GA) | Release Date: ?" />
+    <meta name="description" content="Status: Stable (GA) | Release Date: 6 Jun 2023" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-06 08:22">4 hours ago</span></dd>
+<span class="datetime" title="2023-06-07 20:31">3 hours, 9 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -380,29 +380,38 @@
 
     
     <div class="answer formatted">
-        <div class="cstm-style redbox"><p><strong>Note:</strong> This page describes features in the source repository for <strong><a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a></strong>. There are currently no official packages or binaries available for download which contain the features. If you want to try out any of the new features described here you will need to <a href="/kb/en/getting-the-mariadb-source-code/">get</a> and <a href="/kb/en/compiling-mariadb-from-source/">compile</a> the
-code yourself.</p>
-</div>
-<div class="cstm-style hidden"><p><a class="btn btn-primary" href="https://mariadb.com/downloads">Download</a>
+        <p><a class="btn btn-primary" href="https://mariadb.com/downloads">Download</a>
 <a class="btn btn-info disabled" href="/kb/en/mariadb-11-0-2-release-notes/">Release Notes</a>
-<a class="btn btn-info disabled" href="/kb/en/mariadb-11-0-2-changelog/">Changelog</a>
+<a class="btn btn-info" href="/kb/en/mariadb-11-0-2-changelog/">Changelog</a>
 <a class="btn btn-info" href="/kb/en/what-is-mariadb-11-0/">Overview of 11.0</a></p>
-<p><strong>Release date:</strong> ?</p>
-</div><p><a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a> is the current development series of MariaDB. It is an evolution of <a href="/kb/en/what-is-mariadb-1011/">MariaDB 10.11</a> with several entirely new features.</p>
-<div class="cstm-style hidden"><p><a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a> is a <strong><em><a href="/kb/en/release-criteria/">Stable (GA)</a></em></strong> release.</p>
-</div><div class="cstm-style greenbox"><p><strong>For an overview of <a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a> see the
+<p><strong>Release date:</strong> 6 Jun 2023</p>
+<p><a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a> is a current short-term stable series of MariaDB and will be maintained until June 2024. It is an evolution of <a href="/kb/en/what-is-mariadb-1011/">MariaDB 10.11</a> with several entirely new features.</p>
+<p><a href="/kb/en/mariadb-11-0-2-release-notes/">MariaDB 11.0.2</a> is a <strong><em><a href="/kb/en/release-criteria/">Stable (GA)</a></em></strong> release.</p>
+<div class="cstm-style greenbox"><p><strong>For an overview of <a href="/kb/en/what-is-mariadb-110/">MariaDB 11.0</a> see the
 <a href="/kb/en/what-is-mariadb-11-0/">What is MariaDB 11.0?</a> page.</strong></p>
 </div><p>Thanks, and enjoy MariaDB!</p>
 <h2 class="anchored_heading" id="notable-items">Notable Items</h2>
+<h3 class="anchored_heading" id="innodb">InnoDB</h3>
+<ul start="1"><li>InnoDB does not free UNDO after the fix of <a href="https://jira.mariadb.org/browse/MDEV-30671">MDEV-30671</a> (<a href="https://jira.mariadb.org/browse/MDEV-31234">MDEV-31234</a>)
+</li><li>InnoDB hang fixes (<a href="https://jira.mariadb.org/browse/MDEV-31158">MDEV-31158</a>, <a href="https://jira.mariadb.org/browse/MDEV-31343">MDEV-31343</a>, <a href="https://jira.mariadb.org/browse/MDEV-31350">MDEV-31350</a>)
+</li><li><a href="/kb/en/innodb-status-variables/#innodb_buffer_pool_read_requests">Innodb_buffer_pool_read_requests</a> is not updated correctly (<a href="https://jira.mariadb.org/browse/MDEV-31309">MDEV-31309</a>)
+</li><li>InnoDB monitor trx_rseg_history_len was accidentally disabled by default (<a href="https://jira.mariadb.org/browse/MDEV-31308">MDEV-31308</a>)
+</li><li>Revert "<a href="https://jira.mariadb.org/browse/MDEV-30473">MDEV-30473</a> : Do not allow GET_LOCK() / RELEASE_LOCK() in cluster"
+</li></ul>
+<h3 class="anchored_heading" id="optimizer">Optimizer</h3>
+<ul start="1"><li>New optimizer_switch option, <a href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality</a>, is added. It is ON by default. When set to ON, the optimizer will produce tighter bounds for hash join output cardinality. (<a href="https://jira.mariadb.org/browse/MDEV-30812">MDEV-30812</a>)
+</li><li>Crash with condition pushable into derived and containing outer reference (<a href="https://jira.mariadb.org/browse/MDEV-31403">MDEV-31403</a> <a href="https://jira.mariadb.org/browse/MDEV-31240">MDEV-31240</a>)
+</li><li>Crash with <a href="/kb/en/explain/">EXPLAIN EXTENDED</a> for multi-table update of system table (<a href="https://jira.mariadb.org/browse/MDEV-31224">MDEV-31224</a>)
+</li></ul>
 <div class="cstm-style hidden"><h3 class="anchored_heading" id="security">Security</h3>
 <ul start="1"><li>Fixes for the following <a href="/kb/en/cve/">security vulnerabilities</a>:
 <ul start="1"><li>CVE-<code><code>-</code></code><code>
 </code></li></ul>
 </li></ul>
-</div><div class="cstm-style hidden"><h2 class="anchored_heading" id="changelog">Changelog</h2>
-<p>For a complete list of changes made in <a href="/kb/en/mariadb-11-0-1-release-notes/">MariaDB 11.0.1</a>, with links to detailed
-information on each push, see the <a href="/kb/en/mariadb-11-0-1-changelog/">changelog</a>.</p>
-</div><div class="cstm-style hidden"><h2 class="anchored_heading" id="contributors">Contributors</h2>
+</div><h2 class="anchored_heading" id="changelog">Changelog</h2>
+<p>For a complete list of changes made in <a href="/kb/en/mariadb-11-0-2-release-notes/">MariaDB 11.0.2</a>, with links to detailed
+information on each push, see the <a href="/kb/en/mariadb-11-0-2-changelog/">changelog</a>.</p>
+<div class="cstm-style hidden"><h2 class="anchored_heading" id="contributors">Contributors</h2>
 <p>For a full list of contributors to <a href="/kb/en/mariadb-11-0-1-release-notes/">MariaDB 11.0.1</a>, see the <a href="https://mariadb.org/mariadb-10-7-1-rc-and-mariadb-10-6-5-10-5-13-10-4-22-10-3-32-and-10-2-41-now-available/">MariaDB Foundation release announcement</a>.</p>
 </div><hr>
 <div class="cstm-style bluebox"><p>Be notified of new MariaDB Server releases automatically by <a href="https://lists.askmonty.org/cgi-bin/mailman/listinfo/announce">subscribing</a> to the MariaDB Foundation community announce 'at' mariadb.org announcement list (this is a low traffic, announce-only list). MariaDB Corporation customers will be notified for all new releases, security issues and critical bug fixes for all MariaDB Corporation products thanks to the Notification Services.

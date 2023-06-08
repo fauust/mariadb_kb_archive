@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-10-4-29-release-notes/+r/125824/">125824</a></dd>
+            <dd><a href="/kb/en/mariadb-10-4-29-release-notes/+r/126944/">126944</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-12 03:42">2023-05-12 03:42</span></dd>
+<span class="datetime" title="2023-06-07 14:48">2023-06-07 14:48</span></dd>
         </dl>
     </div>
     
@@ -303,12 +303,11 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;button target=&#34;https://mariadb.com/downloads/&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;include slug=&#34;latest-104&#34;&gt;&gt;
+&lt;&lt;button target=&#34;https://downloads.mariadb.org/mariadb/10.4.29/&#34; class=&#34;btn-primary&#34;&gt;&gt;Download 10.4.29&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-4-29-release-notes&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Release Notes&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-4-29-changelog&#34; class=&#34;btn-info&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;what-is-mariadb-104&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 10.4&lt;&lt;/button&gt;&gt;
-
-^^//[[https://downloads.mariadb.org/mariadb/10.4.29/|Alternate download from mariadb.org]]//^^
 
 **Release date:** 10 May 2023
 
@@ -341,6 +340,10 @@ Thanks, and enjoy MariaDB!
 * Corrected non-versioned master to versioned slave replication on no-unique attribute table (MDEV-30430)
 * Mended encrypted binlog master to error out to gtid-mode slave when master could not decrypt a binlog file (MDEV-28798)
 * Refined optimistic parallel slave to error-exit without any hang (MDEV-30780)
+
+=== Optimizer
+* [[lateral-derived-optimization|Split Materialized]] optimization is improved to re-fill the materialized table only if necessary. The fewer number of table refills is taken into account when choosing query plan, too (MDEV-26301).
+* Queries using ##SELECT DISTINCT some_expression(aggregate_function())## could produce wrong query result. (MDEV-20057)
 
 === Docker Official Images
 * Add replication setup to containers contributed by Md Sahil (MDEV-29762)

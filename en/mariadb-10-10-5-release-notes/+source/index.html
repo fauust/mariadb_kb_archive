@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-10-10-5-release-notes/+r/126794/">126794</a></dd>
+            <dd><a href="/kb/en/mariadb-10-10-5-release-notes/+r/126921/">126921</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-06 08:17">2023-06-06 08:17</span></dd>
+<span class="datetime" title="2023-06-07 13:48">2023-06-07 13:48</span></dd>
         </dl>
     </div>
     
@@ -303,17 +303,14 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;include slug=&#34;unreleased-1010&#34;&gt;&gt;
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
-&lt;&lt;button target=&#34;https://mariadb.com/downloads&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;button target=&#34;https://mariadb.com/downloads&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-10-5-release-notes&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Release Notes&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-10-10-5-changelog&#34; class=&#34;btn-info&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;what-is-mariadb-1010&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 10.10&lt;&lt;/button&gt;&gt;
 
 ^^//[[https://downloads.mariadb.org/mariadb/10.10.5/|Alternate download from mariadb.org]]//^^
 
-**Release date:** ?
-&lt;&lt;/style&gt;&gt;
+**Release date:** 7 Jun 2023
 
 MariaDB 10.10 is a current short-term maintenance stable series of MariaDB, [[https://mariadb.org/about/#maintenance-policy|maintained until]] November 2023. It is an evolution
 of MariaDB 10.9 with several entirely new features.
@@ -329,7 +326,18 @@ Thanks, and enjoy MariaDB!
 
 == Notable Items
 
-* 
+=== InnoDB
+* Server crashes in st_join_table::choose_best_splitting (MDEV-31403)
+* Crash with condition pushable into derived and containing outer reference (MDEV-31240)
+* InnoDB does not free UNDO after the fix of MDEV-30671 (MDEV-31234)
+* InnoDB hang fixes (MDEV-31158, MDEV-31343, MDEV-31350)
+* [[innodb-status-variables/#innodb_buffer_pool_read_requests|Innodb_buffer_pool_read_requests]] is not updated correctly (MDEV-31309)
+* InnoDB monitor trx_rseg_history_len was accidentally disabled by default (MDEV-31308)
+* Revert &#34;MDEV-30473 : Do not allow GET_LOCK() / RELEASE_LOCK() in cluster&#34;
+
+=== Optimizer 
+* Crash with condition pushable into derived and containing outer reference (MDEV-31403 MDEV-31240)
+* Crash with [[explain|EXPLAIN EXTENDED]] for multi-table update of system table (MDEV-31224)
 
 &lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 === Security

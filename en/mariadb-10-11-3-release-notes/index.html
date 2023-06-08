@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-16 12:09">2 weeks, 6 days ago</span></dd>
+<span class="datetime" title="2023-06-07 14:51">3 hours, 54 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -380,7 +380,11 @@
 
     
     <div class="answer formatted">
-        <p><a class="btn btn-primary" href="https://mariadb.com/downloads">Download</a>
+        <div class="cstm-style bluebox text-center centered"><p>The most recent release of <a href="/kb/en/what-is-mariadb-1011/">MariaDB 10.11</a> is:<br>
+<span class="cstm-style lead"><strong><a href="/kb/en/mariadb-10-11-4-release-notes/">MariaDB 10.11.4</a>  Stable (GA)</strong> <a class="btn btn-success btn-mini" href="https://mariadb.com/downloads/">Download<span>&nbsp;</span>Now</a></span><br>
+<sub><em><a href="https://mariadb.org/download/?tab=mariadb&amp;release=10.11.4&amp;product=mariadb">Alternate download from mariadb.org</a></em></sub></p>
+</div><p>
+<a class="btn btn-primary" href="https://downloads.mariadb.org/mariadb/10.11.3/">Download 10.11.3</a>
 <a class="btn btn-info disabled" href="/kb/en/mariadb-10-11-3-release-notes/">Release Notes</a>
 <a class="btn btn-info" href="/kb/en/mariadb-10-11-3-changelog/">Changelog</a>
 <a class="btn btn-info" href="/kb/en/what-is-mariadb-10-11/">Overview of 10.11</a></p>
@@ -411,7 +415,7 @@
 </li><li>System-wide max transaction id corrupted after changing the undo tablespaces (<a href="https://jira.mariadb.org/browse/MDEV-30311">MDEV-30311</a>)
 </li><li>Fix miscount of doublewrites by <a href="/kb/en/innodb-status-variables/#innodb_data_written">Innodb_data_written</a>  (<a href="https://jira.mariadb.org/browse/MDEV-31124">MDEV-31124</a>)
 </li></ul>
-<h2 class="anchored_heading" id="backup">Backup</h2>
+<h3 class="anchored_heading" id="backup">Backup</h3>
 <ul start="1"><li>mariadb-backup doesn't utilise innodb-undo-log-directory (if specified as a relative path) during copy-back operation (<a href="https://jira.mariadb.org/browse/MDEV-28187">MDEV-28187</a>)
 </li><li>mariabackup issues error messages during InnoDB tablespaces export on partial backup preparing (<a href="https://jira.mariadb.org/browse/MDEV-29050">MDEV-29050</a>)
 </li><li>mariadb-backup does not copy Aria logs if aria_log_dir_path is used (<a href="https://jira.mariadb.org/browse/MDEV-30968">MDEV-30968</a>)
@@ -426,6 +430,11 @@
 </li><li>Ensured SHOW-SLAVE-STATUS is processed on the parallel slave having a necessary mutex always intialized (<a href="https://jira.mariadb.org/browse/MDEV-30620">MDEV-30620</a>)
 </li><li>Fixed the slave applier to report a correct error when gtid_slave_pos insert fails for some (engine) reasons (<a href="https://jira.mariadb.org/browse/MDEV-31038">MDEV-31038</a>)
 </li><li>Made parallel slave reports in performance schema consistent with that of show-slave-status (<a href="https://jira.mariadb.org/browse/MDEV-26071">MDEV-26071</a>)
+</li></ul>
+<h3 class="anchored_heading" id="optimizer">Optimizer</h3>
+<ul start="1"><li><a href="/kb/en/lateral-derived-optimization/">Split Materialized</a> optimization is improved to re-fill the materialized table only if necessary. The fewer number of table refills is taken into account when choosing query plan, too (<a href="https://jira.mariadb.org/browse/MDEV-26301">MDEV-26301</a>)
+</li><li>New optimizer_switch option, <a href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality</a>, is added. It is off by default. When set to ON, the optimizer will produce tighter bounds for hash join output cardinality. (<a href="https://jira.mariadb.org/browse/MDEV-30812">MDEV-30812</a>)
+</li><li>Queries using <code>SELECT DISTINCT some_expression(aggregate_function())</code> could produce wrong query result. (<a href="https://jira.mariadb.org/browse/MDEV-20057">MDEV-20057</a>)
 </li></ul>
 <h3 class="anchored_heading" id="docker-official-image">Docker Official Image</h3>
 <ul start="1"><li>Add replication setup to containers contributed by Md Sahil (<a href="https://jira.mariadb.org/browse/MDEV-29762">MDEV-29762</a>)

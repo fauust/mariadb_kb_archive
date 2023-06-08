@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/backup-and-restore-overview/+r/126107/">126107</a></dd>
+            <dd><a href="/kb/en/backup-and-restore-overview/+r/126846/">126846</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-23 21:06">2023-05-23 21:06</span></dd>
+<span class="datetime" title="2023-06-06 23:27">2023-06-06 23:27</span></dd>
         </dl>
     </div>
     
@@ -320,8 +320,8 @@ The main differences are as follows:
 
 == Backup Tools
 
-=== Mariabackup
-[[mariadb-backup|Mariabackup]] is a fork of [[backup-restore-and-import-xtrabackup|Percona XtraBackup]] with added support for MariaDB 10.1 [[InnoDB compression|compression]] and [[data-at-rest-encryption|data-at-rest encryption]]. It is included with MariaDB 10.1.23 and later.
+=== Mariadb-backup
+[[mariadb-backup|Mariadb-backup]] is a fork of [[backup-restore-and-import-xtrabackup|Percona XtraBackup]] with added support for MariaDB 10.1 [[InnoDB compression|compression]] and [[data-at-rest-encryption|data-at-rest encryption]]. It is included with MariaDB 10.1.23 and later.
 
 === mariadb-dump
 [[mariadb-dump]] (previously mysqldump) performs a logical backup. It is the most flexible way to perform a backup and restore, and a good choice when the data size is relatively small.
@@ -342,25 +342,25 @@ It is also possible to explicitly dump the buffer pool on disk before starting a
 ==== Examples
 Backing up a single database
 &lt;&lt;code&gt;&gt;
-shell&gt; mysqldump db_name &gt; backup-file.sql
+shell&gt; mariadb-dump db_name &gt; backup-file.sql
 &lt;&lt;/code&gt;&gt;
 Restoring or loading the database
 &lt;&lt;code&gt;&gt;
-shell&gt; mysql db_name &lt; backup-file.sql
+shell&gt; mariadb db_name &lt; backup-file.sql
 &lt;&lt;/code&gt;&gt;
 
 See the [[mariadb-dump]] page for detailed syntax and examples.
 
-=== mysqlhotcopy
+=== mariadb-hotcopy / mysqlhotcopy
 &lt;&lt;style class=&#34;redbox&#34;&gt;&gt;
-mysqlhotcopy is currently deprecated.
+mariadb-hotcopy / mysqlhotcopy is currently deprecated.
 &lt;&lt;/style&gt;&gt;
-[[mysqlhotcopy]] performs a physical backup, and works only for backing up [[MyISAM]] and [[ARCHIVE]] tables. It can only be run on the same machine as the location of the database directories.
+[[mariadb-hotcopy]] performs a physical backup, and works only for backing up [[MyISAM]] and [[ARCHIVE]] tables. It can only be run on the same machine as the location of the database directories.
 
 ==== Examples
 &lt;&lt;code&gt;&gt;
-shell&gt; mysqlhotcopy db_name [/path/to/new_directory]
-shell&gt; mysqlhotcopy db_name_1 ... db_name_n /path/to/new_directory
+shell&gt; mariadb-hotcopy db_name [/path/to/new_directory]
+shell&gt; mariadb-hotcopy db_name_1 ... db_name_n /path/to/new_directory
 &lt;&lt;/code&gt;&gt;
 
 === Percona XtraBackup

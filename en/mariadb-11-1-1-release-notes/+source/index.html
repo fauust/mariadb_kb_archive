@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-11-1-1-release-notes/+r/126803/">126803</a></dd>
+            <dd><a href="/kb/en/mariadb-11-1-1-release-notes/+r/126891/">126891</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-06 08:22">2023-06-06 08:22</span></dd>
+<span class="datetime" title="2023-06-07 11:52">2023-06-07 11:52</span></dd>
         </dl>
     </div>
     
@@ -303,23 +303,18 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;include slug=&#34;unreleased-111&#34;&gt;&gt;
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
-&lt;&lt;button target=&#34;https://mariadb.com/downloads&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;button target=&#34;https://mariadb.com/downloads&#34; class=&#34;btn-primary&#34;&gt;&gt;Download&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;mariadb-11-1-1-release-notes&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Release Notes&lt;&lt;/button&gt;&gt;
-&lt;&lt;button target=&#34;mariadb-11-1-1-changelog&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
-&lt;&lt;button target=&#34;what-is-mariadb-11-0&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 11.1&lt;&lt;/button&gt;&gt;
+&lt;&lt;button target=&#34;mariadb-11-1-1-changelog&#34; class=&#34;btn-info&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
+&lt;&lt;button target=&#34;what-is-mariadb-11-1&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 11.1&lt;&lt;/button&gt;&gt;
 
-**Release date:** ?
-&lt;&lt;/style&gt;&gt;
+**Release date:** 6 Jun 2023
 
 &lt;&lt;include slug=&#34;rc&#34;&gt;&gt;
 
-MariaDB 11.1 is the current development series of MariaDB. It is an evolution of MariaDB 11.0 with several entirely new features.
+MariaDB 11.1 is the current short-term development series of MariaDB, which will be maintained for one year after the Stable (GA) release. It is an evolution of MariaDB 11.0 with several entirely new features.
 
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
-MariaDB 11.1 is a **//[[release-criteria|Release Candidate (RC)]]//** release.
-&lt;&lt;/style&gt;&gt;
+MariaDB 11.1.1 is a **//[[release-criteria|Release Candidate (RC)]]//** release.
 
 &lt;&lt;style class=&#34;greenbox&#34;&gt;&gt;
 **For an overview of MariaDB 11.1 see the
@@ -332,17 +327,28 @@ Thanks, and enjoy MariaDB!
 
 * The [[server-system-variables/#transaction_isolation|transaction_isolation]] option is now a system variable, and the tx_isolation system variable is deprecated (MDEV-21921)
 
+=== InnoDB
+* Server crashes in st_join_table::choose_best_splitting (MDEV-31403)
+* Crash with condition pushable into derived and containing outer reference (MDEV-31240)
+* InnoDB does not free UNDO after the fix of MDEV-30671 (MDEV-31234)
+* InnoDB hang fixes (MDEV-31158, MDEV-31343, MDEV-31350)
+* [[innodb-status-variables/#innodb_buffer_pool_read_requests|Innodb_buffer_pool_read_requests]] is not updated correctly (MDEV-31309)
+* InnoDB monitor trx_rseg_history_len was accidentally disabled by default (MDEV-31308)
+* Revert &#34;MDEV-30473 : Do not allow GET_LOCK() / RELEASE_LOCK() in cluster&#34;
+
+=== Optimizer 
+* Crash with condition pushable into derived and containing outer reference (MDEV-31403 MDEV-31240)
+* Crash with [[explain|EXPLAIN EXTENDED]] for multi-table update of system table (MDEV-31224)
+
 &lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 === Security
 * Fixes for the following [[cve|security vulnerabilities]]:
 ** CVE-####-####
 &lt;&lt;/style&gt;&gt;
 
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 == Changelog
 For a complete list of changes made in MariaDB 11.1.1, with links to detailed
 information on each push, see the [[mariadb-11-1-1-changelog|changelog]].
-&lt;&lt;/style&gt;&gt;
 
 &lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 == Contributors
