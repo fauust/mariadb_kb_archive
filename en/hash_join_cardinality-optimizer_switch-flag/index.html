@@ -10,22 +10,22 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>hash_join_cardinality optimizer_switch flag - MariaDB Knowledge Base</title>
+    <title>hash_join_cardinality optimizer_switch Flag - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="hash_join_cardinality optimizer_switch flag" />
+    <meta property="og:title" content="hash_join_cardinality optimizer_switch Flag" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://mariadb.com/kb/en/hash_join_cardinality-optimizer_switch-flag/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="In MySQL and MariaDB, the output cardinality of a part of query has been historically tied to the used access method(s).  This is different from the approach used in database ..." />
+    <meta property="og:description" content="MariaDB starting with &lt;a href=&#34;/kb/en/mariadb-10613-release-notes/&#34;&gt;10.6.13&lt;/a&gt;The hash_join_cardinality optimizer_switch flag was added in  MariaDB 11.0.2, MariaDB 10.11.3,  ..." />
 
-    <meta name="description" content="In MySQL and MariaDB, the output cardinality of a part of query has been historically tied to the used access method(s).  This is different from the approach used in database ..." />
+    <meta name="description" content="MariaDB starting with &lt;a href=&#34;/kb/en/mariadb-10613-release-notes/&#34;&gt;10.6.13&lt;/a&gt;The hash_join_cardinality optimizer_switch flag was added in  MariaDB 11.0.2, MariaDB 10.11.3,  ..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -182,7 +182,7 @@
     
 
 
-    » <a class="node_link crumb" href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality optimizer_switch flag</a>
+    » <a class="node_link crumb" href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality optimizer_switch Flag</a>
 
 
                 </div>
@@ -247,12 +247,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2023-06-07 12:19">4 hours, 26 minutes ago</span></dd>
+<span class="datetime" title="2023-06-07 12:19">1 day, 4 hours ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-07 12:25">4 hours, 20 minutes ago</span></dd>
+<span class="datetime" title="2023-06-07 20:25">20 hours, 18 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -310,6 +310,25 @@
 
 
 
+    
+    
+
+<div class="well well-small box"><div><h5>Product Versions</h5></div><div>
+
+        <ul id="product_chooser">
+            
+                <li class="mariadb_from_10_6_13">
+                    <label><input type="checkbox" data-product-class="mariadb_from_10_6_13"
+                            >MariaDB starting with 10.6.13</label>
+                </li>
+            
+        </ul>
+    
+</div>
+</div>
+
+
+
 
 
 
@@ -361,7 +380,7 @@
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>hash_join_cardinality optimizer_switch flag</h1>
+                    <h1>hash_join_cardinality optimizer_switch Flag</h1>
                 
 
                 
@@ -384,7 +403,8 @@
 
     
     <div class="answer formatted">
-        <p>In MySQL and MariaDB, the output cardinality of a part of query has been historically tied to the used access method(s).  This is different from the approach used in database textbooks (there, the cardinality "x JOIN y" is the same regardless of which access methods are used to compute it).</p>
+        <div class="mariadb_from_10_6_13 mariadb from_10_6_13 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-10613-release-notes/">10.6.13</a></h5><p>The hash_join_cardinality optimizer_switch flag was added in  <a href="/kb/en/mariadb-11-0-2-release-notes/">MariaDB 11.0.2</a>, <a href="/kb/en/mariadb-10-11-3-release-notes/">MariaDB 10.11.3</a>,  MariaDB10.10.4, <a href="/kb/en/mariadb-10-9-6-release-notes/">MariaDB 10.9.6</a>, <a href="/kb/en/mariadb-10-8-8-release-notes/">MariaDB 10.8.8</a> and <a href="/kb/en/mariadb-10613-release-notes/">MariaDB 10.6.13</a>.</p>
+</div><p>In MySQL and MariaDB, the output cardinality of a part of query has historically been tied to the used access method(s). This is different from the approach used in database textbooks. There, the cardinality "x JOIN y" is the same regardless of which access methods are used to compute it.</p>
 <h2 class="anchored_heading" id="example">Example</h2>
 <p>Consider a query joining customers with their orders:</p>
 <pre class="fixed"><span class="k">select</span> <span class="o">*</span> 
@@ -396,10 +416,10 @@
 <p>If the query plan is using this index to fetch orders for each customer, the optimizer will use index statistics from <code>IDX</code> to estimate the number of rows in the customer-joined-with-orders.</p>
 <p>On the other hand, if the optimizer considers a query plan that  joins customer with orders without use of indexes, it will ignore the <code>customer.id = orders.customer_id</code> equality completely and will compute the 
 output cardinality as if customer was cross-joined with orders.</p>
-<h2 class="anchored_heading" id="hash-join">Hash join</h2>
-<p>MariaDB supports <a href="/kb/en/block-based-join-algorithms/#block-hash-join">Block Hash Join</a>.  It is not enabled by default, one needs to set it <a href="/kb/en/server-system-variables/#join_cache_level">join_cache_level</a> to 3 or a bigger value to enable it.</p>
+<h2 class="anchored_heading" id="hash-join">Hash Join</h2>
+<p>MariaDB supports <a href="/kb/en/block-based-join-algorithms/#block-hash-join">Block Hash Join</a>. It is not enabled by default, one needs to set it <a href="/kb/en/server-system-variables/#join_cache_level">join_cache_level</a> to 3 or a bigger value to enable it.</p>
 <p>Before <a href="https://jira.mariadb.org/browse/MDEV-30812">MDEV-30812</a>, Query optimization for Block Hash Join would work as described in the above example: It would assume that the join operation is a cross join.</p>
-<p><a href="https://jira.mariadb.org/browse/MDEV-30812">MDEV-30812</a> introduces a new <a href="/kb/en/server-system-variables/#optimizer_switch">optimizer_switch</a> flag, <code>hash_join_cardinality</code>.  In MariaDB versions before 11.0, it is off by default.</p>
+<p><a href="https://jira.mariadb.org/browse/MDEV-30812">MDEV-30812</a> introduces a new <a href="/kb/en/server-system-variables/#optimizer_switch">optimizer_switch</a> flag, <code>hash_join_cardinality</code>. In MariaDB versions before 11.0, it is off by default.</p>
 <p>If one sets it to ON, the optimizer will make use of column histograms when computing the cardinality of hash join operation output.</p>
 <p>One can see the computation in the Optimizer Trace,  search for <code>hash_join_cardinality</code>.</p>
 
@@ -704,7 +724,7 @@ output cardinality as if customer was cross-joined with orders.</p>
             
                 
                     <li class="active">
-                        <span>hash_join_cardinality optimizer_switch flag</span>
+                        <span>hash_join_cardinality optimizer_switch Flag</span>
                         
                     </li>
                 

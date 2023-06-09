@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>hash_join_cardinality optimizer_switch flag - Source - MariaDB Knowledge Base</title>
+    <title>hash_join_cardinality optimizer_switch Flag - Source - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
@@ -19,7 +19,7 @@
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="hash_join_cardinality optimizer_switch flag - Source" />
+    <meta property="og:title" content="hash_join_cardinality optimizer_switch Flag - Source" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://mariadb.com/kb/en/hash_join_cardinality-optimizer_switch-flag/+source/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
@@ -184,7 +184,7 @@
     
 
 
-    » <a class="node_link crumb" href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality optimizer_switch flag</a>
+    » <a class="node_link crumb" href="/kb/en/hash_join_cardinality-optimizer_switch-flag/">hash_join_cardinality optimizer_switch Flag</a>
 
 
                 </div>
@@ -272,7 +272,7 @@
             
             <section id="content" class="limited_width col-md-10 clearfix">
                 
-                    <h1>hash_join_cardinality optimizer_switch flag - Source</h1>
+                    <h1>hash_join_cardinality optimizer_switch Flag - Source</h1>
                 
 
                 
@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/hash_join_cardinality-optimizer_switch-flag/+r/126895/">126895</a></dd>
+            <dd><a href="/kb/en/hash_join_cardinality-optimizer_switch-flag/+r/126963/">126963</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-3645">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-07 12:25">2023-06-07 12:25</span></dd>
+<span class="datetime" title="2023-06-07 20:25">2023-06-07 20:25</span></dd>
         </dl>
     </div>
     
@@ -307,7 +307,11 @@
 
     
         
-        <textarea id="answer_source" class="creole_source autogrow">In MySQL and MariaDB, the output cardinality of a part of query has been historically tied to the used access method(s).  This is different from the approach used in database textbooks (there, the cardinality &#34;x JOIN y&#34; is the same regardless of which access methods are used to compute it).
+        <textarea id="answer_source" class="creole_source autogrow">&lt;&lt;product mariadb from=10.6.13&gt;&gt;
+The hash_join_cardinality optimizer_switch flag was added in  MariaDB 11.0.2, MariaDB 10.11.3,  MariaDB10.10.4, MariaDB 10.9.6, MariaDB 10.8.8 and MariaDB 10.6.13.
+&lt;&lt;/product&gt;&gt;
+
+In MySQL and MariaDB, the output cardinality of a part of query has historically been tied to the used access method(s). This is different from the approach used in database textbooks. There, the cardinality &#34;x JOIN y&#34; is the same regardless of which access methods are used to compute it.
 
 == Example
 
@@ -328,13 +332,13 @@ If the query plan is using this index to fetch orders for each customer, the opt
 On the other hand, if the optimizer considers a query plan that  joins customer with orders without use of indexes, it will ignore the ##customer.id = orders.customer_id## equality completely and will compute the 
 output cardinality as if customer was cross-joined with orders.
 
-== Hash join
+== Hash Join
 
-MariaDB supports [[block-based-join-algorithms#block-hash-join|Block Hash Join]].  It is not enabled by default, one needs to set it [[server-system-variables/#join_cache_level|join_cache_level]] to 3 or a bigger value to enable it.
+MariaDB supports [[block-based-join-algorithms#block-hash-join|Block Hash Join]]. It is not enabled by default, one needs to set it [[server-system-variables/#join_cache_level|join_cache_level]] to 3 or a bigger value to enable it.
 
 Before MDEV-30812, Query optimization for Block Hash Join would work as described in the above example: It would assume that the join operation is a cross join.
 
-MDEV-30812 introduces a new [[server-system-variables#optimizer_switch|optimizer_switch]] flag, ##hash_join_cardinality##.  In MariaDB versions before 11.0, it is off by default.
+MDEV-30812 introduces a new [[server-system-variables#optimizer_switch|optimizer_switch]] flag, ##hash_join_cardinality##. In MariaDB versions before 11.0, it is off by default.
 
 If one sets it to ON, the optimizer will make use of column histograms when computing the cardinality of hash join operation output.
 

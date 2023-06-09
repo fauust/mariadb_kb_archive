@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-07 14:49">3 hours, 23 minutes ago</span></dd>
+<span class="datetime" title="2023-06-08 10:54">7 hours, 24 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -422,6 +422,9 @@
 <h3 class="anchored_heading" id="optimizer">Optimizer</h3>
 <ul start="1"><li><a href="/kb/en/lateral-derived-optimization/">Split Materialized</a> optimization is improved to re-fill the materialized table only if necessary. The fewer number of table refills is taken into account when choosing query plan, too (<a href="https://jira.mariadb.org/browse/MDEV-26301">MDEV-26301</a>).
 </li><li>Queries using <code>SELECT DISTINCT some_expression(aggregate_function())</code> could produce wrong query result. (<a href="https://jira.mariadb.org/browse/MDEV-20057">MDEV-20057</a>)
+</li><li>A GROUP BY query with <code>MIN(primary_key)</code> in select list and <code>primary_key&lt;&gt;const</code> in the WHERE could produce wrong result when executed with "Using index for group-by" strategy (<a href="https://jira.mariadb.org/browse/MDEV-30605">MDEV-30605</a>)
+</li><li>EXPLAIN could erroneously report that <a href="/kb/en/rowid-filtering-optimization/">Rowid Filter optimization</a> is used for partitioned tables. Partitioned tables do not support it. (<a href="https://jira.mariadb.org/browse/MDEV-30596">MDEV-30596</a>)
+</li><li>A bug in selectivity computations for SINGLE/DOUBLE_PREC_HB histograms could cause wrong estimates to be produced. This could cause the optimizer to pick sub-optimal query plans (<a href="https://jira.mariadb.org/browse/MDEV-31067">MDEV-31067</a>).
 </li></ul>
 <h3 class="anchored_heading" id="docker-official-images">Docker Official Images</h3>
 <ul start="1"><li>Add replication setup to containers contributed by Md Sahil (<a href="https://jira.mariadb.org/browse/MDEV-29762">MDEV-29762</a>)
