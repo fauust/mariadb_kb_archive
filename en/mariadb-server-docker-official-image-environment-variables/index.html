@@ -186,7 +186,7 @@
     
 
     
-    » <a class="crumb" href="/kb/en/docker-and-mariadb/">Docker and MariaDB</a>
+    » <a class="crumb" href="/kb/en/docker-official-images-of-mariadb-server/">Docker Official Images of MariaDB Server</a>
     
 
 
@@ -260,7 +260,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-02 12:49">1 week, 4 days ago</span></dd>
+<span class="datetime" title="2023-06-14 00:48">17 hours, 8 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -412,6 +412,8 @@
 
         <li class=""><a href="#mariadb_initdb_skip_tzinfo-mysql_initdb_skip_tzinfo" title="MARIADB_INITDB_SKIP_TZINFO / MYSQL_INITDB_SKIP_TZINFO">MARIADB_INITDB_SKIP_TZINFO / MYSQL_INITDB_SKIP_TZINFO</a></li>
 
+        <li class=""><a href="#mariadb_auto_upgrade-mariadb_disable_upgrade_backup" title="MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP">MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</a></li>
+
         <li class=""><a href="#mariadb_master_host" title="MARIADB_MASTER_HOST">MARIADB_MASTER_HOST</a></li>
 
         <li class=""><a href="#mariadb_replication_user-mariadb_replication_password_hash-mariadb_replication_password" title="MARIADB_REPLICATION_USER / MARIADB_REPLICATION_PASSWORD_HASH / MARIADB_REPLICATION_PASSWORD">MARIADB_REPLICATION_USER / MARIADB_REPLICATION_PASSWORD_HASH / MARIADB_REPLICATION_PASSWORD</a>    </ol>
@@ -438,8 +440,8 @@ When you start the %%IMAGE%% image, you can adjust the initialization of the Mar
 <p>Set MARIADB_MYSQL_LOCALHOST_USER to a non-empty value to create the mysql@locahost database user. This user is especially useful for a variety of health checks and backup scripts.</p>
 <p>The mysql@localhost user gets USAGE privileges by default. If more access is required, additional global privileges in the form of a comma separated list can be provided. If you are sharing a volume containing MariaDB's unix socket (/var/run/mysqld by default), privileges beyond USAGE can result in confidentiality, integrity and availability risks, so use a minimal set. See the example below on using Mariabackup. The healthcheck.sh script also documents the required privileges for each health check test.</p>
 <h3 class="anchored_heading" id="mariadb_initdb_skip_tzinfo-mysql_initdb_skip_tzinfo">MARIADB_INITDB_SKIP_TZINFO / MYSQL_INITDB_SKIP_TZINFO</h3>
-<p>By default, the entrypoint script automatically loads the timezone data needed for the CONVERT_TZ() function. If it is not needed, any non-empty value disables timezone loading.
-MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</p>
+<p>By default, the entrypoint script automatically loads the timezone data needed for the CONVERT_TZ() function. If it is not needed, any non-empty value disables timezone loading.</p>
+<h3 class="anchored_heading" id="mariadb_auto_upgrade-mariadb_disable_upgrade_backup">MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</h3>
 <p>Set MARIADB_AUTO_UPGRADE to a non-empty value to have the entrypoint check whether <a href="/kb/en/mariadb-upgrade/">mariadb-upgrade</a> needs to run, and if so, run the upgrade before starting the MariaDB server.</p>
 <p>Before the upgrade, a backup of the system database is created in the top of the datadir with the name system_mysql_backup_*.sql.zst. This backup process can be disabled with by setting MARIADB_DISABLE_UPGRADE_BACKUP to a non-empty value.</p>
 <h3 class="anchored_heading" id="mariadb_master_host">MARIADB_MASTER_HOST</h3>
@@ -470,11 +472,16 @@ MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</p>
                     </li>
                 
                 
-                    <li><a href="/kb/en/docker-and-mariadb/">
-                        ↑ Docker and MariaDB ↑
+                    <li><a href="/kb/en/docker-official-images-of-mariadb-server/">
+                        ↑ Docker Official Images of MariaDB Server ↑
                     </a>
                     </li>
                 
+                
+                    <li class="pull-right"><a href="/kb/en/using-healthcheck-sh-script/">
+                        Using Healthcheck.sh script →
+                    </a>
+                    </li>
                 
             </ul>
         </div>
@@ -511,8 +518,8 @@ MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</p>
         
         <ul class="section_navigation well well-small hidden-xs hidden-sm">
             
-                <li class="parent"><a href="/kb/en/docker-and-mariadb/">
-                    ↑ Docker and MariaDB ↑
+                <li class="parent"><a href="/kb/en/docker-official-images-of-mariadb-server/">
+                    ↑ Docker Official Images of MariaDB Server ↑
                 </a>
                 </li>
             
@@ -584,6 +591,15 @@ MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP</p>
                     <li class="active">
                         <span>MariaDB Server Docker Official Image Environment Variables</span>
                         
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/en/using-healthcheck-sh-script/">
+                            
+                            Using Healthcheck.sh script
+                        </a>
                     </li>
                 
             

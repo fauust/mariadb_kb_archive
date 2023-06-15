@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Tue, 13 Jun 2023 19:31:58 +0000</lastBuildDate><item><title>Re: Audit login able to log sql thred</title><link>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6263</link><description>&lt;p&gt;Please allow me to correct. Here I m referring to "Audit plugin"&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>MariaDB Knowledge Base Comments</title><link>https://mariadb.com/kb/feeds/comments/</link><description></description><atom:link href="https://mariadb.com/kb/feeds/comments/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Wed, 14 Jun 2023 19:33:25 +0000</lastBuildDate><item><title>Re: Audit login able to log sql thred</title><link>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6269</link><description>&lt;p&gt;thats only possible in case if log_slave_updates is ON&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ankit kapoor</dc:creator><guid>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6269</guid></item><item><title>Re: Audit login able to log sql thred</title><link>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6268</link><description>&lt;p&gt;No.
+The auditing plugin doesn't log the replication slave queries.
+Just to mention these queries are seen in the binary logs, so there's a way to see them.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alexey Botchkov</dc:creator><guid>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6268</guid></item><item><title>Re: Is MariaDB certified for use under Windows Server?</title><link>https://mariadb.com/kb/en/is-mariadb-certified-for-use-under-windows-server/+comments/6265</link><description>&lt;p&gt;The engineering policy &lt;a href="https://mariadb.com/engineering-policies/"&gt;https://mariadb.com/engineering-policies/&lt;/a&gt; says Windows versions, which are in active maintenance (by OS vendor, i.e Microsoft) are supported. The CI uses both Windows Server 2019 and Windows Server 2022,so both are known to work. There is nothing about virtualization, or specifically about VMWare in the policy itself. There is no formal certification process OS/virtualization combos.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Vladislav Vaintroub</dc:creator><guid>https://mariadb.com/kb/en/is-mariadb-certified-for-use-under-windows-server/+comments/6265</guid></item><item><title>Re: Is MariaDB certified for use under Windows Server?</title><link>https://mariadb.com/kb/en/is-mariadb-certified-for-use-under-windows-server/+comments/6264</link><description>&lt;p&gt;Current platforms are described &lt;a href="/kb/en/deprecation-policy/#current-package-platforms"&gt;here&lt;/a&gt;. Virtualized and non-virtualized should work equally well.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/en/is-mariadb-certified-for-use-under-windows-server/+comments/6264</guid></item><item><title>Re: Audit login able to log sql thred</title><link>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6263</link><description>&lt;p&gt;Please allow me to correct. Here I m referring to "Audit plugin"&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Ankit kapoor</dc:creator><guid>https://mariadb.com/kb/en/audit-login-able-to-log-sql-thred/+comments/6263</guid></item><item><title>Re: cann not start Maxscale with error Cannot access library file '/usr/lib64/maxscale/libcli.so'. Error 2: No such file or directory</title><link>https://mariadb.com/kb/en/cann-not-start-maxscale-with-error-cannot-access-library-file-usrlib64maxsc/+comments/6262</link><description>&lt;p&gt;Did you configure a module named &lt;code&gt;cli&lt;/code&gt;? There is no such module in MaxScale. Try to remove the section in the configuration file that uses it.&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Markus Mäkelä</dc:creator><guid>https://mariadb.com/kb/en/cann-not-start-maxscale-with-error-cannot-access-library-file-usrlib64maxsc/+comments/6262</guid></item><item><title>Why no 21st Centuiry UUID types?</title><link>https://mariadb.com/kb/en/uuid/+comments/6261</link><description>&lt;p&gt;I think I posted in the exact same spot several years ago asking for an up-to-date UUID generator,  similar to the the ones running on most Linux and BSD systems.  Yet, we are limited to creation of a single fixed type of UUID.&lt;/p&gt;
 &lt;p&gt;To get proper hashed UUIDs, I have to run uuidgen in a loop and dump it into a text file, which I then load into a table so I have a collection of proper UUIDs for when I need them.&lt;/p&gt;
@@ -301,33 +307,4 @@ ERROR 1105 (HY000): Client GSSAPI error (major 851968, minor 0) : gss_init_sec_c
 &lt;p&gt;Things to note:
 My mariadb connection driver is version 3.1.
 I can connect to the named pipe "MySQL" through heidiSQL, and it is found in list of open pipes&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gavin A</dc:creator><guid>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6207</guid></item><item><title>Re: Broken foreign key constraint</title><link>https://mariadb.com/kb/en/broken-foreign-key-constraint/+comments/6205</link><description>&lt;p&gt;OK, I think I've fixed it with:&lt;/p&gt;
-&lt;p&gt;SET FOREIGN_KEY_CHECKS=0;&lt;/p&gt;
-&lt;p&gt;alter table cri_Sample drop foreign key cri_Sample_ibfk_1;&lt;/p&gt;
-&lt;p&gt;ALTER TABLE cri_Sample  ADD CONSTRAINT cri_Sample_ibfk_1 FOREIGN KEY (sampleType) REFERENCES  cri_sample_type(type);&lt;/p&gt;
-&lt;p&gt;SET FOREIGN_KEY_CHECKS=1;&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mr C</dc:creator><guid>https://mariadb.com/kb/en/broken-foreign-key-constraint/+comments/6205</guid></item><item><title>Re: How to create an updater column</title><link>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6204</link><description>&lt;p&gt;Thank you for your comment. As you suggested, I set up a "trigger", but what is added to the updater column is not the username who made the update or insert, but the username who created the trigger.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Saki Aoto</dc:creator><guid>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6204</guid></item><item><title>Re: How to create an updater column</title><link>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6202</link><description>&lt;p&gt;Using triggers like:&lt;/p&gt;
-&lt;pre&gt;
-CREATE TABLE animal (name varchar(30), updater varchar(80));
-
-CREATE TRIGGER update_animal 
-BEFORE UPDATE ON animal
-FOR EACH ROW SET NEW.updater= current_user;
-
-CREATE TRIGGER add_animal 
-BEFORE INSERT ON animal
-FOR EACH ROW SET NEW.updater= current_user
-
- insert into animal (name) values ('dog'),('cat');
-
-select * from animal;
-+------+---------------+
-| name | updater       |
-+------+---------------+
-| dog  | dan@localhost |
-| cat  | dan@localhost |
-+------+---------------+
-&lt;/pre&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Daniel Black</dc:creator><guid>https://mariadb.com/kb/ja/how-to-create-an-updater-column/+comments/6202</guid></item><item><title>Re: i want to know maxscale license policy</title><link>https://mariadb.com/kb/en/i-want-to-know-maxscale-license-policy/+comments/6200</link><description>&lt;p&gt;MaxScale is shipped with a LICENSE.TXT file that provides "change date" information regarding the conversion from BSL to GPL.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Todd Stoffel</dc:creator><guid>https://mariadb.com/kb/en/i-want-to-know-maxscale-license-policy/+comments/6200</guid></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gavin A</dc:creator><guid>https://mariadb.com/kb/en/creating-a-data-source-with-mariadb-connectorodbc/+comments/6207</guid></item></channel></rss>

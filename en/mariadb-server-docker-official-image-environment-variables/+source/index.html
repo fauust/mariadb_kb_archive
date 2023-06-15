@@ -188,7 +188,7 @@
     
 
     
-    » <a class="crumb" href="/kb/en/docker-and-mariadb/">Docker and MariaDB</a>
+    » <a class="crumb" href="/kb/en/docker-official-images-of-mariadb-server/">Docker Official Images of MariaDB Server</a>
     
 
 
@@ -296,7 +296,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-server-docker-official-image-environment-variables/+r/126737/">126737</a></dd>
+            <dd><a href="/kb/en/mariadb-server-docker-official-image-environment-variables/+r/127257/">127257</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -305,7 +305,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-02 12:49">2023-06-02 12:49</span></dd>
+<span class="datetime" title="2023-06-14 00:48">2023-06-14 00:48</span></dd>
         </dl>
     </div>
     
@@ -357,7 +357,9 @@ The mysql@localhost user gets USAGE privileges by default. If more access is req
 ===MARIADB_INITDB_SKIP_TZINFO / MYSQL_INITDB_SKIP_TZINFO
 
 By default, the entrypoint script automatically loads the timezone data needed for the CONVERT_TZ() function. If it is not needed, any non-empty value disables timezone loading.
-MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP
+
+
+===MARIADB_AUTO_UPGRADE / MARIADB_DISABLE_UPGRADE_BACKUP
 
 Set MARIADB_AUTO_UPGRADE to a non-empty value to have the entrypoint check whether [[mariadb-upgrade]] needs to run, and if so, run the upgrade before starting the MariaDB server.
 
