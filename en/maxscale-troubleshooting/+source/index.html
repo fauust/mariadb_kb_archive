@@ -276,7 +276,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/maxscale-troubleshooting/+r/125537/">125537</a></dd>
+            <dd><a href="/kb/en/maxscale-troubleshooting/+r/127291/">127291</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-3062">
@@ -285,7 +285,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-09 12:44">2023-05-09 12:44</span></dd>
+<span class="datetime" title="2023-06-16 15:20">2023-06-16 15:20</span></dd>
         </dl>
     </div>
     
@@ -504,6 +504,40 @@ This is a common error when system limits for open files is too low. The fix to 
 === Systemd
 
 Edit or add {{{LimitNOFILE=&lt;number of files&gt;}}} under the {{{[Service]}}} section in {{{/usr/lib/systemd/system/maxscale.service}}}.
+
+= MaxCtrl
+
+== {{{Error: ENOENT: no such file or directory, uv_cwd}}}
+
+If MaxCtrl fails to start and throws the following error, it means that the current working directory no longer exists. Moving into a directory that does exist fixes the problem.
+
+&lt;&lt;code&gt;&gt;
+pkg/prelude/bootstrap.js:1872
+      throw error;
+      ^
+
+Error: ENOENT: no such file or directory, uv_cwd
+1) If you want to compile the package/file into executable, please pay attention to compilation warnings and specify a literal in &#39;require&#39; call. 2) If you don&#39;t want to compile the package/file into executable and want to &#39;require&#39; it from filesystem (likely plugin), specify an absolute path in &#39;require&#39; call using process.cwd() or process.execPath.
+    at Object.wrappedCwd [as cwd] (internal/bootstrap/switches/does_own_process_state.js:130:28)
+    at /snapshot/maxctrl/node_modules/yargs/build/index.cjs:1:59463
+    at Argv (/snapshot/maxctrl/node_modules/yargs/index.cjs:12:16)
+    at Object.&lt;anonymous&gt; (/snapshot/maxctrl/node_modules/yargs/index.cjs:7:1)
+    at Module._compile (pkg/prelude/bootstrap.js:1926:22)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at Module.require (pkg/prelude/bootstrap.js:1851:31) {
+  errno: -2,
+  code: &#39;ENOENT&#39;,
+  syscall: &#39;uv_cwd&#39;,
+  pkg: true
+}
+&lt;&lt;/code&gt;&gt;
+
+== {{{Pkg: Error reading from file.}}}
+
+If MaxCtrl fails to start and throws this error, it most likely means that the {{{maxctrl}}} executable has been stripped of symbols. To fix this problem, reinstall the MaxScale package.
 
 = Binlogrouter
 

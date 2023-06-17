@@ -240,7 +240,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-09 12:44">1 month, 1 week ago</span></dd>
+<span class="datetime" title="2023-06-16 15:20">7 hours, 15 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -474,6 +474,13 @@
  </ol>
 </li>
 
+ <li class="maxscale_from_22_08_4"><a href="#maxctrl" title="MaxCtrl">MaxCtrl</a> <ol class="toc">
+
+    <li class="maxscale_from_22_08_4"><a href="#error-enoent-no-such-file-or-directory-uv_cwd" title="Error: ENOENT: no such file or directory, uv_cwd">Error: ENOENT: no such file or directory, uv_cwd</a></li>
+
+    <li class="maxscale_from_22_08_4"><a href="#pkg-error-reading-from-file" title="Pkg: Error reading from file.">Pkg: Error reading from file.</a> </ol>
+</li>
+
  <li class="maxscale_from_22_08_4"><a href="#binlogrouter" title="Binlogrouter">Binlogrouter</a> <ol class="toc">
 
     <li class="maxscale_from_22_08_4"><a href="#commands-not-working" title="Commands not Working">Commands not Working</a> </ol>
@@ -602,6 +609,32 @@ sudo sysctl -w fs.pipe-max-size=8388608
 <p>This is a common error when system limits for open files is too low. The fix to this is to increase the limits.</p>
 <h3 class="anchored_heading" id="systemd">Systemd</h3>
 <p>Edit or add <code>LimitNOFILE=&lt;number of files&gt;</code> under the <code>[Service]</code> section in <code>/usr/lib/systemd/system/maxscale.service</code>.</p>
+<h1 class="anchored_heading" id="maxctrl">MaxCtrl</h1>
+<h2 class="anchored_heading" id="error-enoent-no-such-file-or-directory-uv_cwd"><code>Error: ENOENT: no such file or directory, uv_cwd</code></h2>
+<p>If MaxCtrl fails to start and throws the following error, it means that the current working directory no longer exists. Moving into a directory that does exist fixes the problem.</p>
+<pre class="fixed">pkg/prelude/bootstrap.js:1872
+      throw error;
+      ^
+
+Error: ENOENT: no such file or directory, uv_cwd
+1) If you want to compile the package/file into executable, please pay attention to compilation warnings and specify a literal in 'require' call. 2) If you don't want to compile the package/file into executable and want to 'require' it from filesystem (likely plugin), specify an absolute path in 'require' call using process.cwd() or process.execPath.
+    at Object.wrappedCwd [as cwd] (internal/bootstrap/switches/does_own_process_state.js:130:28)
+    at /snapshot/maxctrl/node_modules/yargs/build/index.cjs:1:59463
+    at Argv (/snapshot/maxctrl/node_modules/yargs/index.cjs:12:16)
+    at Object.&lt;anonymous&gt; (/snapshot/maxctrl/node_modules/yargs/index.cjs:7:1)
+    at Module._compile (pkg/prelude/bootstrap.js:1926:22)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at Module.require (pkg/prelude/bootstrap.js:1851:31) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'uv_cwd',
+  pkg: true
+}
+</pre><h2 class="anchored_heading" id="pkg-error-reading-from-file"><code>Pkg: Error reading from file.</code></h2>
+<p>If MaxCtrl fails to start and throws this error, it most likely means that the <code>maxctrl</code> executable has been stripped of symbols. To fix this problem, reinstall the MaxScale package.</p>
 <h1 class="anchored_heading" id="binlogrouter">Binlogrouter</h1>
 <h2 class="anchored_heading" id="commands-not-working">Commands not Working</h2>
 <p>Make sure you are connecting on the port where the binlogrouter is listening. A common mistake is to connect to a readwritesplit or readconnroute port and execute the replication configuration commands there.</p>
