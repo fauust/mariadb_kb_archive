@@ -252,7 +252,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-15 05:32">3 days, 19 hours ago</span></dd>
+<span class="datetime" title="2023-06-19 09:51">9 hours, 46 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -398,6 +398,13 @@
 <div style="margin-left:2em"><p>if flag &amp; FL_GROUP_COMMIT_ID</p>
 </div>
 <ul start="1"><li><a href="/kb/en/protocol-data-types/#fixed-length-integers">uint&lt;8&gt;</a> commit_id
+</li></ul>
+<div style="margin-left:2em"><p>else if flag &amp; (FL_PREPARED_XA | FL_COMPLETED_XA)</p>
+</div>
+<ul start="1"><li><a href="/kb/en/protocol-data-types/#fixed-length-integers">uint&lt;4&gt;</a> format_id
+</li><li><a href="/kb/en/protocol-data-types/#fixed-length-integers">uint&lt;1&gt;</a> gtid_length
+</li><li><a href="/kb/en/protocol-data-types/#fixed-length-integers">uint&lt;1&gt;</a> bqual_length
+</li><li><a href="/kb/en/protocol-data-types/#fixed-length-bytes">byte&lt;n&gt;</a>xid, where n is sum of gtrid and bqual lengths
 </li></ul>
 <div style="margin-left:2em"><p>else</p>
 </div>
