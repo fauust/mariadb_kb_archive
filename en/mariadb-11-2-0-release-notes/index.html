@@ -23,9 +23,9 @@
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="Unreleased" />
+    <meta property="og:description" content="Status: Alpha | Release Date: 20 Jun 2023" />
 
-    <meta name="description" content="Unreleased" />
+    <meta name="description" content="Status: Alpha | Release Date: 20 Jun 2023" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -243,12 +243,12 @@
         <dt>Created</dt>
         <dd>
 
-<span class="datetime" title="2023-05-21 21:22">4 weeks ago</span></dd>
+<span class="datetime" title="2023-05-21 21:22">4 weeks, 1 day ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-21 21:23">4 weeks ago</span></dd>
+<span class="datetime" title="2023-06-20 19:31">2 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -387,15 +387,30 @@
 <a class="btn btn-info disabled" href="/kb/en/mariadb-11-2-0-release-notes/">Release Notes</a>
 <a class="btn btn-info disabled" href="mariadb-11-2-0-changelog">Changelog</a>
 <a class="btn btn-info" href="/kb/en/what-is-mariadb-11-2/">Overview of 11.2</a></p>
-<p><strong>Release date:</strong> Unreleased</p>
+<p><strong>Release date:</strong> 20 Jun 2023</p>
 <div class="cstm-style redbox lead text-center centered"><p><strong>Do not use <em>alpha</em> releases in production!</strong></p>
 </div>
-<p><a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is an upcoming short-term development series of MariaDB, and will be maintained for one year after its Generally Available release. It is an evolution of <a href="/kb/en/what-is-mariadb-111/">MariaDB 11.1</a> with several entirely new features.</p>
-<p><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a> will be a single preview release. Features are to be considered preview, and none are guaranteed to make it into <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a>.</p>
+<p><a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is a short-term development series of MariaDB, and will be maintained for one year after its Generally Available release. It is an evolution of <a href="/kb/en/what-is-mariadb-111/">MariaDB 11.1</a> with several entirely new features.</p>
+<p><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a> is a single preview release. Features are to be considered preview, and none are guaranteed to make it into <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a>.</p>
 <div class="cstm-style hidden"><p>The preview is available as a container <strong>quay.io/mariadb-foundation/mariadb-devel:11.1-preview</strong>.</p>
 </div><div class="cstm-style greenbox"><p><strong>For an overview of <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> see the
 <a href="/kb/en/what-is-mariadb-11-2/">What is MariaDB 11.2?</a> page.</strong></p>
 </div><p>Thanks, and enjoy MariaDB!</p>
+<h2 class="anchored_heading" id="innodb">InnoDB</h2>
+<ul start="1"><li>The InnoDB system tablespace can now be shrunk (<a href="https://jira.mariadb.org/browse/MDEV-14795">MDEV-14795</a>)
+</li></ul>
+<h2 class="anchored_heading" id="json">JSON</h2>
+<ul start="1"><li><a href="/kb/en/json_table/">JSON_TABLE</a> now allows retrieval of the key when iterating on JSON objects (<a href="https://jira.mariadb.org/browse/MDEV-30145">MDEV-30145</a>)
+</li><li>New functions <a href="/kb/en/json_object_filter_keys/">JSON_OBJECT_FILTER_KEYS</a>, <a href="/kb/en/json_object_to_array/">JSON_OBJECT_TO_ARRAY</a> and <a href="/kb/en/json_array_intersect/">JSON_ARRAY_INTERSECT</a> to check for JSON intersection (<a href="https://jira.mariadb.org/browse/MDEV-26182">MDEV-26182</a>)
+</li></ul>
+<h2 class="anchored_heading" id="miscellaneous">Miscellaneous</h2>
+<ul start="1"><li>Ensure all binlog* variables are visible as system variables (<a href="https://jira.mariadb.org/browse/MDEV-30188">MDEV-30188</a>)
+</li><li><a href="/kb/en/alter-table/">ALTER TABLE IMPORT</a> enhancement (<a href="https://jira.mariadb.org/browse/MDEV-26137">MDEV-26137</a>)
+</li><li>The information_schema tables for getting temporary tables info is missing, at least for innodb there is no INNODB_TEMP_TABLE_INFO (<a href="https://jira.mariadb.org/browse/MDEV-12459">MDEV-12459</a>)
+</li><li><a href="http://dev.mysql.com/worklog/task/?id=4179">MySQL Worklog #4179</a> - Stored programs: validation of stored program statements (<a href="https://jira.mariadb.org/browse/MDEV-5816">MDEV-5816</a>)
+</li><li>Remove the deprecated <a href="/kb/en/server-system-variables/#old_alter_table">old_alter_table</a> variable (<a href="https://jira.mariadb.org/browse/MDEV-30905">MDEV-30905</a>)
+</li><li>Extend <a href="/kb/en/aes_encrypt/">AES_ENCRYPT()</a> and <a href="/kb/en/aes_decrypt/">AES_DECRYPT()</a> to support an initialization vector and algorithm (<a href="https://jira.mariadb.org/browse/MDEV-9069">MDEV-9069</a>)
+</li></ul>
 <hr>
 <div class="cstm-style bluebox"><p>Be notified of new MariaDB Server releases automatically by <a href="https://lists.askmonty.org/cgi-bin/mailman/listinfo/announce">subscribing</a> to the MariaDB Foundation community announce 'at' mariadb.org announcement list (this is a low traffic, announce-only list). MariaDB Corporation customers will be notified for all new releases, security issues and critical bug fixes for all MariaDB Corporation products thanks to the Notification Services.
 <br><br>

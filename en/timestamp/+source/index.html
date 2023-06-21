@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/timestamp/+r/125311/">125311</a></dd>
+            <dd><a href="/kb/en/timestamp/+r/127378/">127378</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-04-21 14:38">2023-04-21 14:38</span></dd>
+<span class="datetime" title="2023-06-20 08:36">2023-06-20 08:36</span></dd>
         </dl>
     </div>
     
@@ -333,7 +333,7 @@ MariaDB can also store [[microseconds-in-mariadb|microseconds]] with a precision
 
 == Automatic Values
 
-MariaDB has special behavior for the first column that uses the ##TIMESTAMP## data type in a specific table.  For the first column that uses the ##TIMESTAMP## data type in a specific table, MariaDB automatically assigns the following properties to the column:
+MariaDB has special behavior for the first column that uses the ##TIMESTAMP## data type in a specific table when the system variable [[server-system-variables/#explicit_defaults_for_timestamp|explicit_defaults_for_timestamp]] is not set (which is the default until MariaDB 10.10).  For the first column that uses the ##TIMESTAMP## data type in a specific table, MariaDB automatically assigns the following properties to the column:
 
 * ##DEFAULT CURRENT_TIMESTAMP##
 * ##ON UPDATE CURRENT_TIMESTAMP##

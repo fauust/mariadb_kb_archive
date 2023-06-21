@@ -252,7 +252,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-07 20:17">1 week, 4 days ago</span></dd>
+<span class="datetime" title="2023-06-20 11:55">8 hours ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -529,6 +529,8 @@
         <li class=""><a href="/kb/en/replication-and-binary-log-server-system-variables/#binlog_row_metadata" title="binlog_row_metadata">binlog_row_metadata</a></li>
 
         <li class=""><a href="/kb/en/replication-and-binary-log-server-system-variables/#binlog_stmt_cache_size" title="binlog_stmt_cache_size">binlog_stmt_cache_size</a></li>
+
+        <li class=""><a href="#block_encryption_mode" title="block_encryption_mode">block_encryption_mode</a></li>
 
         <li class=""><a href="#bulk_insert_buffer_size" title="bulk_insert_buffer_size">bulk_insert_buffer_size</a></li>
 
@@ -3097,6 +3099,17 @@ Variables that can be changed at runtime are described as "Dynamic" below, and e
 
 
 
+<h4 class="anchored_heading" id="block_encryption_mode"><code>block_encryption_mode</code></h4>
+<ul start="1"><li><strong>Description:</strong> Default block encryption mode for <a href="/kb/en/aes_encrypt/">AES_ENCRYPT()</a> and <a href="/kb/en/aes_decrypt/">AES_DECRYPT()</a> functions.
+</li><li><strong>Commandline:</strong> <code class="fixed" style="white-space:pre-wrap">--block-encryption-mode=val</code>
+</li><li><strong>Scope:</strong> Global, Session
+</li><li><strong>Dynamic:</strong> Yes
+</li><li><strong>Data Type:</strong> <code>numeric</code>
+</li><li><strong>Default Value:</strong> <code>aes-128-ecb</code>
+</li><li><strong>Valid values:</strong> <code>aes-128-ecb</code>, <code>aes-192-ecb</code>, <code>aes-256-ecb</code>, <code>aes-128-cbc</code>, <code>aes-192-cbc</code>, <code>aes-256-cbc</code>, <code>aes-128-ctr</code>, <code>aes-192-ctr</code>, <code>aes-256-ctr</code>
+</li><li><strong>Introduced:</strong> <a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>
+</li></ul>
+<hr>
 <h4 class="anchored_heading" id="bulk_insert_buffer_size"><code>bulk_insert_buffer_size</code></h4>
 <ul start="1"><li><strong>Description:</strong> Size in bytes of the per-thread cache tree used to speed up bulk inserts into <a href="/kb/en/myisam/">MyISAM</a> and <a href="/kb/en/aria/">Aria</a> tables. A value of 0 disables the cache tree.
 </li><li><strong>Commandline:</strong> <code class="fixed" style="white-space:pre-wrap">--bulk-insert-buffer-size=#</code>
@@ -5039,6 +5052,7 @@ Maximum simultaneous connections permitted for each user account.  When set to <
 </li><li><strong>Default Value:</strong> See <a href="#alter_algorithm">alter_algorithm</a> (&gt;= <a href="/kb/en/mariadb-1037-release-notes/">MariaDB 10.3.7</a>), <code>0</code> (&lt;= <a href="/kb/en/mariadb-1036-release-notes/">MariaDB 10.3.6</a>)
 </li><li><strong>Valid Values:</strong> See <a href="#alter_algorithm">alter_algorithm</a> for the full list.
 </li><li><strong>Deprecated:</strong> <a href="/kb/en/mariadb-1037-release-notes/">MariaDB 10.3.7</a> (superceded by <a href="#alter_algorithm">alter_algorithm</a>)
+</li><li><strong>Removed:</strong> <a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>
 </li></ul>
 <hr>
 <h4 class="anchored_heading" id="old_mode"><code>old_mode</code></h4>

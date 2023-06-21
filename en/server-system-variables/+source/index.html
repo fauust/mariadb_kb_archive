@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/server-system-variables/+r/126961/">126961</a></dd>
+            <dd><a href="/kb/en/server-system-variables/+r/127415/">127415</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-07 20:17">2023-06-07 20:17</span></dd>
+<span class="datetime" title="2023-06-20 11:55">2023-06-20 11:55</span></dd>
         </dl>
     </div>
     
@@ -570,6 +570,17 @@ The suffix can be upper or lower-case.
 &lt;&lt;toc-item slug=&#34;replication-and-binary-log-server-system-variables#binlog_row_metadata&#34; level=3&gt;&gt;##binlog_row_metadata##&lt;&lt;/toc-item&gt;&gt;
 
 &lt;&lt;toc-item slug=&#34;replication-and-binary-log-server-system-variables#binlog_stmt_cache_size&#34; level=3&gt;&gt;##binlog_stmt_cache_size##&lt;&lt;/toc-item&gt;&gt;
+
+==== ##block_encryption_mode##
+* **Description:** Default block encryption mode for [[aes_encrypt|AES_ENCRYPT()]] and [[aes_decrypt|AES_DECRYPT()]] functions.
+* **Commandline:** &lt;&lt;code&gt;&gt;--block-encryption-mode=val&lt;&lt;/code&gt;&gt;
+* **Scope:** Global, Session
+* **Dynamic:** Yes
+* **Data Type:** ##numeric##
+* **Default Value:** ##aes-128-ecb##
+* **Valid values:** ##aes-128-ecb##, ##aes-192-ecb##, ##aes-256-ecb##, ##aes-128-cbc##, ##aes-192-cbc##, ##aes-256-cbc##, ##aes-128-ctr##, ##aes-192-ctr##, ##aes-256-ctr##
+* **Introduced:** MariaDB 11.2.0
+----
 
 ==== ##bulk_insert_buffer_size##
 * **Description:** Size in bytes of the per-thread cache tree used to speed up bulk inserts into [[MyISAM]] and [[Aria]] tables. A value of 0 disables the cache tree.
@@ -2854,6 +2865,7 @@ Maximum simultaneous connections permitted for each user account.  When set to #
 * **Default Value:** See [[#alter_algorithm|alter_algorithm]] (&gt;= MariaDB 10.3.7), ##0## (&lt;= MariaDB 10.3.6)
 * **Valid Values:** See [[#alter_algorithm|alter_algorithm]] for the full list.
 * **Deprecated:** MariaDB 10.3.7 (superceded by [[#alter_algorithm|alter_algorithm]])
+* **Removed:** MariaDB 11.2.0
 ---- 
 
 ==== ##old_mode##

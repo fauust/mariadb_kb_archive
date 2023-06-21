@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-30 10:29">2 weeks, 6 days ago</span></dd>
+<span class="datetime" title="2023-06-20 08:24">7 hours, 51 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -503,8 +503,13 @@ directory or data directory. For example:</p>
 <tr><td><code>--auth-root-socket-user=USER</code></td><td>Used with <code>--auth-root-authentication-method=socket</code>. It specifies the name of the second account to create with <code><a href="/kb/en/grant/#global-privileges">SUPER</a></code> privileges in addition to <code>root</code>, as well as of the system account allowed to access it. Defaults to the value of <code>--user</code>.</td></tr>
 <tr><td><code>--basedir=path</code></td><td>The path to the MariaDB installation directory.</td></tr>
 <tr><td><code>--builddir=path</code></td><td>If using <code>--srcdir</code> with out-of-directory builds, you will need to set this to the location of the build directory where built files reside.</td></tr>
+<tr><td><code>--catalogs=["list"]</code></td><td> Initialize MariaDB for <a href="/kb/en/catalogs/">catalogs</a>. Argument is a list, separated with space, of the catalogs to create. The def catalog is created automatically. Added in <a href="/kb/en/what-is-mariadb-113/">MariaDB 11.3</a>.</td></tr>
+<tr><td><code>--catalog-user=user</code></td><td>User when adding <a href="/kb/en/catalogs/">catalogs</a> to running server. Added in <a href="/kb/en/what-is-mariadb-113/">MariaDB 11.3</a>.</td></tr>
+<tr><td><code>--catalog-password[=password]</code></td><td>Password for <a href="/kb/en/catalogs/">catalog-user</a>. Added in <a href="/kb/en/what-is-mariadb-113/">MariaDB 11.3</a>.</td></tr>
+<tr><td><code>--catalog-client-arg=arg</code></td><td>Other arguments to 'mariadb' when adding new <a href="/kb/en/catalogs/">catalogs</a>. Added in <a href="/kb/en/what-is-mariadb-113/">MariaDB 11.3</a>.</td></tr>
 <tr><td><code>--cross-bootstrap</code></td><td>For internal use.  Used when building the MariaDB system tables on a different host than the target.</td></tr>
 <tr><td><code>--datadir=path</code>, <code>--ldata=path</code></td><td>The path to the MariaDB data directory.</td></tr>
+<tr><td><code>--debug=path</code></td><td>Write commands to-be executed in 'path'. Added in <a href="/kb/en/what-is-mariadb-113/">MariaDB 11.3</a>.</td></tr>
 <tr><td><code>--defaults-extra-file=name</code></td><td>Read this file after the global files are read. Must be given as the first option.</td></tr>
 <tr><td><code>--defaults-file=name</code></td><td>Only read default options from the given file <em>name</em> Must be given as the first option.</td></tr>
 <tr><td><code>--defaults-group-suffix=name</code></td><td>In addition to the given groups, read also groups with this suffix. From <a href="/kb/en/mariadb-10131-release-notes/">MariaDB 10.1.31</a>, <a href="/kb/en/mariadb-10213-release-notes/">MariaDB 10.2.13</a> and <a href="/kb/en/mariadb-1035-release-notes/">MariaDB 10.3.5</a>.</td></tr>
@@ -797,7 +802,8 @@ Create_tmp_table_priv: Y
 <span class="o">|</span> <span class="n">root</span>        <span class="o">|</span> <span class="n">localhost</span> <span class="o">|</span>
 <span class="o">+</span><span class="c1">-------------+-----------+</span>
 </pre><h2 class="anchored_heading" id="see-also">See Also</h2>
-<ul start="1"><li><a href="/kb/en/installing-system-tables-mysql_install_db/">Installing system tables (mariadb-install-db)</a>
+<ul start="1"><li><a href="/kb/en/starting-with-catalogs/">Configure MariaDB with catalog support</a>
+</li><li><a href="/kb/en/installing-system-tables-mysql_install_db/">Installing system tables (mariadb-install-db)</a>
 </li><li>The Windows version of <code>mariadb-install-db</code>: <code><a href="/kb/en/mysql_install_dbexe/">mysql_install_db.exe</a></code></li></ul>
 
     </div>
@@ -984,15 +990,6 @@ Create_tmp_table_priv: Y
             
                 
                     <li>
-                        <a href="/kb/en/mysqlaccess/">
-                            
-                            mysqlaccess
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
                         <a href="/kb/en/mariadb-binlog/">
                             
                             mariadb-binlog
@@ -1011,27 +1008,9 @@ Create_tmp_table_priv: Y
             
                 
                     <li>
-                        <a href="/kb/en/mysql_find_rows/">
-                            
-                            mysql_find_rows
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
                         <a href="/kb/en/mysql_fix_extensions/">
                             
                             mysql_fix_extensions
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/mysqlreport/">
-                            
-                            mysqlreport
                         </a>
                     </li>
                 

@@ -284,7 +284,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-11-2-0-release-notes/+r/125935/">125935</a></dd>
+            <dd><a href="/kb/en/mariadb-11-2-0-release-notes/+r/127410/">127410</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -293,7 +293,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-21 21:23">2023-05-21 21:23</span></dd>
+<span class="datetime" title="2023-06-20 11:41">2023-06-20 11:41</span></dd>
         </dl>
     </div>
     
@@ -309,13 +309,13 @@
 &lt;&lt;button target=&#34;mariadb-11-2-0-changelog&#34; class=&#34;btn-info disabled&#34;&gt;&gt;Changelog&lt;&lt;/button&gt;&gt;
 &lt;&lt;button target=&#34;what-is-mariadb-11-2&#34; class=&#34;btn-info&#34;&gt;&gt;Overview of 11.2&lt;&lt;/button&gt;&gt;
 
-**Release date:** Unreleased
+**Release date:** 20 Jun 2023
 
 &lt;&lt;include slug=&#34;alpha&#34;&gt;&gt;
 
-MariaDB 11.2 is an upcoming short-term development series of MariaDB, and will be maintained for one year after its Generally Available release. It is an evolution of MariaDB 11.1 with several entirely new features.
+MariaDB 11.2 is a short-term development series of MariaDB, and will be maintained for one year after its Generally Available release. It is an evolution of MariaDB 11.1 with several entirely new features.
 
-MariaDB 11.2.0 will be a single preview release. Features are to be considered preview, and none are guaranteed to make it into MariaDB 11.2.
+MariaDB 11.2.0 is a single preview release. Features are to be considered preview, and none are guaranteed to make it into MariaDB 11.2.
 
 &lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
 The preview is available as a container **quay.io/mariadb-foundation/mariadb-devel:11.1-preview**.
@@ -327,6 +327,21 @@ The preview is available as a container **quay.io/mariadb-foundation/mariadb-dev
 &lt;&lt;/style&gt;&gt;
 
 Thanks, and enjoy MariaDB!
+
+== InnoDB
+* The InnoDB system tablespace can now be shrunk (MDEV-14795)
+
+== JSON
+* [[json_table|JSON_TABLE]] now allows retrieval of the key when iterating on JSON objects (MDEV-30145)
+* New functions [[JSON_OBJECT_FILTER_KEYS]], [[JSON_OBJECT_TO_ARRAY]] and [[json_array_intersect|JSON_ARRAY_INTERSECT]] to check for JSON intersection (MDEV-26182)
+
+== Miscellaneous
+* Ensure all binlog* variables are visible as system variables (MDEV-30188)
+* [[alter-table|ALTER TABLE IMPORT]] enhancement (MDEV-26137)
+* The information_schema tables for getting temporary tables info is missing, at least for innodb there is no INNODB_TEMP_TABLE_INFO (MDEV-12459)
+* MySQL WL#4179 - Stored programs: validation of stored program statements (MDEV-5816)
+* Remove the deprecated [[server-system-variables/#old_alter_table|old_alter_table]] variable (MDEV-30905)
+* Extend [[aes_encrypt|AES_ENCRYPT()]] and [[aes_decrypt|AES_DECRYPT()]] to support IV and the algorithm (MDEV-9069)
 
 
 &lt;&lt;include slug=&#34;release-notification&#34;&gt;&gt;</textarea>

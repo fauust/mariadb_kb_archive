@@ -240,7 +240,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-16 15:20">3 days, 7 hours ago</span></dd>
+<span class="datetime" title="2023-06-20 08:31">13 hours, 57 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -320,9 +320,19 @@
                             >MaxScale starting with 22.08.0</label>
                 </li>
             
+                <li class="maxscale_from_6_4_5">
+                    <label><input type="checkbox" data-product-class="maxscale_from_6_4_5"
+                            >MaxScale starting with 6.4.5</label>
+                </li>
+            
                 <li class="maxscale_from_22_08_0">
                     <label><input type="checkbox" data-product-class="maxscale_from_22_08_0"
                             >MaxScale starting with 22.08.0</label>
+                </li>
+            
+                <li class="maxscale_from_6_4_5">
+                    <label><input type="checkbox" data-product-class="maxscale_from_6_4_5"
+                            >MaxScale starting with 6.4.5</label>
                 </li>
             
         </ul>
@@ -596,14 +606,15 @@ ERROR 1045 (28000): Access denied for user 'bob'@'office' (using password: YES)
 <h1 class="anchored_heading" id="system-errors">System Errors</h1>
 <h2 class="anchored_heading" id="failed-to-write-message-11-resource-temporarily-unavailable"><code>Failed to write message: 11, Resource temporarily unavailable</code></h2>
 <div class="maxscale_from_22_08_0 maxscale from_22_08_0 product"><h5 class="product_title">MaxScale starting with 22.08.0</h5><p> MaxScale 22.08 no longer uses pipes for internal communication. This means that this error is never logged and the pipe size no longer needs to be adjusted.</p>
-</div><p>Starting with MaxScale 2.1 and until MaxScale 6, MaxScale can log the <code>Failed to write message: 11, Resource temporarily unavailable</code> message under extremely intensive workloads (see <a href="https://jira.mariadb.org/browse/MXS-1983">MXS-1983</a>).</p>
+</div><div class="maxscale_from_6_4_5 maxscale from_6_4_5 product"><h5 class="product_title">MaxScale starting with 6.4.5</h5><p>Older MaxScale versions suffer from a bug (<a href="https://jira.mariadb.org/browse/MXS-4474">MXS-4474</a>) that caused messages in the queue to take up 4096 bytes of memory per message instead of the intended 24 bytes which translates to a maximum of 256 messages instead of the expected 43690 messages with a 1MiB pipe size. </p>
+<p>Starting with MaxScale 6.4.5 and 2.5.25, the size is 24 bytes as expected which causes the maximum limit to be the expected 43690 messages. The problem still theoretically exists under extreme workloads where there are more than 43k concurrent clients but in practice the problem should almost never occur.</p>
+</div><p>The MaxScale can log the <code>Failed to write message: 11, Resource temporarily unavailable</code> message under extremely intensive workloads (see <a href="https://jira.mariadb.org/browse/MXS-1983">MXS-1983</a> and <a href="https://jira.mariadb.org/browse/MXS-4474">MXS-4474</a>).</p>
 <p>The first action to take when these messages are encountered is to upgrade your MaxScale installation to the latest version. Whenever this message is seen, it means that something is causing the internal message queue in MaxScale to fill up. More often than not it is a sign of a possible bug in MaxScale and most likely has been fixed in the most recent release of MaxScale.  </p>
-<p>To correct it increase the pipe buffer size from the default 1MB to a higher value. At least 8MB is recommended and should be increased until the message stops appearing.</p>
+<p>If this is still seen even after upgrading to the latest release, the pipe buffer size can be increased from the default 1MB to a higher value to prevent the problem from occurring. At least 8MB is recommended and should be increased until the message stops appearing.</p>
 <p>To set the pipe buffer size, execute the following command.</p>
 <pre>
 sudo sysctl -w fs.pipe-max-size=8388608
 </pre>
-<p>Before MaxScale 6.4.5, messages in the queue would end up taking 4096 bytes of memory which translated to a maximum of 256 messages with a 1MiB pipe size. In MaxScale 6.4.5, the size is 24 bytes which causes the maximum limit to be increased to about 43k messages.</p>
 <p>If after all these actions you still see these warnings, please open a bug report on the MariaDB Jira under the MaxScale project.</p>
 <h2 class="anchored_heading" id="error-23-too-many-open-files">Error 23: Too many open files</h2>
 <p>This is a common error when system limits for open files is too low. The fix to this is to increase the limits.</p>
