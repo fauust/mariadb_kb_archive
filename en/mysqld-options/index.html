@@ -252,7 +252,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-20 12:28">8 hours, 11 minutes ago</span></dd>
+<span class="datetime" title="2023-06-21 20:14">29 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -2781,7 +2781,7 @@ other MariaDB and MySQL versions. Options that are also system variables are lis
 <ul start="1"><li><strong>Commandline:</strong> <code class="fixed" style="white-space:pre-wrap">--binlog-do-db=name</code>
 </li><li><strong>Description:</strong> This option allows you to configure a <a href="/kb/en/replication/">replication master</a> to write statements and transactions affecting databases that match a specified name into its <a href="/kb/en/binary-log/">binary log</a>. Since the filtered statements or transactions will not be present in the <a href="/kb/en/binary-log/">binary log</a>, its replicas will not be able to replicate them.
 <ul start="1"><li>This option will <strong>not</strong> work with cross-database updates with <a href="/kb/en/binary-log-formats/#statement-based-logging">statement-based logging</a>. See the <a href="/kb/en/replication-filters/#statement-based-logging">Statement-Based Logging</a> section for more information.
-</li><li>This option can <strong>not</strong> be set dynamically.
+</li><li>This option can <strong>not</strong> be set dynamically. Available as a <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_do_db">system variable</a> from <a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>.
 </li><li>When setting it on the command-line or in a server <a href="/kb/en/configuring-mariadb-with-option-files/#option-groups">option group</a> in an <a href="/kb/en/configuring-mariadb-with-option-files/">option file</a>, the option does not accept a comma-separated list. If you would like to specify multiple filters, then you need to specify the option multiple times.
 </li><li>See <a href="/kb/en/replication-filters/">Replication Filters</a> for more information. 
 </li></ul>
