@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/source-building-mariadb-on-centos/+r/127252/">127252</a></dd>
+            <dd><a href="/kb/en/source-building-mariadb-on-centos/+r/127484/">127484</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-13 09:53">2023-06-13 09:53</span></dd>
+<span class="datetime" title="2023-06-22 12:59">2023-06-22 12:59</span></dd>
         </dl>
     </div>
     
@@ -338,6 +338,9 @@ yum install valgrind
 yum install libcurl-devel
 yum install gzip
 yum install zlib-devel
+yum install lz4-devel
+yum install lzo-devel
+yum install bzip2-devel
 yum install libxml2-devel
 yum install libevent-devel
 yum install libaio-devel
@@ -345,6 +348,11 @@ yum install boost
 yum install pcre2-devel
 yum install systemd-devel
 yum install rpm-build
+yum install libaio-devel
+yum install zstd
+yum install pam-devel
+yum install checkpolicy
+yum install policycoreutils-python
 yum install galera.x86_64
 &lt;&lt;/code&gt;&gt;
 You can replace   ##openssl## with ##gnutls## above, depending on the TLS implementation you want to use.

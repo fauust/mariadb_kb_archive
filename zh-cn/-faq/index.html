@@ -10,22 +10,28 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>InnoDB System Tablespaces - MariaDB Knowledge Base</title>
+    <title>存储引擎 FAQ - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="InnoDB System Tablespaces" />
+    <meta property="og:title" content="存储引擎 FAQ" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://mariadb.com/kb/en/innodb-system-tablespaces/" />
+    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/-faq/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="The system tablespace, how to change its size, and the use of raw disk partitions." />
+    <meta property="og:description" content="MySQL的存储引擎是否与MariaDB兼容？
+在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。
+为MariaDB创建的存储引擎是否适用于MySQL？
+大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更..." />
 
-    <meta name="description" content="The system tablespace, how to change its size, and the use of raw disk partitions." />
+    <meta name="description" content="MySQL的存储引擎是否与MariaDB兼容？
+在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。
+为MariaDB创建的存储引擎是否适用于MySQL？
+大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -64,7 +70,7 @@
                 </li>
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/innodb-system-tablespaces/"> Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/-faq/"> Login</a>
                     </li>
                 
             </ul>
@@ -84,17 +90,17 @@
             
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/innodb-system-tablespaces/" rel="nofollow">Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/-faq/" rel="nofollow">Login</a>
                     </li>
                 
             
             
             <li id="search-form">
-                <form action="/kb/en/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
+                <form action="/kb/zh-cn/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
                     <input id="search" title="Enter the terms you wish to search for."
                            placeholder="Search . . ." type="text"
                            name="q" value="" size="15" maxlength="128" class="form-text"
-                           data-autocomplete-url="/kb/en/+search/autocomplete/">
+                           data-autocomplete-url="/kb/zh-cn/+search/autocomplete/">
                     <input type="hidden" name="quick" value="1" />
                     <input type="hidden" name="source" value="kb" />
                 </form>
@@ -161,32 +167,32 @@
             <div class="pull-left">
                 
                 <div id="breadcrumbs" class="breadcrumb">
-                    <a href="/kb/en/">Knowledge Base</a>
+                    <a href="/kb/zh-cn/">Knowledge Base</a>
                     
 
 
     
-    » <a class="crumb" href="/kb/en/documentation/">MariaDB Server Documentation</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb/">MariaDB - 简体中文</a>
     
 
     
-    » <a class="crumb" href="/kb/en/columns-storage-engines-and-plugins/">Columns, Storage Engines, and Plugins</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb-server/">MariaDB Server文档</a>
     
 
     
-    » <a class="crumb" href="/kb/en/storage-engines/">Storage Engines</a>
+    » <a class="crumb" href="/kb/zh-cn/columns-storage-engines-and-plugins/">列、存储引擎和插件</a>
     
 
     
-    » <a class="crumb" href="/kb/en/innodb/">InnoDB</a>
+    » <a class="crumb" href="/kb/zh-cn/storage-engines/">存储引擎</a>
     
 
     
-    » <a class="crumb" href="/kb/en/innodb-tablespaces/">InnoDB Tablespaces</a>
+    » <a class="crumb" href="/kb/zh-cn/storage-engines-storage-engine-development/">存储引擎开发</a>
     
 
 
-    » <a class="node_link crumb" href="/kb/en/innodb-system-tablespaces/">InnoDB System Tablespaces</a>
+    » <a class="node_link crumb" href="/kb/zh-cn/-faq/">存储引擎 FAQ</a>
 
 
                 </div>
@@ -203,15 +209,15 @@
                     
                         
                         <ul id="category_menu" class="nav nav-pills nav-stacked">
-                            <li><a href="/kb/en/">Home</a></li>
+                            <li><a href="/kb/zh-cn/">首页</a></li>
                             
                                 
-                                    <li><a href="/kb/en/+questions/">Open Questions</a></li>
+                                    <li><a href="/kb/zh-cn/+questions/">Open Questions</a></li>
                                 
-                                <li><a href="/kb/en/documentation/">MariaDB Server</a></li>
-                                <li><a href="/kb/en/maxscale/">MariaDB MaxScale</a></li>
-                                <li><a href="/kb/en/mariadb-columnstore/">MariaDB ColumnStore</a></li>
-                                <li><a href="/kb/en/connectors/">Connectors</a></li>
+                                <li><a href="/kb/zh-cn/documentation/">MariaDB Server</a></li>
+                                <li><a href="/kb/zh-cn/maxscale/">MariaDB MaxScale</a></li>
+                                <li><a href="/kb/zh-cn/mariadb-columnstore/">MariaDB ColumnStore</a></li>
+                                <li><a href="/kb/zh-cn/connectors/">Connectors</a></li>
                             
 
                         </ul>
@@ -224,17 +230,17 @@
 
 <div class="well well-small box actions"><div>
 
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/innodb-system-tablespaces/+history" rel="nofollow">History</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+history" rel="nofollow">历史</a>
         
         
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/innodb-system-tablespaces/+source/">Source</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+source/">Source</a>
         
-        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/en/innodb-system-tablespaces/+flag"
-                data-flag-url="/kb/en/innodb-system-tablespaces/+flag" rel="nofollow">
+        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/-faq/+flag"
+                data-flag-url="/kb/zh-cn/-faq/+flag" rel="nofollow">
                 Flag as Spam / Inappropriate</a>
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/innodb-system-tablespaces/+translate/">
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+translate/">
                 Translate</a>
         
 
@@ -248,15 +254,15 @@
 <div class="well well-small box node_info"><div>
 
     <dl>
-        <dt>Created</dt>
+        <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2018-12-09 23:26">4 years, 6 months ago</span></dd>
+<span class="datetime" title="2023-06-22 10:48">5 hours, 12 minutes ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-21 18:47">21 hours, 12 minutes ago</span></dd>
+<span class="datetime" title="2023-06-22 10:48">5 hours, 12 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -267,7 +273,7 @@
         <dt>License</dt>
         <dd>
             
-                <a href="/kb/en/innodb-system-tablespaces/+license/">CC BY-SA / Gnu FDL</a>
+                <a href="/kb/zh-cn/-faq/+license/">CC BY-SA / Gnu FDL</a>
             
         </dd>
 
@@ -276,10 +282,10 @@
 
     
     <ul class="rss_feeds">
-        <li><a href="/kb/en/innodb-system-tablespaces/+history/feed/">
-            History</a>
+        <li><a href="/kb/zh-cn/-faq/+history/feed/">
+            历史</a>
         </li>
-        <li><a href="/kb/en/innodb-system-tablespaces/+comments/feed/">
+        <li><a href="/kb/zh-cn/-faq/+comments/feed/">
             Comments</a>
         </li>
     </ul>
@@ -296,7 +302,7 @@
     
     
 
-<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/en/innodb-system-tablespaces/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
+<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/-faq/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
 
         
             <div class="no_data">No attachments exist</div>
@@ -311,40 +317,20 @@
 
     
     
+        
 
+<div class="well well-small box"><div><h5>Localized Versions</h5></div><div>
 
-
-    
-    
-
-<div class="well well-small box"><div><h5>Product Versions</h5></div><div>
-
-        <ul id="product_chooser">
+        <ul>
             
-                <li class="mariadb_from_11_2_0">
-                    <label><input type="checkbox" data-product-class="mariadb_from_11_2_0"
-                            >MariaDB starting with 11.2.0</label>
-                </li>
-            
-                <li class="mariadb_to_11_2_0">
-                    <label><input type="checkbox" data-product-class="mariadb_to_11_2_0"
-                            >MariaDB until 11.2.0</label>
-                </li>
-            
-                <li class="mariadb_from_11_2_0">
-                    <label><input type="checkbox" data-product-class="mariadb_from_11_2_0"
-                            >MariaDB starting with 11.2.0</label>
-                </li>
-            
-                <li class="mariadb_to_11_2_0">
-                    <label><input type="checkbox" data-product-class="mariadb_to_11_2_0"
-                            >MariaDB until 11.2.0</label>
-                </li>
+            <li><a href="/kb/en/storage-engine-faq/">Storage Engine FAQ</a> [en]</li>
             
         </ul>
+        
+</div>
+</div>
+
     
-</div>
-</div>
 
 
 
@@ -399,7 +385,7 @@
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>InnoDB System Tablespaces</h1>
+                    <h1>存储引擎 FAQ</h1>
                 
 
                 
@@ -422,96 +408,20 @@
 
     
     <div class="answer formatted">
-        <div class="table_of_contents well well-small">
-<h3>Contents</h3>
- <ol class="toc">
-
-    <li class=""><a href="#changing-sizes" title="Changing Sizes">Changing Sizes</a>    <ol class="toc">
-
-        <li class=""><a href="#increasing-the-size" title="Increasing the Size">Increasing the Size</a></li>
-
-        <li class=""><a href="#decreasing-the-size" title="Decreasing the Size">Decreasing the Size</a>    </ol>
-</li>
-
-    <li class=""><a href="#using-raw-disk-partitions" title="Using Raw Disk Partitions">Using Raw Disk Partitions</a>    <ol class="toc">
-
-        <li class=""><a href="#raw-disk-partitions-on-windows" title="Raw Disk Partitions on Windows">Raw Disk Partitions on Windows</a>    </ol>
-</li>
-
-    <li class=""><a href="#system-tables-within-the-innodb-system-tablespace" title="System Tables within the InnoDB System Tablespace">System Tables within the InnoDB System Tablespace</a> </ol>
-</li>
-</div><p>
-When InnoDB needs to store general information relating to the system as a whole, rather than a specific table, the specific file it writes to is the system tablespace.  By default, this is the <code>ibdata1</code> file located in the data directory, (as defined by either the <code><a href="/kb/en/server-system-variables/#datadir">datadir</a></code> or <code><a href="/kb/en/innodb-system-variables/#innodb_data_home_dir">innodb_data_home_dir</a></code> system variables).  InnoDB uses the system tablespace to store the data dictionary, change buffer, and undo logs.</p>
-<p>You can define the system tablespace filename or filenames, size and other options by setting the <code><a href="/kb/en/innodb-system-variables/#innodb_data_file_path">innodb_data_file_path</a></code> system variable. This system variable can be specified as a command-line argument to <code><a href="/kb/en/mysqld-options/">mysqld</a></code> or it can be specified in a relevant server <a href="/kb/en/configuring-mariadb-with-option-files/#option-groups">option group</a> in an <a href="/kb/en/configuring-mariadb-with-option-files/">option file</a>. For example:</p>
-<pre class="fixed">[mariadb]
-...
-innodb_data_file_path=ibdata1:50M:autoextend
-</pre><p>This system variable defaults to the file <code>ibdata1</code>, and it defaults to a minimum size of <code>12M</code>, and it defaults with the <code>autoextend</code> attribute enabled.</p>
-<h2 class="anchored_heading" id="changing-sizes">Changing Sizes</h2>
-<p>InnoDB defaults to allocating 12M to the <code>ibdata1</code> file for the system tablespace.  While this is sufficient for most use cases, it may not be for all.  You may find after using MariaDB for a while that the allocation is too small for the system tablespace or it grows too large for your disk.  Fortunately, you can adjust this size as need later.</p>
-<h3 class="anchored_heading" id="increasing-the-size">Increasing the Size</h3>
-<p>When setting the <code><a href="/kb/en/innodb-system-variables/#innodb_data_file_path">innodb_data_file_path</a></code> system variable, you can define a size for each file given.  In cases where you need a larger system tablespace, add the <code>autoextend</code> option to the last value.</p>
-<pre class="fixed">[mariadb]
-...
-innodb_data_file_path=ibdata1:12M;ibdata2:50M:autoextend
-</pre><p>Under this configuration, when the last system tablespace grows beyond the size allocation, InnoDB increases the size of the file by increments.  To control the allocation increment, set the <code><a href="/kb/en/innodb-system-variables/#innodb_autoextend_increment">innodb_autoextend_increment</a></code> system variable.</p>
-<h3 class="anchored_heading" id="decreasing-the-size">Decreasing the Size</h3>
-<div class="mariadb_from_11_2_0 mariadb from_11_2_0 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1120-release-notes/">11.2.0</a></h5><p>From <a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>, when MariaDB starts up, unused InnoDB tablespace is reclaimed, reducing the file size (<a href="https://jira.mariadb.org/browse/MDEV-14795">MDEV-14795</a>).</p>
-<p>Technically, how this works is:</p>
-<ol start="1"><li>Find the last used extent in the system tablespace by iterating through the BITMAP in the extent descriptor page.
-</li><li>Check whether the tablespace is being used within fixed size, and if the last used extent is less than the fixed size, then set the desired target size to fixed size.
-</li><li>Flush all pages belonging to the system tablespace in flush list.
-</li><li>Truncate the truncated pages from FSP_FREE and FSP_FREE_FRAG list.
-</li><li>Reset the bitmap in descriptor pages for the truncated pages.
-</li><li>Update the FSP_SIZE and FSP_FREE_LIMIT in header page.
-</li><li>In case of multiple files, calculate the truncated last file size and do the truncation in last file.
-</li></ol>
-</div><div class="mariadb_to_11_2_0 mariadb to_11_2_0 product"><h5 class="product_title">MariaDB until <a href="/kb/en/mariadb-1120-release-notes/">11.2.0</a></h5><p>In cases where the InnoDB system tablespace has grown too large, before <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a>, the process to reduce it in size is a little more complicated than increasing the size.  MariaDB does not allow you to remove data from the tablespace file itself.  Instead you need to delete the tablespace files themselves, then restore the database from backups.</p>
-<p>The backup utility <a href="/kb/en/mariadb-dump/">mariadb-dump</a> produces backup files containing the SQL statements needed to recreate the database.  As a result, it restores a database with the bare minimum data rather than any additional information that might have built up in the tablespace file.</p>
-<p>Use mariadb-dump to backup all of your InnoDB database tables, including the system tables in the <code>mysql</code> database that use InnoDB.  You can find out what they are using the Information Schema.</p>
-<pre class="fixed"><span class="k">SELECT</span> <span class="k">TABLE_NAME</span> <span class="k">FROM</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">TABLES</span>
-<span class="k">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="s1">&#39;mysql&#39;</span> <span class="k">AND</span> <span class="n">ENGINE</span> <span class="o">=</span> <span class="s1">&#39;InnoDB&#39;</span><span class="p">;</span>
-</pre><p>If you only use InnoDB, you may find it easier to back up all databases and tables.</p>
-<pre class="fixed">$ mariadb-dump -u root -p --all-databases &gt; full-backup.sql
-</pre><p>Then stop the MariaDB Server and remove the InnoDB tablespace files.  In the data directory or the InnoDB data home directory, delete all the <code>ibdata</code> and <code>ib_log</code> files as well as any file with an <code>.ibd</code> or <code>.frm</code> extension.</p>
-<p>Once this is done, restart the server and import the dump file:</p>
-<pre class="fixed">$ mysql -u root -p &lt; full-backup.sql
-</pre></div><h2 class="anchored_heading" id="using-raw-disk-partitions">Using Raw Disk Partitions</h2>
-<p>Instead of having InnoDB write to the file system, you can set it to use raw disk partitions.  On Windows and some Linux distributions, this allows you to perform non-buffered I/O without the file system overhead.  Note that in many use cases this may not actually improve performance.  Run tests to verify if there are any real gains for your application usage.</p>
-<p>To enable a raw disk partition, first start MariaDB with the <code>newraw</code> option set on the tablespace.  For example:</p>
-<pre class="fixed">[mariadb]
-...
-innodb_data_file_path=/dev/sdc:10Gnewraw
-</pre><p>When the MariaDB Server starts, it initializes the partition.  Don't create or change any data, (any data written to InnoDB at this stage will be lost on restart).  Once the server has successful started, stop it then edit the configuration file again, changing the <code>newraw</code> keyword to <code>raw</code>.</p>
-<pre class="fixed">[mariadb]
-...
-innodb_data_file_path=/dev/sdc:10Graw
-</pre><p>When you start MariaDB again, it'll read and write InnoDB data to the given disk partition instead of the file system.</p>
-<h3 class="anchored_heading" id="raw-disk-partitions-on-windows">Raw Disk Partitions on Windows</h3>
-<p>When defining a raw disk partition for InnoDB on the Windows operating system, use the same procedure as defined above, but when defining the path for the <code><a href="/kb/en/innodb-system-variables/#innodb_data_file_path">innodb_data_file_path</a></code> system variable, use <code><em>./</em></code> at the start. For example:</p>
-<pre class="fixed">[mariadb]
-...
-innodb_data_file_path=//./E::10Graw
-</pre><p>The given path is synonymous with the Windows syntax for accessing the physical drive.</p>
-<h2 class="anchored_heading" id="system-tables-within-the-innodb-system-tablespace">System Tables within the InnoDB System Tablespace</h2>
-<p>InnoDB creates some system tables within the InnoDB System Tablespace:</p>
-<ul start="1"><li><code>SYS_DATAFILES</code>
-</li><li><code>SYS_FOREIGN</code>
-</li><li><code>SYS_FOREIGN_COLS</code>
-</li><li><code>SYS_TABLESPACES</code>
-</li><li><code>SYS_VIRTUAL</code>
-</li><li><code>SYS_ZIP_DICT</code>
-</li><li><code>SYS_ZIP_DICT_COLS</code>
-</li></ul>
-<p>These tables cannot be queried. However, you might see references to them in some places, such as in the <a href="/kb/en/information-schema-innodb_sys_tables-table/">INNODB_SYS_TABLES</a> table in the <a href="/kb/en/information-schema-tables/">information_schema</a> database.</p>
+        <h3 class="anchored_heading" id="mysql的存储引擎是否与mariadb兼容">MySQL的存储引擎是否与MariaDB兼容？</h3>
+<p>在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。</p>
+<h3 class="anchored_heading" id="为mariadb创建的存储引擎是否适用于mysql">为MariaDB创建的存储引擎是否适用于MySQL？</h3>
+<p>大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更改。</p>
+<h3 class="anchored_heading" id="存储引擎二进制文件是否需要为mariadb重新编译">存储引擎二进制文件是否需要为MariaDB重新编译？</h3>
+<p>是的。您需要针对您打算在其上运行的MySQL或MariaDB的确切版本重新编译存储引擎。这是因为服务器版本存储在存储引擎二进制文件中，如果为不同版本编译，则服务器将拒绝加载它。</p>
 
     </div>
 
 
         
             <div id="subscribe" class="well well-small hide hidden-print"
-                 data-subscribe-url="/kb/en/innodb-system-tablespaces/+subscriptions/add"
-                 data-unsubscribe-url="/kb/en/innodb-system-tablespaces/+subscriptions/remove">
+                 data-subscribe-url="/kb/zh-cn/-faq/+subscriptions/add"
+                 data-unsubscribe-url="/kb/zh-cn/-faq/+subscriptions/remove">
             </div>
         
 
@@ -522,16 +432,11 @@ innodb_data_file_path=//./E::10Graw
             <ul class="nav nav-pills">
                 
                 
-                    <li><a href="/kb/en/innodb-tablespaces/">
-                        ↑ InnoDB Tablespaces ↑
+                    <li><a href="/kb/zh-cn/storage-engines-storage-engine-development/">
+                        ↑ 存储引擎开发 ↑
                     </a>
                     </li>
                 
-                
-                    <li class="pull-right"><a href="/kb/en/innodb-file-per-table-tablespaces/">
-                        InnoDB File-Per-Table Tablespaces →
-                    </a>
-                    </li>
                 
             </ul>
         </div>
@@ -543,8 +448,8 @@ innodb_data_file_path=//./E::10Graw
         <h2>Comments</h2>
         
     
-    <div id="comments" data-node-id="8266" data-comments-url="/kb/en/innodb-system-tablespaces/+comments"
-         data-reply-url="/kb/en/innodb-system-tablespaces/comments/post/">
+    <div id="comments" data-node-id="12464" data-comments-url="/kb/zh-cn/-faq/+comments"
+         data-reply-url="/kb/zh-cn/-faq/comments/post/">
         Comments loading...
     </div>
 
@@ -568,34 +473,16 @@ innodb_data_file_path=//./E::10Graw
         
         <ul class="section_navigation well well-small hidden-xs hidden-sm">
             
-                <li class="parent"><a href="/kb/en/innodb-tablespaces/">
-                    ↑ InnoDB Tablespaces ↑
+                <li class="parent"><a href="/kb/zh-cn/storage-engines-storage-engine-development/">
+                    ↑ 存储引擎开发 ↑
                 </a>
                 </li>
             
             
                 
                     <li class="active">
-                        <span>InnoDB System Tablespaces</span>
+                        <span>存储引擎 FAQ</span>
                         
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/innodb-file-per-table-tablespaces/">
-                            
-                            InnoDB File-Per-Table Tablespaces
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/innodb-temporary-tablespaces/">
-                            
-                            InnoDB Temporary Tablespaces
-                        </a>
                     </li>
                 
             
