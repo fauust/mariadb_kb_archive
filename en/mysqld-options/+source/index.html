@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mysqld-options/+r/127423/">127423</a></dd>
+            <dd><a href="/kb/en/mysqld-options/+r/127465/">127465</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-2">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-20 12:28">2023-06-20 12:28</span></dd>
+<span class="datetime" title="2023-06-21 20:14">2023-06-21 20:14</span></dd>
         </dl>
     </div>
     
@@ -552,7 +552,7 @@ The following options are related to [[replication]] and the [[binary-log|binary
 * **Commandline:** &lt;&lt;code&gt;&gt;--binlog-do-db=name&lt;&lt;/code&gt;&gt;
 * **Description:** This option allows you to configure a [[replication|replication master]] to write statements and transactions affecting databases that match a specified name into its [[binary-log|binary log]]. Since the filtered statements or transactions will not be present in the [[binary-log|binary log]], its replicas will not be able to replicate them.
 ** This option will **not** work with cross-database updates with [[binary-log-formats/#statement-based-logging|statement-based logging]]. See the [[replication-filters/#statement-based-logging|Statement-Based Logging]] section for more information.
-** This option can **not** be set dynamically.
+** This option can **not** be set dynamically. Available as a [[replication-and-binary-log-system-variables/#binlog_do_db|system variable]] from MariaDB 11.2.0.
 ** When setting it on the command-line or in a server [[configuring-mariadb-with-option-files/#option-groups|option group]] in an [[configuring-mariadb-with-option-files|option file]], the option does not accept a comma-separated list. If you would like to specify multiple filters, then you need to specify the option multiple times.
 ** See [[replication-filters|Replication Filters]] for more information. 
 ----

@@ -292,7 +292,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/innodb-system-tablespaces/+r/125989/">125989</a></dd>
+            <dd><a href="/kb/en/innodb-system-tablespaces/+r/127460/">127460</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-5454">
@@ -301,7 +301,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-22 16:39">2023-05-22 16:39</span></dd>
+<span class="datetime" title="2023-06-21 18:47">2023-06-21 18:47</span></dd>
         </dl>
     </div>
     
@@ -343,7 +343,22 @@ Under this configuration, when the last system tablespace grows beyond the size 
 
 === Decreasing the Size
 
-In cases where the InnoDB system tablespace has grown too large, the process to reduce it in size is a little more complicated than increasing the size.  MariaDB does not allow you to remove data from the tablespace file itself.  Instead you need to delete the tablespace files themselves, then restore the database from backups.
+
+&lt;&lt;product mariadb from=11.2.0&gt;&gt;
+From MariaDB 11.2.0, when MariaDB starts up, unused InnoDB tablespace is reclaimed, reducing the file size (MDEV-14795).
+
+Technically, how this works is:
+# Find the last used extent in the system tablespace by iterating through the BITMAP in the extent descriptor page.
+# Check whether the tablespace is being used within fixed size, and if the last used extent is less than the fixed size, then set the desired target size to fixed size.
+# Flush all pages belonging to the system tablespace in flush list.
+# Truncate the truncated pages from FSP_FREE and FSP_FREE_FRAG list.
+# Reset the bitmap in descriptor pages for the truncated pages.
+# Update the FSP_SIZE and FSP_FREE_LIMIT in header page.
+# In case of multiple files, calculate the truncated last file size and do the truncation in last file.
+&lt;&lt;/product&gt;&gt;
+
+&lt;&lt;product mariadb to=11.2.0&gt;&gt;
+In cases where the InnoDB system tablespace has grown too large, before MariaDB 11.2, the process to reduce it in size is a little more complicated than increasing the size.  MariaDB does not allow you to remove data from the tablespace file itself.  Instead you need to delete the tablespace files themselves, then restore the database from backups.
 
 The backup utility [[mariadb-dump]] produces backup files containing the SQL statements needed to recreate the database.  As a result, it restores a database with the bare minimum data rather than any additional information that might have built up in the tablespace file.
 
@@ -367,7 +382,7 @@ Once this is done, restart the server and import the dump file:
 &lt;&lt;code&gt;&gt;
 $ mysql -u root -p &lt; full-backup.sql
 &lt;&lt;/code&gt;&gt;
-
+&lt;&lt;/product&gt;&gt;
 
 == Using Raw Disk Partitions
 
