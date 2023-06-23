@@ -10,22 +10,28 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>MariaDB 11.2.0 Release Notes - MariaDB Knowledge Base</title>
+    <title>MEMORY存储引擎 - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="MariaDB 11.2.0 Release Notes" />
+    <meta property="og:title" content="MEMORY存储引擎" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://mariadb.com/kb/en/mariadb-11-2-0-release-notes/" />
+    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/memory/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="Status: Alpha | Release Date: 20 Jun 2023" />
+    <meta property="og:description" content="
+MEMORY 存储引擎（以前称为 HEAP）的内容存储在内存中，而不是磁盘上。
+它最适合用于其他表的只读缓存数据或临时工作区。
+由于数据存储在内存中，因此极易受到停电或硬件故障的影响，不适合永久数据存储。实际上，在服务器重新启动后，MEMORY 表将被重新创建（因为定义文件存储在磁盘上），但它们将为空。可以使用带有 --init-file 服务器..." />
 
-    <meta name="description" content="Status: Alpha | Release Date: 20 Jun 2023" />
+    <meta name="description" content="
+MEMORY 存储引擎（以前称为 HEAP）的内容存储在内存中，而不是磁盘上。
+它最适合用于其他表的只读缓存数据或临时工作区。
+由于数据存储在内存中，因此极易受到停电或硬件故障的影响，不适合永久数据存储。实际上，在服务器重新启动后，MEMORY 表将被重新创建（因为定义文件存储在磁盘上），但它们将为空。可以使用带有 --init-file 服务器..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -64,7 +70,7 @@
                 </li>
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/mariadb-11-2-0-release-notes/"> Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/memory/"> Login</a>
                     </li>
                 
             </ul>
@@ -84,17 +90,17 @@
             
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/mariadb-11-2-0-release-notes/" rel="nofollow">Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/memory/" rel="nofollow">Login</a>
                     </li>
                 
             
             
             <li id="search-form">
-                <form action="/kb/en/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
+                <form action="/kb/zh-cn/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
                     <input id="search" title="Enter the terms you wish to search for."
                            placeholder="Search . . ." type="text"
                            name="q" value="" size="15" maxlength="128" class="form-text"
-                           data-autocomplete-url="/kb/en/+search/autocomplete/">
+                           data-autocomplete-url="/kb/zh-cn/+search/autocomplete/">
                     <input type="hidden" name="quick" value="1" />
                     <input type="hidden" name="source" value="kb" />
                 </form>
@@ -161,24 +167,28 @@
             <div class="pull-left">
                 
                 <div id="breadcrumbs" class="breadcrumb">
-                    <a href="/kb/en/">Knowledge Base</a>
+                    <a href="/kb/zh-cn/">Knowledge Base</a>
                     
 
 
     
-    » <a class="crumb" href="/kb/en/mariadb-server-release-dates/">MariaDB Server Releases</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb/">MariaDB - 简体中文</a>
     
 
     
-    » <a class="crumb" href="/kb/en/release-notes/">Release Notes</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb-server/">MariaDB Server文档</a>
     
 
     
-    » <a class="crumb" href="/kb/en/release-notes-mariadb-11-2-series/">Release Notes - MariaDB 11.2 Series</a>
+    » <a class="crumb" href="/kb/zh-cn/columns-storage-engines-and-plugins/">列、存储引擎和插件</a>
+    
+
+    
+    » <a class="crumb" href="/kb/zh-cn/storage-engines/">存储引擎</a>
     
 
 
-    » <a class="node_link crumb" href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0 Release Notes</a>
+    » <a class="node_link crumb" href="/kb/zh-cn/memory/">MEMORY存储引擎</a>
 
 
                 </div>
@@ -195,15 +205,15 @@
                     
                         
                         <ul id="category_menu" class="nav nav-pills nav-stacked">
-                            <li><a href="/kb/en/">Home</a></li>
+                            <li><a href="/kb/zh-cn/">首页</a></li>
                             
                                 
-                                    <li><a href="/kb/en/+questions/">Open Questions</a></li>
+                                    <li><a href="/kb/zh-cn/+questions/">Open Questions</a></li>
                                 
-                                <li><a href="/kb/en/documentation/">MariaDB Server</a></li>
-                                <li><a href="/kb/en/maxscale/">MariaDB MaxScale</a></li>
-                                <li><a href="/kb/en/mariadb-columnstore/">MariaDB ColumnStore</a></li>
-                                <li><a href="/kb/en/connectors/">Connectors</a></li>
+                                <li><a href="/kb/zh-cn/documentation/">MariaDB Server</a></li>
+                                <li><a href="/kb/zh-cn/maxscale/">MariaDB MaxScale</a></li>
+                                <li><a href="/kb/zh-cn/mariadb-columnstore/">MariaDB ColumnStore</a></li>
+                                <li><a href="/kb/zh-cn/connectors/">Connectors</a></li>
                             
 
                         </ul>
@@ -216,17 +226,17 @@
 
 <div class="well well-small box actions"><div>
 
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/mariadb-11-2-0-release-notes/+history" rel="nofollow">History</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/memory/+history" rel="nofollow">历史</a>
         
         
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/mariadb-11-2-0-release-notes/+source/">Source</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/memory/+source/">Source</a>
         
-        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/en/mariadb-11-2-0-release-notes/+flag"
-                data-flag-url="/kb/en/mariadb-11-2-0-release-notes/+flag" rel="nofollow">
+        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/memory/+flag"
+                data-flag-url="/kb/zh-cn/memory/+flag" rel="nofollow">
                 Flag as Spam / Inappropriate</a>
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/mariadb-11-2-0-release-notes/+translate/">
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/memory/+translate/">
                 Translate</a>
         
 
@@ -240,15 +250,15 @@
 <div class="well well-small box node_info"><div>
 
     <dl>
-        <dt>Created</dt>
+        <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2023-05-21 21:22">1 month ago</span></dd>
+<span class="datetime" title="2023-06-23 08:32">7 hours, 28 minutes ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-23 09:53">6 hours, 6 minutes ago</span></dd>
+<span class="datetime" title="2023-06-23 08:32">7 hours, 27 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -259,7 +269,7 @@
         <dt>License</dt>
         <dd>
             
-                <a href="/kb/en/mariadb-11-2-0-release-notes/+license/">CC BY-SA / Gnu FDL</a>
+                <a href="/kb/zh-cn/memory/+license/">CC BY-SA / Gnu FDL</a>
             
         </dd>
 
@@ -268,10 +278,10 @@
 
     
     <ul class="rss_feeds">
-        <li><a href="/kb/en/mariadb-11-2-0-release-notes/+history/feed/">
-            History</a>
+        <li><a href="/kb/zh-cn/memory/+history/feed/">
+            历史</a>
         </li>
-        <li><a href="/kb/en/mariadb-11-2-0-release-notes/+comments/feed/">
+        <li><a href="/kb/zh-cn/memory/+comments/feed/">
             Comments</a>
         </li>
     </ul>
@@ -288,7 +298,7 @@
     
     
 
-<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/en/mariadb-11-2-0-release-notes/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
+<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/memory/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
 
         
             <div class="no_data">No attachments exist</div>
@@ -302,6 +312,22 @@
 
 
     
+    
+        
+
+<div class="well well-small box"><div><h5>Localized Versions</h5></div><div>
+
+        <ul>
+            
+            <li><a href="/kb/en/memory/">MEMORY Storage Engine</a> [en]</li>
+            
+            <li><a href="/kb/it/lo-storage-engine-memory/">Lo Storage Engine MEMORY</a> [it]</li>
+            
+        </ul>
+        
+</div>
+</div>
+
     
 
 
@@ -357,7 +383,7 @@
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>MariaDB 11.2.0 Release Notes</h1>
+                    <h1>MEMORY存储引擎</h1>
                 
 
                 
@@ -380,53 +406,51 @@
 
     
     <div class="answer formatted">
-        <div class="cstm-style hidden"><div class="cstm-style bluebox text-center centered"><p>The most recent release of <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is:<br>
-<span class="cstm-style lead"><strong><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>. (Alpha)</strong> <a class="btn btn-success btn-mini" href="https://mariadb.org/download/?tab=mariadb&amp;release=11.2.0&amp;product=mariadb">Download<span>&nbsp;</span>Now</a></span><br></p>
-</div></div><p>
-<a class="btn btn-primary" href="http://downloads.mariadb.org/mariadb/11.2.0">Download</a>
-<a class="btn btn-info disabled" href="/kb/en/mariadb-11-2-0-release-notes/">Release Notes</a>
-<a class="btn btn-info disabled" href="mariadb-11-2-0-changelog">Changelog</a>
-<a class="btn btn-info" href="/kb/en/what-is-mariadb-11-2/">Overview of 11.2</a></p>
-<p><strong>Release date:</strong> 20 Jun 2023</p>
-<div class="cstm-style redbox lead text-center centered"><p><strong>Do not use <em>alpha</em> releases in production!</strong></p>
-</div>
-<p><a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is a short-term development series of MariaDB, and will be maintained for one year after its Generally Available release. It is an evolution of <a href="/kb/en/what-is-mariadb-111/">MariaDB 11.1</a> with several entirely new features.</p>
-<p><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a> is a single preview release. Features are to be considered preview, and none are guaranteed to make it into <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a>.</p>
-<p>The preview is available as a container <strong>quay.io/mariadb-foundation/mariadb-devel:11.2-preview</strong>.</p>
-<div class="cstm-style greenbox"><p><strong>For an overview of <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> see the
-<a href="/kb/en/what-is-mariadb-11-2/">What is MariaDB 11.2?</a> page.</strong></p>
-</div><p>Thanks, and enjoy MariaDB!</p>
-<h2 class="anchored_heading" id="innodb">InnoDB</h2>
-<ul start="1"><li>The <a href="/kb/en/innodb-system-tablespaces/">InnoDB system tablespace</a> is now shrunk by reclaiming unused space at startup (<a href="https://jira.mariadb.org/browse/MDEV-14795">MDEV-14795</a>)
-</li></ul>
-<h2 class="anchored_heading" id="json">JSON</h2>
-<ul start="1"><li><a href="/kb/en/json_table/">JSON_TABLE</a> now allows retrieval of the key when iterating on JSON objects (<a href="https://jira.mariadb.org/browse/MDEV-30145">MDEV-30145</a>)
-</li><li>New functions <a href="/kb/en/json_object_filter_keys/">JSON_OBJECT_FILTER_KEYS</a>, <a href="/kb/en/json_object_to_array/">JSON_OBJECT_TO_ARRAY</a> and <a href="/kb/en/json_array_intersect/">JSON_ARRAY_INTERSECT</a> to check for JSON intersection (<a href="https://jira.mariadb.org/browse/MDEV-26182">MDEV-26182</a>)
-</li></ul>
-<h2 class="anchored_heading" id="miscellaneous">Miscellaneous</h2>
-<ul start="1"><li>All binlog* variables are now visible as system variables, specifically <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_do_db">binlog_do_db</a>, <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_ignore_db">binlog_ignore_db</a>, <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_row_event_max_size">binlog_row_event_max_size</a> (<a href="https://jira.mariadb.org/browse/MDEV-30188">MDEV-30188</a>)
-</li><li><a href="/kb/en/alter-table/">ALTER TABLE IMPORT</a> enhancement (<a href="https://jira.mariadb.org/browse/MDEV-26137">MDEV-26137</a>)
-</li><li>The information_schema tables for getting temporary tables info is missing, at least for innodb there is no INNODB_TEMP_TABLE_INFO (<a href="https://jira.mariadb.org/browse/MDEV-12459">MDEV-12459</a>)
-</li><li><a href="http://dev.mysql.com/worklog/task/?id=4179">MySQL Worklog #4179</a> - Stored programs: validation of stored program statements (<a href="https://jira.mariadb.org/browse/MDEV-5816">MDEV-5816</a>)
-</li><li>Remove the deprecated <a href="/kb/en/server-system-variables/#old_alter_table">old_alter_table</a> variable (<a href="https://jira.mariadb.org/browse/MDEV-30905">MDEV-30905</a>)
-</li><li>Extend <a href="/kb/en/aes_encrypt/">AES_ENCRYPT()</a> and <a href="/kb/en/aes_decrypt/">AES_DECRYPT()</a> to support an initialization vector and algorithm (<a href="https://jira.mariadb.org/browse/MDEV-9069">MDEV-9069</a>)
-</li></ul>
-<hr>
-<div class="cstm-style bluebox"><p>Be notified of new MariaDB Server releases automatically by <a href="https://lists.askmonty.org/cgi-bin/mailman/listinfo/announce">subscribing</a> to the MariaDB Foundation community announce 'at' mariadb.org announcement list (this is a low traffic, announce-only list). MariaDB Corporation customers will be notified for all new releases, security issues and critical bug fixes for all MariaDB Corporation products thanks to the Notification Services.
-<br><br>
-MariaDB may already be included in your favorite OS distribution. More
-information can be found on the
-<a href="/kb/en/distributions-which-include-mariadb/">Distributions which Include MariaDB</a>
-page.</p>
-</div>
+        <div class="table_of_contents well well-small">
+<h3>Contents</h3>
+ <ol class="toc">
+
+    <li class=""><a href="#内存使用" title="内存使用">内存使用</a></li>
+
+    <li class=""><a href="#索引类型" title="索引类型">索引类型</a></li>
+
+    <li class=""><a href="#复制" title="复制">复制</a></li>
+
+    <li class=""><a href="#示例" title="示例">示例</a></li>
+
+    <li class=""><a href="#另请参阅" title="另请参阅">另请参阅</a> </ol>
+</li>
+</div><p>
+MEMORY 存储引擎（以前称为 HEAP）的内容存储在内存中，而不是磁盘上。</p>
+<p>它最适合用于其他表的只读缓存数据或临时工作区。</p>
+<p>由于数据存储在内存中，因此极易受到停电或硬件故障的影响，不适合永久数据存储。实际上，在服务器重新启动后，<code>MEMORY</code> 表将被重新创建（因为定义文件存储在磁盘上），但它们将为空。可以使用带有 --init-file 服务器启动选项的查询重新填充它们。</p>
+<p>可在 MEMORY 表中使用可变长度类型，如 <a href="/kb/en/varchar/">VARCHAR</a>。MEMORY 表不支持 <a href="/kb/en/blob/">BLOB</a> 或 <a href="/kb/en/text/">TEXT</a> 列。</p>
+<h2 class="anchored_heading" id="内存使用">内存使用</h2>
+<p>MEMORY 表的最大总大小不能超过 <a href="/kb/en/server-system-variables/#max_heap_table_size">max_heap_table_size</a> 系统服务器变量。创建表时，此值适用于该表，重新启动服务器时，此值适用于现有表。更改此值不会影响现有表。但是，执行 <code>ALTER TABLE ... ENGINE=MEMORY</code> 语句将当前的 <code>max_heap_table_size</code> 值应用于该表。此外，可以在创建表之前更改 <code>max_heap_table_size</code> 会话值，以确保不会影响其他会话创建的表。</p>
+<p><code>MAX_ROWS</code> 表选项提供有关您计划在其中存储的行数的提示。这不是无法超过的硬限制，并且不允许超过 <code>max_heap_table_size</code>。存储引擎使用 max_heap_table_size 和 MAX_ROWS 来计算可为表分配的最大内存。</p>
+<p>为 MEMORY 表分配的内存通过运行 <a href="/kb/en/drop-table/">DROP TABLE</a> 或 <a href="/kb/en/truncate-table/">TRUNCATE TABLE</a> 或使用 <a href="/kb/en/alter-table/">ALTER TABLE tbl_name ENGINE = MEMORY</a> 重建来释放。删除行时，空间不会自动释放。</p>
+<h2 class="anchored_heading" id="索引类型">索引类型</h2>
+<p>MEMORY 存储引擎允许索引为 B 树或哈希。哈希是 MEMORY 的默认类型。有关其特征，请参见<a href="/kb/en/storage-engine-index-types/">存储引擎索引类型</a>。</p>
+<p>MEMORY 表最多可以具有 64 个索引，每个索引最多 16 列，最大键长度为 3072 字节。</p>
+<h2 class="anchored_heading" id="复制">复制</h2>
+<p>在服务器重新启动时，MEMORY 表会丢失。为了在<a href="/kb/en/standard-replication/">复制</a>中实现此结果，主服务器在重新启动后第一次使用 MEMORY 表时，会向二进制日志中写入该表的 DELETE 语句，以便副本也被清空。</p>
+<h2 class="anchored_heading" id="示例">示例</h2>
+<p>以下示例显示如何创建具有给定最大大小的 <code>MEMORY</code> 表，如上所述。</p>
+<pre class="fixed">SET max_heap_table_size = 1024*516;
+
+CREATE TABLE t (a VARCHAR(10), b INT) ENGINE = MEMORY;
+
+SET max_heap_table_size = @@max_heap_table_size;
+</pre><h2 class="anchored_heading" id="另请参阅">另请参阅</h2>
+<ul start="1"><li><a href="/kb/en/performance-of-memory-tables/">MEMORY 表的性能</a></li></ul>
 
     </div>
 
 
         
             <div id="subscribe" class="well well-small hide hidden-print"
-                 data-subscribe-url="/kb/en/mariadb-11-2-0-release-notes/+subscriptions/add"
-                 data-unsubscribe-url="/kb/en/mariadb-11-2-0-release-notes/+subscriptions/remove">
+                 data-subscribe-url="/kb/zh-cn/memory/+subscriptions/add"
+                 data-unsubscribe-url="/kb/zh-cn/memory/+subscriptions/remove">
             </div>
         
 
@@ -436,12 +460,22 @@ page.</p>
         <div class="simple_section_nav">
             <ul class="nav nav-pills">
                 
-                
-                    <li><a href="/kb/en/release-notes-mariadb-11-2-series/">
-                        ↑ Release Notes - MariaDB 11.2 Series ↑
+                    <li><a href="/kb/zh-cn/storage-engines-storage-engine-development/">
+                        ← 存储引擎开发
                     </a>
                     </li>
                 
+                
+                    <li><a href="/kb/zh-cn/storage-engines/">
+                        ↑ 存储引擎 ↑
+                    </a>
+                    </li>
+                
+                
+                    <li class="pull-right"><a href="/kb/zh-cn/choosing-the-right-storage-engine/">
+                        选择正确的存储引擎 →
+                    </a>
+                    </li>
                 
             </ul>
         </div>
@@ -453,8 +487,8 @@ page.</p>
         <h2>Comments</h2>
         
     
-    <div id="comments" data-node-id="12317" data-comments-url="/kb/en/mariadb-11-2-0-release-notes/+comments"
-         data-reply-url="/kb/en/mariadb-11-2-0-release-notes/comments/post/">
+    <div id="comments" data-node-id="12471" data-comments-url="/kb/zh-cn/memory/+comments"
+         data-reply-url="/kb/zh-cn/memory/comments/post/">
         Comments loading...
     </div>
 
@@ -478,16 +512,142 @@ page.</p>
         
         <ul class="section_navigation well well-small hidden-xs hidden-sm">
             
-                <li class="parent"><a href="/kb/en/release-notes-mariadb-11-2-series/">
-                    ↑ Release Notes - MariaDB 11.2 Series ↑
+                <li class="parent"><a href="/kb/zh-cn/storage-engines/">
+                    ↑ 存储引擎 ↑
                 </a>
                 </li>
             
             
                 
+                    <li>
+                        <a href="/kb/zh-cn/archive/">
+                            
+                            Archive
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/-aria/">
+                            
+                            Aria
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/connect/">
+                            
+                            CONNECT
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/csv/">
+                            
+                            CSV
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/federatedx-storage-engine/">
+                            
+                            FederatedX
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/innodb/">
+                            
+                            InnoDB
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/mroonga/">
+                            
+                            Mroonga
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/myisam-storage-engine/">
+                            
+                            MyISAM
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/sphinx-storage-engine/">
+                            
+                            SphinxSE
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/spider/">
+                            
+                            Spider
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/tokudb/">
+                            
+                            TokuDB
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/legacy-storage-engines/">
+                            
+                            传统存储引擎
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/storage-engines-storage-engine-development/">
+                            
+                            存储引擎开发
+                        </a>
+                    </li>
+                
+            
+                
                     <li class="active">
-                        <span>MariaDB 11.2.0 Release Notes</span>
+                        <span>MEMORY存储引擎</span>
                         
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/choosing-the-right-storage-engine/">
+                            
+                            选择正确的存储引擎
+                        </a>
                     </li>
                 
             

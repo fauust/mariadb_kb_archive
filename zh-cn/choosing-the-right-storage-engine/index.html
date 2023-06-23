@@ -10,28 +10,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>JSON_ARRAY_INTERSECT - MariaDB Knowledge Base</title>
+    <title>选择正确的存储引擎 - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="JSON_ARRAY_INTERSECT" />
+    <meta property="og:title" content="选择正确的存储引擎" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://mariadb.com/kb/en/json_array_intersect/" />
+    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/choosing-the-right-storage-engine/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="MariaDB starting with &lt;a href=&#34;/kb/en/mariadb-1120-release-notes/&#34;&gt;11.2.0&lt;/a&gt;JSON_ARRAY_INTERSECT was added in MariaDB 11.2.0.
-Syntax
-JSON_ARRAY_INTERSECT(arr1, arr2) :
-Descri..." />
+    <meta property="og:description" content="
+存储引擎选择的主要原因的高级概述：
+主题列表
+通用
+InnoDB 是一个良好的通用事务存储引擎，并且从MariaDB 10.2开始，在大多数情况下是最佳选择。它是MariaDB 10.2的默认存储引擎。对于早期版本，XtraDB是InnoDB的性能增强分支，通常更受欢迎。
+Aria是MariaDB对MyISAM的现代改进，占用空间小，允许在系统之..." />
 
-    <meta name="description" content="MariaDB starting with &lt;a href=&#34;/kb/en/mariadb-1120-release-notes/&#34;&gt;11.2.0&lt;/a&gt;JSON_ARRAY_INTERSECT was added in MariaDB 11.2.0.
-Syntax
-JSON_ARRAY_INTERSECT(arr1, arr2) :
-Descri..." />
+    <meta name="description" content="
+存储引擎选择的主要原因的高级概述：
+主题列表
+通用
+InnoDB 是一个良好的通用事务存储引擎，并且从MariaDB 10.2开始，在大多数情况下是最佳选择。它是MariaDB 10.2的默认存储引擎。对于早期版本，XtraDB是InnoDB的性能增强分支，通常更受欢迎。
+Aria是MariaDB对MyISAM的现代改进，占用空间小，允许在系统之..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -70,7 +74,7 @@ Descri..." />
                 </li>
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/json_array_intersect/"> Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/choosing-the-right-storage-engine/"> Login</a>
                     </li>
                 
             </ul>
@@ -90,17 +94,17 @@ Descri..." />
             
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/en/json_array_intersect/" rel="nofollow">Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/choosing-the-right-storage-engine/" rel="nofollow">Login</a>
                     </li>
                 
             
             
             <li id="search-form">
-                <form action="/kb/en/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
+                <form action="/kb/zh-cn/+search/" method="get" id="search-block-form" accept-charset="UTF-8">
                     <input id="search" title="Enter the terms you wish to search for."
                            placeholder="Search . . ." type="text"
                            name="q" value="" size="15" maxlength="128" class="form-text"
-                           data-autocomplete-url="/kb/en/+search/autocomplete/">
+                           data-autocomplete-url="/kb/zh-cn/+search/autocomplete/">
                     <input type="hidden" name="quick" value="1" />
                     <input type="hidden" name="source" value="kb" />
                 </form>
@@ -167,40 +171,28 @@ Descri..." />
             <div class="pull-left">
                 
                 <div id="breadcrumbs" class="breadcrumb">
-                    <a href="/kb/en/">Knowledge Base</a>
+                    <a href="/kb/zh-cn/">Knowledge Base</a>
                     
 
 
     
-    » <a class="crumb" href="/kb/en/documentation/">MariaDB Server Documentation</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb/">MariaDB - 简体中文</a>
     
 
     
-    » <a class="crumb" href="/kb/en/using-mariadb-server/">Using MariaDB Server</a>
+    » <a class="crumb" href="/kb/zh-cn/mariadb-server/">MariaDB Server文档</a>
     
 
     
-    » <a class="crumb" href="/kb/en/sql-statements-structure/">SQL Statements &amp; Structure</a>
+    » <a class="crumb" href="/kb/zh-cn/columns-storage-engines-and-plugins/">列、存储引擎和插件</a>
     
 
     
-    » <a class="crumb" href="/kb/en/sql-statements/">SQL Statements</a>
-    
-
-    
-    » <a class="crumb" href="/kb/en/built-in-functions/">Built-in Functions</a>
-    
-
-    
-    » <a class="crumb" href="/kb/en/special-functions/">Special Functions</a>
-    
-
-    
-    » <a class="crumb" href="/kb/en/json-functions/">JSON Functions</a>
+    » <a class="crumb" href="/kb/zh-cn/storage-engines/">存储引擎</a>
     
 
 
-    » <a class="node_link crumb" href="/kb/en/json_array_intersect/">JSON_ARRAY_INTERSECT</a>
+    » <a class="node_link crumb" href="/kb/zh-cn/choosing-the-right-storage-engine/">选择正确的存储引擎</a>
 
 
                 </div>
@@ -217,15 +209,15 @@ Descri..." />
                     
                         
                         <ul id="category_menu" class="nav nav-pills nav-stacked">
-                            <li><a href="/kb/en/">Home</a></li>
+                            <li><a href="/kb/zh-cn/">首页</a></li>
                             
                                 
-                                    <li><a href="/kb/en/+questions/">Open Questions</a></li>
+                                    <li><a href="/kb/zh-cn/+questions/">Open Questions</a></li>
                                 
-                                <li><a href="/kb/en/documentation/">MariaDB Server</a></li>
-                                <li><a href="/kb/en/maxscale/">MariaDB MaxScale</a></li>
-                                <li><a href="/kb/en/mariadb-columnstore/">MariaDB ColumnStore</a></li>
-                                <li><a href="/kb/en/connectors/">Connectors</a></li>
+                                <li><a href="/kb/zh-cn/documentation/">MariaDB Server</a></li>
+                                <li><a href="/kb/zh-cn/maxscale/">MariaDB MaxScale</a></li>
+                                <li><a href="/kb/zh-cn/mariadb-columnstore/">MariaDB ColumnStore</a></li>
+                                <li><a href="/kb/zh-cn/connectors/">Connectors</a></li>
                             
 
                         </ul>
@@ -238,17 +230,17 @@ Descri..." />
 
 <div class="well well-small box actions"><div>
 
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/json_array_intersect/+history" rel="nofollow">History</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/choosing-the-right-storage-engine/+history" rel="nofollow">历史</a>
         
         
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/json_array_intersect/+source/">Source</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/choosing-the-right-storage-engine/+source/">Source</a>
         
-        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/en/json_array_intersect/+flag"
-                data-flag-url="/kb/en/json_array_intersect/+flag" rel="nofollow">
+        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/choosing-the-right-storage-engine/+flag"
+                data-flag-url="/kb/zh-cn/choosing-the-right-storage-engine/+flag" rel="nofollow">
                 Flag as Spam / Inappropriate</a>
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/en/json_array_intersect/+translate/">
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/choosing-the-right-storage-engine/+translate/">
                 Translate</a>
         
 
@@ -262,15 +254,15 @@ Descri..." />
 <div class="well well-small box node_info"><div>
 
     <dl>
-        <dt>Created</dt>
+        <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2023-06-20 11:22">3 days, 4 hours ago</span></dd>
+<span class="datetime" title="2023-06-23 08:22">7 hours, 38 minutes ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-21 12:01">2 days, 3 hours ago</span></dd>
+<span class="datetime" title="2023-06-23 08:23">7 hours, 37 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -281,7 +273,7 @@ Descri..." />
         <dt>License</dt>
         <dd>
             
-                <a href="/kb/en/json_array_intersect/+license/">CC BY-SA / Gnu FDL</a>
+                <a href="/kb/zh-cn/choosing-the-right-storage-engine/+license/">CC BY-SA / Gnu FDL</a>
             
         </dd>
 
@@ -290,10 +282,10 @@ Descri..." />
 
     
     <ul class="rss_feeds">
-        <li><a href="/kb/en/json_array_intersect/+history/feed/">
-            History</a>
+        <li><a href="/kb/zh-cn/choosing-the-right-storage-engine/+history/feed/">
+            历史</a>
         </li>
-        <li><a href="/kb/en/json_array_intersect/+comments/feed/">
+        <li><a href="/kb/zh-cn/choosing-the-right-storage-engine/+comments/feed/">
             Comments</a>
         </li>
     </ul>
@@ -310,7 +302,7 @@ Descri..." />
     
     
 
-<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/en/json_array_intersect/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
+<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/choosing-the-right-storage-engine/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
 
         
             <div class="no_data">No attachments exist</div>
@@ -325,25 +317,26 @@ Descri..." />
 
     
     
+        
 
+<div class="well well-small box"><div><h5>Localized Versions</h5></div><div>
 
-
-    
-    
-
-<div class="well well-small box"><div><h5>Product Versions</h5></div><div>
-
-        <ul id="product_chooser">
+        <ul>
             
-                <li class="mariadb_from_11_2_0">
-                    <label><input type="checkbox" data-product-class="mariadb_from_11_2_0"
-                            >MariaDB starting with 11.2.0</label>
-                </li>
+            <li><a href="/kb/en/choosing-the-right-storage-engine/">Choosing the Right Storage Engine</a> [en]</li>
+            
+            <li><a href="/kb/it/choosing-the-right-storage-engine/">Scegliere lo Storage Engine giusto</a> [it]</li>
+            
+            <li><a href="/kb/ja/choosing-the-right-storage-engine/">正しいストレージエンジンの選択</a> [ja]</li>
+            
+            <li><a href="/kb/de/choosing-the-right-storage-engine/">Choosing the Right Storage Engine</a> [de]</li>
             
         </ul>
+        
+</div>
+</div>
+
     
-</div>
-</div>
 
 
 
@@ -398,7 +391,7 @@ Descri..." />
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>JSON_ARRAY_INTERSECT</h1>
+                    <h1>选择正确的存储引擎</h1>
                 
 
                 
@@ -421,29 +414,101 @@ Descri..." />
 
     
     <div class="answer formatted">
-        <div class="mariadb_from_11_2_0 mariadb from_11_2_0 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1120-release-notes/">11.2.0</a></h5><p>JSON_ARRAY_INTERSECT was added in <a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>.</p>
-</div><h2 class="anchored_heading" id="syntax">Syntax</h2>
-<pre class="fixed">JSON_ARRAY_INTERSECT(arr1, arr2) :
-</pre><h2 class="anchored_heading" id="description">Description</h2>
-<p>Goes over one of the json and adds each item of the array in hash (after normalizing each item). Go over the second array, searching the normalized item one by one in the hash. If the item is found, adds it to the result.</p>
-<h2 class="anchored_heading" id="examples">Examples</h2>
-<pre class="fixed"><span class="k">SET</span> <span class="o">@</span><span class="n">json1</span><span class="o">=</span> <span class="s1">&#39;[1,2,3]&#39;</span><span class="p">;</span>
-<span class="k">SET</span> <span class="o">@</span><span class="n">json2</span><span class="o">=</span> <span class="s1">&#39;[1,2,4]&#39;</span><span class="p">;</span>
+        <div class="table_of_contents well well-small">
+<h3>Contents</h3>
+ <ol class="toc">
 
-<span class="k">SELECT</span> <span class="n">json_array_intersect</span><span class="p">(</span><span class="o">@</span><span class="n">json1</span><span class="p">,</span> <span class="o">@</span><span class="n">json2</span><span class="p">);</span> 
-<span class="o">+</span><span class="c1">--------------------------------------+</span>
-<span class="o">|</span> <span class="n">json_array_intersect</span><span class="p">(</span><span class="o">@</span><span class="n">json1</span><span class="p">,</span> <span class="o">@</span><span class="n">json2</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">+</span><span class="c1">--------------------------------------+</span>
-<span class="o">|</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>                               <span class="o">|</span>
-<span class="o">+</span><span class="c1">--------------------------------------+</span>
-</pre>
+    <li class=""><a href="#主题列表" title="主题列表">主题列表</a>    <ol class="toc">
+
+        <li class=""><a href="#通用" title="通用">通用</a></li>
+
+        <li class=""><a href="#扩展分区" title="扩展，分区">扩展，分区</a></li>
+
+        <li class=""><a href="#压缩归档" title="压缩/归档">压缩/归档</a></li>
+
+        <li class=""><a href="#连接到其他数据源" title="连接到其他数据源">连接到其他数据源</a></li>
+
+        <li class=""><a href="#优化搜索" title="优化搜索">优化搜索</a></li>
+
+        <li class=""><a href="#缓存只读" title="缓存，只读">缓存，只读</a></li>
+
+        <li class=""><a href="#其他专业存储引擎" title="其他专业存储引擎">其他专业存储引擎</a>    </ol>
+</li>
+
+    <li class=""><a href="#按字母顺序排列的列表" title="按字母顺序排列的列表">按字母顺序排列的列表</a> </ol>
+</li>
+</div><p>
+存储引擎选择的主要原因的高级概述：</p>
+<h2 class="anchored_heading" id="主题列表">主题列表</h2>
+<h3 class="anchored_heading" id="通用">通用</h3>
+<ul><li><a href="/kb/en/innodb/">InnoDB</a> 是一个良好的通用事务存储引擎，并且从<a href="/kb/en/what-is-mariadb-102/">MariaDB 10.2</a>开始，在大多数情况下是最佳选择。它是<a href="/kb/en/what-is-mariadb-102/">MariaDB 10.2</a>的默认存储引擎。对于早期版本，XtraDB是InnoDB的性能增强分支，通常更受欢迎。
+</li><li><a href="/kb/en/aria/">Aria</a>是MariaDB对<a href="/kb/en/myisam/">MyISAM</a>的现代改进，占用空间小，允许在系统之间轻松复制。
+</li><li><a href="/kb/en/myisam/">MyISAM</a>占用空间小，允许在系统之间轻松复制。 MyISAM是MySQL最古老的存储引擎。除了遗留目的外，通常没有什么理由使用它。Aria是MariaDB的现代改进。
+</li><li><a href="/kb/en/xtradb/">XtraDB</a>在大多数情况下是<a href="/kb/en/what-is-mariadb-101/">MariaDB 10.1</a>及更早版本中的最佳选择。它是InnoDB的性能增强分支，并且是MariaDB的默认引擎，直到<a href="/kb/en/what-is-mariadb-101/">MariaDB 10.1</a>。
+</li></ul>
+<h3 class="anchored_heading" id="扩展分区">扩展，分区</h3>
+<p>当您希望将数据库负载分散在多个服务器上或优化扩展时。我们还建议查看<a href="/kb/en/galera/">Galera</a>，这是一个同步的多主集群。</p>
+<ul><li><a href="/kb/en/spider/">Spider</a>使用分区通过多个服务器提供数据分片。
+</li><li><a href="/kb/en/columnstore/">ColumnStore</a>利用大规模并行分布式数据架构，专为处理PB级数据而设计。
+</li><li><a href="/kb/en/merge/">MERGE</a>存储引擎是一组相同的<a href="/kb/en/myisam/">MyISAM</a>表格，可以用作一个表格。 “相同”意味着所有表格具有相同的列和索引信息。
+</li><li><a href="/kb/en/tokudb/">TokuDB</a>是一种事务性存储引擎，针对不适合内存的工作负载进行了优化，并提供了良好的压缩比。 TokuDB已被其上游开发人员弃用，并在<a href="/kb/en/what-is-mariadb-105/">MariaDB 10.5</a>中禁用，在<a href="/kb/en/what-is-mariadb-106/">MariaDB 10.6</a>中删除
+</li></ul>
+<h3 class="anchored_heading" id="压缩归档">压缩/归档</h3>
+<ul><li><a href="/kb/en/myrocks/">MyRocks</a>比InnoDB具有更大的压缩能力，并且写入放大较少，使闪存存储耐久性更好，并提高了总体吞吐量。
+</li><li><a href="/kb/en/archive/">Archive</a>存储引擎最好用于归档。
+</li><li><a href="/kb/en/tokudb/">TokuDB</a>是一种事务性存储引擎，针对不适合内存的工作负载进行了优化，并提供了良好的压缩比。 TokuDB已被其上游开发人员弃用，并在<a href="/kb/en/what-is-mariadb-105/">MariaDB 10.5</a>中禁用，在<a href="/kb/en/what-is-mariadb-106/">MariaDB 10.6</a>中删除
+</li></ul>
+<h3 class="anchored_heading" id="连接到其他数据源">连接到其他数据源</h3>
+<p>当您想要使用未存储在MariaDB数据库中的数据时。</p>
+<ul><li><a href="/kb/en/connect/">CONNECT</a>允许访问不同类型的文本文件和远程资源，就像它们是常规MariaDB表格一样。
+</li><li><a href="/kb/en/csv/">CSV</a>存储引擎可以读取和追加以CSV（逗号分隔值）格式存储的文件。但是，自<a href="/kb/en/what-is-mariadb-100/">MariaDB 10.0</a>以来，CONNECT是更好的选择，并且能够更灵活地读取和写入此类文件。
+</li><li><a href="/kb/en/federatedx/">FederatedX</a>使用libmysql与数据源交互，数据源是远程RDBMS。目前，由于FederatedX仅使用libmysql，因此它只能与另一个MySQL RDBMS交互。
+</li><li><a href="/kb/en/cassandrase/">CassandraSE</a>是一种存储引擎，允许访问较旧版本的Apache Cassandra NoSQL DBMS。它相对实验性，不再得到积极开发，并已在<a href="/kb/en/what-is-mariadb-106/">MariaDB 10.6</a>中删除。
+</li></ul>
+<h3 class="anchored_heading" id="优化搜索">优化搜索</h3>
+<p>针对搜索进行优化的搜索引擎。</p>
+<ul><li><a href="/kb/en/sphinxse/">SphinxSE</a>用作代理，在远程Sphinx数据库服务器上运行语句（主要用于高级全文搜索）。
+</li><li><a href="/kb/en/mroonga/">Mroonga</a>提供快速的CJK-ready全文搜索，使用列存储。
+</li></ul>
+<h3 class="anchored_heading" id="缓存只读">缓存，只读</h3>
+<ul start="1"><li><a href="/kb/en/memory/">MEMORY</a> 不会将数据写入磁盘（所有行在崩溃时都会丢失），最适合用于从其他表中的只读缓存数据，或用于临时工作区。由于默认的<a href="/kb/en/innodb/">InnoDB</a>和其他存储引擎具有良好的缓存，因此与过去相比，对此引擎的需求较少。
+</li></ul>
+<h3 class="anchored_heading" id="其他专业存储引擎">其他专业存储引擎</h3>
+<ul start="1"><li><a href="/kb/en/s3-storage-engine/">S3 Storage Engine</a> 是一个只读存储引擎，将其数据存储在Amazon S3中。
+</li><li><a href="/kb/en/sequence/">Sequence</a> 允许创建具有给定起始值、结束值和增量的升序或降序数字序列（正整数），在需要时自动创建虚拟、短暂的表。
+</li><li><a href="/kb/en/blackhole/">BLACKHOLE</a> 存储引擎接受数据但不存储它，并始终返回空结果。例如，在复制环境中，如果您想在从库上运行复杂的过滤规则而不会在主库上产生任何开销，则此方法可能很有用。
+</li><li><a href="/kb/en/oqgraph/">OQGRAPH</a> 允许您处理层次结构（树形结构）和复杂图形（节点在多个方向上具有许多连接）。
+</li></ul>
+<h2 class="anchored_heading" id="按字母顺序排列的列表">按字母顺序排列的列表</h2>
+<ul start="1"><li><a href="/kb/en/archive/">Archive</a> 存储引擎最适合用于存档。
+</li><li><a href="/kb/en/aria/">Aria</a> 是MariaDB对MyISAM的现代改进，占用空间小，允许在系统之间轻松复制。
+</li><li><a href="/kb/en/blackhole/">BLACKHOLE</a> 存储引擎接受数据但不存储数据，并始终返回空结果。例如，在复制环境中，如果您想在从库上运行复杂的过滤规则而不会给主库带来任何开销，则这可能很有用。
+</li><li><a href="/kb/en/cassandrase/">CassandraSE</a> 是一种存储引擎，允许访问旧版本的Apache Cassandra NoSQL DBMS。它相对较为实验性，不再得到积极开发，并已在<a href="/kb/en/what-is-mariadb-106/">MariaDB 10.6</a>中删除。
+</li><li><a href="/kb/en/columnstore/">ColumnStore</a> 利用大规模并行分布式数据架构，设计用于大数据扩展以处理PB级数据。
+</li><li><a href="/kb/en/connect/">CONNECT</a> 允许访问不同类型的文本文件和远程资源，就像它们是常规的MariaDB表一样。
+</li><li><a href="/kb/en/csv-overview/">CSV</a> 存储引擎可以读取和附加存储在CSV（逗号分隔值）格式中的文件。然而，自<a href="/kb/en/what-is-mariadb-100/">MariaDB 10.0</a>以来，CONNECT是更好的选择，并且能够更灵活地读写此类文件。
+</li><li><a href="/kb/en/federatedx/">FederatedX</a> 使用libmysql与数据源通信，数据源是远程RDBMS。目前，由于FederatedX仅使用libmysql，因此它只能与另一个MySQL RDBMS通信。
+</li><li><a href="/kb/en/innodb/">InnoDB</a> 是一个很好的通用事务存储引擎，从<a href="/kb/en/what-is-mariadb-102/">MariaDB 10.2</a>开始，在大多数情况下是最佳选择。它是<a href="/kb/en/what-is-mariadb-102/">MariaDB 10.2</a>的默认存储引擎。对于早期版本，XtraDB是InnoDB的性能增强分支，通常更受欢迎。
+</li><li><a href="/kb/en/merge/">MERGE</a> 存储引擎是一组相同的MyISAM表，可以作为一个表使用。 “相同”意味着所有表具有相同的列和索引信息。
+</li><li><a href="/kb/en/memory-storage-engine/">MEMORY</a> 不会将数据写入磁盘（所有行在崩溃时都会丢失），最适合用于从其他表中的只读缓存数据，或用于临时工作区。由于默认的<a href="/kb/en/innodb/">InnoDB</a>和其他存储引擎具有良好的缓存，因此与过去相比，对此引擎的需求较少。
+</li><li><a href="/kb/en/mroonga/">Mroonga</a> 提供快速的CJK-ready全文搜索，使用列存储。
+</li><li><a href="/kb/en/myisam/">MyISAM</a> 占用空间小，允许在系统之间轻松复制。MyISAM是MySQL最古老的存储引擎。除了遗留目的外，通常没有使用它的理由。Aria是MariaDB的现代改进。
+</li><li><a href="/kb/en/myrocks/">MyRocks</a> 可以实现比InnoDB更高的压缩率，并且具有更少的写放大，从而提供了更好的闪存存储耐久性和整体吞吐量。
+</li><li><a href="/kb/en/oqgraph/">OQGRAPH</a> 允许您处理层次结构（树形结构）和复杂图形（节点在多个方向上具有许多连接）。
+</li><li><a href="/kb/en/s3-storage-engine/">S3 Storage Engine</a> 是一个只读存储引擎，将其数据存储在Amazon S3中。
+</li><li><a href="/kb/en/sequence/">Sequence</a> 允许创建具有给定起始值、结束值和增量的升序或降序数字序列（正整数），在需要时自动创建虚拟、短暂的表。
+</li><li><a href="/kb/en/sphinx-storage-engine/">SphinxSE</a> 用作代理，在远程Sphinx数据库服务器上运行语句（主要用于高级全文搜索）。
+</li><li><a href="/kb/en/spider/">Spider</a> 使用分区提供数据分片到多个服务器。
+</li><li><a href="/kb/en/tokudb/">TokuDB</a> 是一种事务性存储引擎，针对不适合内存的工作负载进行了优化，并提供了良好的压缩比。TokuDB已被其上游开发人员弃用，在<a href="/kb/en/what-is-mariadb-105/">MariaDB 10.5</a>中被禁用，在<a href="/kb/en/what-is-mariadb-106/">MariaDB 10.6</a>中被删除。
+</li><li><a href="/kb/en/xtradb/">XtraDB</a> 在<a href="/kb/en/what-is-mariadb-101/">MariaDB 10.1</a>及更早版本中，在大多数情况下是最佳选择。它是InnoDB的性能增强分支，并且是MariaDB默认引擎，直到<a href="/kb/en/what-is-mariadb-101/">MariaDB 10.1</a>为止。</li></ul>
+
     </div>
 
 
         
             <div id="subscribe" class="well well-small hide hidden-print"
-                 data-subscribe-url="/kb/en/json_array_intersect/+subscriptions/add"
-                 data-unsubscribe-url="/kb/en/json_array_intersect/+subscriptions/remove">
+                 data-subscribe-url="/kb/zh-cn/choosing-the-right-storage-engine/+subscriptions/add"
+                 data-unsubscribe-url="/kb/zh-cn/choosing-the-right-storage-engine/+subscriptions/remove">
             </div>
         
 
@@ -453,22 +518,17 @@ Descri..." />
         <div class="simple_section_nav">
             <ul class="nav nav-pills">
                 
-                    <li><a href="/kb/en/json_value/">
-                        ← JSON_VALUE
+                    <li><a href="/kb/zh-cn/memory/">
+                        ← MEMORY存储引擎
                     </a>
                     </li>
                 
                 
-                    <li><a href="/kb/en/json-functions/">
-                        ↑ JSON Functions ↑
+                    <li><a href="/kb/zh-cn/storage-engines/">
+                        ↑ 存储引擎 ↑
                     </a>
                     </li>
                 
-                
-                    <li class="pull-right"><a href="/kb/en/json_object_filter_keys/">
-                        JSON_OBJECT_FILTER_KEYS →
-                    </a>
-                    </li>
                 
             </ul>
         </div>
@@ -480,8 +540,8 @@ Descri..." />
         <h2>Comments</h2>
         
     
-    <div id="comments" data-node-id="12441" data-comments-url="/kb/en/json_array_intersect/+comments"
-         data-reply-url="/kb/en/json_array_intersect/comments/post/">
+    <div id="comments" data-node-id="12470" data-comments-url="/kb/zh-cn/choosing-the-right-storage-engine/+comments"
+         data-reply-url="/kb/zh-cn/choosing-the-right-storage-engine/comments/post/">
         Comments loading...
     </div>
 
@@ -505,376 +565,142 @@ Descri..." />
         
         <ul class="section_navigation well well-small hidden-xs hidden-sm">
             
-                <li class="parent"><a href="/kb/en/json-functions/">
-                    ↑ JSON Functions ↑
+                <li class="parent"><a href="/kb/zh-cn/storage-engines/">
+                    ↑ 存储引擎 ↑
                 </a>
                 </li>
             
             
                 
                     <li>
-                        <a href="/kb/en/differences-between-json_query-and-json_value/">
+                        <a href="/kb/zh-cn/archive/">
                             
-                            Differences between JSON_QUERY and JSON_VALUE
+                            Archive
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/jsonpath-expressions/">
+                        <a href="/kb/zh-cn/-aria/">
                             
-                            JSONPath Expressions
+                            Aria
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_array/">
+                        <a href="/kb/zh-cn/connect/">
                             
-                            JSON_ARRAY
+                            CONNECT
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_arrayagg/">
+                        <a href="/kb/zh-cn/csv/">
                             
-                            JSON_ARRAYAGG
+                            CSV
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_array_append/">
+                        <a href="/kb/zh-cn/federatedx-storage-engine/">
                             
-                            JSON_ARRAY_APPEND
+                            FederatedX
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_array_insert/">
+                        <a href="/kb/zh-cn/innodb/">
                             
-                            JSON_ARRAY_INSERT
+                            InnoDB
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_compact/">
+                        <a href="/kb/zh-cn/mroonga/">
                             
-                            JSON_COMPACT
+                            Mroonga
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_contains/">
+                        <a href="/kb/zh-cn/myisam-storage-engine/">
                             
-                            JSON_CONTAINS
+                            MyISAM
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_contains_path/">
+                        <a href="/kb/zh-cn/sphinx-storage-engine/">
                             
-                            JSON_CONTAINS_PATH
+                            SphinxSE
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_depth/">
+                        <a href="/kb/zh-cn/spider/">
                             
-                            JSON_DEPTH
+                            Spider
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_detailed/">
+                        <a href="/kb/zh-cn/tokudb/">
                             
-                            JSON_DETAILED
+                            TokuDB
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_equals/">
+                        <a href="/kb/zh-cn/legacy-storage-engines/">
                             
-                            JSON_EQUALS
+                            传统存储引擎
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_exists/">
+                        <a href="/kb/zh-cn/storage-engines-storage-engine-development/">
                             
-                            JSON_EXISTS
+                            存储引擎开发
                         </a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="/kb/en/json_extract/">
+                        <a href="/kb/zh-cn/memory/">
                             
-                            JSON_EXTRACT
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_insert/">
-                            
-                            JSON_INSERT
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_keys/">
-                            
-                            JSON_KEYS
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_length/">
-                            
-                            JSON_LENGTH
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_loose/">
-                            
-                            JSON_LOOSE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_merge/">
-                            
-                            JSON_MERGE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_merge_patch/">
-                            
-                            JSON_MERGE_PATCH
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_merge_preserve/">
-                            
-                            JSON_MERGE_PRESERVE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_normalize/">
-                            
-                            JSON_NORMALIZE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_object/">
-                            
-                            JSON_OBJECT
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_objectagg/">
-                            
-                            JSON_OBJECTAGG
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_overlaps/">
-                            
-                            JSON_OVERLAPS
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_pretty/">
-                            
-                            JSON_PRETTY
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_query/">
-                            
-                            JSON_QUERY
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_quote/">
-                            
-                            JSON_QUOTE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_remove/">
-                            
-                            JSON_REMOVE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_replace/">
-                            
-                            JSON_REPLACE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_schema_valid/">
-                            
-                            JSON_SCHEMA_VALID
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_search/">
-                            
-                            JSON_SEARCH
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_set/">
-                            
-                            JSON_SET
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_table/">
-                            
-                            JSON_TABLE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_type/">
-                            
-                            JSON_TYPE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_unquote/">
-                            
-                            JSON_UNQUOTE
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_valid/">
-                            
-                            JSON_VALID
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_value/">
-                            
-                            JSON_VALUE
+                            MEMORY存储引擎
                         </a>
                     </li>
                 
             
                 
                     <li class="active">
-                        <span>JSON_ARRAY_INTERSECT</span>
+                        <span>选择正确的存储引擎</span>
                         
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_object_filter_keys/">
-                            
-                            JSON_OBJECT_FILTER_KEYS
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/json_object_to_array/">
-                            
-                            JSON_OBJECT_TO_ARRAY
-                        </a>
                     </li>
                 
             
