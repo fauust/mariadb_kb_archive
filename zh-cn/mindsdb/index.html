@@ -10,28 +10,34 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>存储引擎 FAQ - MariaDB Knowledge Base</title>
+    <title>使用 MindsDB 进行机器学习 - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="存储引擎 FAQ" />
+    <meta property="og:title" content="使用 MindsDB 进行机器学习" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/-faq/" />
+    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/mindsdb/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="MySQL的存储引擎是否与MariaDB兼容？
-在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。
-为MariaDB创建的存储引擎是否适用于MySQL？
-大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更..." />
+    <meta property="og:description" content="
+概览
+MindsDB 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过Connect存储引擎完成的。
+安装
+要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：
+MindsDB：按照项目的官方文档中的说明进行操作。
+Connect Storage Engine 必须..." />
 
-    <meta name="description" content="MySQL的存储引擎是否与MariaDB兼容？
-在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。
-为MariaDB创建的存储引擎是否适用于MySQL？
-大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更..." />
+    <meta name="description" content="
+概览
+MindsDB 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过Connect存储引擎完成的。
+安装
+要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：
+MindsDB：按照项目的官方文档中的说明进行操作。
+Connect Storage Engine 必须..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -70,7 +76,7 @@
                 </li>
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/zh-cn/-faq/"> Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/mindsdb/"> Login</a>
                     </li>
                 
             </ul>
@@ -90,7 +96,7 @@
             
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/zh-cn/-faq/" rel="nofollow">Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/mindsdb/" rel="nofollow">Login</a>
                     </li>
                 
             
@@ -187,12 +193,8 @@
     » <a class="crumb" href="/kb/zh-cn/storage-engines/">存储引擎</a>
     
 
-    
-    » <a class="crumb" href="/kb/zh-cn/storage-engines-storage-engine-development/">存储引擎开发</a>
-    
 
-
-    » <a class="node_link crumb" href="/kb/zh-cn/-faq/">存储引擎 FAQ</a>
+    » <a class="node_link crumb" href="/kb/zh-cn/mindsdb/">使用 MindsDB 进行机器学习</a>
 
 
                 </div>
@@ -230,17 +232,17 @@
 
 <div class="well well-small box actions"><div>
 
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+history" rel="nofollow">历史</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+history" rel="nofollow">历史</a>
         
         
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+source/">Source</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+source/">Source</a>
         
-        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/-faq/+flag"
-                data-flag-url="/kb/zh-cn/-faq/+flag" rel="nofollow">
+        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/mindsdb/+flag"
+                data-flag-url="/kb/zh-cn/mindsdb/+flag" rel="nofollow">
                 Flag as Spam / Inappropriate</a>
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/-faq/+translate/">
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+translate/">
                 Translate</a>
         
 
@@ -257,12 +259,12 @@
         <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2023-06-22 10:48">2 days, 5 hours ago</span></dd>
+<span class="datetime" title="2023-06-24 02:13">13 hours, 47 minutes ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-22 10:48">2 days, 5 hours ago</span></dd>
+<span class="datetime" title="2023-06-24 02:14">13 hours, 46 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -273,7 +275,7 @@
         <dt>License</dt>
         <dd>
             
-                <a href="/kb/zh-cn/-faq/+license/">CC BY-SA / Gnu FDL</a>
+                <a href="/kb/zh-cn/mindsdb/+license/">CC BY-SA / Gnu FDL</a>
             
         </dd>
 
@@ -282,10 +284,10 @@
 
     
     <ul class="rss_feeds">
-        <li><a href="/kb/zh-cn/-faq/+history/feed/">
+        <li><a href="/kb/zh-cn/mindsdb/+history/feed/">
             历史</a>
         </li>
-        <li><a href="/kb/zh-cn/-faq/+comments/feed/">
+        <li><a href="/kb/zh-cn/mindsdb/+comments/feed/">
             Comments</a>
         </li>
     </ul>
@@ -302,7 +304,7 @@
     
     
 
-<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/-faq/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
+<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/mindsdb/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
 
         
             <div class="no_data">No attachments exist</div>
@@ -323,7 +325,7 @@
 
         <ul>
             
-            <li><a href="/kb/en/storage-engine-faq/">Storage Engine FAQ</a> [en]</li>
+            <li><a href="/kb/en/machine-learning-with-mindsdb/">Machine Learning with MindsDB</a> [en]</li>
             
         </ul>
         
@@ -385,7 +387,7 @@
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>存储引擎 FAQ</h1>
+                    <h1>使用 MindsDB 进行机器学习</h1>
                 
 
                 
@@ -408,20 +410,56 @@
 
     
     <div class="answer formatted">
-        <h3 class="anchored_heading" id="mysql的存储引擎是否与mariadb兼容">MySQL的存储引擎是否与MariaDB兼容？</h3>
-<p>在大多数情况下，是的。MariaDB试图保持与MySQL的API兼容性，即使是在主要版本之间。</p>
-<h3 class="anchored_heading" id="为mariadb创建的存储引擎是否适用于mysql">为MariaDB创建的存储引擎是否适用于MySQL？</h3>
-<p>大多数情况下，是的。它需要#ifdef来调整到MySQL-5.6 API，例如多读取范围API、表发现API等。但是，大部分代码将按原样工作，无需任何更改。</p>
-<h3 class="anchored_heading" id="存储引擎二进制文件是否需要为mariadb重新编译">存储引擎二进制文件是否需要为MariaDB重新编译？</h3>
-<p>是的。您需要针对您打算在其上运行的MySQL或MariaDB的确切版本重新编译存储引擎。这是因为服务器版本存储在存储引擎二进制文件中，如果为不同版本编译，则服务器将拒绝加载它。</p>
+        <div class="table_of_contents well well-small">
+<h3>Contents</h3>
+ <ol class="toc">
+
+    <li class=""><a href="#概览" title="概览">概览</a></li>
+
+    <li class=""><a href="#安装" title="安装">安装</a></li>
+
+    <li class=""><a href="#用法" title="用法">用法</a> </ol>
+</li>
+</div>
+<h2 class="anchored_heading" id="概览">概览</h2>
+<p><a href="https://docs.mindsdb.com/">MindsDB</a> 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过<a href="/kb/en/connect/">Connect存储引擎</a>完成的。</p>
+<h2 class="anchored_heading" id="安装">安装</h2>
+<p>要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：</p>
+<ul start="1"><li><strong>MindsDB</strong>：按照项目的<a href="https://docs.mindsdb.com/installation/Installing/">官方文档</a>中的说明进行操作。
+</li><li><strong>Connect Storage Engine</strong> 必须启用才能使集成工作。请参阅<a href="/kb/en/installing-the-connect-storage-engine/">安装connect存储引擎</a>。
+</li></ul>
+<p>MindsDB 通过常规用户连接到 MariaDB Server，以设置一个名为 <code>mindsdb</code> 的专用数据库。将使用哪个用户在 MindsDB 的<a href="https://docs.mindsdb.com/sql/create/databases/?h=maria#mariadb">配置文件</a>中指定。</p>
+<p>例如，如果 MindsDB 安装在本地，则可以创建一个名为 <code>mindsdb@localhost</code> 的用户。MindsDB 只通过<a href="/kb/en/authentication-plugin-mysql_native_password/">mysql_native_password</a>插件进行身份验证，因此必须为用户设置密码：</p>
+<pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">PASSWORD</span> <span class="k">for</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="ss">&quot;password&quot;</span><span class="p">);</span>
+</pre><p>必须授予该用户全局<a href="/kb/en/grant/#file">FILE</a>权限和 <code>mindsdb</code> 数据库的所有权限。</p>
+<pre class="fixed"><span class="k">GRANT</span> <span class="n">FILE</span> <span class="k">on</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">on</span> <span class="n">mindsdb</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
+</pre><p>假设 MindsDB 在 Python 路径中，可以使用以下参数启动 MindsDB：</p>
+<pre class="fixed"><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">mindsdb</span> <span class="c1">--config=$CONFIG_PATH --api=http,mysql</span>
+</pre><p>请确保<code>$CONFIG_PATH</code>指向适当的MindsDB配置文件。</p>
+<h2 class="anchored_heading" id="用法">用法</h2>
+<p>MindsDB是一个正在积极开发的项目，请始终参考该项目的<a href="https://docs.mindsdb.com/installation/Installing/">官方文档</a>以获取最新的使用场景。</p>
+<p>有关逐步示例，您可以参考以下<a href="https://mariadb.org/machine-learning-sql/">博客文章</a>。</p>
+<p>如果MindsDB和MariaDB之间的连接成功，则应该看到<code>mindsdb</code>数据库存在，其中包含两个表：<code>commands</code>和<code>predictors</code>。</p>
+<p>作为AutoML框架，MindsDB在训练AI模型方面完成了所有工作。必要的是通过SELECT语句将初始数据传递给它。这可以通过将其插入到<code>predictors</code>表中来完成。</p>
+<pre class="fixed"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">predictors</span><span class="o">`</span>
+       <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">predict</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">select_data_query</span><span class="o">`</span><span class="p">)</span>
+<span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;bikes_model&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;SELECT * FROM test.bike_data&#39;</span><span class="p">);</span>
+</pre><p>插入到predictors的值作为命令，指示MindsDB执行以下操作：</p>
+<ol start="1"><li>训练名为'bikes_model'的模型
+</li><li>从输入数据中学习预测'count'列。
+</li><li>输入数据是通过选择语句'SELECT * FROM test.bike_data'生成的。
+<ol><li>select_data_query<code> 应该是MindsDB可以针对MariaDB运行的有效选择。</code></li></ol>
+</li></ol>
 
     </div>
 
 
         
             <div id="subscribe" class="well well-small hide hidden-print"
-                 data-subscribe-url="/kb/zh-cn/-faq/+subscriptions/add"
-                 data-unsubscribe-url="/kb/zh-cn/-faq/+subscriptions/remove">
+                 data-subscribe-url="/kb/zh-cn/mindsdb/+subscriptions/add"
+                 data-unsubscribe-url="/kb/zh-cn/mindsdb/+subscriptions/remove">
             </div>
         
 
@@ -431,12 +469,22 @@
         <div class="simple_section_nav">
             <ul class="nav nav-pills">
                 
-                
-                    <li><a href="/kb/zh-cn/storage-engines-storage-engine-development/">
-                        ↑ 存储引擎开发 ↑
+                    <li><a href="/kb/zh-cn/memory/">
+                        ← MEMORY存储引擎
                     </a>
                     </li>
                 
+                
+                    <li><a href="/kb/zh-cn/storage-engines/">
+                        ↑ 存储引擎 ↑
+                    </a>
+                    </li>
+                
+                
+                    <li class="pull-right"><a href="/kb/zh-cn/choosing-the-right-storage-engine/">
+                        选择正确的存储引擎 →
+                    </a>
+                    </li>
                 
             </ul>
         </div>
@@ -448,8 +496,8 @@
         <h2>Comments</h2>
         
     
-    <div id="comments" data-node-id="12464" data-comments-url="/kb/zh-cn/-faq/+comments"
-         data-reply-url="/kb/zh-cn/-faq/comments/post/">
+    <div id="comments" data-node-id="12473" data-comments-url="/kb/zh-cn/mindsdb/+comments"
+         data-reply-url="/kb/zh-cn/mindsdb/comments/post/">
         Comments loading...
     </div>
 
@@ -473,16 +521,187 @@
         
         <ul class="section_navigation well well-small hidden-xs hidden-sm">
             
-                <li class="parent"><a href="/kb/zh-cn/storage-engines-storage-engine-development/">
-                    ↑ 存储引擎开发 ↑
+                <li class="parent"><a href="/kb/zh-cn/storage-engines/">
+                    ↑ 存储引擎 ↑
                 </a>
                 </li>
             
             
                 
+                    <li>
+                        <a href="/kb/zh-cn/archive/">
+                            
+                            Archive
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/-aria/">
+                            
+                            Aria
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/connect/">
+                            
+                            CONNECT
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/csv/">
+                            
+                            CSV
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/federatedx-storage-engine/">
+                            
+                            FederatedX
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/innodb/">
+                            
+                            InnoDB
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/mroonga/">
+                            
+                            Mroonga
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/myisam-storage-engine/">
+                            
+                            MyISAM
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/myrocks/">
+                            
+                            MyRocks
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/oqgraph-storage-engine/">
+                            
+                            OQGRAPH
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/s3-storage-engine/">
+                            
+                            S3存储引擎
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/sphinx-storage-engine/">
+                            
+                            SphinxSE
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/spider/">
+                            
+                            Spider
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/tokudb/">
+                            
+                            TokuDB
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/legacy-storage-engines/">
+                            
+                            传统存储引擎
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/storage-engines-storage-engine-development/">
+                            
+                            存储引擎开发
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/blackhole/">
+                            
+                            BLACKHOLE
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/memory/">
+                            
+                            MEMORY存储引擎
+                        </a>
+                    </li>
+                
+            
+                
                     <li class="active">
-                        <span>存储引擎 FAQ</span>
+                        <span>使用 MindsDB 进行机器学习</span>
                         
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/kb/zh-cn/choosing-the-right-storage-engine/">
+                            
+                            选择正确的存储引擎
+                        </a>
                     </li>
                 
             
