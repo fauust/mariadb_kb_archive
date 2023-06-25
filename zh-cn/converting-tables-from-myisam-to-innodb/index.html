@@ -10,34 +10,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/kb/static/images/favicons/favicon-16x16.5801f8f0f34e.png">
     <link rel="shortcut icon" href="/kb/static/images/favicons/favicon.d122d305dee4.ico" type="image/x-icon" />
 
-    <title>使用 MindsDB 进行机器学习 - MariaDB Knowledge Base</title>
+    <title>将表从 MyISAM 转换为 InnoDB - MariaDB Knowledge Base</title>
 
     <link href="/kb/static/css/main.9a0d7dcebefd.css" rel="stylesheet" type="text/css" />
 
     
 
     <!-- FB Open Graph tags -->
-    <meta property="og:title" content="使用 MindsDB 进行机器学习" />
+    <meta property="og:title" content="将表从 MyISAM 转换为 InnoDB" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/mindsdb/" />
+    <meta property="og:url" content="https://mariadb.com/kb/zh-cn/converting-tables-from-myisam-to-innodb/" />
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
     <meta property="og:description" content="
-概览
-MindsDB 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过Connect存储引擎完成的。
-安装
-要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：
-MindsDB：按照项目的官方文档中的说明进行操作。
-Connect Storage Engine 必须..." />
+任务
+您决定将一个或多个表从MyISAM更改为InnoDB。这应该很简单，只需执行ALTER TABLE foo ENGINE=InnoDB命令即可。但是您听说可能会出现一些微妙的问题。
+本文描述了可能出现的问题以及如何解决这些问题。
+建议 搜索问题的一种方法是（至少在*nix中）：
+mysqldump --no-data --all-datab..." />
 
     <meta name="description" content="
-概览
-MindsDB 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过Connect存储引擎完成的。
-安装
-要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：
-MindsDB：按照项目的官方文档中的说明进行操作。
-Connect Storage Engine 必须..." />
+任务
+您决定将一个或多个表从MyISAM更改为InnoDB。这应该很简单，只需执行ALTER TABLE foo ENGINE=InnoDB命令即可。但是您听说可能会出现一些微妙的问题。
+本文描述了可能出现的问题以及如何解决这些问题。
+建议 搜索问题的一种方法是（至少在*nix中）：
+mysqldump --no-data --all-datab..." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -76,7 +74,7 @@ Connect Storage Engine 必须..." />
                 </li>
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/zh-cn/mindsdb/"> Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/converting-tables-from-myisam-to-innodb/"> Login</a>
                     </li>
                 
             </ul>
@@ -96,7 +94,7 @@ Connect Storage Engine 必须..." />
             
                 
                     <li>
-                        <a href="/kb/user/login?next=/kb/zh-cn/mindsdb/" rel="nofollow">Login</a>
+                        <a href="/kb/user/login?next=/kb/zh-cn/converting-tables-from-myisam-to-innodb/" rel="nofollow">Login</a>
                     </li>
                 
             
@@ -194,7 +192,7 @@ Connect Storage Engine 必须..." />
     
 
 
-    » <a class="node_link crumb" href="/kb/zh-cn/mindsdb/">使用 MindsDB 进行机器学习</a>
+    » <a class="node_link crumb" href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/">将表从 MyISAM 转换为 InnoDB</a>
 
 
                 </div>
@@ -232,17 +230,17 @@ Connect Storage Engine 必须..." />
 
 <div class="well well-small box actions"><div>
 
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+history" rel="nofollow">历史</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+history" rel="nofollow">历史</a>
         
         
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+source/">Source</a>
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+source/">Source</a>
         
-        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/mindsdb/+flag"
-                data-flag-url="/kb/zh-cn/mindsdb/+flag" rel="nofollow">
+        <a class="btn btn-block btn-blue btn-sm flag" href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+flag"
+                data-flag-url="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+flag" rel="nofollow">
                 Flag as Spam / Inappropriate</a>
         
-        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/mindsdb/+translate/">
+        <a class="btn btn-block btn-blue btn-sm" href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+translate/">
                 Translate</a>
         
 
@@ -259,12 +257,12 @@ Connect Storage Engine 必须..." />
         <dt>已创建</dt>
         <dd>
 
-<span class="datetime" title="2023-06-24 02:13">1 day, 13 hours ago</span></dd>
+<span class="datetime" title="2023-06-25 12:44">3 hours, 15 minutes ago</span></dd>
 
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-24 02:14">1 day, 13 hours ago</span></dd>
+<span class="datetime" title="2023-06-25 12:48">3 hours, 11 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -275,7 +273,7 @@ Connect Storage Engine 必须..." />
         <dt>License</dt>
         <dd>
             
-                <a href="/kb/zh-cn/mindsdb/+license/">CC BY-SA / Gnu FDL</a>
+                <a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+license/">CC BY-SA / Gnu FDL</a>
             
         </dd>
 
@@ -284,10 +282,10 @@ Connect Storage Engine 必须..." />
 
     
     <ul class="rss_feeds">
-        <li><a href="/kb/zh-cn/mindsdb/+history/feed/">
+        <li><a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+history/feed/">
             历史</a>
         </li>
-        <li><a href="/kb/zh-cn/mindsdb/+comments/feed/">
+        <li><a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+comments/feed/">
             Comments</a>
         </li>
     </ul>
@@ -304,7 +302,7 @@ Connect Storage Engine 必须..." />
     
     
 
-<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/mindsdb/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
+<div class="well well-small box attachments"><div><div class="edit_link pull-right"><a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+edit/attachments/">Edit</a></div><h5>Attachments</h5></div><div>
 
         
             <div class="no_data">No attachments exist</div>
@@ -325,7 +323,9 @@ Connect Storage Engine 必须..." />
 
         <ul>
             
-            <li><a href="/kb/en/machine-learning-with-mindsdb/">Machine Learning with MindsDB</a> [en]</li>
+            <li><a href="/kb/en/converting-tables-from-myisam-to-innodb/">Converting Tables from MyISAM to InnoDB</a> [en]</li>
+            
+            <li><a href="/kb/it/converting-tables-from-myisam-to-innodb/">Convertire le tabelle da MyISAM a InnoDB</a> [it]</li>
             
         </ul>
         
@@ -387,7 +387,7 @@ Connect Storage Engine 必须..." />
             
             <section id="content" class="limited_width col-md-8 clearfix">
                 
-                    <h1>使用 MindsDB 进行机器学习</h1>
+                    <h1>将表从 MyISAM 转换为 InnoDB</h1>
                 
 
                 
@@ -414,52 +414,143 @@ Connect Storage Engine 必须..." />
 <h3>Contents</h3>
  <ol class="toc">
 
-    <li class=""><a href="#概览" title="概览">概览</a></li>
+    <li class=""><a href="#任务" title="任务">任务</a></li>
 
-    <li class=""><a href="#安装" title="安装">安装</a></li>
+    <li class=""><a href="#索引问题" title="索引问题">索引问题</a></li>
 
-    <li class=""><a href="#用法" title="用法">用法</a> </ol>
+    <li class=""><a href="#非索引问题" title="非索引问题">非索引问题</a></li>
+
+    <li class=""><a href="#参见" title="参见">参见</a> </ol>
 </li>
 </div>
-<h2 class="anchored_heading" id="概览">概览</h2>
-<p><a href="https://docs.mindsdb.com/">MindsDB</a> 是一个第三方应用程序，通过 SQL 与 MariaDB Server 进行交互，提供机器学习功能。接口是通过<a href="/kb/en/connect/">Connect存储引擎</a>完成的。</p>
-<h2 class="anchored_heading" id="安装">安装</h2>
-<p>要获得可用的 MariaDB - MindsDB 安装，需要安装以下组件：</p>
-<ul start="1"><li><strong>MindsDB</strong>：按照项目的<a href="https://docs.mindsdb.com/installation/Installing/">官方文档</a>中的说明进行操作。
-</li><li><strong>Connect Storage Engine</strong> 必须启用才能使集成工作。请参阅<a href="/kb/en/installing-the-connect-storage-engine/">安装connect存储引擎</a>。
+<h2 class="anchored_heading" id="任务">任务</h2>
+<p>您决定将一个或多个表从<a href="/kb/en/myisam/">MyISAM</a>更改为<a href="/kb/en/innodb/">InnoDB</a>。这应该很简单，只需执行<code>ALTER TABLE foo ENGINE=InnoDB</code>命令即可。但是您听说可能会出现一些微妙的问题。</p>
+<p>本文描述了可能出现的问题以及如何解决这些问题。</p>
+<p><em>建议</em> 搜索问题的一种方法是（至少在*nix中）：</p>
+<pre class="fixed">mysqldump --no-data --all-databases &gt;schemas
+egrep <span class="s1">&#39;CREATE|PRIMARY&#39;</span> schemas   <span class="c1"># 关注主键</span>
+egrep <span class="s1">&#39;CREATE|FULLTEXT&#39;</span> schemas  <span class="c1"># 查找全文索引</span>
+egrep <span class="s1">&#39;CREATE|KEY&#39;</span> schemas       <span class="c1"># 查找各种组合的索引</span>
+</pre><p>了解索引的工作原理将有助于更好地理解在InnoDB中可能运行得更快或更慢的内容。</p>
+<h2 class="anchored_heading" id="索引问题">索引问题</h2>
+<p><em>（这些建议中的大部分和这些事实中的一些有例外。）</em></p>
+<p><em>事实</em> 每个InnoDB表都有一个主键。如果您没有提供，则使用第一个非NULL UNIQUE键。如果无法完成，则提供一个6字节的隐藏整数。</p>
+<p><em>建议</em> 查找没有主键的表。明确指定一个主键，即使它是人造的AUTO_INCREMENT。这不是绝对要求，但对于InnoDB而言，它比MyISAM更强烈。有一天您可能需要遍历该表；如果没有明确的PK，则无法完成。</p>
+<p><em>事实</em> 主键的字段包括在每个二级键中。</p>
+<ul start="1"><li>请牢记这一点，以检查冗余索引。
 </li></ul>
-<p>MindsDB 通过常规用户连接到 MariaDB Server，以设置一个名为 <code>mindsdb</code> 的专用数据库。将使用哪个用户在 MindsDB 的<a href="https://docs.mindsdb.com/sql/create/databases/?h=maria#mariadb">配置文件</a>中指定。</p>
-<p>例如，如果 MindsDB 安装在本地，则可以创建一个名为 <code>mindsdb@localhost</code> 的用户。MindsDB 只通过<a href="/kb/en/authentication-plugin-mysql_native_password/">mysql_native_password</a>插件进行身份验证，因此必须为用户设置密码：</p>
-<pre class="fixed"><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
-<span class="k">SET</span> <span class="n">PASSWORD</span> <span class="k">for</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="ss">&quot;password&quot;</span><span class="p">);</span>
-</pre><p>必须授予该用户全局<a href="/kb/en/grant/#file">FILE</a>权限和 <code>mindsdb</code> 数据库的所有权限。</p>
-<pre class="fixed"><span class="k">GRANT</span> <span class="n">FILE</span> <span class="k">on</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">on</span> <span class="n">mindsdb</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">mindsdb</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
-</pre><p>假设 MindsDB 在 Python 路径中，可以使用以下参数启动 MindsDB：</p>
-<pre class="fixed"><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">mindsdb</span> <span class="c1">--config=$CONFIG_PATH --api=http,mysql</span>
-</pre><p>请确保<code>$CONFIG_PATH</code>指向适当的MindsDB配置文件。</p>
-<h2 class="anchored_heading" id="用法">用法</h2>
-<p>MindsDB是一个正在积极开发的项目，请始终参考该项目的<a href="https://docs.mindsdb.com/installation/Installing/">官方文档</a>以获取最新的使用场景。</p>
-<p>有关逐步示例，您可以参考以下<a href="https://mariadb.org/machine-learning-sql/">博客文章</a>。</p>
-<p>如果MindsDB和MariaDB之间的连接成功，则应该看到<code>mindsdb</code>数据库存在，其中包含两个表：<code>commands</code>和<code>predictors</code>。</p>
-<p>作为AutoML框架，MindsDB在训练AI模型方面完成了所有工作。必要的是通过SELECT语句将初始数据传递给它。这可以通过将其插入到<code>predictors</code>表中来完成。</p>
-<pre class="fixed"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">predictors</span><span class="o">`</span>
-       <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">predict</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">select_data_query</span><span class="o">`</span><span class="p">)</span>
-<span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;bikes_model&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;SELECT * FROM test.bike_data&#39;</span><span class="p">);</span>
-</pre><p>插入到predictors的值作为命令，指示MindsDB执行以下操作：</p>
-<ol start="1"><li>训练名为'bikes_model'的模型
-</li><li>从输入数据中学习预测'count'列。
-</li><li>输入数据是通过选择语句'SELECT * FROM test.bike_data'生成的。
-<ol><li>select_data_query<code> 应该是MindsDB可以针对MariaDB运行的有效选择。</code></li></ol>
-</li></ol>
+<pre class="fixed indent1">PRIMARY KEY(id),
+INDEX(b), -- 实际上与INDEX(b, id)相同
+INDEX(b, id) -- 实际上与INDEX(b)相同
+</pre><ul start="1" style="list-style: none"><li>(保留其中一个INDEX，而不是两个)
+</li></ul>
+<ul start="1"><li>注意微妙的事情，例如
+</li></ul>
+<pre class="fixed indent1">PRIMARY KEY(id),
+UNIQUE(b), -- 保留唯一性约束
+INDEX(b, id) -- 删除此项
+</pre><ul start="1"><li>另外，由于PK和数据是共存的：
+</li></ul>
+<pre class="fixed indent1">PRIMARY KEY(id),
+INDEX(id, b) -- 删除这个索引；它几乎没什么用
+</pre><p><em>对比</em> MyISAM的这个特性在InnoDB中不可用；'id'的值将在每个不同的'abc'值处重新开始：</p>
+<pre class="fixed">id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (abc, id)
+</pre><p>模拟MyISAM“特性”的方法可能是这样的：您想要的是这个，但它不起作用，因为它引用了表两次：</p>
+<pre class="fixed">INSERT INTO foo
+    (other, id, ...)
+    VALUES
+    (123, (SELECT MAX(id)+1 FROM foo WHERE other = 123), ...);
+</pre><p>相反，您需要类似于这样的变体。（您可能已经有了BEGIN...COMMIT。）</p>
+<pre class="fixed">BEGIN;
+SELECT @id := MAX(id)+1 FROM foo WHERE other = 123 FOR UPDATE;
+INSERT INTO foo
+    (other, id, ...)
+    VALUES
+    (123, @id, ...);
+COMMIT;
+</pre><p>必须使用事务以防止另一个线程获取相同的id。</p>
+<p><em>建议</em> 查找此类主键。如果找到这样的主键，请考虑如何更改设计。没有简单的解决方法。但是，以下可能是可以的。（确保id的数据类型足够大，因为它不会重新开始。）：</p>
+<pre class="fixed">id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (abc, id),
+UNIQUE(id)
+</pre><p><em>建议</em> 保持主键短小。如果有辅助索引，请记住它们包括PK字段。长PK会使辅助索引变得臃肿。好吧，也许不会 <span>&mdash;</span> 如果字段有很多重叠。 示例：<code>PRIMARY KEY(a,b,c), INDEX(c,b,a)</code><span>&mdash;</span>没有额外的臃肿。</p>
+<p><em>建议</em> 检查AUTO_INCREMENT大小。</p>
+<ul start="1"><li>几乎从不需要BIGINT。它至少会浪费4个字节/行（与INT相比）。
+</li><li>总是使用UNSIGNED和NOT NULL。
+</li><li>MEDIUMINT UNSIGNED（最大16M）可能足以代替INT
+</li><li>要保持悲观 <span>&mdash;</span>更改很痛苦。
+</li></ul>
+<p><em>对比</em> “垂直分割”。这里是指您人为地将表拆分为另一个并行表，以移动笨重的列（例如BLOB）。在MyISAM中，这是有益的，可以避免在不需要读取它时跨越BLOB。InnoDB以不同的方式存储BLOB和TEXT <span>&mdash;</span>767字节在记录中，其余部分在其他块中。因此，将表重新组合起来可能（也可能不）值得。注意：InnoDB行限制为8KB，而767计入其中。</p>
+<p> <em>事实。</em> 在<a href="/kb/en/mariadb-1005-release-notes/">MariaDB 10.0.5</a>之前，FULLTEXT和SPATIAL索引在InnoDB中不可用。请注意，MyISAM和InnoDB <a href="/kb/en/full-text-indexes/">FULLTEXT索引</a>使用不同的<a href="stopword">stopword</a>列表和不同的系统变量。</p>
+<p> <em>推荐。</em> 搜索此类索引。将此类表保留在MyISAM中。最好从InnoDB中拆分出最少的列进行垂直分割（请参见上文）。</p>
+<p> <em>事实。</em> INDEX的最大长度在引擎之间是不同的。（这种变化不太可能影响到您，但要小心。）MyISAM允许1000字节；InnoDB允许767字节，刚好足够一个</p>
+<pre class="fixed">VARCHAR(255) CHARACTER SET utf8.
+
+ERROR 1071 (42000): 指定的键太长；最大键长度为767字节
+</pre><p> <em>事实。</em> PRIMARY KEY包含在数据中。因此，对于没有辅助索引的表，SHOW TABLE STATUS将显示0字节（或16KB）的<code>Index_length</code>。否则，<code>Index_length</code>是辅助键的总大小。</p>
+<p> <em>事实。</em> PRIMARY KEY包含在数据中。因此，通过PK进行精确匹配可能会比InnoDB快一点。并且，“范围”扫描通过PK可能更快。</p>
+<p> <em>事实。</em> 通过辅助键进行查找会遍历辅助键的B树，抓取PRIMARY KEY，然后遍历PK的B树。因此，在InnoDB中，辅助键查找有点更加麻烦。</p>
+<p> <em>对比</em> PRIMARY KEY的字段包含在每个辅助键中。这可能会导致在InnoDB中出现“Using index”（在EXPLAIN计划中）的情况，而在MyISAM中没有发生。 （这是一个轻微的性能提升，并抵消了否则需要的双重查找。）但是，当“Using index”对PRIMARY KEY有用时，MyISAM会执行“index scan”，而InnoDB实际上必须执行“table scan”。</p>
+<p> <em>与MyISAM相同。</em> 几乎总是</p>
+<pre class="fixed">INDEX(a)   -- 删除这个索引，因为另一个处理它。
+INDEX(a,b)
+</pre><p> <em>对比</em> 数据按PK顺序存储。这意味着“最近”的记录在末尾“聚集”在一起。这可能比MyISAM具有更好的“引用局部性”。</p>
+<p> <em>与MyISAM相同。</em> 优化器几乎从不在单个SELECT中使用两个索引。（5.1偶尔会执行“index merge”。）子查询和UNION中的SELECT可以独立选择索引。</p>
+<p> <em>微妙问题。</em> 当您删除行时，AUTO_INCREMENT id将被删除。REPLACE也是如此，它是DELETE加INSERT。</p>
+<p> <em>非常微妙的问题。</em> 复制发生在COMMIT上。如果您有多个使用事务的线程，则AUTO_INCREMENT可能以无序方式到达从站。一个事务BEGINs，抓取一个id。然后另一个事务抓取一个id但在第一个完成之前COMMIT。</p>
+<p> <em>与MyISAM相同。</em> 在InnoDB和MyISAM中，通常都不使用“前缀”索引。例如：<code>INDEX(foo(30))</code></p>
+<h2 class="anchored_heading" id="非索引问题">非索引问题</h2>
+<p>InnoDB 的磁盘空间可能是 MyISAM 的 2-3 倍。</p>
+<p>MyISAM 和 InnoDB 在使用 RAM 方面有很大的差异。如果更改了所有表，则应进行重大调整：</p>
+<ul start="1"><li><a href="/kb/en/myisam-system-variables/#key_buffer_size">key_buffer_size</a> <span>&mdash;</span> 小但非零；比如 10M；
+</li><li><a href="/kb/en/xtradbinnodb-server-system-variables/#innodb_buffer_pool_size">innodb_buffer_pool_size</a> <span>&mdash;</span> 可用 RAM 的 70%
+</li></ul>
+<p>InnoDB 实际上不需要 CHECK、OPTIMIZE 或 ANALYZE。从维护脚本中删除它们（如果保留它们，也不会有真正的危害）。</p>
+<p>备份脚本可能需要检查。MyISAM 表可以通过复制三个文件进行备份。对于 InnoDB，仅当设置 <a href="/kb/en/xtradbinnodb-server-system-variables/#innodb_file_per_table">innodb_file_per_table</a> 为 1 时才可能进行备份。在 <a href="/kb/en/what-is-mariadb-100/">MariaDB 10.0</a> 之前，从生产环境复制表或数据库以用于开发环境是不可能的。改用 <a href="/kb/en/mysqldump/">mysqldump</a>。自 <a href="/kb/en/what-is-mariadb-100/">MariaDB 10.0</a> 起，可以创建热备份 - 请参见<a href="/kb/en/backup-and-restore-overview/">备份和恢复概述</a>。</p>
+<p>在 <a href="/kb/en/what-is-mariadb-55/">MariaDB 5.5</a> 之前，不支持 DATA DIRECTORY <a href="/kb/en/create-table/#table-options">表选项</a>用于 InnoDB。自 <a href="/kb/en/what-is-mariadb-55/">MariaDB 5.5</a> 起，它得到支持，但仅在 CREATE TABLE 中支持。INDEX DIRECTORY 没有效果，因为 InnoDB 不使用单独的索引文件。为了更好地平衡几个磁盘的工作负载，还可以更改某些 InnoDB 日志文件的路径。</p>
+<p>了解 autocommit 和 BEGIN/COMMIT。</p>
+<ul start="1"><li>（默认）autocommit = 1：没有 BEGIN 或 COMMIT 语句存在时，每个语句本身就是一个事务。这接近于 MyISAM 的行为，但并不是最好的选择。
+</li><li>autocommit = 0：COMMIT 将关闭一个事务并开始另一个事务。对我来说，这很笨拙。
+</li><li>（推荐）BEGIN ... COMMIT 可以让您控制要被视为事务和“原子”的操作序列。如果需要将某些内容撤消回 BEGIN，则包括 ROLLBACK 语句。
+</li></ul>
+<p>Perl 的 DBIx::DWIW 和 Java 的 JDBC 具有执行 BEGIN 和 COMMIT 的 API 调用。这些可能比“执行” BEGIN 和 COMMIT 更好。</p>
+<p>在任何地方都要测试错误！由于 InnoDB 使用行级锁定，因此可能会遇到意外死锁。引擎将自动回滚到 BEGIN。正常恢复是从 BEGIN 开始重新执行。请注意，这是具有 BEGIN 的一个强有力的理由。</p>
+<p>LOCK/UNLOCK TABLES <span>&mdash;</span> 删除它们。用 BEGIN ... COMMIT 替换它们（有点）。如果将 innodb_table_locks 设置为 1，则 LOCK 将起作用，但效率较低，并且可能存在微妙问题。</p>
+<p>在 5.1 中，ALTER ONLINE TABLE 可以显著加速某些操作。（通常 ALTER TABLE 将表复制并重建索引。）</p>
+<p>几乎所有东西的“限制”在 MyISAM 和 InnoDB 之间是不同的。除非您有巨大的表、宽行、许多索引等等，否则您不太可能遇到不同的限制。</p>
+<p>MyISAM 和 InnoDB 混合？这没问题。但是有一些注意事项。</p>
+<ul start="1"><li>应相应地调整 RAM 设置。
+</li><li>不同引擎的表 JOIN 可以工作。
+</li><li>影响两种类型表的事务可以撤消 InnoDB 更改，但会保留 MyISAM 更改。
+</li><li>复制：MyISAM 语句在完成后被复制；InnoDB 语句会等待 COMMIT。
+</li></ul>
+<p>在 InnoDB 中，FIXED（与 DYNAMIC 相对）毫无意义。</p>
+<p>PARTITION <span>&mdash;</span> 您可以对 MyISAM 和 InnoDB 表进行分区。请记住奇怪的规则：您必须</p>
+<ul start="1"><li>没有 UNIQUE（或 PRIMARY）键；或者
+</li><li>在每个 UNIQUE 键中都有您要“分区”的值。
+</li></ul>
+<p>对 InnoDB 不建议使用前者。如果您想要 AUTO_INCREMENT，则后者会很混乱。</p>
+<p>PARTITION 中的 PRIMARY KEY <span>&mdash;</span> 由于每个键都必须包含您正在 PARTITION 的字段，那么 AUTO_INCREMENT 如何工作呢？好吧，似乎有一个方便的特殊情况：</p>
+<ul start="1"><li>有效：PRIMARY KEY(autoinc，partition_key)
+</li></ul>
+<ul start="1"><li>对于 InnoDB无效：PRIMARY KEY(partition_key，autoinc)
+</li></ul>
+<p>也就是说，当 AUTO_INCREMENT 是 PRIMARY KEY 的第一个字段时，它将正确递增，并且在所有 PARTITION 上都是唯一的，否则不会。</p>
+<h2 class="anchored_heading" id="参见">参见</h2>
+<p>Rick James graciously allowed us to use this article in the Knowledge Base.</p>
+<p><a href="http://mysql.rjweb.org/">Rick James' site</a> has other useful tips, how-tos,
+optimizations, and debugging tips.</p>
+<p>
+原始来源：<a href="http://mysql.rjweb.org/doc.php/myisam2innodb">http://mysql.rjweb.org/doc.php/myisam2innodb</a></p>
 
     </div>
 
 
         
             <div id="subscribe" class="well well-small hide hidden-print"
-                 data-subscribe-url="/kb/zh-cn/mindsdb/+subscriptions/add"
-                 data-unsubscribe-url="/kb/zh-cn/mindsdb/+subscriptions/remove">
+                 data-subscribe-url="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+subscriptions/add"
+                 data-unsubscribe-url="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+subscriptions/remove">
             </div>
         
 
@@ -469,8 +560,8 @@ Connect Storage Engine 必须..." />
         <div class="simple_section_nav">
             <ul class="nav nav-pills">
                 
-                    <li><a href="/kb/zh-cn/memory/">
-                        ← MEMORY存储引擎
+                    <li><a href="/kb/zh-cn/mindsdb/">
+                        ← 使用 MindsDB 进行机器学习
                     </a>
                     </li>
                 
@@ -481,8 +572,8 @@ Connect Storage Engine 必须..." />
                     </li>
                 
                 
-                    <li class="pull-right"><a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/">
-                        将表从 MyISAM 转换为 InnoDB →
+                    <li class="pull-right"><a href="/kb/zh-cn/choosing-the-right-storage-engine/">
+                        选择正确的存储引擎 →
                     </a>
                     </li>
                 
@@ -496,8 +587,8 @@ Connect Storage Engine 必须..." />
         <h2>Comments</h2>
         
     
-    <div id="comments" data-node-id="12473" data-comments-url="/kb/zh-cn/mindsdb/+comments"
-         data-reply-url="/kb/zh-cn/mindsdb/comments/post/">
+    <div id="comments" data-node-id="12478" data-comments-url="/kb/zh-cn/converting-tables-from-myisam-to-innodb/+comments"
+         data-reply-url="/kb/zh-cn/converting-tables-from-myisam-to-innodb/comments/post/">
         Comments loading...
     </div>
 
@@ -690,18 +781,18 @@ Connect Storage Engine 必须..." />
                 
             
                 
-                    <li class="active">
-                        <span>使用 MindsDB 进行机器学习</span>
-                        
+                    <li>
+                        <a href="/kb/zh-cn/mindsdb/">
+                            
+                            使用 MindsDB 进行机器学习
+                        </a>
                     </li>
                 
             
                 
-                    <li>
-                        <a href="/kb/zh-cn/converting-tables-from-myisam-to-innodb/">
-                            
-                            将表从 MyISAM 转换为 InnoDB
-                        </a>
+                    <li class="active">
+                        <span>将表从 MyISAM 转换为 InnoDB</span>
+                        
                     </li>
                 
             
