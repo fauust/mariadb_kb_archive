@@ -288,7 +288,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/mariadb-dump/+r/127541/">127541</a></dd>
+            <dd><a href="/kb/en/mariadb-dump/+r/127553/">127553</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -297,7 +297,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-05-23 20:13">2023-05-23 20:13</span></dd>
+<span class="datetime" title="2023-06-26 20:05">2023-06-26 20:05</span></dd>
         </dl>
     </div>
     
@@ -318,11 +318,11 @@ From MariaDB 10.5.2, ##mariadb-dump## is the name of the tool, with ##mysqldump#
 
 The ##mariadb-dump## client (originally called ##mysqldump##)is a backup program originally written by Igor Romanenko. It can be used to dump a database or a collection of databases for backup or transfer to another database server (not necessarily MariaDB or MySQL). The dump typically contains SQL statements to create the table, populate it, or both. However, ##mariadb-dump## can also be used to generate files in CSV, other delimited text, or XML format.
 
-If you are doing a backup on the server and your tables all are [[MyISAM]] tables, consider using [[mysqlhotcopy]] instead because it can accomplish faster backups and faster restores.
+If you are doing a backup on the server and your tables all are [[MyISAM]] tables, consider using [[mariadb-hotcopy]] instead because it can accomplish faster backups and faster restores.
 
 mariadb-dump dumps triggers along with tables, as these are part of the table definition. However, [[stored-procedures|stored procedures]], [[views]], and [[events]] are not, and need extra parameters to be recreated explicitly (for example, ##--routines## and ##--events##). [[stored-procedures|Procedures]] and [[functions]] are however also part of the system tables (for example [[mysqlproc-table|mysql.proc]]).
 
-##mariadb-dump## supports the [[enhancements-for-start-transaction-with-consistent-snapshot#mysqldump|enhancements for START TRANSACTION WITH CONSISTENT SNAPSHOT]]. 
+##mariadb-dump## supports the [[enhancements-for-start-transaction-with-consistent-snapshot/#mariadb-dump|enhancements for START TRANSACTION WITH CONSISTENT SNAPSHOT]]. 
 
 
 == Performance

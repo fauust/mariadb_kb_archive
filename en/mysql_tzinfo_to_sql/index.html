@@ -23,9 +23,9 @@
     <meta property="og:image" content="http://mariadb.comaskmonty-logo.png" />
     <meta property="og:site_name" content="MariaDB KnowledgeBase" />
     <meta property="fb:admins" content="514852603" />
-    <meta property="og:description" content="Load time zones to the mysql time zone tables." />
+    <meta property="og:description" content="Symlink or old name for mariadb-tzinfo-to-sql." />
 
-    <meta name="description" content="Load time zones to the mysql time zone tables." />
+    <meta name="description" content="Symlink or old name for mariadb-tzinfo-to-sql." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
@@ -248,7 +248,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-05-23 20:36">1 month ago</span></dd>
+<span class="datetime" title="2023-06-26 20:27">19 hours, 33 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -434,24 +434,9 @@
 
     
     <div class="answer formatted">
-        <div class="mariadb_from_10_4_6 mariadb from_10_4_6 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1046-release-notes/">10.4.6</a></h5><p>From <a href="/kb/en/mariadb-1046-release-notes/">MariaDB 10.4.6</a>, <code>mariadb-tzinfo-to-sql</code> is a symlink to <code>mysql_tzinfo_to_sql</code>.</p>
-</div><div class="mariadb_from_10_5_2 mariadb from_10_5_2 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1052-release-notes/">10.5.2</a></h5><p>From <a href="/kb/en/mariadb-1052-release-notes/">MariaDB 10.5.2</a>, <code>mysql_tzinfo_to_sql</code> is the symlink, and <code>mariadb-tzinfo-to-sql</code> the binary name.</p>
-</div><p><code>mysql_tzinfo_to_sql</code> is a utility used to load <a href="/kb/en/time-zones/">time zones</a> on systems that have a zoneinfo database to load the time zone tables (<a href="/kb/en/mysqltime_zone-table/">time_zone</a>, <a href="/kb/en/mysqltime_zone_leap_second-table/">time_zone_leap_second</a>, <a href="/kb/en/mysqltime_zone_name-table/">time_zone_name</a>, <a href="/kb/en/mysqltime_zone_transition-table/">time_zone_transition</a> and <a href="/kb/en/mysqltime_zone_transition_type-table/">time_zone_transition_type</a>) into the mysql database.</p>
-<p>Most Linux, Mac OS X, FreeBSD and Solaris systems will have a zoneinfo database - Windows does not. The database is commonly found in the /usr/share/zoneinfo directory, or, on Solaris, the /usr/share/lib/zoneinfo directory. </p>
-<h2 class="anchored_heading" id="usage">Usage</h2>
-<p><code>mysql_tzinfo_to_sql</code> can be called in several ways. The output is usually passed straight to the <a href="/kb/en/mariadb-client/">mariadb client</a> for direct loading in the mysql database.</p>
-<pre class="fixed">shell&gt; mysql_tzinfo_to_sql timezone_dir
-shell&gt; mysql_tzinfo_to_sql timezone_file timezone_name
-shell&gt; mysql_tzinfo_to_sql --leap timezone_file
-</pre><h2 class="anchored_heading" id="examples">Examples</h2>
-<p>Most commonly, the whole directory is passed:</p>
-<pre class="fixed">shell&gt;mysql_tzinfo_to_sql /usr/share/zoneinfo | mariadb -u root mysql
-</pre><p>Load a single time zone file, <code>timezone_file</code>, corresponding to the time zone called <code>timezone_name</code>.</p>
-<pre class="fixed">shell&gt; mysql_tzinfo_to_sql timezone_file timezone_name | mariadb -u root mysql
-</pre><p>A separate command for each time zone and time zone file the server needs is required.</p>
-<p>To account for leap seconds, use:</p>
-<pre class="fixed">shell&gt; mysql_tzinfo_to_sql --leap timezone_file | mariadb -u root mysql
-</pre><p>After populating the time zone tables, you should usually restart the server so that the new time zone data is correctly loaded.</p>
+        <div class="mariadb_from_10_4_6 mariadb from_10_4_6 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1046-release-notes/">10.4.6</a></h5><p>From <a href="/kb/en/mariadb-1046-release-notes/">MariaDB 10.4.6</a>, <a href="/kb/en/mariadb-tzinfo-to-sql/">mariadb-tzinfo-to-sql</a> is a symlink to <code>mysql_tzinfo_to_sql</code>.</p>
+</div><div class="mariadb_from_10_5_2 mariadb from_10_5_2 product"><h5 class="product_title">MariaDB starting with <a href="/kb/en/mariadb-1052-release-notes/">10.5.2</a></h5><p>From <a href="/kb/en/mariadb-1052-release-notes/">MariaDB 10.5.2</a>, <code>mysql_tzinfo_to_sql</code> is the symlink, and <a href="/kb/en/mariadb-tzinfo-to-sql/">mariadb-tzinfo-to-sql</a> the binary name.</p>
+</div><p>See <a href="/kb/en/mariadb-tzinfo-to-sql/">mariadb-tzinfo-to-sql</a> for details.</p>
 
     </div>
 
@@ -797,6 +782,15 @@ shell&gt; mysql_tzinfo_to_sql --leap timezone_file
             
                 
                     <li>
+                        <a href="/kb/en/mariadb-dumpslow/">
+                            
+                            mariadb-dumpslow
+                        </a>
+                    </li>
+                
+            
+                
+                    <li>
                         <a href="/kb/en/mariadb-embedded/">
                             
                             mariadb-embedded
@@ -917,15 +911,6 @@ shell&gt; mysql_tzinfo_to_sql --leap timezone_file
                         <a href="/kb/en/legacy-clients-and-utilities/">
                             
                             Legacy Clients and Utilities
-                        </a>
-                    </li>
-                
-            
-                
-                    <li>
-                        <a href="/kb/en/mariadb-dumpslow/">
-                            
-                            mariadb-dumpslow
                         </a>
                     </li>
                 
