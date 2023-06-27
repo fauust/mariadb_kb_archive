@@ -280,7 +280,7 @@
     <div class="revision_info">
         <dl class="table">
             <dt>Revision</dt>
-            <dd><a href="/kb/en/changes-improvements-in-mariadb-11-2/+r/127395/">127395</a></dd>
+            <dd><a href="/kb/en/changes-improvements-in-mariadb-11-2/+r/127536/">127536</a></dd>
             <dt>User</dt>
             <dd>
 <span class="user" id="user-1368">
@@ -289,7 +289,7 @@
             <dt>Date</dt>
             <dd>
 
-<span class="datetime" title="2023-06-20 10:56">2023-06-20 10:56</span></dd>
+<span class="datetime" title="2023-06-26 11:45">2023-06-26 11:45</span></dd>
         </dl>
     </div>
     
@@ -312,13 +312,24 @@ MariaDB 11.2 is a current short-term development series, and will be maintained 
 
 == New Features &amp; Improvements
 
+=== InnoDB
+* The [[innodb-system-tablespaces|InnoDB system tablespace]] is now shrunk by reclaiming unused space at startup (MDEV-14795)
 
-&lt;&lt;style class=&#34;hidden&#34;&gt;&gt;
+=== JSON
+* [[json_table|JSON_TABLE]] now allows retrieval of the key when iterating on JSON objects (MDEV-30145)
+* New functions [[JSON_OBJECT_FILTER_KEYS]], [[JSON_OBJECT_TO_ARRAY]] and [[json_array_intersect|JSON_ARRAY_INTERSECT]] to check for JSON intersection (MDEV-26182)
+
+=== Miscellaneous
+* All binlog* variables are now visible as system variables, specifically [[replication-and-binary-log-system-variables/#binlog_do_db|binlog_do_db]], [[replication-and-binary-log-system-variables/#binlog_ignore_db|binlog_ignore_db]], [[replication-and-binary-log-system-variables/#binlog_row_event_max_size|binlog_row_event_max_size]] (MDEV-30188)
+* [[alter-table|ALTER TABLE IMPORT]] enhancement (MDEV-26137)
+* Temporary tables are now displayed in the [[information-schema-tables-table|Information Schema TABLES Table]], [[show-tables|SHOW TABLES]] and [[show-table-status|SHOW TABLE STATUS]] (MDEV-12459)
+* [[stored-routines|Stored programs]]: validation of stored program statements (MDEV-5816)
+* Remove the deprecated [[server-system-variables/#old_alter_table|old_alter_table]] variable (MDEV-30905)
+* Extend [[aes_encrypt|AES_ENCRYPT()]] and [[aes_decrypt|AES_DECRYPT()]] to support an initialization vector and algorithm (MDEV-9069)
+
 === Variables
-* For a list of all new variables, see [[system-variables-added-in-mariadb-11-2|System Variables Added in MariaDB 11.2]]  and [[status-variables-added-in-mariadb-11-2|Status Variables Added in MariaDB 11.2]].
+* For a list of all new variables, see [[system-variables-added-in-mariadb-11-2|System Variables Added in MariaDB 11.2]].
 
-*The following variables have been deprecated:
-&lt;&lt;/style&gt;&gt;
 
 &lt;&lt;style2 class=&#34;hidden&#34;&gt;&gt;
 == Security Vulnerabilities Fixed in MariaDB 11.2

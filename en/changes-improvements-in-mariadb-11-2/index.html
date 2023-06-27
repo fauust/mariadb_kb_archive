@@ -244,7 +244,7 @@
         <dt>Modified</dt>
         <dd>
 
-<span class="datetime" title="2023-06-21 20:13">2 days, 19 hours ago</span></dd>
+<span class="datetime" title="2023-06-26 11:45">6 hours, 59 minutes ago</span></dd>
 
         <dt>Type</dt>
         <dd>article</dd>
@@ -376,9 +376,9 @@
 
     
     <div class="answer formatted">
-        <div class="cstm-style hidden"><div class="cstm-style bluebox text-center centered"><p>The most recent release of <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is:<br>
-<span class="cstm-style lead"><strong><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a>. (Alpha)</strong> <a class="btn btn-success btn-mini" href="https://mariadb.org/download/?tab=mariadb&amp;release=11.2.0&amp;product=mariadb">Download<span>&nbsp;</span>Now</a></span><br></p>
-</div></div>
+        <div class="cstm-style bluebox text-center centered"><p>The most recent release of <a href="/kb/en/what-is-mariadb-112/">MariaDB 11.2</a> is:<br>
+<span class="cstm-style lead"><strong><a href="/kb/en/mariadb-11-2-0-release-notes/">MariaDB 11.2.0</a> (Alpha)</strong> <a class="btn btn-success btn-mini" href="https://mariadb.org/download/?tab=mariadb&amp;release=11.2.0&amp;product=mariadb">Download<span>&nbsp;</span>Now</a></span><br></p>
+</div>
 <div class="table_of_contents well well-small">
 <h3>Contents</h3>
  <ol class="toc">
@@ -386,6 +386,12 @@
     <li class=""><a href="#upgrading" title="Upgrading">Upgrading</a></li>
 
     <li class=""><a href="#new-features-improvements" title="New Features &amp; Improvements">New Features &amp; Improvements</a>    <ol class="toc">
+
+        <li class=""><a href="#innodb" title="InnoDB">InnoDB</a></li>
+
+        <li class=""><a href="#json" title="JSON">JSON</a></li>
+
+        <li class=""><a href="#miscellaneous" title="Miscellaneous">Miscellaneous</a></li>
 
         <li class=""><a href="#variables" title="Variables">Variables</a>    </ol>
 </li>
@@ -400,6 +406,21 @@
 <ul start="1"><li>See <a href="/kb/en/upgrading-between-major-mariadb-versions/">Upgrading Between Major MariaDB Versions</a> and <a href="/kb/en/upgrading-from-mariadb-10-11-to-mariadb-11-0/">Upgrading from MariaDB 10.11 to MariaDB 11.0</a>.
 </li></ul>
 </div><h2 class="anchored_heading" id="new-features-improvements">New Features &amp; Improvements</h2>
+<h3 class="anchored_heading" id="innodb">InnoDB</h3>
+<ul start="1"><li>The <a href="/kb/en/innodb-system-tablespaces/">InnoDB system tablespace</a> is now shrunk by reclaiming unused space at startup (<a href="https://jira.mariadb.org/browse/MDEV-14795">MDEV-14795</a>)
+</li></ul>
+<h3 class="anchored_heading" id="json">JSON</h3>
+<ul start="1"><li><a href="/kb/en/json_table/">JSON_TABLE</a> now allows retrieval of the key when iterating on JSON objects (<a href="https://jira.mariadb.org/browse/MDEV-30145">MDEV-30145</a>)
+</li><li>New functions <a href="/kb/en/json_object_filter_keys/">JSON_OBJECT_FILTER_KEYS</a>, <a href="/kb/en/json_object_to_array/">JSON_OBJECT_TO_ARRAY</a> and <a href="/kb/en/json_array_intersect/">JSON_ARRAY_INTERSECT</a> to check for JSON intersection (<a href="https://jira.mariadb.org/browse/MDEV-26182">MDEV-26182</a>)
+</li></ul>
+<h3 class="anchored_heading" id="miscellaneous">Miscellaneous</h3>
+<ul start="1"><li>All binlog* variables are now visible as system variables, specifically <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_do_db">binlog_do_db</a>, <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_ignore_db">binlog_ignore_db</a>, <a href="/kb/en/replication-and-binary-log-system-variables/#binlog_row_event_max_size">binlog_row_event_max_size</a> (<a href="https://jira.mariadb.org/browse/MDEV-30188">MDEV-30188</a>)
+</li><li><a href="/kb/en/alter-table/">ALTER TABLE IMPORT</a> enhancement (<a href="https://jira.mariadb.org/browse/MDEV-26137">MDEV-26137</a>)
+</li><li>Temporary tables are now displayed in the <a href="/kb/en/information-schema-tables-table/">Information Schema TABLES Table</a>, <a href="/kb/en/show-tables/">SHOW TABLES</a> and <a href="/kb/en/show-table-status/">SHOW TABLE STATUS</a> (<a href="https://jira.mariadb.org/browse/MDEV-12459">MDEV-12459</a>)
+</li><li><a href="/kb/en/stored-routines/">Stored programs</a>: validation of stored program statements (<a href="https://jira.mariadb.org/browse/MDEV-5816">MDEV-5816</a>)
+</li><li>Remove the deprecated <a href="/kb/en/server-system-variables/#old_alter_table">old_alter_table</a> variable (<a href="https://jira.mariadb.org/browse/MDEV-30905">MDEV-30905</a>)
+</li><li>Extend <a href="/kb/en/aes_encrypt/">AES_ENCRYPT()</a> and <a href="/kb/en/aes_decrypt/">AES_DECRYPT()</a> to support an initialization vector and algorithm (<a href="https://jira.mariadb.org/browse/MDEV-9069">MDEV-9069</a>)
+</li></ul>
 <h3 class="anchored_heading" id="variables">Variables</h3>
 <ul start="1"><li>For a list of all new variables, see <a href="/kb/en/system-variables-added-in-mariadb-11-2/">System Variables Added in MariaDB 11.2</a>.
 </li></ul>
